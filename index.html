@@ -12,12 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* CSS Reset และการตั้งค่าพื้นฐาน */
         :root {
-            --primary-blue: #0A1E3C; /* สีน้ำเงินเข้มจากภาพ */
+            --primary-blue: #0A1E3C;
             --secondary-blue: #0D3B66;
             --accent-green: #2E7D32;
-            --bg-light: #F0F8F7; /* สีพื้นหลังอ่อนๆ */
+            --bg-light: #F0F8F7;
             --text-main: #333333;
             --text-light: #666666;
             --white: #FFFFFF;
@@ -41,10 +40,9 @@
 
         a { text-decoration: none; color: inherit; transition: color 0.3s; }
 
-        /* --- ส่วนหัว (Header) --- */
         header {
             background-color: var(--white);
-            padding: 15px 0;
+            padding: 10px 0; /* ปรับ padding ลงเล็กน้อยเพื่อให้พอดีกับโลโก้รูปภาพ */
             border-bottom: 1px solid #E0E0E0;
             position: sticky;
             top: 0;
@@ -65,9 +63,12 @@
             color: var(--primary-blue);
         }
 
-        .logo i {
-            margin-right: 10px;
-            font-size: 30px;
+        /* สไตล์สำหรับโลโก้รูปภาพ */
+        .logo img {
+            height: 50px; /* ปรับความสูงโลโก้ */
+            width: auto;
+            margin-right: 15px;
+            vertical-align: middle;
         }
 
         nav ul {
@@ -86,7 +87,6 @@
 
         nav a:hover { color: var(--accent-green); }
 
-        /* --- ส่วนแบนเนอร์หลัก (Hero Area) --- */
         .hero {
             background-color: var(--primary-blue);
             color: var(--white);
@@ -107,19 +107,17 @@
             opacity: 0.9;
         }
 
-        /* จำลอง Carousel พื้นหลัง */
         .hero::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://via.placeholder.com/1600x600/0A1E3C/ffffff?text=PLACEHOLDER+HERO+IMAGE'); /* ใส่ URL ภาพจริงที่นี่ */
+            background-image: url('https://via.placeholder.com/1600x600/0A1E3C/ffffff?text=MEC+CHUMPHON');
             background-size: cover;
             background-position: center;
             opacity: 0.1;
             z-index: -1;
         }
 
-        /* --- ส่วนเนื้อหา (Main Content) --- */
         main { padding: 50px 0; }
 
         .features-grid {
@@ -128,7 +126,6 @@
             gap: 25px;
         }
 
-        /* --- การ์ดหัวข้อ (Card Style) --- */
         .card {
             background-color: var(--white);
             padding: 30px;
@@ -165,7 +162,6 @@
             text-align: left;
         }
 
-        /* สไตล์เนื้อหาภายในแต่ละการ์ด */
         .card-content {
             text-align: left;
             font-size: 14px;
@@ -196,7 +192,6 @@
             margin-bottom: 0;
         }
 
-        /* --- ส่วนท้าย (Footer) --- */
         footer {
             background-color: var(--secondary-blue);
             color: var(--white);
@@ -207,11 +202,10 @@
 
         footer p { margin: 0; opacity: 0.8; }
 
-        /* การปรับแต่งสำหรับมือถือ (Responsive) */
         @media (max-width: 768px) {
-            header .container { flex-direction: column; gap: 10px; }
+            header .container { flex-direction: column; gap: 15px; }
             nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
-            .hero h1 { font-size: 28px; }
+            .hero h1 { font-size: 26px; }
             .features-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -221,7 +215,8 @@
     <header>
         <div class="container">
             <a href="#" class="logo">
-                <i class="fas fa-notes-medical"></i> MEC Chumphon
+                <img src="MEC-logo.jpg" alt="โลโก้ศูนย์แพทยศาสตรศึกษา โรงพยาบาลชุมพร">
+                MEC Chumphon
             </a>
             <nav>
                 <ul>
