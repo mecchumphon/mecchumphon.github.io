@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ (MEC Chumphon Khet Udomsak Hospital)</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* CSS Reset และการตั้งค่าพื้นฐาน */
+        :root {
+            --primary-blue: #0A1E3C; /* สีน้ำเงินเข้มจากภาพ */
+            --secondary-blue: #0D3B66;
+            --accent-green: #2E7D32;
+            --bg-light: #F0F8F7; /* สีพื้นหลังอ่อนๆ */
+            --text-main: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: color 0.3s; }
+
+        /* --- ส่วนหัว (Header) --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            border-bottom: 1px solid #E0E0E0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-light);
+        }
+
+        nav a:hover { color: var(--accent-green); }
+
+        /* --- ส่วนแบนเนอร์หลัก (Hero Area) --- */
+        .hero {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* จำลอง Carousel พื้นหลัง */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://via.placeholder.com/1600x600/0A1E3C/ffffff?text=PLACEHOLDER+HERO+IMAGE'); /* ใส่ URL ภาพจริงที่นี่ */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* --- ส่วนเนื้อหา (Main Content) --- */
+        main { padding: 50px 0; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- การ์ดหัวข้อ (Card Style) --- */
+        .card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .card i {
+            font-size: 40px;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary-blue);
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        /* สไตล์เนื้อหาภายในแต่ละการ์ด */
+        .card-content {
+            text-align: left;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .news-item, .sub-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .news-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+        }
+
+        .news-item span {
+            font-size: 12px;
+            color: #AAAAAA;
+        }
+
+        .sub-item i {
+            font-size: 16px;
+            color: var(--accent-green);
+            margin-bottom: 0;
+        }
+
+        /* --- ส่วนท้าย (Footer) --- */
+        footer {
+            background-color: var(--secondary-blue);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer p { margin: 0; opacity: 0.8; }
+
+        /* การปรับแต่งสำหรับมือถือ (Responsive) */
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; gap: 10px; }
+            nav ul { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .hero h1 { font-size: 28px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <i class="fas fa-notes-medical"></i> MEC Chumphon
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#home">หน้าหลัก</a></li>
+                    <li><a href="#about">เกี่ยวกับหน่วยงาน</a></li>
+                    <li><a href="#programs">ศูนย์รวมโปรแกรม</a></li>
+                    <li><a href="#events">กิจกรรมนักศึกษา</a></li>
+                    <li><a href="#contact">ติดต่อเรา</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพร</h1>
+            <p>"มุ่งมั่นสร้างแพทย์คุณภาพ เพื่อสุขภาพที่ดีของประชาชน"</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="container features-grid">
+            
+            <div class="card">
+                <i class="fas fa-home"></i>
+                <h2>หน้าหลัก</h2>
+                <h3>ข่าวสารและประกาศ</h3>
+                <div class="card-content news-list">
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/40" alt="ข่าวสาร 1">
+                        <div>
+                            ปฐมนิเทศนักศึกษาแพทย์ใหม่ ปีการศึกษา 2567
+                            <br><span>2 ชั่วโมงที่ผ่านมา</span>
+                        </div>
+                    </div>
+                    <div class="news-item">
+                        <img src="https://via.placeholder.com/40" alt="ข่าวสาร 2">
+                        <div>
+                            MEC Chumphon คว้ารางวัลชนะเลิศ...
+                            <br><span>3 ชั่วโมงที่ผ่านมา</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-info-circle"></i>
+                <h2>เกี่ยวกับเรา</h2>
+                <div class="card-content sub-items">
+                    <div class="sub-item"><i class="fas fa-eye"></i> ภารกิจและวิสัยทัศน์</div>
+                    <div class="sub-item"><i class="fas fa-user-tie"></i> สารจากผู้อำนวยการ</div>
+                    <div class="sub-item"><i class="fas fa-users"></i> บุคลากรคณะ</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-book-medical"></i>
+                <h2>โปรแกรม</h2>
+                <div class="card-content">
+                    ศูนย์รวมหลักสูตรและทรัพยากรการเรียนการสอน (เช่น หลักสูตร, โปรแกรมผู้พำนัก, CME)
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-users-viewfinder"></i>
+                <h2>กิจกรรม</h2>
+                <div class="card-content">
+                    คลังภาพกิจกรรมและปฏิทินกิจกรรมนักศึกษาแพทย์
+                </div>
+            </div>
+
+            <div class="card">
+                <i class="fas fa-map-location-dot"></i>
+                <h2>ติดต่อเรา</h2>
+                <div class="card-content">
+                    <p>โรงพยาบาลชุมพรเขตอุดมศักดิ์</p>
+                    <p>ต. ท่าตะเภา, อ. เมือง, จ. ชุมพร 86000</p>
+                    <p><i class="fas fa-phone"></i> 077-xxxxxx</p>
+                    <p><i class="fas fa-envelope"></i> info@mecchumphon.com</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MEC Chumphon Hospital. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
