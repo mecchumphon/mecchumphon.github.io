@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เกี่ยวกับศูนย์ | Clinical Medical Education Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            margin: 0;
+            background: #f4f8fb;
+            color: #1e293b;
+        }
+        header {
+            background: white;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #1e3a8a;
+            font-weight: 600;
+        }
+        .container {
+            padding: 60px 5%;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h1 {
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            margin-left: 20px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #1e3a8a;
+            background: white;
+            color: #1e3a8a;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div><strong>CMEC</strong></div>
+    <nav>
+        <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
+        <a href="about.html" data-th="เกี่ยวกับศูนย์" data-en="About">เกี่ยวกับศูนย์</a>
+        <button class="lang-btn" onclick="toggleLanguage()">EN</button>
+    </nav>
+</header>
+
+<div class="container">
+    <h1 data-th="เกี่ยวกับศูนย์"
+        data-en="About the Center">
+        เกี่ยวกับศูนย์
+    </h1>
+
+    <p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ 
+                มุ่งผลิตแพทย์ที่มีความรู้ ความสามารถ และคุณธรรม 
+                เพื่อให้บริการประชาชนอย่างมีคุณภาพ"
+       data-en="The Clinical Medical Education Center at 
+                Chumphon Khet Udomsak Hospital is committed 
+                to producing competent and ethical doctors 
+                to serve the community with excellence.">
+        ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ 
+        มุ่งผลิตแพทย์ที่มีความรู้ ความสามารถ และคุณธรรม 
+        เพื่อให้บริการประชาชนอย่างมีคุณภาพ
+    </p>
+
+    <h2 data-th="วิสัยทัศน์" data-en="Vision">วิสัยทัศน์</h2>
+    <p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
+       data-en="To be a leading regional clinical medical education center.">
+       เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
+    </p>
+
+    <h2 data-th="พันธกิจ" data-en="Mission">พันธกิจ</h2>
+    <ul>
+        <li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
+            data-en="Provide high-quality clinical education">
+            พัฒนาการเรียนการสอนที่มีคุณภาพ
+        </li>
+        <li data-th="ส่งเสริมงานวิจัยและวิชาการ"
+            data-en="Promote research and academic excellence">
+            ส่งเสริมงานวิจัยและวิชาการ
+        </li>
+        <li data-th="บริการวิชาการแก่สังคม"
+            data-en="Provide academic services to society">
+            บริการวิชาการแก่สังคม
+        </li>
+    </ul>
+</div>
+
+<script>
+let currentLang = "th";
+
+function toggleLanguage() {
+    const elements = document.querySelectorAll("[data-th]");
+    const button = document.querySelector(".lang-btn");
+
+    if (currentLang === "th") {
+        elements.forEach(el => el.innerText = el.getAttribute("data-en"));
+        document.documentElement.lang = "en";
+        button.innerText = "TH";
+        currentLang = "en";
+    } else {
+        elements.forEach(el => el.innerText = el.getAttribute("data-th"));
+        document.documentElement.lang = "th";
+        button.innerText = "EN";
+        currentLang = "th";
+    }
+}
+</script>
+
+</body>
+</html>
