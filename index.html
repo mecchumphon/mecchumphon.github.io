@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</title>
+    <title>Clinical Medical Education Center</title>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -38,9 +38,19 @@
             color: #1e3a8a;
             font-weight: 600;
         }
-        nav a:hover {
-            color: #2563eb;
+        nav a:hover { color: #2563eb; }
+
+        .lang-btn {
+            margin-left: 20px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid #1e3a8a;
+            background: white;
+            color: #1e3a8a;
+            font-weight: 600;
+            cursor: pointer;
         }
+
         .hero {
             background: linear-gradient(rgba(30,58,138,0.75), rgba(37,99,235,0.75)),
                 url('images/MEC-banner1.png');
@@ -50,14 +60,8 @@
             text-align: center;
             padding: 120px 20px;
         }
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
-        }
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
+        .hero h1 { font-size: 42px; margin-bottom: 20px; }
+        .hero p { font-size: 20px; margin-bottom: 30px; }
         .btn {
             padding: 12px 28px;
             border-radius: 30px;
@@ -67,18 +71,9 @@
             font-weight: 600;
             margin: 5px;
         }
-        .btn-primary {
-            background: white;
-            color: #1e3a8a;
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            color: white;
-        }
-        section {
-            padding: 70px 5%;
-        }
+        .btn-primary { background: white; color: #1e3a8a; }
+        .btn-outline { background: transparent; border: 2px solid white; color: white; }
+        section { padding: 70px 5%; }
         .section-title {
             text-align: center;
             font-size: 30px;
@@ -97,13 +92,8 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             transition: 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-8px);
-        }
-        .card h3 {
-            margin-bottom: 15px;
-            color: #2563eb;
-        }
+        .card:hover { transform: translateY(-8px); }
+        .card h3 { margin-bottom: 15px; color: #2563eb; }
         footer {
             background: #1e3a8a;
             color: white;
@@ -122,72 +112,154 @@
     <div class="logo">
         <img src="images/MEC-logo.jpg" alt="Logo">
         <div>
-            <strong>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</strong><br>
-            โรงพยาบาลชุมพรเขตรอุดมศักดิ์
+            <strong data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" 
+                    data-en="Clinical Medical Education Center">
+                    ศูนย์แพทยศาสตรศึกษาชั้นคลินิก
+            </strong><br>
+            <span data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" 
+                  data-en="Chumphon Khet Udomsak Hospital">
+                  โรงพยาบาลชุมพรเขตรอุดมศักดิ์
+            </span>
         </div>
     </div>
     <nav>
-        <a href="#">หน้าแรก</a>
-        <a href="#">เกี่ยวกับศูนย์</a>
-        <a href="#">หลักสูตร</a>
-        <a href="#">นักศึกษา</a>
-        <a href="#">ข่าวสาร</a>
-        <a href="#">ติดต่อ</a>
+        <a href="#" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
+        <a href="#" data-th="เกี่ยวกับศูนย์" data-en="About">เกี่ยวกับศูนย์</a>
+        <a href="#" data-th="หลักสูตร" data-en="Academics">หลักสูตร</a>
+        <a href="#" data-th="นักศึกษา" data-en="Students">นักศึกษา</a>
+        <a href="#" data-th="ข่าวสาร" data-en="News">ข่าวสาร</a>
+        <a href="#" data-th="ติดต่อ" data-en="Contact">ติดต่อ</a>
+        <button class="lang-btn" onclick="toggleLanguage()">EN</button>
     </nav>
 </header>
 
 <section class="hero">
-    <h1>ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม</h1>
-    <p>Clinical Medical Education Center | Modern Academic Excellence</p>
-    <button class="btn btn-primary">เข้าสู่ระบบนักศึกษา</button>
-    <button class="btn btn-outline">ดูหลักสูตร</button>
+    <h1 data-th="ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม"
+        data-en="Producing Quality Doctors for Community and Society">
+        ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม
+    </h1>
+    <p data-th="ความเป็นเลิศทางวิชาการด้านแพทยศาสตรศึกษา"
+       data-en="Academic Excellence in Clinical Medical Education">
+       ความเป็นเลิศทางวิชาการด้านแพทยศาสตรศึกษา
+    </p>
+    <button class="btn btn-primary"
+        data-th="เข้าสู่ระบบนักศึกษา"
+        data-en="Student Login">
+        เข้าสู่ระบบนักศึกษา
+    </button>
+    <button class="btn btn-outline"
+        data-th="ดูหลักสูตร"
+        data-en="View Program">
+        ดูหลักสูตร
+    </button>
 </section>
 
 <section>
-    <h2 class="section-title">ข่าวประชาสัมพันธ์</h2>
+    <h2 class="section-title"
+        data-th="ข่าวประชาสัมพันธ์"
+        data-en="Announcements">
+        ข่าวประชาสัมพันธ์
+    </h2>
     <div class="grid">
         <div class="card">
-            <h3>ประกาศตารางเรียนภาคการศึกษา 2569</h3>
-            <p>อัปเดตตารางหมุนเวียนและตารางสอบสำหรับนักศึกษาแพทย์ชั้นคลินิก</p>
+            <h3 data-th="ประกาศตารางเรียนภาคการศึกษา 2569"
+                data-en="Academic Year 2026 Schedule Announcement">
+                ประกาศตารางเรียนภาคการศึกษา 2569
+            </h3>
+            <p data-th="อัปเดตตารางหมุนเวียนและตารางสอบสำหรับนักศึกษาแพทย์ชั้นคลินิก"
+               data-en="Updated rotation and examination schedule for clinical students">
+               อัปเดตตารางหมุนเวียนและตารางสอบสำหรับนักศึกษาแพทย์ชั้นคลินิก
+            </p>
         </div>
         <div class="card">
-            <h3>กิจกรรมอบรมเชิงปฏิบัติการ</h3>
-            <p>Workshop การดูแลผู้ป่วยฉุกเฉินสำหรับนักศึกษาแพทย์</p>
+            <h3 data-th="กิจกรรมอบรมเชิงปฏิบัติการ"
+                data-en="Clinical Training Workshop">
+                กิจกรรมอบรมเชิงปฏิบัติการ
+            </h3>
+            <p data-th="Workshop การดูแลผู้ป่วยฉุกเฉินสำหรับนักศึกษาแพทย์"
+               data-en="Emergency patient care workshop for medical students">
+               Workshop การดูแลผู้ป่วยฉุกเฉินสำหรับนักศึกษาแพทย์
+            </p>
         </div>
         <div class="card">
-            <h3>ประชุมวิชาการประจำปี</h3>
-            <p>ขอเชิญเข้าร่วมการประชุมวิชาการและนำเสนอผลงานวิจัย</p>
+            <h3 data-th="ประชุมวิชาการประจำปี"
+                data-en="Annual Academic Conference">
+                ประชุมวิชาการประจำปี
+            </h3>
+            <p data-th="ขอเชิญเข้าร่วมการประชุมวิชาการและนำเสนอผลงานวิจัย"
+               data-en="Join our annual conference and research presentation">
+               ขอเชิญเข้าร่วมการประชุมวิชาการและนำเสนอผลงานวิจัย
+            </p>
         </div>
     </div>
 </section>
 
 <section style="background:#e0ecff;">
-    <h2 class="section-title">บริการสำหรับนักศึกษา</h2>
+    <h2 class="section-title"
+        data-th="บริการสำหรับนักศึกษา"
+        data-en="Student Services">
+        บริการสำหรับนักศึกษา
+    </h2>
     <div class="grid">
         <div class="card">
-            <h3>ตารางเรียน</h3>
-            <p>ตรวจสอบตารางหมุนเวียนและกิจกรรมประจำสัปดาห์</p>
+            <h3 data-th="ตารางเรียน" data-en="Class Schedule">ตารางเรียน</h3>
+            <p data-th="ตรวจสอบตารางหมุนเวียนและกิจกรรมประจำสัปดาห์"
+               data-en="Check rotation schedules and weekly activities">
+               ตรวจสอบตารางหมุนเวียนและกิจกรรมประจำสัปดาห์
+            </p>
         </div>
         <div class="card">
-            <h3>ดาวน์โหลดเอกสาร</h3>
-            <p>คู่มือ หลักสูตร และแบบฟอร์มต่าง ๆ</p>
+            <h3 data-th="ดาวน์โหลดเอกสาร" data-en="Download Documents">ดาวน์โหลดเอกสาร</h3>
+            <p data-th="คู่มือ หลักสูตร และแบบฟอร์มต่าง ๆ"
+               data-en="Manuals, curriculum and official forms">
+               คู่มือ หลักสูตร และแบบฟอร์มต่าง ๆ
+            </p>
         </div>
         <div class="card">
-            <h3>ระบบจองห้องเรียน</h3>
-            <p>จองห้องประชุมและห้องเรียนออนไลน์</p>
+            <h3 data-th="ระบบจองห้องเรียน" data-en="Room Reservation System">ระบบจองห้องเรียน</h3>
+            <p data-th="จองห้องประชุมและห้องเรียนออนไลน์"
+               data-en="Book classrooms and meeting rooms online">
+               จองห้องประชุมและห้องเรียนออนไลน์
+            </p>
         </div>
         <div class="card">
-            <h3>งานวิจัย</h3>
-            <p>เผยแพร่ผลงานวิชาการและงานวิจัย</p>
+            <h3 data-th="งานวิจัย" data-en="Research">งานวิจัย</h3>
+            <p data-th="เผยแพร่ผลงานวิชาการและงานวิจัย"
+               data-en="Academic publications and research works">
+               เผยแพร่ผลงานวิชาการและงานวิจัย
+            </p>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+    <p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์"
+       data-en="Clinical Medical Education Center, Chumphon Khet Udomsak Hospital">
+       ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์
+    </p>
     <p>โทร: 0xx-xxx-xxxx | Email: info@cmec.go.th</p>
     <p>© 2026 All Rights Reserved</p>
 </footer>
+
+<script>
+let currentLang = "th";
+function toggleLanguage() {
+    const elements = document.querySelectorAll("[data-th]");
+    const button = document.querySelector(".lang-btn");
+
+    if (currentLang === "th") {
+        elements.forEach(el => el.innerText = el.getAttribute("data-en"));
+        document.documentElement.lang = "en";
+        button.innerText = "TH";
+        currentLang = "en";
+    } else {
+        elements.forEach(el => el.innerText = el.getAttribute("data-th"));
+        document.documentElement.lang = "th";
+        button.innerText = "EN";
+        currentLang = "th";
+    }
+}
+</script>
 
 </body>
 </html>
