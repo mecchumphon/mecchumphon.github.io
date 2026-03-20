@@ -1,124 +1,368 @@
 <!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>เกี่ยวกับศูนย์ | Clinical Medical Education Center</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Sarabun', sans-serif;
-            margin: 0;
-            background: #f4f8fb;
-            color: #1e293b;
-        }
-        header {
-            background: white;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #1e3a8a;
-            font-weight: 600;
-        }
-        .container {
-            padding: 60px 5%;
-            max-width: 1000px;
-            margin: auto;
-        }
-        h1 {
-            color: #1e3a8a;
-            margin-bottom: 20px;
-        }
-        .lang-btn {
-            margin-left: 20px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid #1e3a8a;
-            background: white;
-            color: #1e3a8a;
-            font-weight: 600;
-            cursor: pointer;
-        }
+
+<html class="light" lang="th"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>เกี่ยวกับเรา | Clinical Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-on-surface": "#f0f0f8",
+              "tertiary-fixed-dim": "#59dcb5",
+              "secondary-fixed-dim": "#b6c7ec",
+              "on-error-container": "#93000a",
+              "surface-tint": "#255dad",
+              "on-tertiary-fixed-variant": "#00513e",
+              "on-primary": "#ffffff",
+              "on-primary-container": "#9bbdff",
+              "on-surface": "#191c21",
+              "background": "#f9f9ff",
+              "primary": "#00346f",
+              "surface-container-low": "#f3f3fa",
+              "error": "#ba1a1a",
+              "on-background": "#191c21",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#364766",
+              "outline": "#737783",
+              "surface-variant": "#e2e2e9",
+              "primary-fixed-dim": "#abc7ff",
+              "on-error": "#ffffff",
+              "surface-container": "#ededf5",
+              "surface-container-highest": "#e2e2e9",
+              "on-primary-fixed": "#001b3f",
+              "tertiary-container": "#005743",
+              "surface-container-high": "#e7e8ef",
+              "on-secondary-fixed": "#081b38",
+              "inverse-surface": "#2e3036",
+              "secondary-container": "#c6d7fd",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-container": "#4ed2ab",
+              "secondary": "#4e5f7f",
+              "on-secondary-container": "#4d5d7e",
+              "surface-bright": "#f9f9ff",
+              "primary-fixed": "#d7e2ff",
+              "surface": "#f9f9ff",
+              "on-primary-fixed-variant": "#00458f",
+              "tertiary": "#003e2f",
+              "error-container": "#ffdad6",
+              "secondary-fixed": "#d7e2ff",
+              "surface-dim": "#d9d9e1",
+              "tertiary-fixed": "#79f9d0",
+              "on-surface-variant": "#424751",
+              "on-tertiary-fixed": "#002117",
+              "inverse-primary": "#abc7ff",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c2c6d3",
+              "primary-container": "#004a99"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .medical-glow {
+        box-shadow: 0 12px 32px -4px rgba(0, 74, 153, 0.06);
+      }
+      .bg-primary-gradient {
+        background: linear-gradient(135deg, #00346f 0%, #004a99 100%);
+      }
+      /* Bilingual toggle support */
+      [lang="en"] .lang-th, [lang="th"] .lang-en { display: none; }
     </style>
 </head>
-<body>
-
-<header>
-    <div><strong>CMEC</strong></div>
-    <nav>
-        <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
-        <a href="about.html" data-th="เกี่ยวกับศูนย์" data-en="About">เกี่ยวกับศูนย์</a>
-        <button class="lang-btn" onclick="toggleLanguage()">EN</button>
-    </nav>
-</header>
-
-<div class="container">
-    <h1 data-th="เกี่ยวกับศูนย์"
-        data-en="About the Center">
-        เกี่ยวกับศูนย์
-    </h1>
-
-    <p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ 
-                มุ่งผลิตแพทย์ที่มีความรู้ ความสามารถ และคุณธรรม 
-                เพื่อให้บริการประชาชนอย่างมีคุณภาพ"
-       data-en="The Clinical Medical Education Center at 
-                Chumphon Khet Udomsak Hospital is committed 
-                to producing competent and ethical doctors 
-                to serve the community with excellence.">
-        ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ 
-        มุ่งผลิตแพทย์ที่มีความรู้ ความสามารถ และคุณธรรม 
-        เพื่อให้บริการประชาชนอย่างมีคุณภาพ
-    </p>
-
-    <h2 data-th="วิสัยทัศน์" data-en="Vision">วิสัยทัศน์</h2>
-    <p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
-       data-en="To be a leading regional clinical medical education center.">
-       เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
-    </p>
-
-    <h2 data-th="พันธกิจ" data-en="Mission">พันธกิจ</h2>
-    <ul>
-        <li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
-            data-en="Provide high-quality clinical education">
-            พัฒนาการเรียนการสอนที่มีคุณภาพ
-        </li>
-        <li data-th="ส่งเสริมงานวิจัยและวิชาการ"
-            data-en="Promote research and academic excellence">
-            ส่งเสริมงานวิจัยและวิชาการ
-        </li>
-        <li data-th="บริการวิชาการแก่สังคม"
-            data-en="Provide academic services to society">
-            บริการวิชาการแก่สังคม
-        </li>
-    </ul>
+<body class="bg-background font-body text-on-surface">
+<!-- TopNavBar with Language Switcher -->
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-full px-6 py-3 z-50 bg-white/85 dark:bg-slate-900/85 backdrop-blur-md shadow-[0_12px_32px_-4px_rgba(0,74,153,0.06)] flex justify-between items-center">
+<div class="text-xl font-extrabold tracking-tighter text-blue-900 dark:text-blue-100 font-headline">Clinical Curator</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 transition-colors font-headline font-bold tracking-tight" href="#">Home</a>
+<a class="text-blue-700 dark:text-blue-400 border-b-2 border-blue-700 pb-1 font-headline font-bold tracking-tight" href="#">About Us</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 transition-colors font-headline font-bold tracking-tight" href="#">Programs</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 transition-colors font-headline font-bold tracking-tight" href="#">Clinical Training</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-800 transition-colors font-headline font-bold tracking-tight" href="#">Admissions</a>
 </div>
-
-<script>
-let currentLang = "th";
-
-function toggleLanguage() {
-    const elements = document.querySelectorAll("[data-th]");
-    const button = document.querySelector(".lang-btn");
-
-    if (currentLang === "th") {
-        elements.forEach(el => el.innerText = el.getAttribute("data-en"));
-        document.documentElement.lang = "en";
-        button.innerText = "TH";
-        currentLang = "en";
-    } else {
-        elements.forEach(el => el.innerText = el.getAttribute("data-th"));
-        document.documentElement.lang = "th";
-        button.innerText = "EN";
-        currentLang = "th";
-    }
-}
-</script>
-
-</body>
-</html>
+<div class="flex items-center gap-4">
+<!-- Language Switcher -->
+<div class="flex items-center bg-slate-100/50 dark:bg-slate-800/50 rounded-lg p-1">
+<button class="px-2 py-1 text-xs font-bold rounded transition-all duration-200 html[lang='th']:bg-white html[lang='th']:shadow-sm html[lang='th']:text-primary text-slate-500" onclick="document.documentElement.lang='th'">TH</button>
+<button class="px-2 py-1 text-xs font-bold rounded transition-all duration-200 html[lang='en']:bg-white html[lang='en']:shadow-sm html[lang='en']:text-primary text-slate-500" onclick="document.documentElement.lang='en'">EN</button>
+</div>
+<button class="bg-primary-gradient text-on-primary px-6 py-2 rounded-md font-bold text-sm transition-transform active:scale-95 duration-200">
+                Apply Now
+            </button>
+</div>
+</nav>
+<main class="pt-32">
+<section class="max-w-7xl mx-auto px-8 mb-24">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="inline-block px-4 py-1 rounded-full bg-tertiary-container text-on-tertiary-container text-xs font-bold mb-6">
+<span class="lang-th">เกี่ยวกับเรา</span>
+<span class="lang-en">About Us</span>
+</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-primary tracking-tight leading-tight mb-8">
+<span class="lang-th">ผู้นำด้านนวัตกรรม<br/>การศึกษาทางการแพทย์</span>
+<span class="lang-en">Leading Innovation in<br/>Medical Education</span>
+</h1>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-2xl">
+<span class="lang-th">เรามุ่งมั่นที่จะพัฒนาศักยภาพของบุคลากรทางการแพทย์ผ่านการเรียนรู้ที่ทันสมัยและการฝึกปฏิบัติจริง เพื่อสร้างมาตรฐานใหม่ให้กับวงการสาธารณสุขในระดับสากล</span>
+<span class="lang-en">We are dedicated to developing the potential of medical professionals through modern learning and practical training to set new international standards in healthcare.</span>
+</p>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square rounded-xl overflow-hidden medical-glow">
+<img class="w-full h-full object-cover" data-alt="Modern medical professionals in a clean laboratory setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_3Rwi5eaRDscSYkLX8jqmJwMEm1f-bSUIUYqTWRXPs8neuBhm6Ir95ciNIz1pRavwlrVdrBZO3JrKDez_d6iy2QtQ1p_IFHuSqgq4WTfQ-QmyiiOzGVoWRr5oydtXxmtTj0aWoQDm-DIwzWv3kxobJZxUaAnkp8IZYqFsL0u6YE2trP_wxHNJKsozPv0rBGNL-gmxuVm8GVzx1R8cPUog5mzUSe5VZJifz2_lQdiuNQeBZWqV-aiwO01gYHdwej6g4d_ibA3IofJh"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-surface-container-lowest p-8 rounded-xl medical-glow max-w-xs hidden md:block">
+<div class="text-4xl font-headline font-extrabold text-primary">15+</div>
+<div class="text-on-surface-variant text-sm font-medium">
+<span class="lang-th">ปีแห่งความเป็นเลิศในการฝึกอบรมทางคลินิก</span>
+<span class="lang-en">Years of Excellence in Clinical Training</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-low py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+<div class="space-y-6">
+<h2 class="text-3xl font-headline font-bold text-primary tracking-tight">
+<span class="lang-th">วิสัยทัศน์ของเรา</span>
+<span class="lang-en">Our Vision</span>
+</h2>
+<p class="text-lg text-on-surface-variant leading-relaxed">
+<span class="lang-th">มุ่งสู่การเป็นศูนย์กลางการศึกษาทางการแพทย์ชั้นนำระดับภูมิภาค ที่ผสานรวมความรู้ทางวิชาการเข้ากับเทคโนโลยีล้ำสมัย เพื่อสร้างสรรค์นวัตกรรมในการรักษาและยกระดับคุณภาพชีวิตของผู้ป่วย</span>
+<span class="lang-en">To become a leading regional medical education hub, integrating academic knowledge with cutting-edge technology to innovate treatments and improve patient quality of life.</span>
+</p>
+</div>
+<div class="space-y-6">
+<h2 class="text-3xl font-headline font-bold text-primary tracking-tight">
+<span class="lang-th">พันธกิจของเรา</span>
+<span class="lang-en">Our Mission</span>
+</h2>
+<ul class="space-y-4">
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary-container mt-1">check_circle</span>
+<span class="text-on-surface-variant">
+<span class="lang-th">ส่งเสริมการเรียนรู้ตลอดชีวิตสำหรับบุคลากรทางการแพทย์ทุกระดับ</span>
+<span class="lang-en">Promote lifelong learning for medical professionals at all levels.</span>
+</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary-container mt-1">check_circle</span>
+<span class="text-on-surface-variant">
+<span class="lang-th">สร้างเครือข่ายความร่วมมือกับสถาบันวิจัยระดับโลก</span>
+<span class="lang-en">Establish collaborative networks with global research institutions.</span>
+</span>
+</li>
+<li class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary-container mt-1">check_circle</span>
+<span class="text-on-surface-variant">
+<span class="lang-th">พัฒนาหลักสูตรที่เน้นผลลัพธ์และการนำไปใช้จริงในสถานการณ์ทางคลินิก</span>
+<span class="lang-en">Develop curricula focused on outcomes and practical clinical application.</span>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="text-4xl font-headline font-bold text-primary tracking-tight mb-4">
+<span class="lang-th">ประวัติและความเป็นมา</span>
+<span class="lang-en">History &amp; Background</span>
+</h2>
+<div class="w-20 h-1 bg-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest p-8 rounded-xl medical-glow">
+<div class="text-blue-700 font-headline font-extrabold text-2xl mb-4">2008</div>
+<h3 class="font-bold mb-2">
+<span class="lang-th">จุดเริ่มต้น</span>
+<span class="lang-en">The Beginning</span>
+</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+<span class="lang-th">ก่อตั้งขึ้นเพื่อเป็นศูนย์ฝึกอบรมทักษะเฉพาะทางสำหรับแพทย์จบใหม่ โดยเริ่มจากหลักสูตรพื้นฐาน 3 หลักสูตร</span>
+<span class="lang-en">Founded as a specialized skills training center for new medical graduates, starting with 3 core courses.</span>
+</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl medical-glow">
+<div class="text-blue-700 font-headline font-extrabold text-2xl mb-4">2015</div>
+<h3 class="font-bold mb-2">
+<span class="lang-th">การขยายตัว</span>
+<span class="lang-en">Expansion</span>
+</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+<span class="lang-th">เปิดตัวระบบ Simulation Lab ที่ทันสมัยที่สุดในภูมิภาค และได้รับรองมาตรฐานระดับสากล</span>
+<span class="lang-en">Launched the most advanced Simulation Lab in the region and achieved international certification.</span>
+</p>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-xl medical-glow">
+<div class="text-blue-700 font-headline font-extrabold text-2xl mb-4">2023</div>
+<h3 class="font-bold mb-2">
+<span class="lang-th">นวัตกรรม AI</span>
+<span class="lang-en">AI Innovation</span>
+</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+<span class="lang-th">บูรณาการเทคโนโลยี AI เข้ากับหลักสูตรการวินิจฉัย และขยายเครือข่ายพันธมิตรไปกว่า 10 ประเทศ</span>
+<span class="lang-en">Integrated AI technology into diagnostic curricula and expanded partner networks to over 10 countries.</span>
+</p>
+</div>
+</div>
+</section>
+<section class="bg-surface-container py-24">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="text-4xl font-headline font-bold text-primary tracking-tight mb-4">
+<span class="lang-th">คณะผู้บริหารของเรา</span>
+<span class="lang-en">Our Leadership</span>
+</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">
+<span class="lang-th">รวบรวมผู้เชี่ยวชาญระดับโลกที่มีประสบการณ์และความเชี่ยวชาญหลากหลายสาขา</span>
+<span class="lang-en">Gathering world-class experts with diverse experience and specializations.</span>
+</p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 medical-glow grayscale group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female medical director in professional attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBs2MH5Sgd_utKFO9xt3eTV5SD4CnRpXgJSYArza_G3xEWy-rnoXINbk-qwPmbPZrwyta3PPPy2zoKYXYJe9wa-ils4Vh5tEFzaDI9sH4v1sd2kKpC1SN5FSDARonRsw-3l4HQG6CPx1qIJKPq6HNeddNgG5t1aYkFu9qOR2oL6ELvjisW0YI--48JPiA1FP_yPGO3fA1nJOZQHHtQ8UXeNOqYkdIffVtnJbDhAFWwcI59d-uz2ogsAGnv3xxWbZxhnoN5w6HVRUCNf"/>
+</div>
+<h4 class="font-headline font-bold text-lg text-primary">
+<span class="lang-th">ดร. ณิชา ภักดีศิริ</span>
+<span class="lang-en">Dr. Nicha Phakdeesiri</span>
+</h4>
+<p class="text-on-surface-variant text-sm">
+<span class="lang-th">ผู้อำนวยการฝ่ายการศึกษา</span>
+<span class="lang-en">Director of Education</span>
+</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 medical-glow grayscale group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male senior surgeon and educator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtW0x12vVKGXnrOMuEcqjlLJlXPcVieRl8CTwKqLr8k7gVAuQITZYfdS3uKJlN5KoyVVsAiqIeSUKth4bqYULMErYa8CJ4jeTXTKab1eSl2v-eCCYyLV29s7AzVhI9eiIkM9nmOJBLZxNVuWLCNxpC_6mpbnGg7N2ePOZZVJmz2DgNP_nDT0dczJquXNgzk_FSy7oO7dLjPYAoSrTmGso7hIzRw91nDkE2P5zzlhTrB-6Y-C7zniLi-IIYJsDlfZuImq5V5xw5o0Be"/>
+</div>
+<h4 class="font-headline font-bold text-lg text-primary">
+<span class="lang-th">นพ. วิศรุต เมธานนท์</span>
+<span class="lang-en">Dr. Wisarut Methanon</span>
+</h4>
+<p class="text-on-surface-variant text-sm">
+<span class="lang-th">หัวหน้าฝ่ายฝึกอบรมทางคลินิก</span>
+<span class="lang-en">Head of Clinical Training</span>
+</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 medical-glow grayscale group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female professor in medical science" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5JqdzaYN1QXIxnUegntqTDowP-yEFimX5GLr1sxopivmFSUzEZwjnMr_Rd_8LBtEbA3Ii9TZM77hzzhA_V62HA46fov3aY7Fu8MeU5nGBicP2MwYsRlMNwVBsvv2jvncr8mQ62okzHSkzSoUzffzcw4Dj5xPfpJUM3fmbnQjOV8IzlHFBaHn1BNxI0ujXTfhl6vCOaIacDuKsiwPOO8EZX-f9v-gLJNgb9wnaM5zM7sTHdqt_HTkw3Z7efiXPiROyrpa4AOyIek64"/>
+</div>
+<h4 class="font-headline font-bold text-lg text-primary">
+<span class="lang-th">ศ.ดร. มาลินี วงศ์วร</span>
+<span class="lang-en">Prof. Dr. Malinee Wongwor</span>
+</h4>
+<p class="text-on-surface-variant text-sm">
+<span class="lang-th">คณบดีฝ่ายวิจัยและนวัตกรรม</span>
+<span class="lang-en">Dean of Research &amp; Innovation</span>
+</p>
+</div>
+<div class="group">
+<div class="aspect-[3/4] rounded-xl overflow-hidden mb-6 medical-glow grayscale group-hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male chief medical officer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD3l6yiUC_nTTY1In5nAkWQgD7kNkc1XDBai6I0JeIAKsJpRUXczFgr514PLvSM51d8c3JvdtGxt-yWHJiAwHYC7t5aMRpXeZ5vXcHlsBMwlCUrwlD1hWMSxJqpjPE0Yhj8xGMxtF1twAAPS7cDdTqOJvMHlCr1vK-4T9d7SdWaNSnan6ElQEi8BhCA1yjvQ4vofuYYa1NhkbuRKknxeNOw7KUQMkJp5SGD_W71gjhpWdMK8gkk2Pr-ToPY1CO6-VvEIqXcBLdub2A"/>
+</div>
+<h4 class="font-headline font-bold text-lg text-primary">
+<span class="lang-th">นพ. กฤษดา ธนปัญญ์</span>
+<span class="lang-en">Dr. Kritsada Thanapan</span>
+</h4>
+<p class="text-on-surface-variant text-sm">
+<span class="lang-th">ผู้อำนวยการบริหาร</span>
+<span class="lang-en">Executive Director</span>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-7xl mx-auto px-8 py-24">
+<div class="bg-primary-gradient rounded-2xl p-12 md:p-20 relative overflow-hidden text-center">
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-headline font-extrabold text-white mb-8">
+<span class="lang-th">พร้อมจะก้าวไปกับเราหรือยัง?</span>
+<span class="lang-en">Ready to Step Forward with Us?</span>
+</h2>
+<p class="text-blue-100 text-lg mb-10 max-w-xl mx-auto">
+<span class="lang-th">เข้าร่วมเป็นส่วนหนึ่งของสถาบันที่มุ่งเน้นความเป็นเลิศทางการแพทย์และสร้างอนาคตของคุณตั้งแต่วันนี้</span>
+<span class="lang-en">Join an institute focused on medical excellence and build your future starting today.</span>
+</p>
+<div class="flex flex-wrap justify-center gap-4">
+<button class="bg-white text-primary px-8 py-4 rounded-md font-bold hover:bg-blue-50 transition-colors">
+<span class="lang-th">ดูหลักสูตรทั้งหมด</span>
+<span class="lang-en">View All Programs</span>
+</button>
+<button class="border border-white/30 text-white px-8 py-4 rounded-md font-bold hover:bg-white/10 transition-colors">
+<span class="lang-th">ติดต่อสอบถาม</span>
+<span class="lang-en">Contact Us</span>
+</button>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400/10 rounded-full -ml-48 -mb-48"></div>
+</div>
+</section>
+</main>
+<footer class="bg-slate-50 dark:bg-slate-950 w-full mt-20 pt-16 pb-8 border-t border-slate-200/10">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-1">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100 mb-6 font-headline">Clinical Curator</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+<span class="lang-th">ศูนย์กลางการเรียนรู้และนวัตกรรมทางการแพทย์ระดับสากล มุ่งสร้างบุคลากรที่มีคุณภาพเพื่อสังคม</span>
+<span class="lang-en">A global hub for medical learning and innovation, aiming to create quality professionals for society.</span>
+</p>
+</div>
+<div>
+<h5 class="font-bold text-blue-900 dark:text-blue-100 mb-6 text-sm">Quick Links</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 underline-offset-4 hover:underline transition-all duration-300 ease-in-out text-sm" href="#">About Us</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 underline-offset-4 hover:underline transition-all duration-300 ease-in-out text-sm" href="#">Programs</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 underline-offset-4 hover:underline transition-all duration-300 ease-in-out text-sm" href="#">Admissions</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-blue-900 dark:text-blue-100 mb-6 text-sm">Portals</h5>
+<ul class="space-y-4">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 underline-offset-4 hover:underline transition-all duration-300 ease-in-out text-sm" href="#">Faculty Portal</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 underline-offset-4 hover:underline transition-all duration-300 ease-in-out text-sm" href="#">Student Login</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-300 underline-offset-4 hover:underline transition-all duration-300 ease-in-out text-sm" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-blue-900 dark:text-blue-100 mb-6 text-sm">Contact</h5>
+<ul class="space-y-4">
+<li class="text-slate-500 dark:text-slate-400 text-sm flex gap-2">
+<span class="material-symbols-outlined text-xs">mail</span>
+                        contact@clinicalcurator.edu
+                    </li>
+<li class="text-slate-500 dark:text-slate-400 text-sm flex gap-2">
+<span class="material-symbols-outlined text-xs">phone</span>
+                        +66 2 123 4567
+                    </li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-8 mt-16 pt-8 border-t border-slate-200/10">
+<p class="text-slate-500 dark:text-slate-400 text-center text-xs">© 2024 Clinical Curator Medical Education Center. All rights reserved.</p>
+</div>
+</footer>
+</body></html>
