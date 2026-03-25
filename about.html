@@ -1,157 +1,39 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body {
-    font-family: 'Sarabun', sans-serif;
-    margin: 0;
-    background: #f4f8fb;
-    color: #1e293b;
-}
-
-header {
-    background: white;
-    padding: 15px 5%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #1e3a8a;
-    font-weight: 600;
-}
-
-.container {
-    padding: 60px 5%;
-    max-width: 1000px;
-    margin: auto;
-}
-
-h1 {
-    color: #1e3a8a;
-}
-
-.section-card {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
-}
-
-h2 {
-    color: #1e3a8a;
-    margin-top: 40px;
-}
-
-.lang-btn {
-    margin-left: 20px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid #1e3a8a;
-    background: white;
-    color: #1e3a8a;
-    font-weight: 600;
-    cursor: pointer;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<div><strong>MEC Chumphon</strong></div>
-<nav>
-    <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
-    <a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">เกี่ยวกับหน่วยงาน</a>
-    <button class="lang-btn" onclick="toggleLanguage()">EN</button>
-</nav>
-</header>
-
-<div class="container">
-
-<h1 data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">
-เกี่ยวกับหน่วยงาน
-</h1>
-
-<div class="section-card"
-data-th='
-<h3>ประวัติและความเป็นมา</h3>
-<p><strong>1.mp4>
-
-data-en='
-<h3>History and Background</h3>
-<p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
-<p><strong>Location:</strong> 222 Phisit Phayaban Road, Tha Taphao, Mueang, Chumphon 86000, Thailand</p>
-
-<p><strong>Historical Background</strong></p>
-<p>In 2004, the Cabinet approved collaboration between the Ministry of Public Health and the Ministry of University Affairs to produce rural doctors.</p>
-<p>Clinical Medical Education Centers were established in regional hospitals to provide clinical training.</p>
-<p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
-<p>The center collaborates with the Faculty of Medicine, Thammasat University.</p>
-<p>Students are selected from Surat Thani, Chumphon, and Ranong provinces.</p>
-'>
-</div>
-
-<h2 data-th="วิสัยทัศน์" data-en="Vision">วิสัยทัศน์</h2>
-<p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
-   data-en="To be a leading regional clinical medical education center.">
-เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
-</p>
-
-<h2 data-th="พันธกิจ" data-en="Mission">พันธกิจ</h2>
-<ul>
-<li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
-    data-en="Provide high-quality clinical education">
-พัฒนาการเรียนการสอนที่มีคุณภาพ
-</li>
-<li data-th="ส่งเสริมงานวิจัยและวิชาการ"
-    data-en="Promote research and academic excellence">
-ส่งเสริมงานวิจัยและวิชาการ
-</li>
-<li data-th="บริการวิชาการแก่สังคม"
-    data-en="Provide academic services to society">
-บริการวิชาการแก่สังคม
-</li>
-</ul>
-
-</div>
-
-<script>
-let currentLang = "th";
-
 function toggleLanguage() {
     const elements = document.querySelectorAll("[data-th]");
     const button = document.querySelector(".lang-btn");
 
-    if (currentLang === "th") {
-        elements.forEach(el => {
-            if (el.getAttribute("data-en")) {
-                el.innerHTML = el.getAttribute("data-en");
+    elements.forEach(el => {
+        const isHTML = el.dataset.th.includes("<"); // เช็คว่ามี HTML ไหม
+
+        if (currentLang === "th") {
+            if (el.dataset.en) {
+                if (isHTML) {
+                    el.innerHTML = el.dataset.en;
+                } else {
+                    el.textContent = el.dataset.en;
+                }
             }
-        });
+        } else {
+            if (el.dataset.th) {
+                if (isHTML) {
+                    el.innerHTML = el.dataset.th;
+                } else {
+                    el.textContent = el.dataset.th;
+                }
+            }
+        }
+    });
+
+    if (currentLang === "th") {
         document.documentElement.lang = "en";
         button.innerText = "TH";
         currentLang = "en";
     } else {
-        elements.forEach(el => {
-            if (el.getAttribute("data-th")) {
-                el.innerHTML = el.getAttribute("data-th");
-            }
-        });
         document.documentElement.lang = "th";
         button.innerText = "EN";
         currentLang = "th";
+    }
+}
     }
 }
 </script>
