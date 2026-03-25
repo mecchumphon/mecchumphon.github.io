@@ -42,6 +42,11 @@ header {
     margin-bottom: 40px;
 }
 
+h2 {
+    color: #1e3a8a;
+    margin-top: 40px;
+}
+
 /* SWITCH BUTTON */
 .lang-switch {
     display: flex;
@@ -75,39 +80,63 @@ header {
     <div class="lang-switch">
         <button onclick="setLanguage('th')" id="btn-th">TH</button>
         <button onclick="setLanguage('en')" id="btn-en">EN</button>
-        <button onclick="setLanguage('cn')" id="btn-cn">CN</button>
     </div>
 </header>
 
 <div class="container">
 
 <div class="section-card"
-data-th="<h3>ประวัติ</h3><p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพร</p>"
-data-en="<h3>History</h3><p>Clinical Medical Education Center, Chumphon</p>"
-data-cn="<h3>历史</h3><p>春蓬临床医学教育中心</p>">
+data-th='
+<h3>ประวัติและความเป็นมา</h3>
+<p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
 
-<h3>ประวัติ</h3>
-<p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพร</p>
+<p><strong>ประวัติความเป็นมา</strong></p>
+<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท</p>
+'
+data-en='
+<h3>History and Background</h3>
+<p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
+<p><strong>Location:</strong> Chumphon, Thailand</p>
+
+<p><strong>Historical Background</strong></p>
+<p>In 2004, the Cabinet approved collaboration to produce rural doctors.</p>
+'>
+
+<!-- default content -->
+<h3>ประวัติและความเป็นมา</h3>
+<p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
 
 </div>
 
-<h2 
-data-th="🎯 วิสัยทัศน์" 
-data-en="🎯 Vision"
-data-cn="🎯 愿景">🎯 วิสัยทัศน์</h2>
-
-<p 
-data-th="เป็นศูนย์แพทย์ชั้นนำ"
-data-en="Leading medical education center"
-data-cn="领先的医学教育中心">
-เป็นศูนย์แพทย์ชั้นนำ
+<h2 data-th="🎯 วิสัยทัศน์" data-en="🎯 Vision">🎯 วิสัยทัศน์</h2>
+<p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
+   data-en="To be a leading regional clinical medical education center.">
+เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
 </p>
+
+<h2 data-th="📌 พันธกิจ" data-en="📌 Mission">📌 พันธกิจ</h2>
+<ul>
+<li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
+    data-en="Provide high-quality clinical education">
+พัฒนาการเรียนการสอนที่มีคุณภาพ
+</li>
+<li data-th="ส่งเสริมงานวิจัยและวิชาการ"
+    data-en="Promote research and academic excellence">
+ส่งเสริมงานวิจัยและวิชาการ
+</li>
+<li data-th="บริการวิชาการแก่สังคม"
+    data-en="Provide academic services to society">
+บริการวิชาการแก่สังคม
+</li>
+</ul>
 
 </div>
 
 <script>
 let currentLang = localStorage.getItem("lang") || "th";
 
+// apply language
 function applyLanguage(lang) {
     const elements = document.querySelectorAll("[data-th]");
 
@@ -119,13 +148,14 @@ function applyLanguage(lang) {
 
     document.documentElement.lang = lang;
 
-    // highlight active button
+    // active button
     document.querySelectorAll(".lang-switch button").forEach(btn => {
         btn.classList.remove("active");
     });
     document.getElementById("btn-" + lang).classList.add("active");
 }
 
+// change language with animation
 function setLanguage(lang) {
     document.body.classList.add("fade-out");
 
@@ -137,9 +167,10 @@ function setLanguage(lang) {
     }, 200);
 }
 
-// โหลดครั้งแรก
+// load first time
 applyLanguage(currentLang);
 </script>
 
 </body>
+</html>
 </html>
