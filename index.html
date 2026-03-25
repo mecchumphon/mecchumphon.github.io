@@ -1,266 +1,192 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MEC Chumphon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Sarabun', sans-serif;
-            background: #f4f8fb;
-            color: #1e293b;
-        }
-        header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .logo img {
-            width: 50px;
-            height: 50px;
-        }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #1e3a8a;
-            font-weight: 600;
-        }
-        nav a:hover { color: #2563eb; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEC Chumphon</title>
 
-        .lang-btn {
-            margin-left: 20px;
-            padding: 6px 12px;
-            border-radius: 20px;
-            border: 1px solid #1e3a8a;
-            background: white;
-            color: #1e3a8a;
-            font-weight: 600;
-            cursor: pointer;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-        .hero {
-            background: linear-gradient(rgba(30,58,138,0.75), rgba(37,99,235,0.75)),
-                url('images/MEC-banner1.png');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-        }
-        .hero h1 { font-size: 42px; margin-bottom: 20px; }
-        .hero p { font-size: 20px; margin-bottom: 30px; }
-        .btn {
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            margin: 5px;
-        }
-        .btn-primary { background: white; color: #1e3a8a; }
-        .btn-outline { background: transparent; border: 2px solid white; color: white; }
-        section { padding: 70px 5%; }
-        .section-title {
-            text-align: center;
-            font-size: 30px;
-            margin-bottom: 40px;
-            color: #1e3a8a;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: 0.3s ease;
-        }
-        .card:hover { transform: translateY(-8px); }
-        .card h3 { margin-bottom: 15px; color: #2563eb; }
-        footer {
-            background: #1e3a8a;
-            color: white;
-            padding: 40px 5%;
-            text-align: center;
-        }
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 30px; }
-            .hero p { font-size: 16px; }
-        }
-    </style>
+<style>
+body {
+    font-family: 'Sarabun', sans-serif;
+    margin: 0;
+    background: #f4f8fb;
+    color: #1e293b;
+}
+
+/* HEADER */
+header {
+    background: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 60vh;
+    background: url("hospital.jpg") center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30, 58, 138, 0.65);
+}
+
+.hero-content {
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.hero-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.hero h1 {
+    font-size: 36px;
+}
+
+/* SECTION */
+.section {
+    padding: 80px 5%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CARD */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #1e3a8a;
+}
+
+/* NEWS */
+.news-item {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    background: #1e3a8a;
+    color: white;
+    padding: 40px 5%;
+    text-align: center;
+    margin-top: 50px;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <div class="logo">
-        <img src="images/MEC-logo.jpg" alt="Logo">
-        <div>
-            <strong data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" 
-                    data-en="Clinical Medical Education Center">
-                    ศูนย์แพทยศาสตรศึกษาชั้นคลินิก
-            </strong><br>
-            <span data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" 
-                  data-en="Chumphon Khet Udomsak Hospital">
-                  โรงพยาบาลชุมพรเขตรอุดมศักดิ์
-            </span>
-        </div>
-    </div>
-    <nav>
-        <a href="#" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
-        <a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">เกี่ยวกับหน่วยงาน</a>
-        <a href="#" data-th="หลักสูตร" data-en="Academics">หลักสูตร</a>
-        <a href="#" data-th="นักศึกษา" data-en="Students">นักศึกษา</a>
-        <a href="#" data-th="ศูนย์รวมโปรแกรม" data-en="Application Hub">ศูนย์รวมโปรแกรม</a>
-        <a href="#" data-th="ติดต่อ" data-en="Contact">ติดต่อ</a>
-        <button class="lang-btn" onclick="toggleLanguage()">EN</button>
-    </nav>
+<div class="logo">
+    <img src="MEC-logo.jpg">
+</div>
+
+<nav>
+    <a href="index.html">หน้าแรก</a>
+    <a href="about.html">เกี่ยวกับหน่วยงาน</a>
+</nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-    <h1 data-th="ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม"
-        data-en="Producing Quality Doctors for Community and Society">
-        ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม
-    </h1>
-    <p data-th="ความเป็นเลิศทางวิชาการด้านแพทยศาสตรศึกษา"
-       data-en="Academic Excellence in Clinical Medical Education">
-       ความเป็นเลิศทางวิชาการด้านแพทยศาสตรศึกษา
-    </p>
-    <button class="btn btn-primary"
-        data-th="เข้าสู่ระบบนักศึกษา"
-        data-en="Student Login">
-        เข้าสู่ระบบนักศึกษา
-    </button>
-    <button class="btn btn-outline"
-        data-th="ดูหลักสูตร"
-        data-en="View Program">
-        ดูหลักสูตร
-    </button>
-</section>
-
-<section>
-    <h2 class="section-title"
-        data-th="ข่าวประชาสัมพันธ์"
-        data-en="Announcements">
-        ข่าวประชาสัมพันธ์
-    </h2>
-    <div class="grid">
-        <div class="card">
-            <h3 data-th="ประกาศตารางเรียนภาคการศึกษา 2569"
-                data-en="Academic Year 2026 Schedule Announcement">
-                ประกาศตารางเรียนภาคการศึกษา 2569
-            </h3>
-            <p data-th="อัปเดตตารางหมุนเวียนและตารางสอบสำหรับนักศึกษาแพทย์ชั้นคลินิก"
-               data-en="Updated rotation and examination schedule for clinical students">
-               อัปเดตตารางหมุนเวียนและตารางสอบสำหรับนักศึกษาแพทย์ชั้นคลินิก
-            </p>
-        </div>
-        <div class="card">
-            <h3 data-th="กิจกรรมอบรมเชิงปฏิบัติการ"
-                data-en="Clinical Training Workshop">
-                กิจกรรมอบรมเชิงปฏิบัติการ
-            </h3>
-            <p data-th="Workshop การดูแลผู้ป่วยฉุกเฉินสำหรับนักศึกษาแพทย์"
-               data-en="Emergency patient care workshop for medical students">
-               Workshop การดูแลผู้ป่วยฉุกเฉินสำหรับนักศึกษาแพทย์
-            </p>
-        </div>
-        <div class="card">
-            <h3 data-th="ประชุมวิชาการประจำปี"
-                data-en="Annual Academic Conference">
-                ประชุมวิชาการประจำปี
-            </h3>
-            <p data-th="ขอเชิญเข้าร่วมการประชุมวิชาการและนำเสนอผลงานวิจัย"
-               data-en="Join our annual conference and research presentation">
-               ขอเชิญเข้าร่วมการประชุมวิชาการและนำเสนอผลงานวิจัย
-            </p>
-        </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <img src="MEC-logo.jpg" class="hero-logo">
+        <h1>MEC Chumphon</h1>
+        <p>Clinical Medical Education Center</p>
     </div>
 </section>
 
-<section style="background:#e0ecff;">
-    <h2 class="section-title"
-        data-th="บริการสำหรับนักศึกษา"
-        data-en="Student Services">
-        บริการสำหรับนักศึกษา
-    </h2>
-    <div class="grid">
-        <div class="card">
-            <h3 data-th="ตารางเรียน" data-en="Class Schedule">ตารางเรียน</h3>
-            <p data-th="ตรวจสอบตารางหมุนเวียนและกิจกรรมประจำสัปดาห์"
-               data-en="Check rotation schedules and weekly activities">
-               ตรวจสอบตารางหมุนเวียนและกิจกรรมประจำสัปดาห์
-            </p>
-        </div>
-        <div class="card">
-            <h3 data-th="ดาวน์โหลดเอกสาร" data-en="Download Documents">ดาวน์โหลดเอกสาร</h3>
-            <p data-th="คู่มือ หลักสูตร และแบบฟอร์มต่าง ๆ"
-               data-en="Manuals, curriculum and official forms">
-               คู่มือ หลักสูตร และแบบฟอร์มต่าง ๆ
-            </p>
-        </div>
-        <div class="card">
-            <h3 data-th="ระบบจองห้องเรียน" data-en="Room Reservation System">ระบบจองห้องเรียน</h3>
-            <p data-th="จองห้องประชุมและห้องเรียนออนไลน์"
-               data-en="Book classrooms and meeting rooms online">
-               จองห้องประชุมและห้องเรียนออนไลน์
-            </p>
-        </div>
-        <div class="card">
-            <h3 data-th="งานวิจัย" data-en="Research">งานวิจัย</h3>
-            <p data-th="เผยแพร่ผลงานวิชาการและงานวิจัย"
-               data-en="Academic publications and research works">
-               เผยแพร่ผลงานวิชาการและงานวิจัย
-            </p>
-        </div>
+<!-- SERVICES -->
+<section class="section">
+<h2>หน่วยงาน</h2>
+
+<div class="grid">
+    <div class="card">
+        <h3>📘 การเรียนการสอน</h3>
+        <p>หลักสูตรแพทยศาสตรศึกษา</p>
     </div>
+
+    <div class="card">
+        <h3>🔬 งานวิจัย</h3>
+        <p>ผลงานวิจัยทางการแพทย์</p>
+    </div>
+
+    <div class="card">
+        <h3>🌍 บริการวิชาการ</h3>
+        <p>บริการแก่สังคม</p>
+    </div>
+</div>
 </section>
 
+<!-- NEWS -->
+<section class="section">
+<h2>ข่าวประชาสัมพันธ์</h2>
+
+<div class="news-item">
+    <strong>📢 อบรมแพทย์</strong>
+    <p>จัดอบรมแพทย์ประจำปี 2568</p>
+</div>
+
+<div class="news-item">
+    <strong>📢 รับสมัครนักศึกษา</strong>
+    <p>เปิดรับสมัครนักศึกษาแพทย์</p>
+</div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-    <p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์"
-       data-en="Clinical Medical Education Center, Chumphon Khet Udomsak Hospital">
-       ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์
-    </p>
-    <p>โทร: 077-503672 ต่อ 8521-8522 หรือ 083-1074497
-    <p>Email: meccp.ckusk@cpird.in.th</p>
-    <p>© 2026 All Rights Reserved</p>
+<p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<p>โทร: 0xx-xxx-xxxx</p>
 </footer>
-
-<script>
-let currentLang = "th";
-function toggleLanguage() {
-    const elements = document.querySelectorAll("[data-th]");
-    const button = document.querySelector(".lang-btn");
-
-    if (currentLang === "th") {
-        elements.forEach(el => el.innerText = el.getAttribute("data-en"));
-        document.documentElement.lang = "en";
-        button.innerText = "TH";
-        currentLang = "en";
-    } else {
-        elements.forEach(el => el.innerText = el.getAttribute("data-th"));
-        document.documentElement.lang = "th";
-        button.innerText = "EN";
-        currentLang = "th";
-    }
-}
-</script>
 
 </body>
 </html>
