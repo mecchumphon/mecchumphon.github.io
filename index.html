@@ -14,6 +14,7 @@ body{font-family:'Sarabun',sans-serif;background:#f4f8fb;color:#1e293b;}
 header{
  display:flex;justify-content:space-between;align-items:center;
  padding:15px 5%;background:white;box-shadow:0 2px 10px rgba(0,0,0,0.05);
+ position:sticky;top:0;z-index:1000;
 }
 
 nav a{margin-left:15px;text-decoration:none;color:#1e3a8a;font-weight:600;}
@@ -30,6 +31,7 @@ section{padding:60px 5%;}
 .card{
  background:white;padding:20px;border-radius:15px;
  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+ cursor:pointer;
 }
 
 .btn{
@@ -54,11 +56,9 @@ iframe{width:100%;height:300px;border-radius:10px;border:none;}
 <header>
 <h3>MEC</h3>
 <nav>
-<a onclick="scrollTo('news')" data-th="ข่าว" data-en="News">ข่าว</a>
-<a onclick="scrollTo('booking')" data-th="จองห้อง" data-en="Room">จองห้อง</a>
-<a onclick="scrollTo('docs')" data-th="เอกสาร" data-en="Docs">เอกสาร</a>
-<a onclick="scrollTo('research')" data-th="วิจัย" data-en="Research">วิจัย</a>
-<a onclick="scrollTo('map')" data-th="แผนที่" data-en="Map">แผนที่</a>
+<a onclick="scrollToSection('news')" data-th="ข่าว" data-en="News">ข่าว</a>
+<a onclick="scrollToSection('booking')" data-th="จองห้อง" data-en="Room">จองห้อง</a>
+<a onclick="scrollToSection('map')" data-th="แผนที่" data-en="Map">แผนที่</a>
 <a onclick="openLogin()">Login</a>
 <span class="lang-btn" onclick="toggleLanguage()">EN</span>
 </nav>
@@ -66,15 +66,22 @@ iframe{width:100%;height:300px;border-radius:10px;border:none;}
 
 <!-- HERO -->
 <section class="hero">
-<h1 data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" data-en="Medical Education Center">ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</h1>
-<p data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" data-en="Chumphon Hospital">โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<h1 data-th="ศูนย์แพทยศาสตรศึกษา" data-en="Medical Education Center">ศูนย์แพทยศาสตรศึกษา</h1>
+<p data-th="โรงพยาบาลชุมพร" data-en="Chumphon Hospital">โรงพยาบาลชุมพร</p>
 <button class="btn" onclick="openLogin()" data-th="เข้าสู่ระบบ" data-en="Login">เข้าสู่ระบบ</button>
 </section>
 
 <!-- NEWS -->
 <section id="news">
-<h2 data-th="ข่าวประชาสัมพันธ์" data-en="News">ข่าวประชาสัมพันธ์</h2>
-<div id="newsList" class="grid"></div>
+<h2 data-th="ข่าวประชาสัมพันธ์" data-en="News">ข่าว</h2>
+<div class="grid">
+<div class="card" onclick="openNews(0)">
+<h3>Workshop</h3><p>รายละเอียด...</p>
+</div>
+<div class="card" onclick="openNews(1)">
+<h3>Training</h3><p>รายละเอียด...</p>
+</div>
+</div>
 </section>
 
 <!-- BOOKING -->
@@ -86,23 +93,9 @@ iframe{width:100%;height:300px;border-radius:10px;border:none;}
 <p id="bookingResult"></p>
 </section>
 
-<!-- DOCS -->
-<section id="docs">
-<h2 data-th="เอกสาร" data-en="Documents">เอกสาร</h2>
-<div class="card">
-<a href="#" download>📄 Download PDF</a>
-</div>
-</section>
-
-<!-- RESEARCH -->
-<section id="research">
-<h2 data-th="งานวิจัย" data-en="Research">งานวิจัย</h2>
-<div class="card">📊 Clinical Study 2026</div>
-</section>
-
 <!-- MAP -->
 <section id="map">
-<h2 data-th="แผนที่" data-en="Map">แผนที่</h2>
+<h2 data-th="แผนที่" data-en="Map">Map</h2>
 <iframe src="https://www.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&output=embed"></iframe>
 </section>
 
@@ -116,57 +109,48 @@ iframe{width:100%;height:300px;border-radius:10px;border:none;}
 </div>
 </div>
 
+<!-- NEWS MODAL -->
+<div id="newsModal" class="modal">
+<div class="modal-content">
+<h3 id="newsTitle"></h3>
+<p id="newsContent"></p>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
 <!-- FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 const firebaseConfig = {
- apiKey:"YOUR_KEY",
- authDomain:"YOUR_DOMAIN",
- projectId:"YOUR_ID"
+ apiKey: "YOUR_KEY",
+ authDomain: "YOUR_DOMAIN",
+ projectId: "YOUR_PROJECT_ID"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// LOGIN
 window.login = async function(){
- const email = document.getElementById("email").value;
- const password = document.getElementById("password").value;
  try{
-   await signInWithEmailAndPassword(auth,email,password);
+   await signInWithEmailAndPassword(auth,email.value,password.value);
    alert(currentLang==="th"?"เข้าสู่ระบบสำเร็จ":"Login success");
+   loginModal.style.display="none";
  }catch{
    alert("Error");
  }
 }
 
-// BOOKING
 window.bookRoom = async function(){
- const room = document.getElementById("room").value;
- const date = document.getElementById("date").value;
-
- await addDoc(collection(db,"booking"),{room,date});
+ await addDoc(collection(db,"booking"),{
+   room:room.value,
+   date:date.value
+ });
  bookingResult.innerText = currentLang==="th"?"จองสำเร็จ":"Booked";
 }
-
-// LOAD NEWS
-async function loadNews(){
- const querySnapshot = await getDocs(collection(db,"news"));
- querySnapshot.forEach(doc=>{
-   const d = doc.data();
-   document.getElementById("newsList").innerHTML += `
-   <div class="card">
-     <h3>${currentLang==="th"?d.title_th:d.title_en}</h3>
-     <p>${currentLang==="th"?d.content_th:d.content_en}</p>
-   </div>`;
- });
-}
-
-loadNews();
 </script>
 
 <!-- LANGUAGE -->
@@ -175,8 +159,7 @@ let currentLang = localStorage.getItem("lang") || "th";
 
 function setLanguage(lang){
  currentLang = lang;
- localStorage.setItem("lang", lang);
-
+ localStorage.setItem("lang",lang);
  document.querySelector(".lang-btn").innerText = lang==="th"?"EN":"TH";
 
  document.querySelectorAll("[data-th]").forEach(el=>{
@@ -192,7 +175,29 @@ window.onload = ()=> setLanguage(currentLang);
 
 // UI
 function openLogin(){loginModal.style.display="block";}
-function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
+function closeModal(){newsModal.style.display="none";}
+function scrollToSection(id){
+ document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+// NEWS
+const newsData=[
+ {title:"Workshop",content:"รายละเอียด workshop"},
+ {title:"Training",content:"รายละเอียด training"}
+];
+
+function openNews(i){
+ newsModal.style.display="block";
+ newsTitle.innerText=newsData[i].title;
+ newsContent.innerText=newsData[i].content;
+}
+
+// click outside
+window.onclick=function(e){
+ if(e.target.classList.contains("modal")){
+   e.target.style.display="none";
+ }
+}
 </script>
 
 </body>
