@@ -247,11 +247,6 @@ const newsData = [
         image: "images/news2.jpg",
         detail: "รายละเอียดการสมัคร คุณสมบัติ ขั้นตอน และกำหนดการต่าง ๆ..."
     }
-];
-document.documentElement.lang = "th";
-        button.innerText = "EN";
-        currentLang = "th";
-      
 </section>
 
 <footer>
@@ -277,6 +272,7 @@ function toggleLanguage() {
         currentLang = "en";
     } else {
         elements.forEach(el => el.innerText = el.getAttribute("data-th"));
+    });
         document.documentElement.lang = "th";
         button.innerText = "EN";
         currentLang = "th";
