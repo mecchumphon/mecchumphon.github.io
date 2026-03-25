@@ -232,7 +232,6 @@
     </div>
 </section>
   <script>
-// 🔥 ข้อมูลข่าว (ต้องเหมือนหน้า Home)
 const newsData = [
     {
         id: 1,
@@ -250,26 +249,6 @@ const newsData = [
     }
 ];
 
-// 🔍 ดึง id จาก URL
-const params = new URLSearchParams(window.location.search);
-const id = parseInt(params.get("id"));
-
-// 🔎 หา news
-const news = newsData.find(n => n.id === id);
-
-const container = document.getElementById("news-detail");
-
-if (news) {
-    container.innerHTML = `
-        <div class="news-title">${news.title}</div>
-        <div class="news-date">${news.date}</div>
-        <img src="${news.image}" class="news-img">
-        <p>${news.detail}</p>
-
-        <a href="news.html" class="back-btn">← กลับหน้าข่าว</a>
-    `;
-} else {
-    container.innerHTML = "<p>ไม่พบข้อมูลข่าว</p>";
 </section>
 
 <footer>
