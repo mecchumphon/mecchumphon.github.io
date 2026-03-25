@@ -8,190 +8,173 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Sarabun',sans-serif;background:#f4f8fb;}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Sarabun', sans-serif; background:#f4f8fb; }
 
-header{
-background:white;padding:15px 5%;
-display:flex;justify-content:space-between;align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
+header {
+    background:white;
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-nav a{margin-left:15px;color:#1e3a8a;text-decoration:none;font-weight:600;}
-.lang-btn{margin-left:10px;padding:6px 12px;border-radius:20px;border:1px solid #1e3a8a;cursor:pointer;}
+.logo { display:flex; gap:10px; align-items:center; }
+.logo img { width:50px; }
 
-.hero{
-background:#1e3a8a;color:white;text-align:center;padding:80px 20px;
+nav a {
+    margin-left:15px;
+    text-decoration:none;
+    color:#1e3a8a;
+    font-weight:600;
 }
 
-section{padding:60px 5%;}
-.section-title{text-align:center;font-size:28px;margin-bottom:30px;color:#1e3a8a;}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-
-.card{
-background:white;padding:20px;border-radius:15px;
-box-shadow:0 10px 20px rgba(0,0,0,0.05);
-cursor:pointer;
+.lang-btn {
+    margin-left:15px;
+    padding:6px 12px;
+    border-radius:20px;
+    border:1px solid #1e3a8a;
+    cursor:pointer;
 }
 
-.btn{
-padding:10px 20px;border:none;border-radius:20px;
-background:#2563eb;color:white;cursor:pointer;
+/* HERO */
+.hero {
+    background:linear-gradient(rgba(30,58,138,0.75), rgba(37,99,235,0.75)),
+    url('images/MEC-banner1.png');
+    background-size:cover;
+    color:white;
+    text-align:center;
+    padding:100px 20px;
 }
 
-/* modal */
-.modal{
-display:none;position:fixed;top:0;left:0;width:100%;height:100%;
-background:rgba(0,0,0,0.6);justify-content:center;align-items:center;
+/* SECTION */
+section { padding:60px 5%; }
+
+.section-title {
+    text-align:center;
+    font-size:28px;
+    margin-bottom:30px;
+    color:#1e3a8a;
 }
 
-.modal-box{
-background:white;padding:25px;border-radius:15px;width:90%;max-width:400px;
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-input{
-width:100%;padding:10px;margin:10px 0;border-radius:10px;border:1px solid #ccc;
+.card {
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.05);
 }
 
-footer{background:#1e3a8a;color:white;text-align:center;padding:20px;}
+footer {
+    background:#1e3a8a;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+iframe {
+    width:100%;
+    height:350px;
+    border-radius:15px;
+    margin-top:20px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>MEC</h2>
+<div class="logo">
+<img src="images/MEC-logo.jpg">
+<div>
+<strong data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" data-en="Clinical Medical Education Center"></strong><br>
+<span data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" data-en="Chumphon Khet Udomsak Hospital"></span>
+</div>
+</div>
+
 <nav>
-<a href="#" data-th="หน้าแรก" data-en="Home"></a>
-<a href="#academics" data-th="หลักสูตร" data-en="Academics"></a>
-<a href="#news" data-th="ข่าว" data-en="News"></a>
-<a href="#services" data-th="บริการ" data-en="Services"></a>
+<a data-th="หน้าแรก" data-en="Home"></a>
+<a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC"></a>
+<a data-th="หลักสูตร" data-en="Academics"></a>
+<a data-th="นักศึกษา" data-en="Students"></a>
+<a data-th="ศูนย์รวมโปรแกรม" data-en="Application Hub"></a>
+<a data-th="ติดต่อ" data-en="Contact"></a>
 <button class="lang-btn" onclick="toggleLanguage()">EN</button>
 </nav>
 </header>
 
-<div class="hero">
-<h1 data-th="ผลิตแพทย์คุณภาพ" data-en="Producing Quality Doctors"></h1>
-<button class="btn" onclick="openLogin()" data-th="เข้าสู่ระบบนักศึกษา" data-en="Student Login"></button>
-</div>
+<section class="hero">
+<h1 data-th="ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม"
+    data-en="Producing Quality Doctors for Community and Society"></h1>
 
-<!-- Academics -->
-<section id="academics">
-<h2 class="section-title" data-th="หลักสูตร" data-en="Academics"></h2>
-<div class="grid">
-<div class="card">MD Program</div>
-<div class="card">Clinical Rotation</div>
-<div class="card">Elective</div>
-</div>
+<p data-th="ความเป็นเลิศทางวิชาการด้านแพทยศาสตรศึกษา"
+   data-en="Academic Excellence in Clinical Medical Education"></p>
 </section>
 
-<!-- News -->
-<section id="news">
+<section>
 <h2 class="section-title" data-th="ข่าวประชาสัมพันธ์" data-en="Announcements"></h2>
 
 <div class="grid">
-
-<div class="card" onclick="openNews(this)">
-<h3 data-th="ตารางเรียน 2569" data-en="Schedule 2026"></h3>
-<p data-th="รายละเอียดตารางเรียน" data-en="Schedule details"></p>
+<div class="card">
+<h3 data-th="ประกาศตารางเรียน 2569" data-en="Schedule 2026"></h3>
+<p data-th="อัปเดตตารางเรียนล่าสุด" data-en="Latest schedule update"></p>
 </div>
 
-<div class="card" onclick="openNews(this)">
-<h3 data-th="อบรมเชิงปฏิบัติการ" data-en="Workshop"></h3>
-<p data-th="ฝึกทักษะทางคลินิก" data-en="Clinical training"></p>
+<div class="card">
+<h3 data-th="อบรมฉุกเฉิน" data-en="Emergency Training"></h3>
+<p data-th="Workshop สำหรับนักศึกษา" data-en="Workshop for students"></p>
 </div>
-
-<div class="card" onclick="openNews(this)">
-<h3 data-th="ประชุมวิชาการประจำปี" data-en="Conference"></h3>
-<p data-th="นำเสนอผลงานวิจัย" data-en="Research presentation"></p>
-</div>
-
 </div>
 </section>
 
-<!-- Services -->
-<section id="services">
-<h2 class="section-title" data-th="บริการสำหรับนักศึกษา" data-en="Student Services"></h2>
+<section style="background:#e0ecff;">
+<h2 class="section-title" data-th="ติดต่อ / แผนที่" data-en="Contact & Map"></h2>
 
-<div class="grid">
-<div class="card">Schedule</div>
-<div class="card">Download</div>
-<div class="card">Room Booking</div>
-<div class="card">Research</div>
-</div>
+<p data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์"
+   data-en="Chumphon Khet Udomsak Hospital"></p>
+
+<iframe 
+src="https://www.google.com/maps?q=Chumphon%20Khet%20Udomsak%20Hospital&output=embed">
+</iframe>
+
 </section>
 
-<!-- LOGIN MODAL -->
-<div id="loginModal" class="modal">
-<div class="modal-box">
-<h3 data-th="เข้าสู่ระบบ" data-en="Login"></h3>
+<footer>
+<p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์"
+   data-en="Clinical Medical Education Center, Chumphon Khet Udomsak Hospital"></p>
 
-<input type="text" id="user" placeholder="Username">
-<input type="password" id="pass" placeholder="Password">
-
-<button class="btn" onclick="login()">Login</button>
-</div>
-</div>
-
-<!-- NEWS MODAL -->
-<div id="newsModal" class="modal">
-<div class="modal-box">
-<h3 id="newsTitle"></h3>
-<p id="newsContent"></p>
-<br>
-<button class="btn" onclick="closeNews()">Close</button>
-</div>
-</div>
-
-<footer>© 2026 MEC</footer>
+<p>โทร: 077-503672</p>
+<p>Email: meccp.ckusk@cpird.in.th</p>
+<p>© 2026</p>
+</footer>
 
 <script>
-// 🌐 Language
+// 🌐 Language System (จำค่า)
 let lang = localStorage.getItem("lang") || "th";
 
-function setLang(){
-document.querySelectorAll("[data-th]").forEach(el=>{
-el.innerText = el.getAttribute("data-"+lang);
-});
-document.querySelector(".lang-btn").innerText = lang==="th"?"EN":"TH";
+function setLanguage(){
+    document.querySelectorAll("[data-th]").forEach(el=>{
+        el.innerText = el.getAttribute("data-" + lang);
+    });
+
+    document.querySelector(".lang-btn").innerText =
+        lang === "th" ? "EN" : "TH";
 }
 
 function toggleLanguage(){
-lang = lang==="th"?"en":"th";
-localStorage.setItem("lang",lang);
-setLang();
+    lang = lang === "th" ? "en" : "th";
+    localStorage.setItem("lang", lang);
+    setLanguage();
 }
 
-setLang();
-
-// 🔐 Login (Demo)
-function openLogin(){
-document.getElementById("loginModal").style.display="flex";
-}
-
-function login(){
-let u=document.getElementById("user").value;
-let p=document.getElementById("pass").value;
-
-if(u==="student" && p==="1234"){
-alert("Login success");
-document.getElementById("loginModal").style.display="none";
-}else{
-alert("Wrong username/password");
-}
-}
-
-// 📰 News
-function openNews(card){
-document.getElementById("newsTitle").innerText = card.querySelector("h3").innerText;
-document.getElementById("newsContent").innerText = card.querySelector("p").innerText;
-document.getElementById("newsModal").style.display="flex";
-}
-
-function closeNews(){
-document.getElementById("newsModal").style.display="none";
-}
+// โหลดหน้า
+setLanguage();
 </script>
 
 </body>
