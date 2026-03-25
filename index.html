@@ -8,195 +8,213 @@
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Sarabun',sans-serif;background:#f4f8fb;color:#1e293b;}
-
-header{
- display:flex;justify-content:space-between;align-items:center;
- padding:15px 5%;background:white;box-shadow:0 2px 10px rgba(0,0,0,0.05);
- position:sticky;top:0;z-index:1000;
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family:'Sarabun', sans-serif;
+    background:#f4f8fb;
+    color:#1e293b;
 }
 
-nav a{margin-left:15px;text-decoration:none;color:#1e3a8a;font-weight:600;}
-.lang-btn{margin-left:15px;cursor:pointer;}
+/* HEADER */
+header {
+    background:white;
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+}
+.logo { display:flex; gap:10px; align-items:center; }
+.logo img { width:50px; }
 
-.hero{
- background:linear-gradient(rgba(30,58,138,0.8),rgba(37,99,235,0.8));
- color:white;text-align:center;padding:100px 20px;
+nav a {
+    margin-left:15px;
+    text-decoration:none;
+    color:#1e3a8a;
+    font-weight:600;
+}
+nav a:hover { color:#2563eb; }
+
+.lang-btn {
+    margin-left:15px;
+    padding:6px 12px;
+    border-radius:20px;
+    border:1px solid #1e3a8a;
+    cursor:pointer;
 }
 
-section{padding:60px 5%;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+/* HERO */
+.hero {
+    background:linear-gradient(rgba(30,58,138,0.75), rgba(37,99,235,0.75)),
+    url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5');
+    background-size:cover;
+    color:white;
+    text-align:center;
+    padding:100px 20px;
+}
+.hero h1 { font-size:40px; margin-bottom:15px; }
+.hero p { margin-bottom:20px; }
 
-.card{
- background:white;padding:20px;border-radius:15px;
- box-shadow:0 5px 15px rgba(0,0,0,0.05);
- cursor:pointer;
+.btn {
+    padding:12px 25px;
+    border-radius:25px;
+    border:none;
+    cursor:pointer;
+}
+.btn-primary { background:white; color:#1e3a8a; }
+.btn-outline { border:2px solid white; background:transparent; color:white; }
+
+/* SECTION */
+section { padding:60px 5%; }
+.section-title {
+    text-align:center;
+    font-size:28px;
+    margin-bottom:30px;
+    color:#1e3a8a;
 }
 
-.btn{
- padding:10px 20px;border:none;border-radius:20px;
- background:#2563eb;color:white;cursor:pointer;margin-top:10px;
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-.modal{
- display:none;position:fixed;top:0;left:0;
- width:100%;height:100%;background:rgba(0,0,0,0.6);
+.card {
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.05);
+    cursor:pointer;
+    transition:0.3s;
 }
-.modal-content{
- background:white;margin:10% auto;padding:20px;width:90%;max-width:400px;border-radius:10px;
+.card:hover { transform:translateY(-5px); }
+
+/* MODAL */
+#newsModal {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.6);
+    justify-content:center;
+    align-items:center;
+}
+.modal-box {
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    width:90%;
+    max-width:500px;
 }
 
-iframe{width:100%;height:300px;border-radius:10px;border:none;}
+/* FOOTER */
+footer {
+    background:#1e3a8a;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h3>MEC</h3>
+<div class="logo">
+<img src="https://cdn-icons-png.flaticon.com/512/3774/3774299.png">
+<div>
+<strong data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" data-en="Clinical Medical Education Center"></strong><br>
+<span data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" data-en="Chumphon Khet Udomsak Hospital"></span>
+</div>
+</div>
+
 <nav>
-<a onclick="scrollToSection('news')" data-th="ข่าว" data-en="News">ข่าว</a>
-<a onclick="scrollToSection('booking')" data-th="จองห้อง" data-en="Room">จองห้อง</a>
-<a onclick="scrollToSection('map')" data-th="แผนที่" data-en="Map">แผนที่</a>
-<a onclick="openLogin()">Login</a>
-<span class="lang-btn" onclick="toggleLanguage()">EN</span>
+<a data-th="หน้าแรก" data-en="Home"></a>
+<a data-th="เกี่ยวกับ" data-en="About"></a>
+<a data-th="นักศึกษา" data-en="Students"></a>
+<button class="lang-btn" onclick="toggleLanguage()">EN</button>
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-<h1 data-th="ศูนย์แพทยศาสตรศึกษา" data-en="Medical Education Center">ศูนย์แพทยศาสตรศึกษา</h1>
-<p data-th="โรงพยาบาลชุมพร" data-en="Chumphon Hospital">โรงพยาบาลชุมพร</p>
-<button class="btn" onclick="openLogin()" data-th="เข้าสู่ระบบ" data-en="Login">เข้าสู่ระบบ</button>
+<h1 data-th="ผลิตแพทย์คุณภาพ เพื่อชุมชน" data-en="Producing Quality Doctors"></h1>
+<p data-th="ความเป็นเลิศทางการแพทย์" data-en="Medical Excellence"></p>
+<button class="btn btn-primary" data-th="เข้าสู่ระบบ" data-en="Login"></button>
+<button class="btn btn-outline" data-th="ดูหลักสูตร" data-en="Programs"></button>
 </section>
 
-<!-- NEWS -->
-<section id="news">
-<h2 data-th="ข่าวประชาสัมพันธ์" data-en="News">ข่าว</h2>
+<section>
+<h2 class="section-title" data-th="ข่าวประชาสัมพันธ์" data-en="Announcements"></h2>
+
 <div class="grid">
-<div class="card" onclick="openNews(0)">
-<h3>Workshop</h3><p>รายละเอียด...</p>
+
+<div class="card" onclick="openNews(this)">
+<h3 data-th="ประกาศตารางเรียน 2569" data-en="Schedule 2026"></h3>
+<p data-th="รายละเอียดตารางเรียนทั้งหมด" data-en="Full academic schedule"></p>
 </div>
-<div class="card" onclick="openNews(1)">
-<h3>Training</h3><p>รายละเอียด...</p>
+
+<div class="card" onclick="openNews(this)">
+<h3 data-th="อบรมฉุกเฉิน" data-en="Emergency Training"></h3>
+<p data-th="Workshop สำหรับนักศึกษา" data-en="Workshop for students"></p>
 </div>
+
+<div class="card" onclick="openNews(this)">
+<h3 data-th="ประชุมวิชาการ" data-en="Conference"></h3>
+<p data-th="นำเสนอผลงานวิจัย" data-en="Research presentation"></p>
+</div>
+
 </div>
 </section>
 
-<!-- BOOKING -->
-<section id="booking">
-<h2 data-th="จองห้อง" data-en="Room Booking">จองห้อง</h2>
-<input id="room" placeholder="Room">
-<input id="date" type="date">
-<button class="btn" onclick="bookRoom()">Book</button>
-<p id="bookingResult"></p>
-</section>
-
-<!-- MAP -->
-<section id="map">
-<h2 data-th="แผนที่" data-en="Map">Map</h2>
-<iframe src="https://www.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&output=embed"></iframe>
-</section>
-
-<!-- LOGIN -->
-<div id="loginModal" class="modal">
-<div class="modal-content">
-<h3>Login</h3>
-<input id="email" placeholder="Email">
-<input id="password" type="password" placeholder="Password">
-<button onclick="login()">Login</button>
+<!-- MODAL -->
+<div id="newsModal">
+<div class="modal-box">
+<h2 id="modalTitle"></h2>
+<p id="modalContent"></p>
+<br>
+<button onclick="closeNews()" class="btn btn-primary">Close</button>
 </div>
 </div>
 
-<!-- NEWS MODAL -->
-<div id="newsModal" class="modal">
-<div class="modal-content">
-<h3 id="newsTitle"></h3>
-<p id="newsContent"></p>
-<button onclick="closeModal()">Close</button>
-</div>
-</div>
+<footer>
+<p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" data-en="Clinical Medical Education Center"></p>
+<p>© 2026</p>
+</footer>
 
-<!-- FIREBASE -->
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
- apiKey: "YOUR_KEY",
- authDomain: "YOUR_DOMAIN",
- projectId: "YOUR_PROJECT_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-window.login = async function(){
- try{
-   await signInWithEmailAndPassword(auth,email.value,password.value);
-   alert(currentLang==="th"?"เข้าสู่ระบบสำเร็จ":"Login success");
-   loginModal.style.display="none";
- }catch{
-   alert("Error");
- }
-}
-
-window.bookRoom = async function(){
- await addDoc(collection(db,"booking"),{
-   room:room.value,
-   date:date.value
- });
- bookingResult.innerText = currentLang==="th"?"จองสำเร็จ":"Booked";
-}
-</script>
-
-<!-- LANGUAGE -->
 <script>
-let currentLang = localStorage.getItem("lang") || "th";
+// ภาษา
+let lang = "th";
 
-function setLanguage(lang){
- currentLang = lang;
- localStorage.setItem("lang",lang);
- document.querySelector(".lang-btn").innerText = lang==="th"?"EN":"TH";
+function toggleLanguage() {
+    lang = lang === "th" ? "en" : "th";
 
- document.querySelectorAll("[data-th]").forEach(el=>{
-   el.innerText = el.getAttribute("data-"+lang);
- });
+    document.querySelectorAll("[data-th]").forEach(el=>{
+        el.innerText = el.getAttribute("data-" + lang);
+    });
+
+    document.querySelector(".lang-btn").innerText =
+        lang === "th" ? "EN" : "TH";
 }
 
-function toggleLanguage(){
- setLanguage(currentLang==="th"?"en":"th");
+// โหลดครั้งแรก
+toggleLanguage();
+
+// modal
+function openNews(card){
+    document.getElementById("modalTitle").innerText =
+        card.querySelector("h3").innerText;
+
+    document.getElementById("modalContent").innerText =
+        card.querySelector("p").innerText;
+
+    document.getElementById("newsModal").style.display = "flex";
 }
 
-window.onload = ()=> setLanguage(currentLang);
-
-// UI
-function openLogin(){loginModal.style.display="block";}
-function closeModal(){newsModal.style.display="none";}
-function scrollToSection(id){
- document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-// NEWS
-const newsData=[
- {title:"Workshop",content:"รายละเอียด workshop"},
- {title:"Training",content:"รายละเอียด training"}
-];
-
-function openNews(i){
- newsModal.style.display="block";
- newsTitle.innerText=newsData[i].title;
- newsContent.innerText=newsData[i].content;
-}
-
-// click outside
-window.onclick=function(e){
- if(e.target.classList.contains("modal")){
-   e.target.style.display="none";
- }
+function closeNews(){
+    document.getElementById("newsModal").style.display = "none";
 }
 </script>
 
