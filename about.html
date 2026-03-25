@@ -12,6 +12,11 @@ body {
     margin: 0;
     background: #f4f8fb;
     color: #1e293b;
+    transition: opacity 0.3s ease;
+}
+
+.fade-out {
+    opacity: 0;
 }
 
 header {
@@ -23,21 +28,10 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #1e3a8a;
-    font-weight: 600;
-}
-
 .container {
     padding: 60px 5%;
     max-width: 1000px;
     margin: auto;
-}
-
-h1 {
-    color: #1e3a8a;
 }
 
 .section-card {
@@ -48,109 +42,103 @@ h1 {
     margin-bottom: 40px;
 }
 
-h2 {
-    color: #1e3a8a;
-    margin-top: 40px;
+/* SWITCH BUTTON */
+.lang-switch {
+    display: flex;
+    gap: 5px;
+    background: #e2e8f0;
+    padding: 5px;
+    border-radius: 20px;
 }
 
-.lang-btn {
-    margin-left: 20px;
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid #1e3a8a;
-    background: white;
-    color: #1e3a8a;
-    font-weight: 600;
+.lang-switch button {
+    border: none;
+    background: transparent;
+    padding: 5px 12px;
+    border-radius: 15px;
     cursor: pointer;
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+.lang-switch button.active {
+    background: #1e3a8a;
+    color: white;
 }
 </style>
 </head>
 
 <body>
 
+<header>
+    <h2>MEC Chumphon</h2>
+    <div class="lang-switch">
+        <button onclick="setLanguage('th')" id="btn-th">TH</button>
+        <button onclick="setLanguage('en')" id="btn-en">EN</button>
+        <button onclick="setLanguage('cn')" id="btn-cn">CN</button>
+    </div>
 </header>
 
 <div class="container">
 
 <div class="section-card"
-data-th='
-<h3>ประวัติและความเป็นมา</h3>
-<p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
-<p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
+data-th="<h3>ประวัติ</h3><p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพร</p>"
+data-en="<h3>History</h3><p>Clinical Medical Education Center, Chumphon</p>"
+data-cn="<h3>历史</h3><p>春蓬临床医学教育中心</p>">
 
-<p><strong>ประวัติความเป็นมา</strong></p>
-<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท เพื่อแก้ไขปัญหาการขาดแคลนแพทย์ในพื้นที่ชนบท</p>
-<p>กระทรวงสาธารณสุขจึงจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิกภายในโรงพยาบาลศูนย์ เพื่อจัดการเรียนการสอนในชั้นคลินิก</p>
-<p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์ได้รับอนุมัติเมื่อวันที่ 15 มิถุนายน พ.ศ. 2547 ให้เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
-<p>ร่วมผลิตแพทย์กับคณะแพทยศาสตร์ มหาวิทยาลัยธรรมศาสตร์</p>
-<p>รับนักศึกษาจากจังหวัดสุราษฎร์ธานี ชุมพร และระนอง</p>
-'
+<h3>ประวัติ</h3>
+<p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพร</p>
 
-data-en='
-<h3>History and Background</h3>
-<p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
-<p><strong>Location:</strong> 222 Phisit Phayaban Road, Tha Taphao, Mueang, Chumphon 86000, Thailand</p>
-
-<p><strong>Historical Background</strong></p>
-<p>In 2004, the Cabinet approved collaboration between the Ministry of Public Health and the Ministry of University Affairs to produce rural doctors.</p>
-<p>Clinical Medical Education Centers were established in regional hospitals to provide clinical training.</p>
-<p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
-<p>The center collaborates with the Faculty of Medicine, Thammasat University.</p>
-<p>Students are selected from Surat Thani, Chumphon, and Ranong provinces.</p>
-'>
 </div>
 
-<h2 data-th="🎯 วิสัยทัศน์" data-en="🎯 Vision">🎯 วิสัยทัศน์</h2>
-<p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
-   data-en="To be a leading regional clinical medical education center.">
-เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
-</p>
+<h2 
+data-th="🎯 วิสัยทัศน์" 
+data-en="🎯 Vision"
+data-cn="🎯 愿景">🎯 วิสัยทัศน์</h2>
 
-<h2 data-th="📌 พันธกิจ" data-en="📌 Mission">📌 พันธกิจ</h2>
-<ul>
-<li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
-    data-en="Provide high-quality clinical education">
-พัฒนาการเรียนการสอนที่มีคุณภาพ
-</li>
-<li data-th="ส่งเสริมงานวิจัยและวิชาการ"
-    data-en="Promote research and academic excellence">
-ส่งเสริมงานวิจัยและวิชาการ
-</li>
-<li data-th="บริการวิชาการแก่สังคม"
-    data-en="Provide academic services to society">
-บริการวิชาการแก่สังคม
-</li>
-</ul>
+<p 
+data-th="เป็นศูนย์แพทย์ชั้นนำ"
+data-en="Leading medical education center"
+data-cn="领先的医学教育中心">
+เป็นศูนย์แพทย์ชั้นนำ
+</p>
 
 </div>
 
 <script>
-let currentLang = "th";
+let currentLang = localStorage.getItem("lang") || "th";
 
-function toggleLanguage() {
+function applyLanguage(lang) {
     const elements = document.querySelectorAll("[data-th]");
-    const button = document.querySelector(".lang-btn");
 
-    if (currentLang === "th") {
-        elements.forEach(el => {
-            if (el.getAttribute("data-en")) {
-                el.innerHTML = el.getAttribute("data-en");
-            }
-        });
-        document.documentElement.lang = "en";
-        button.innerText = "TH";
-        currentLang = "en";
-    } else {
-        elements.forEach(el => {
-            if (el.getAttribute("data-th")) {
-                el.innerHTML = el.getAttribute("data-th");
-            }
-        });
-        document.documentElement.lang = "th";
-        button.innerText = "EN";
-        currentLang = "th";
-    }
+    elements.forEach(el => {
+        if (el.dataset[lang]) {
+            el.innerHTML = el.dataset[lang];
+        }
+    });
+
+    document.documentElement.lang = lang;
+
+    // highlight active button
+    document.querySelectorAll(".lang-switch button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+    document.getElementById("btn-" + lang).classList.add("active");
 }
+
+function setLanguage(lang) {
+    document.body.classList.add("fade-out");
+
+    setTimeout(() => {
+        applyLanguage(lang);
+        localStorage.setItem("lang", lang);
+        currentLang = lang;
+        document.body.classList.remove("fade-out");
+    }, 200);
+}
+
+// โหลดครั้งแรก
+applyLanguage(currentLang);
 </script>
 
 </body>
