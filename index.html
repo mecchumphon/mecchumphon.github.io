@@ -231,22 +231,45 @@
         </div>
     </div>
 </section>
-    <section class="section">
-<h2>ข่าวล่าสุด</h2>
+  <script>
+// 🔥 ข้อมูลข่าว (ต้องเหมือนหน้า Home)
+const newsData = [
+    {
+        id: 1,
+        title: "อบรมแพทย์ประจำปี 2568",
+        date: "25 พฤศจิกายน 2568",
+        image: "images/news1.jpg",
+        detail: "รายละเอียดเต็มของข่าว เช่น เนื้อหาอบรม ตารางกิจกรรม วิทยากร และข้อมูลเพิ่มเติม..."
+    },
+    {
+        id: 2,
+        title: "เปิดรับสมัครนักศึกษาแพทย์",
+        date: "10 มกราคม 2569",
+        image: "images/news2.jpg",
+        detail: "รายละเอียดการสมัคร คุณสมบัติ ขั้นตอน และกำหนดการต่าง ๆ..."
+    }
+];
 
-<div class="search-box">
-    <input type="text" id="search" placeholder="ค้นหาข่าว...">
-</div>
+// 🔍 ดึง id จาก URL
+const params = new URLSearchParams(window.location.search);
+const id = parseInt(params.get("id"));
 
-<div class="filter">
-    <button onclick="filterNews('all')" class="active">ทั้งหมด</button>
-    <button onclick="filterNews('event')">กิจกรรม</button>
-    <button onclick="filterNews('announce')">ประกาศ</button>
-</div>
+// 🔎 หา news
+const news = newsData.find(n => n.id === id);
 
-<div id="news-container"></div>
+const container = document.getElementById("news-detail");
 
-<a href="news.html" class="btn">ดูข่าวทั้งหมด</a>
+if (news) {
+    container.innerHTML = `
+        <div class="news-title">${news.title}</div>
+        <div class="news-date">${news.date}</div>
+        <img src="${news.image}" class="news-img">
+        <p>${news.detail}</p>
+
+        <a href="news.html" class="back-btn">← กลับหน้าข่าว</a>
+    `;
+} else {
+    container.innerHTML = "<p>ไม่พบข้อมูลข่าว</p>";
 </section>
 
 <footer>
