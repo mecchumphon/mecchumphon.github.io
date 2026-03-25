@@ -6,45 +6,118 @@
 <title>MEC Chumphon</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-  font-family: 'Sarabun', sans-serif;
-  background: #f4f8fb;
-   color: #1e293b;
+  font-family:'Sarabun',sans-serif;
+  background:#f4f8fb;
+  color:#1e293b;
 }
-nav{display:flex;justify-content:space-between;padding:15px 30px;background:#111;}
+
+/* Navbar */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px 30px;
+  background:#0f172a;
+  color:white;
+}
+
 nav a{color:white;margin-left:15px;cursor:pointer;}
+
+/* Hero */
+.hero{
+  height:60vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background:linear-gradient(135deg,#2563eb,#0f172a);
+  color:white;
+}
+
+/* Section */
 .section{padding:50px 20px;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.card{background:#1e293b;padding:20px;border-radius:10px;}
-.btn{padding:8px 15px;border:none;border-radius:10px;background:#3b82f6;color:white;cursor:pointer;margin-top:10px;}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);}
-.modal-content{background:#1e293b;margin:10% auto;padding:20px;width:300px;border-radius:10px;}
+
+/* Grid */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* Card */
+.card{
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Button */
+.btn{
+  padding:8px 15px;
+  border:none;
+  border-radius:10px;
+  background:#3b82f6;
+  color:white;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+/* Modal */
+.modal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
+.modal-content{
+  background:white;
+  margin:10% auto;
+  padding:20px;
+  width:90%;
+  max-width:400px;
+  border-radius:10px;
+}
+
+/* Dashboard */
 .dashboard{display:none;}
-input{width:100%;padding:8px;margin-top:10px;border-radius:8px;border:none;}
-iframe{width:100%;height:300px;border:none;border-radius:10px;}
+
+/* Input */
+input{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+/* Map */
+iframe{
+  width:100%;
+  height:300px;
+  border:none;
+  border-radius:10px;
+}
 </style>
 </head>
 
 <body>
 
+<!-- Navbar -->
 <nav>
 <h3>MEC</h3>
-<div id="navMenu">
-<a onclick="scrollTo('news')">News</a>
-<a onclick="scrollTo('map')">Map</a>
-<a onclick="scrollTo('booking')">Room</a>
-<a onclick="scrollTo('docs')">Docs</a>
-<a onclick="scrollTo('research')">Research</a>
-<a onclick="openLogin()">Login</a>
-<span onclick="setLang('th')">🇹🇭</span>
-<span onclick="setLang('en')">🇬🇧</span>
-</div>
+<div id="navMenu"></div>
 </nav>
 
 <!-- Hero -->
-<section class="section">
+<section class="hero">
 <h1 id="heroTitle"></h1>
 <p id="heroDesc"></p>
 </section>
@@ -88,9 +161,7 @@ iframe{width:100%;height:300px;border:none;border-radius:10px;}
 <!-- Research -->
 <section class="section" id="research">
 <h2 id="resTitle"></h2>
-<div class="card">
-📊 งานวิจัย: Clinical Study 2026
-</div>
+<div class="card">📊 Clinical Study 2026</div>
 </section>
 
 <!-- Map -->
@@ -112,9 +183,9 @@ iframe{width:100%;height:300px;border:none;border-radius:10px;}
 <div class="modal" id="loginModal">
 <div class="modal-content">
 <h3>Login</h3>
-<input id="user">
-<input id="pass" type="password">
-<button onclick="login()">Login</button>
+<input id="user" placeholder="Student ID">
+<input id="pass" type="password" placeholder="Password">
+<button class="btn" onclick="login()">Login</button>
 </div>
 </div>
 
@@ -122,21 +193,23 @@ iframe{width:100%;height:300px;border:none;border-radius:10px;}
 // language
 const lang={
 th:{
-heroTitle:"ศูนย์แพทย์",
-heroDesc:"โรงพยาบาล",
-newsTitle:"ข่าว",
+menu:["ข่าว","แผนที่","จองห้อง","เอกสาร","วิจัย","Login"],
+heroTitle:"ศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
+heroDesc:"โรงพยาบาลชุมพรเขตรอุดมศักดิ์",
+newsTitle:"ข่าวประชาสัมพันธ์",
 read:"อ่านเพิ่มเติม",
 bookingTitle:"จองห้อง",
 docTitle:"เอกสาร",
 resTitle:"งานวิจัย",
 mapTitle:"แผนที่",
-dashTitle:"แดชบอร์ด"
+dashTitle:"แดชบอร์ดนักศึกษา"
 },
 en:{
-heroTitle:"Medical Center",
-heroDesc:"Hospital",
+menu:["News","Map","Room","Docs","Research","Login"],
+heroTitle:"Medical Education Center",
+heroDesc:"Chumphon Hospital",
 newsTitle:"News",
-read:"Read",
+read:"Read More",
 bookingTitle:"Room Booking",
 docTitle:"Documents",
 resTitle:"Research",
@@ -147,6 +220,21 @@ dashTitle:"Dashboard"
 
 let L="th";
 
+// render menu
+function renderMenu(user=null){
+navMenu.innerHTML=`
+<a onclick="scrollTo('news')">${lang[L].menu[0]}</a>
+<a onclick="scrollTo('map')">${lang[L].menu[1]}</a>
+<a onclick="scrollTo('booking')">${lang[L].menu[2]}</a>
+<a onclick="scrollTo('docs')">${lang[L].menu[3]}</a>
+<a onclick="scrollTo('research')">${lang[L].menu[4]}</a>
+${user?`👨‍⚕️ ${user.name} <a onclick="logout()">Logout</a>`:`<a onclick="openLogin()">${lang[L].menu[5]}</a>`}
+<span onclick="setLang('th')">🇹🇭</span>
+<span onclick="setLang('en')">🇬🇧</span>
+`;
+}
+
+// set language
 function setLang(l){
 L=l;
 heroTitle.innerText=lang[l].heroTitle;
@@ -158,19 +246,32 @@ docTitle.innerText=lang[l].docTitle;
 resTitle.innerText=lang[l].resTitle;
 mapTitle.innerText=lang[l].mapTitle;
 dashTitle.innerText=lang[l].dashTitle;
+
+const user=JSON.parse(localStorage.getItem("user"));
+renderMenu(user);
 }
 
+// news data
+const newsData={
+news1:{
+title:"กิจกรรมอบรม",
+text:"รายละเอียดกิจกรรมอบรมสำหรับนักศึกษาแพทย์..."
+}
+};
+
 // modal
-function openModal(){
+function openModal(id){
 modal.style.display="block";
-modalTitle.innerText="Detail";
-modalText.innerText="รายละเอียดข่าว...";
+modalTitle.innerText=newsData[id].title;
+modalText.innerText=newsData[id].text;
 }
 function closeModal(){modal.style.display="none";}
 
 // booking
 function bookRoom(){
-bookingResult.innerText="✅ จองสำเร็จ";
+const room=roomName.value;
+const d=date.value;
+bookingResult.innerText=`✅ จอง ${room} วันที่ ${d}`;
 }
 
 // scroll
@@ -185,26 +286,29 @@ function login(){
 const u=user.value;
 const p=pass.value;
 const f=users.find(x=>x.u===u&&x.p===p);
+
 if(f){
 localStorage.setItem("user",JSON.stringify(f));
 location.reload();
-}else alert("error");
+}else alert("Login failed");
 }
 
 function openLogin(){loginModal.style.display="block";}
 
-window.onload=function(){
-setLang("th");
-const u=JSON.parse(localStorage.getItem("user"));
-if(u){
-dashboard.style.display="block";
-navMenu.innerHTML=`👨‍⚕️ ${u.name} <a onclick="logout()">Logout</a>`;
-}
-}
-
 function logout(){
 localStorage.removeItem("user");
 location.reload();
+}
+
+// init
+window.onload=function(){
+const user=JSON.parse(localStorage.getItem("user"));
+
+if(user){
+dashboard.style.display="block";
+}
+
+setLang("th");
 }
 </script>
 
