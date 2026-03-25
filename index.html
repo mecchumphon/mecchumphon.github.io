@@ -9,307 +9,190 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Sarabun',sans-serif;background:#f4f8fb;color:#1e293b;}
 
-body{
-  font-family:'Sarabun',sans-serif;
-  background:#f4f8fb;
-  color:#1e293b;
+header{
+ display:flex;justify-content:space-between;align-items:center;
+ padding:15px 5%;background:white;box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* Navbar */
-nav{
-  display:flex;
-  justify-content:space-between;
-  padding:15px 30px;
-  background:#0f172a;
-  color:white;
-}
+nav a{margin-left:15px;text-decoration:none;color:#1e3a8a;font-weight:600;}
+.lang-btn{margin-left:15px;cursor:pointer;}
 
-nav a{color:white;margin-left:15px;cursor:pointer;}
-
-/* Hero */
 .hero{
-  height:60vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  background:linear-gradient(135deg,#2563eb,#0f172a);
-  color:white;
+ background:linear-gradient(rgba(30,58,138,0.8),rgba(37,99,235,0.8));
+ color:white;text-align:center;padding:100px 20px;
 }
 
-/* Section */
-.section{padding:50px 20px;}
+section{padding:60px 5%;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
 
-/* Grid */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-/* Card */
 .card{
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+ background:white;padding:20px;border-radius:15px;
+ box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
-/* Button */
 .btn{
-  padding:8px 15px;
-  border:none;
-  border-radius:10px;
-  background:#3b82f6;
-  color:white;
-  cursor:pointer;
-  margin-top:10px;
+ padding:10px 20px;border:none;border-radius:20px;
+ background:#2563eb;color:white;cursor:pointer;margin-top:10px;
 }
 
-/* Modal */
 .modal{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.6);
+ display:none;position:fixed;top:0;left:0;
+ width:100%;height:100%;background:rgba(0,0,0,0.6);
 }
-
 .modal-content{
-  background:white;
-  margin:10% auto;
-  padding:20px;
-  width:90%;
-  max-width:400px;
-  border-radius:10px;
+ background:white;margin:10% auto;padding:20px;width:90%;max-width:400px;border-radius:10px;
 }
 
-/* Dashboard */
-.dashboard{display:none;}
-
-/* Input */
-input{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-
-/* Map */
-iframe{
-  width:100%;
-  height:300px;
-  border:none;
-  border-radius:10px;
-}
+iframe{width:100%;height:300px;border-radius:10px;border:none;}
 </style>
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav>
+<header>
 <h3>MEC</h3>
-<div id="navMenu"></div>
+<nav>
+<a onclick="scrollTo('news')" data-th="ข่าว" data-en="News">ข่าว</a>
+<a onclick="scrollTo('booking')" data-th="จองห้อง" data-en="Room">จองห้อง</a>
+<a onclick="scrollTo('docs')" data-th="เอกสาร" data-en="Docs">เอกสาร</a>
+<a onclick="scrollTo('research')" data-th="วิจัย" data-en="Research">วิจัย</a>
+<a onclick="scrollTo('map')" data-th="แผนที่" data-en="Map">แผนที่</a>
+<a onclick="openLogin()">Login</a>
+<span class="lang-btn" onclick="toggleLanguage()">EN</span>
 </nav>
+</header>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-<h1 id="heroTitle"></h1>
-<p id="heroDesc"></p>
+<h1 data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" data-en="Medical Education Center">ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</h1>
+<p data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" data-en="Chumphon Hospital">โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<button class="btn" onclick="openLogin()" data-th="เข้าสู่ระบบ" data-en="Login">เข้าสู่ระบบ</button>
 </section>
 
-<!-- Dashboard -->
-<section class="section dashboard" id="dashboard">
-<h2 id="dashTitle"></h2>
-<div class="grid">
-<div class="card">📅 Ward A / ER</div>
-<div class="card">📘 Logbook 12 เคส</div>
-</div>
+<!-- NEWS -->
+<section id="news">
+<h2 data-th="ข่าวประชาสัมพันธ์" data-en="News">ข่าวประชาสัมพันธ์</h2>
+<div id="newsList" class="grid"></div>
 </section>
 
-<!-- News -->
-<section class="section" id="news">
-<h2 id="newsTitle"></h2>
-<div class="card">
-<h3 id="n1"></h3>
-<p id="n1s"></p>
-<button class="btn" onclick="openModal('news1')" id="read1"></button>
-</div>
-</section>
-
-<!-- Booking -->
-<section class="section" id="booking">
-<h2 id="bookingTitle"></h2>
-<input id="roomName" placeholder="Room">
+<!-- BOOKING -->
+<section id="booking">
+<h2 data-th="จองห้อง" data-en="Room Booking">จองห้อง</h2>
+<input id="room" placeholder="Room">
 <input id="date" type="date">
 <button class="btn" onclick="bookRoom()">Book</button>
 <p id="bookingResult"></p>
 </section>
 
-<!-- Docs -->
-<section class="section" id="docs">
-<h2 id="docTitle"></h2>
+<!-- DOCS -->
+<section id="docs">
+<h2 data-th="เอกสาร" data-en="Documents">เอกสาร</h2>
 <div class="card">
-<a href="#" download>📄 คู่มือนักศึกษา.pdf</a>
+<a href="#" download>📄 Download PDF</a>
 </div>
 </section>
 
-<!-- Research -->
-<section class="section" id="research">
-<h2 id="resTitle"></h2>
+<!-- RESEARCH -->
+<section id="research">
+<h2 data-th="งานวิจัย" data-en="Research">งานวิจัย</h2>
 <div class="card">📊 Clinical Study 2026</div>
 </section>
 
-<!-- Map -->
-<section class="section" id="map">
-<h2 id="mapTitle"></h2>
+<!-- MAP -->
+<section id="map">
+<h2 data-th="แผนที่" data-en="Map">แผนที่</h2>
 <iframe src="https://www.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&output=embed"></iframe>
 </section>
 
-<!-- Modal -->
-<div class="modal" id="modal">
-<div class="modal-content">
-<h3 id="modalTitle"></h3>
-<p id="modalText"></p>
-<button onclick="closeModal()">Close</button>
-</div>
-</div>
-
-<!-- Login -->
-<div class="modal" id="loginModal">
+<!-- LOGIN -->
+<div id="loginModal" class="modal">
 <div class="modal-content">
 <h3>Login</h3>
-<input id="user" placeholder="Student ID">
-<input id="pass" type="password" placeholder="Password">
-<button class="btn" onclick="login()">Login</button>
+<input id="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
 </div>
 </div>
 
+<!-- FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+ apiKey:"YOUR_KEY",
+ authDomain:"YOUR_DOMAIN",
+ projectId:"YOUR_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// LOGIN
+window.login = async function(){
+ const email = document.getElementById("email").value;
+ const password = document.getElementById("password").value;
+ try{
+   await signInWithEmailAndPassword(auth,email,password);
+   alert(currentLang==="th"?"เข้าสู่ระบบสำเร็จ":"Login success");
+ }catch{
+   alert("Error");
+ }
+}
+
+// BOOKING
+window.bookRoom = async function(){
+ const room = document.getElementById("room").value;
+ const date = document.getElementById("date").value;
+
+ await addDoc(collection(db,"booking"),{room,date});
+ bookingResult.innerText = currentLang==="th"?"จองสำเร็จ":"Booked";
+}
+
+// LOAD NEWS
+async function loadNews(){
+ const querySnapshot = await getDocs(collection(db,"news"));
+ querySnapshot.forEach(doc=>{
+   const d = doc.data();
+   document.getElementById("newsList").innerHTML += `
+   <div class="card">
+     <h3>${currentLang==="th"?d.title_th:d.title_en}</h3>
+     <p>${currentLang==="th"?d.content_th:d.content_en}</p>
+   </div>`;
+ });
+}
+
+loadNews();
+</script>
+
+<!-- LANGUAGE -->
 <script>
-// language
-const lang={
-th:{
-menu:["ข่าว","แผนที่","จองห้อง","เอกสาร","วิจัย","Login"],
-heroTitle:"ศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
-heroDesc:"โรงพยาบาลชุมพรเขตรอุดมศักดิ์",
-newsTitle:"ข่าวประชาสัมพันธ์",
-read:"อ่านเพิ่มเติม",
-bookingTitle:"จองห้อง",
-docTitle:"เอกสาร",
-resTitle:"งานวิจัย",
-mapTitle:"แผนที่",
-dashTitle:"แดชบอร์ดนักศึกษา"
-},
-en:{
-menu:["News","Map","Room","Docs","Research","Login"],
-heroTitle:"Medical Education Center",
-heroDesc:"Chumphon Hospital",
-newsTitle:"News",
-read:"Read More",
-bookingTitle:"Room Booking",
-docTitle:"Documents",
-resTitle:"Research",
-mapTitle:"Map",
-dashTitle:"Dashboard"
-}
-};
+let currentLang = localStorage.getItem("lang") || "th";
 
-let L="th";
+function setLanguage(lang){
+ currentLang = lang;
+ localStorage.setItem("lang", lang);
 
-// render menu
-function renderMenu(user=null){
-navMenu.innerHTML=`
-<a onclick="scrollTo('news')">${lang[L].menu[0]}</a>
-<a onclick="scrollTo('map')">${lang[L].menu[1]}</a>
-<a onclick="scrollTo('booking')">${lang[L].menu[2]}</a>
-<a onclick="scrollTo('docs')">${lang[L].menu[3]}</a>
-<a onclick="scrollTo('research')">${lang[L].menu[4]}</a>
-${user?`👨‍⚕️ ${user.name} <a onclick="logout()">Logout</a>`:`<a onclick="openLogin()">${lang[L].menu[5]}</a>`}
-<span onclick="setLang('th')">🇹🇭</span>
-<span onclick="setLang('en')">🇬🇧</span>
-`;
+ document.querySelector(".lang-btn").innerText = lang==="th"?"EN":"TH";
+
+ document.querySelectorAll("[data-th]").forEach(el=>{
+   el.innerText = el.getAttribute("data-"+lang);
+ });
 }
 
-// set language
-function setLang(l){
-L=l;
-heroTitle.innerText=lang[l].heroTitle;
-heroDesc.innerText=lang[l].heroDesc;
-newsTitle.innerText=lang[l].newsTitle;
-read1.innerText=lang[l].read;
-bookingTitle.innerText=lang[l].bookingTitle;
-docTitle.innerText=lang[l].docTitle;
-resTitle.innerText=lang[l].resTitle;
-mapTitle.innerText=lang[l].mapTitle;
-dashTitle.innerText=lang[l].dashTitle;
-
-const user=JSON.parse(localStorage.getItem("user"));
-renderMenu(user);
+function toggleLanguage(){
+ setLanguage(currentLang==="th"?"en":"th");
 }
 
-// news data
-const newsData={
-news1:{
-title:"กิจกรรมอบรม",
-text:"รายละเอียดกิจกรรมอบรมสำหรับนักศึกษาแพทย์..."
-}
-};
+window.onload = ()=> setLanguage(currentLang);
 
-// modal
-function openModal(id){
-modal.style.display="block";
-modalTitle.innerText=newsData[id].title;
-modalText.innerText=newsData[id].text;
-}
-function closeModal(){modal.style.display="none";}
-
-// booking
-function bookRoom(){
-const room=roomName.value;
-const d=date.value;
-bookingResult.innerText=`✅ จอง ${room} วันที่ ${d}`;
-}
-
-// scroll
-function scrollTo(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-// login
-const users=[{u:"med001",p:"1234",name:"Intern"}];
-
-function login(){
-const u=user.value;
-const p=pass.value;
-const f=users.find(x=>x.u===u&&x.p===p);
-
-if(f){
-localStorage.setItem("user",JSON.stringify(f));
-location.reload();
-}else alert("Login failed");
-}
-
+// UI
 function openLogin(){loginModal.style.display="block";}
-
-function logout(){
-localStorage.removeItem("user");
-location.reload();
-}
-
-// init
-window.onload=function(){
-const user=JSON.parse(localStorage.getItem("user"));
-
-if(user){
-dashboard.style.display="block";
-}
-
-setLang("th");
-}
+function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:"smooth"});}
 </script>
 
 </body>
