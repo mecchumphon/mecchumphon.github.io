@@ -25,6 +25,7 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
+    z-index: 1000;
 }
 
 .logo img {
@@ -69,12 +70,12 @@ nav a {
 }
 
 .hero h1 {
-    font-size: 36px;
+    font-size: 32px;
 }
 
 /* SECTION */
 .section {
-    padding: 80px 5%;
+    padding: 70px 5%;
     max-width: 1100px;
     margin: auto;
 }
@@ -102,16 +103,35 @@ nav a {
     transform: translateY(-5px);
 }
 
-.card h3 {
-    color: #1e3a8a;
-}
-
 /* NEWS */
 .news-item {
     background: white;
     padding: 20px;
     border-radius: 12px;
     margin-bottom: 15px;
+    transition: 0.25s;
+}
+
+.news-item a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.news-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #1e3a8a;
+    color: #1e3a8a;
+    text-decoration: none;
 }
 
 /* FOOTER */
@@ -124,13 +144,7 @@ footer {
 
 /* MOBILE */
 @media (max-width: 768px) {
-    .hero {
-        height: 45vh;
-    }
-
-    .hero h1 {
-        font-size: 26px;
-    }
+    .hero { height: 45vh; }
 }
 </style>
 </head>
@@ -155,8 +169,8 @@ footer {
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <img src="MEC-logo.jpg" class="hero-logo">
-        <h1>MEC Chumphon</h1>
-        <p>Clinical Medical Education Center</p>
+        <h1>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</h1>
+        <p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
     </div>
 </section>
 
@@ -167,22 +181,22 @@ footer {
 <div class="grid">
     <a href="about.html" class="card">
         <h3>เกี่ยวกับหน่วยงาน</h3>
-        <p>ข้อมูลทั่วไปของศูนย์</p>
+        <p>ข้อมูลทั่วไป</p>
     </a>
 
     <a href="news.html" class="card">
         <h3>ข่าวประชาสัมพันธ์</h3>
-        <p>ติดตามข่าวล่าสุด</p>
+        <p>ข่าวสารล่าสุด</p>
     </a>
 
     <a href="download.html" class="card">
         <h3>ดาวน์โหลด</h3>
-        <p>เอกสารสำคัญ</p>
+        <p>เอกสาร</p>
     </a>
 
     <a href="contact.html" class="card">
         <h3>ติดต่อเรา</h3>
-        <p>แผนที่และข้อมูลติดต่อ</p>
+        <p>ข้อมูลการติดต่อ</p>
     </a>
 </div>
 </section>
@@ -192,6 +206,8 @@ footer {
 <h2>ข่าวล่าสุด</h2>
 
 <div id="news-container"></div>
+
+<a href="news.html" class="btn">ดูข่าวทั้งหมด</a>
 </section>
 
 <!-- MAP -->
@@ -225,29 +241,28 @@ const newsData = [
         id: 2,
         title: "เปิดรับสมัครนักศึกษาแพทย์",
         date: "10 มกราคม 2569",
-        detail: "เปิดรับสมัครนักศึกษาใหม่ ประจำปีการศึกษา 2569..."
+        detail: "เปิดรับสมัครนักศึกษาใหม่..."
     }
 ];
 
-const list = document.getElementById("news-list");
+const container = document.getElementById("news-container");
 
 newsData.forEach(news => {
     const div = document.createElement("div");
-    div.className = "news-card";
+    div.className = "news-item";
 
     div.innerHTML = `
         <a href="news-detail.html?id=${news.id}">
-            <div class="news-date">${news.date}</div>
-            <div class="news-title">${news.title}</div>
+            <div style="color:gray; font-size:14px;">${news.date}</div>
+            <strong>${news.title}</strong>
             <p>${news.detail}</p>
         </a>
     `;
 
-    list.appendChild(div);
+    container.appendChild(div);
 });
 </script>
 
 </body>
-</html> 
-   
+</html>
  
