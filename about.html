@@ -1,4 +1,13 @@
-<!DOCTYPE html> <html lang="th"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title> <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
@@ -6,7 +15,6 @@ body {
     color: #1e293b;
 }
 
-/* HEADER */
 header {
     background: white;
     padding: 15px 5%;
@@ -14,12 +22,6 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-}
-
-.logo img {
-    height: 50px;
 }
 
 nav a {
@@ -29,99 +31,38 @@ nav a {
     font-weight: 600;
 }
 
-/* HERO */
-.hero {
-    position: relative;
-    height: 60vh;
-    background: url("hospital.jpg") center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(30, 58, 138, 0.65);
-}
-
-.hero-content {
-    position: relative;
-    color: white;
-    text-align: center;
-}
-
-.hero-logo {
-    width: 120px;
-    margin-bottom: 20px;
-    background: white;
-    padding: 10px;
-    border-radius: 50%;
-}
-
-.hero h1 {
-    font-size: 36px;
-}
-
-/* SECTION */
-.section {
-    padding: 80px 5%;
-    max-width: 1100px;
+.container {
+    padding: 60px 5%;
+    max-width: 1000px;
     margin: auto;
 }
 
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-/* CARD */
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    text-align: center;
-    text-decoration: none;
-    color: inherit;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card h3 {
+h1 {
     color: #1e3a8a;
 }
 
-/* NEWS */
-.news-item {
+.section-card {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 12px;
-    margin-bottom: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
 }
 
-/* FOOTER */
-footer {
-    background: #1e3a8a;
-    color: white;
-    padding: 40px 5%;
-    text-align: center;
+h2 {
+    color: #1e3a8a;
+    margin-top: 40px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .hero {
-        height: 45vh;
-    }
-
-    .hero h1 {
-        font-size: 26px;
-    }
+.lang-btn {
+    margin-left: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #1e3a8a;
+    background: white;
+    color: #1e3a8a;
+    font-weight: 600;
+    cursor: pointer;
 }
 </style>
 </head>
@@ -129,111 +70,100 @@ footer {
 <body>
 
 <header>
-<div class="logo">
-    <img src="MEC-logo.jpg">
-</div>
-
+<div><strong>MEC Chumphon</strong></div>
 <nav>
-    <a href="index.html">หน้าแรก</a>
-    <a href="about.html">เกี่ยวกับหน่วยงาน</a>
-    <a href="news.html">ข่าว</a>
-    <a href="contact.html">ติดต่อ</a>
+    <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
+    <a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">เกี่ยวกับหน่วยงาน</a>
+    <button class="lang-btn" onclick="toggleLanguage()">EN</button>
 </nav>
 </header>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <img src="MEC-logo.jpg" class="hero-logo">
-        <h1>MEC Chumphon</h1>
-        <p>Clinical Medical Education Center</p>
-    </div>
-</section>
+<div class="container">
 
-<!-- MENU -->
-<section class="section">
-<h2>เมนูหลัก</h2>
+<h1 data-th="🏥 เกี่ยวกับหน่วยงาน" data-en="🏥 About MEC">
+เกี่ยวกับหน่วยงาน
+</h1>
 
-<div class="grid">
-    <a href="about.html" class="card">
-        <h3>เกี่ยวกับหน่วยงาน</h3>
-        <p>ข้อมูลทั่วไปของศูนย์</p>
-    </a>
+<div class="section-card"
+data-th='
+<h3>ประวัติและความเป็นมา</h3>
+<p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
 
-    <a href="news.html" class="card">
-        <h3>ข่าวประชาสัมพันธ์</h3>
-        <p>ติดตามข่าวล่าสุด</p>
-    </a>
+<p><strong>ประวัติความเป็นมา</strong></p>
+<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท เพื่อแก้ไขปัญหาการขาดแคลนแพทย์ในพื้นที่ชนบท</p>
+<p>กระทรวงสาธารณสุขจึงจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิกภายในโรงพยาบาลศูนย์ เพื่อจัดการเรียนการสอนในชั้นคลินิก</p>
+<p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์ได้รับอนุมัติเมื่อวันที่ 15 มิถุนายน พ.ศ. 2547 ให้เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
+<p>ร่วมผลิตแพทย์กับคณะแพทยศาสตร์ มหาวิทยาลัยธรรมศาสตร์</p>
+<p>รับนักศึกษาจากจังหวัดสุราษฎร์ธานี ชุมพร และระนอง</p>
+'
 
-    <a href="download.html" class="card">
-        <h3>ดาวน์โหลด</h3>
-        <p>เอกสารสำคัญ</p>
-    </a>
+data-en='
+<h3>History and Background</h3>
+<p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
+<p><strong>Location:</strong> 222 Phisit Phayaban Road, Tha Taphao, Mueang, Chumphon 86000, Thailand</p>
 
-    <a href="contact.html" class="card">
-        <h3>ติดต่อเรา</h3>
-        <p>แผนที่และข้อมูลติดต่อ</p>
-    </a>
+<p><strong>Historical Background</strong></p>
+<p>In 2004, the Cabinet approved collaboration between the Ministry of Public Health and the Ministry of University Affairs to produce rural doctors.</p>
+<p>Clinical Medical Education Centers were established in regional hospitals to provide clinical training.</p>
+<p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
+<p>The center collaborates with the Faculty of Medicine, Thammasat University.</p>
+<p>Students are selected from Surat Thani, Chumphon, and Ranong provinces.</p>
+'>
 </div>
-</section>
 
-<!-- NEWS -->
-<section class="section">
-<h2>ข่าวล่าสุด</h2>
+<h2 data-th="🎯 วิสัยทัศน์" data-en="🎯 Vision">🎯 วิสัยทัศน์</h2>
+<p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
+   data-en="To be a leading regional clinical medical education center.">
+เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
+</p>
 
-<div id="news-container"></div>
-</section>
+<h2 data-th="📌 พันธกิจ" data-en="📌 Mission">📌 พันธกิจ</h2>
+<ul>
+<li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
+    data-en="Provide high-quality clinical education">
+พัฒนาการเรียนการสอนที่มีคุณภาพ
+</li>
+<li data-th="ส่งเสริมงานวิจัยและวิชาการ"
+    data-en="Promote research and academic excellence">
+ส่งเสริมงานวิจัยและวิชาการ
+</li>
+<li data-th="บริการวิชาการแก่สังคม"
+    data-en="Provide academic services to society">
+บริการวิชาการแก่สังคม
+</li>
+</ul>
 
-<!-- MAP -->
-<section class="section">
-<h2>ที่ตั้งหน่วยงาน</h2>
-
-<iframe
-src="https://www.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&output=embed"
-width="100%" height="350"
-style="border:0; border-radius:12px;">
-</iframe>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-<p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
-<p>โทร: 0xx-xxx-xxxx</p>
-<p>© 2026 MEC Chumphon</p>
-</footer>
+</div>
 
 <script>
-const newsData = [
-    {
-        id: 1,
-        title: "อบรมแพทย์ประจำปี 2568",
-        date: "25 พฤศจิกายน 2568",
-        detail: "จัดอบรมเพื่อพัฒนาศักยภาพแพทย์ในพื้นที่..."
-    },
-    {
-        id: 2,
-        title: "เปิดรับสมัครนักศึกษาแพทย์",
-        date: "10 มกราคม 2569",
-        detail: "เปิดรับสมัครนักศึกษาใหม่ ประจำปีการศึกษา 2569..."
+let currentLang = "th";
+
+function toggleLanguage() {
+    const elements = document.querySelectorAll("[data-th]");
+    const button = document.querySelector(".lang-btn");
+
+    if (currentLang === "th") {
+        elements.forEach(el => {
+            if (el.getAttribute("data-en")) {
+                el.innerHTML = el.getAttribute("data-en");
+            }
+        });
+        document.documentElement.lang = "en";
+        button.innerText = "TH";
+        currentLang = "en";
+    } else {
+        elements.forEach(el => {
+            if (el.getAttribute("data-th")) {
+                el.innerHTML = el.getAttribute("data-th");
+            }
+        });
+        document.documentElement.lang = "th";
+        button.innerText = "EN";
+        currentLang = "th";
     }
-];
-
-const container = document.getElementById("news-container");
-
-newsData.forEach(news => {
-    const div = document.createElement("div");
-    div.className = "news-item";
-
-    div.innerHTML = `
-        <a href="news-detail.html?id=${news.id}">
-            <div style="color:gray; font-size:14px;">${news.date}</div>
-            <strong>${news.title}</strong>
-            <p>${news.detail}</p>
-        </a>
-    `;
-
-    container.appendChild(div);
-});
+}
 </script>
+
+</body>
+</html>
