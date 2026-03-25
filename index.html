@@ -3,142 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEC Startup + Login</title>
+<title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Sarabun', sans-serif;
-    background: #0f172a;
-    color: white;
+    margin: 0;
+    background: #f4f8fb;
+    color: #1e293b;
 }
 
-/* Navbar */
-nav {
+header {
+    background: white;
+    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
-    padding: 20px 40px;
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
     margin-left: 20px;
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: 600;
 }
 
-/* Hero */
-.hero {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background: radial-gradient(circle at top, #2563eb, #0f172a);
+.container {
+    padding: 60px 5%;
+    max-width: 1000px;
+    margin: auto;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+h1 {
+    color: #1e3a8a;
 }
 
-.hero p {
-    opacity: 0.8;
-}
-
-.btn {
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: #3b82f6;
-    border: none;
-    border-radius: 999px;
-    cursor: pointer;
-    color: white;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
-
-/* Section */
-.section {
-    padding: 80px 40px;
-}
-
-/* Cards */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-}
-
-/* Map */
-iframe {
-    width: 100%;
-    height: 400px;
-    border-radius: 15px;
-    margin-top: 20px;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 20px;
-    opacity: 0.6;
-}
-
-/* Modal */
-.modal {
-    display: none;
-    position: fixed;
-    top:0; left:0;
-    width:100%; height:100%;
-    background: rgba(0,0,0,0.7);
-}
-
-.modal-content {
-    margin: 10% auto;
+.section-card {
+    background: white;
     padding: 30px;
-    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #1e3a8a;
+    margin-top: 40px;
+}
+
+.lang-btn {
+    margin-left: 20px;
+    padding: 6px 12px;
     border-radius: 20px;
-    text-align: center;
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(15px);
-}
-
-input {
-    width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    margin-top: 10px;
-}
-
-.close {
-    float: right;
+    border: 1px solid #1e3a8a;
+    background: white;
+    color: #1e3a8a;
+    font-weight: 600;
     cursor: pointer;
 }
 </style>
@@ -146,120 +69,99 @@ input {
 
 <body>
 
-<!-- Navbar -->
+<header>
+<div><strong>MEC Chumphon</strong></div>
 <nav>
-    <h3>MEC</h3>
-    <div id="navMenu">
-        <a href="#">Home</a>
-        <a href="#news">News</a>
-        <a href="#map">Map</a>
-        <a href="#" onclick="openLogin()">Login</a>
-    </div>
+    <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
+    <a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">เกี่ยวกับหน่วยงาน</a>
+    <button class="lang-btn" onclick="toggleLanguage()">EN</button>
 </nav>
+</header>
 
-<!-- Hero -->
-<section class="hero">
-    <h1>Medical Education Center</h1>
-    <p>Future Doctors Start Here</p>
-    <button class="btn" onclick="scrollToSection()">Explore</button>
-</section>
+<div class="container">
 
-<!-- News -->
-<section class="section" id="news">
-    <h2>Latest News</h2>
-    <br>
-    <div class="grid">
-        <div class="card">
-            <h3>Workshop 2026</h3>
-            <p>พัฒนาทักษะนักศึกษาแพทย์...</p>
-        </div>
-        <div class="card">
-            <h3>Clinical Training</h3>
-            <p>เตรียมความพร้อมก่อนขึ้นวอร์ด...</p>
-        </div>
-        <div class="card">
-            <h3>New Curriculum</h3>
-            <p>ปรับปรุงหลักสูตรใหม่...</p>
-        </div>
-    </div>
-</section>
+<h1 data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">
+เกี่ยวกับหน่วยงาน
+</h1>
 
-<!-- Map -->
-<section class="section" id="map">
-    <h2>Location</h2>
-    <iframe src="https://www.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&output=embed"></iframe>
-</section>
+<div class="section-card"
+data-th='
+<h3>ประวัติและความเป็นมา</h3>
+<p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
 
-<!-- Footer -->
-<footer>
-    © 2026 MEC Chumphon
-</footer>
+<p><strong>ประวัติความเป็นมา</strong></p>
+<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท เพื่อแก้ไขปัญหาการขาดแคลนแพทย์ในพื้นที่ชนบท</p>
+<p>กระทรวงสาธารณสุขจึงจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิกภายในโรงพยาบาลศูนย์ เพื่อจัดการเรียนการสอนในชั้นคลินิก</p>
+<p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์ได้รับอนุมัติเมื่อวันที่ 15 มิถุนายน พ.ศ. 2547 ให้เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
+<p>ร่วมผลิตแพทย์กับคณะแพทยศาสตร์ มหาวิทยาลัยธรรมศาสตร์</p>
+<p>รับนักศึกษาจากจังหวัดสุราษฎร์ธานี ชุมพร และระนอง</p>
+'
 
-<!-- Login Modal -->
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeLogin()">&times;</span>
-    <h2>🔐 Login</h2>
+data-en='
+<h3>History and Background</h3>
+<p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
+<p><strong>Location:</strong> 222 Phisit Phayaban Road, Tha Taphao, Mueang, Chumphon 86000, Thailand</p>
 
-    <input type="text" id="username" placeholder="Student ID">
-    <input type="password" id="password" placeholder="Password">
+<p><strong>Historical Background</strong></p>
+<p>In 2004, the Cabinet approved collaboration between the Ministry of Public Health and the Ministry of University Affairs to produce rural doctors.</p>
+<p>Clinical Medical Education Centers were established in regional hospitals to provide clinical training.</p>
+<p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
+<p>The center collaborates with the Faculty of Medicine, Thammasat University.</p>
+<p>Students are selected from Surat Thani, Chumphon, and Ranong provinces.</p>
+'>
+</div>
 
-    <button class="btn" onclick="login()">Login</button>
-  </div>
+<h2 data-th="วิสัยทัศน์" data-en="Vision">วิสัยทัศน์</h2>
+<p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
+   data-en="To be a leading regional clinical medical education center.">
+เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
+</p>
+
+<h2 data-th="พันธกิจ" data-en="Mission">พันธกิจ</h2>
+<ul>
+<li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
+    data-en="Provide high-quality clinical education">
+พัฒนาการเรียนการสอนที่มีคุณภาพ
+</li>
+<li data-th="ส่งเสริมงานวิจัยและวิชาการ"
+    data-en="Promote research and academic excellence">
+ส่งเสริมงานวิจัยและวิชาการ
+</li>
+<li data-th="บริการวิชาการแก่สังคม"
+    data-en="Provide academic services to society">
+บริการวิชาการแก่สังคม
+</li>
+</ul>
+
 </div>
 
 <script>
-function scrollToSection() {
-    document.getElementById("news").scrollIntoView({ behavior: "smooth" });
-}
+let currentLang = "th";
 
-// modal
-function openLogin() {
-    document.getElementById("loginModal").style.display = "block";
-}
+function toggleLanguage() {
+    const elements = document.querySelectorAll("[data-th]");
+    const button = document.querySelector(".lang-btn");
 
-function closeLogin() {
-    document.getElementById("loginModal").style.display = "none";
-}
-
-// mock user
-const users = [
-  { username: "med001", password: "1234", name: "Intern Year 4" },
-  { username: "med002", password: "1234", name: "Extern Year 3" }
-];
-
-// login
-function login() {
-    const u = document.getElementById("username").value;
-    const p = document.getElementById("password").value;
-
-    const user = users.find(x => x.username === u && x.password === p);
-
-    if(user){
-        localStorage.setItem("user", JSON.stringify(user));
-        alert("Login Success");
-        location.reload();
+    if (currentLang === "th") {
+        elements.forEach(el => {
+            if (el.getAttribute("data-en")) {
+                el.innerHTML = el.getAttribute("data-en");
+            }
+        });
+        document.documentElement.lang = "en";
+        button.innerText = "TH";
+        currentLang = "en";
     } else {
-        alert("Invalid ID or Password");
+        elements.forEach(el => {
+            if (el.getAttribute("data-th")) {
+                el.innerHTML = el.getAttribute("data-th");
+            }
+        });
+        document.documentElement.lang = "th";
+        button.innerText = "EN";
+        currentLang = "th";
     }
-}
-
-// check login
-window.onload = function(){
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if(user){
-        document.getElementById("navMenu").innerHTML = `
-            <span>👨‍⚕️ ${user.name}</span>
-            <a href="#" onclick="logout()">Logout</a>
-        `;
-    }
-}
-
-// logout
-function logout(){
-    localStorage.removeItem("user");
-    location.reload();
 }
 </script>
 
