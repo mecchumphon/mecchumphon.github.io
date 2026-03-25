@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
+<!DOCTYPE html> <html lang="th"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title> <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet"><style>
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
@@ -25,7 +16,10 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
-    z-index: 1000;
+}
+
+.logo img {
+    height: 50px;
 }
 
 nav a {
@@ -38,7 +32,7 @@ nav a {
 /* HERO */
 .hero {
     position: relative;
-    height: 55vh;
+    height: 60vh;
     background: url("hospital.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -55,67 +49,68 @@ nav a {
     position: relative;
     color: white;
     text-align: center;
-    z-index: 1;
 }
 
-.hero-content h1 {
+.hero-logo {
+    width: 120px;
+    margin-bottom: 20px;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.hero h1 {
     font-size: 36px;
 }
 
-.hero-content p {
-    opacity: 0.9;
-}
-
-/* CONTENT */
-.container {
+/* SECTION */
+.section {
     padding: 80px 5%;
-    max-width: 1000px;
+    max-width: 1100px;
     margin: auto;
-    margin-top: -40px;
-    position: relative;
 }
 
-.section-card {
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.card {
     background: white;
-    padding: 30px;
+    padding: 25px;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-    margin-bottom: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: 0.3s;
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
 }
 
-.section-card:hover {
+.card:hover {
     transform: translateY(-5px);
 }
 
-h1, h2 {
+.card h3 {
     color: #1e3a8a;
 }
 
-/* BUTTON */
-.lang-btn {
-    margin-left: 20px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    border: 1px solid #1e3a8a;
+/* NEWS */
+.news-item {
     background: white;
-    color: #1e3a8a;
-    font-weight: 600;
-    cursor: pointer;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
-/* ANIMATION */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.8s ease forwards;
-}
-
-@keyframes fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* FOOTER */
+footer {
+    background: #1e3a8a;
+    color: white;
+    padding: 40px 5%;
+    text-align: center;
 }
 
 /* MOBILE */
@@ -124,7 +119,7 @@ h1, h2 {
         height: 45vh;
     }
 
-    .hero-content h1 {
+    .hero h1 {
         font-size: 26px;
     }
 }
@@ -134,55 +129,111 @@ h1, h2 {
 <body>
 
 <header>
-<div><strong>🏥 MEC Chumphon</strong></div>
+<div class="logo">
+    <img src="MEC-logo.jpg">
+</div>
+
 <nav>
     <a href="index.html">หน้าแรก</a>
     <a href="about.html">เกี่ยวกับหน่วยงาน</a>
-    <button class="lang-btn" onclick="toggleLanguage()">EN</button>
+    <a href="news.html">ข่าว</a>
+    <a href="contact.html">ติดต่อ</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
     <div class="hero-overlay"></div>
-    <div class="hero-content fade-in">
+    <div class="hero-content">
+        <img src="MEC-logo.jpg" class="hero-logo">
         <h1>MEC Chumphon</h1>
         <p>Clinical Medical Education Center</p>
     </div>
 </section>
 
-<!-- CONTENT -->
-<div class="container">
+<!-- MENU -->
+<section class="section">
+<h2>เมนูหลัก</h2>
 
-<h1>เกี่ยวกับหน่วยงาน</h1>
+<div class="grid">
+    <a href="about.html" class="card">
+        <h3>เกี่ยวกับหน่วยงาน</h3>
+        <p>ข้อมูลทั่วไปของศูนย์</p>
+    </a>
 
-<div class="section-card fade-in">
-<h3>ประวัติและความเป็นมา</h3>
-<p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
-<p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
+    <a href="news.html" class="card">
+        <h3>ข่าวประชาสัมพันธ์</h3>
+        <p>ติดตามข่าวล่าสุด</p>
+    </a>
 
-<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย...</p>
+    <a href="download.html" class="card">
+        <h3>ดาวน์โหลด</h3>
+        <p>เอกสารสำคัญ</p>
+    </a>
+
+    <a href="contact.html" class="card">
+        <h3>ติดต่อเรา</h3>
+        <p>แผนที่และข้อมูลติดต่อ</p>
+    </a>
 </div>
+</section>
 
-<h2>🎯 วิสัยทัศน์</h2>
-<p>เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค</p>
+<!-- NEWS -->
+<section class="section">
+<h2>ข่าวล่าสุด</h2>
 
-<h2>📌 พันธกิจ</h2>
-<ul>
-<li>– พัฒนาการเรียนการสอนที่มีคุณภาพ</li>
-<li>– ส่งเสริมงานวิจัยและวิชาการ</li>
-<li>– บริการวิชาการแก่สังคม</li>
-</ul>
+<div id="news-container"></div>
+</section>
 
-</div>
+<!-- MAP -->
+<section class="section">
+<h2>ที่ตั้งหน่วยงาน</h2>
+
+<iframe
+src="https://www.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&output=embed"
+width="100%" height="350"
+style="border:0; border-radius:12px;">
+</iframe>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<p>โทร: 0xx-xxx-xxxx</p>
+<p>© 2026 MEC Chumphon</p>
+</footer>
 
 <script>
-let currentLang = "th";
+const newsData = [
+    {
+        id: 1,
+        title: "อบรมแพทย์ประจำปี 2568",
+        date: "25 พฤศจิกายน 2568",
+        detail: "จัดอบรมเพื่อพัฒนาศักยภาพแพทย์ในพื้นที่..."
+    },
+    {
+        id: 2,
+        title: "เปิดรับสมัครนักศึกษาแพทย์",
+        date: "10 มกราคม 2569",
+        detail: "เปิดรับสมัครนักศึกษาใหม่ ประจำปีการศึกษา 2569..."
+    }
+];
 
-function toggleLanguage() {
-    alert("ระบบ 2 ภาษายังใช้เวอร์ชันก่อนหน้าได้");
-}
+const container = document.getElementById("news-container");
+
+newsData.forEach(news => {
+    const div = document.createElement("div");
+    div.className = "news-item";
+
+    div.innerHTML = `
+        <a href="news-detail.html?id=${news.id}">
+            <div style="color:gray; font-size:14px;">${news.date}</div>
+            <strong>${news.title}</strong>
+            <p>${news.detail}</p>
+        </a>
+    `;
+
+    container.appendChild(div);
+});
 </script>
-
-</body>
-</html>
