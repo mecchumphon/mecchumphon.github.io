@@ -1,168 +1,337 @@
 <!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEC Chumphon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CPK Medical Excellence - Medical Education Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "tertiary-fixed-dim": "#b8cac9",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-container": "#acbdbc",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#727781",
+                        "tertiary-container": "#3d4d4d",
+                        "inverse-primary": "#a3c9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#a3c9ff",
+                        "on-primary-fixed": "#001c38",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#002116",
+                        "secondary": "#006c50",
+                        "surface-dim": "#d8dadc",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#d4e6e5",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary-fixed-variant": "#00513c",
+                        "primary-container": "#004b87",
+                        "on-tertiary-fixed-variant": "#3a4a49",
+                        "on-primary-fixed-variant": "#004882",
+                        "outline-variant": "#c2c6d1",
+                        "primary-fixed": "#d3e4ff",
+                        "secondary-fixed": "#92f6ce",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "on-secondary-container": "#007255",
+                        "surface-variant": "#e0e3e5",
+                        "surface-tint": "#27609d",
+                        "on-background": "#191c1e",
+                        "tertiary": "#263636",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#8abcff",
+                        "on-secondary": "#ffffff",
+                        "primary": "#003461",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed-dim": "#76d9b3",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#424750",
+                        "secondary-container": "#92f6ce",
+                        "on-tertiary-fixed": "#0e1e1e",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f7f9fb"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        }
+    </script>
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Sarabun', sans-serif; background:#f4f8fb; }
-
-header {
-    background:white;
-    padding:15px 5%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo { display:flex; gap:10px; align-items:center; }
-.logo img { width:50px; }
-
-nav a {
-    margin-left:15px;
-    text-decoration:none;
-    color:#1e3a8a;
-    font-weight:600;
-}
-
-.lang-btn {
-    margin-left:15px;
-    padding:6px 12px;
-    border-radius:20px;
-    border:1px solid #1e3a8a;
-    cursor:pointer;
-}
-
-/* HERO */
-.hero {
-    background:linear-gradient(rgba(30,58,138,0.75), rgba(37,99,235,0.75)),
-    url('images/MEC-banner1.png');
-    background-size:cover;
-    color:white;
-    text-align:center;
-    padding:100px 20px;
-}
-
-/* SECTION */
-section { padding:60px 5%; }
-
-.section-title {
-    text-align:center;
-    font-size:28px;
-    margin-bottom:30px;
-    color:#1e3a8a;
-}
-
-.grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
-.card {
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0 10px 20px rgba(0,0,0,0.05);
-}
-
-footer {
-    background:#1e3a8a;
-    color:white;
-    text-align:center;
-    padding:30px;
-</style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
 </head>
-
-<body>
-
-<header>
-<div class="logo">
-<img src="images/MEC-logo.jpg">
-<div>
-<strong data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" data-en="Clinical Medical Education Center"></strong><br>
-<span data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์" data-en="Chumphon Khet Udomsak Hospital"></span>
-</div>
-</div>
-
-<nav>
-<a data-th="หน้าแรก" data-en="Home"></a>
-<a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC"></a>
-<a data-th="หลักสูตร" data-en="Academics"></a>
-<a data-th="นักศึกษา" data-en="Students"></a>
-<a data-th="ศูนย์รวมโปรแกรม" data-en="Application Hub"></a>
-<a data-th="ติดต่อ" data-en="Contact"></a>
-<button class="lang-btn" onclick="toggleLanguage()">EN</button>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="docked full-width top-0 sticky z-50 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-[#003461] tracking-tighter font-headline" style=""><div class="flex items-center gap-3">
+<img alt="MEC Chumphon Logo" class="h-12 w-12 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujWQAccwfciMD3oKdAFkJm7SgoKK9XI7Zdprl490AXg3AgCX_Geo-kARE7f9m6fJkLrtow_HMQzpuemvHsDeY6OPPY5Y6vcUTQk72OZ4m2CgC4eaN0r8x2uISoL6bJM4EZsDJjPV4ZbZ_dCZjpZ9m2kFRw3c8eocql9ivz30z5g5IdwVq25lqEQ1HxV69qSC5y9KFPIzr5zBotXLDYHno5o6GaNtezIjMUm_vNKzz9pTfL_KfWQJBWrXSeJiMrb3H9QH0NJUrYBxQQ" style=""/>
+<span class="" style="">MEC CHUMPHON</span>
+</div></div>
+<nav class="hidden md:flex items-center space-x-8 font-headline font-bold tracking-tight text-lg">
+<a class="text-[#003461] border-b-2 border-[#003461] pb-1 font-extrabold" href="#" style="">Home</a>
+<a class="text-slate-600 font-medium hover:text-[#003461] transition-colors" href="#" style="">About</a>
+<a class="text-slate-600 font-medium hover:text-[#003461] transition-colors" href="#" style="">Curriculum</a>
+<a class="text-slate-600 font-medium hover:text-[#003461] transition-colors" href="#" style="">Student Portal</a>
+<a class="text-slate-600 font-medium hover:text-[#003461] transition-colors" href="#" style="">Software Center</a>
+<a class="text-slate-600 font-medium hover:text-[#003461] transition-colors" href="#" style="">Contact</a>
 </nav>
+<div class="flex items-center space-x-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-xl hover:bg-slate-50 transition-colors text-primary font-bold" style="">
+<span class="material-symbols-outlined" data-icon="language" style="">language</span>
+<span class="" style="">TH/EN</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-50 transition-colors text-primary" style="">
+<span class="material-symbols-outlined" data-icon="account_circle" style="">account_circle</span>
+</button>
+</div>
+</div>
 </header>
-
-<section class="hero">
-<h1 data-th="ผลิตแพทย์คุณภาพ เพื่อชุมชนและสังคม"
-    data-en="Producing Quality Doctors for Community and Society"></h1>
-
-<p data-th="ความเป็นเลิศทางวิชาการด้านแพทยศาสตรศึกษา"
-   data-en="Academic Excellence in Clinical Medical Education"></p>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[870px] flex items-center overflow-hidden bg-primary px-8">
+<div class="absolute inset-0 opacity-40">
+<img alt="MEC Chumphon Building with Prince of Chumphon" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ADBb0ujTUoubpAlMHfIptRGLM1B5tJg-6QRtnX2mrVOUdg-Om0JReAkl2b92uVR3JQ9kj8ugaiu8JS0rEj23KlSela9XigKxaC0XXjDfLaWm4PF1xToqBb5lgvIKOXGuWtXXwudIlwDmG2VnlOPgk4kELQgSVY-9yWGSfaJ1ZohxKYsInHWIbxFsMKnpLv2_4vwhM2xdSHib_uh-EUFbeWZzKKqMNvvJ2wBvqt6H1WiQOPi0aDZviB5u81YlmJ2yVdjf2hpSZ3QG_BgJQOk" style=""/>
+<div class="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12">
+<div class="lg:col-span-7">
+<span class="inline-block px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-sm font-bold mb-6 tracking-wide" style="">
+                        CHUMPHON KHET UDOMSAKDI HOSPITAL
+                    </span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tighter mb-8" style=""><div><span style="font-size: 4.5rem; letter-spacing: -0.05em;">Medical</span></div><span class="text-secondary-fixed" style="">Education <font color="#ffffff">Center</font><br/></span></h1>
+<p class="text-xl text-white/90 max-w-xl leading-relaxed mb-10" style=""><br/></p>
+<div class="flex flex-wrap gap-4">
+<button class="px-8 py-4 bg-white text-primary font-bold rounded-xl shadow-lg hover:scale-95 transition-transform" style="">
+                            Explore Curriculum
+                        </button>
+<button class="px-8 py-4 bg-primary-container text-white font-bold rounded-xl border border-white/20 hover:bg-primary-container/80 transition-all" style="">
+                            Student Portal
+                        </button>
+</div>
+</div>
+</div>
 </section>
-
-<section>
-<h2 class="section-title" data-th="ข่าวประชาสัมพันธ์" data-en="Announcements"></h2>
-
-<div class="grid">
-<div class="card">
-<h3 data-th="ประกาศตารางเรียน 2569" data-en="Schedule 2026"></h3>
-<p data-th="อัปเดตตารางเรียนล่าสุด" data-en="Latest schedule update"></p>
+<!-- Stats Section -->
+<section class="py-20 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-sm border-b-4 border-primary">
+<div class="text-4xl font-headline font-black text-primary mb-2" style="">150+</div>
+<div class="text-sm font-label text-on-surface-variant font-medium" style="">ANNUAL GRADUATES</div>
 </div>
-
-<div class="card">
-<h3 data-th="อบรมฉุกเฉิน" data-en="Emergency Training"></h3>
-<p data-th="Workshop สำหรับนักศึกษา" data-en="Workshop for students"></p>
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-sm border-b-4 border-secondary">
+<div class="text-4xl font-headline font-black text-secondary mb-2" style="">24/7</div>
+<div class="text-sm font-label text-on-surface-variant font-medium" style="">SIMULATION ACCESS</div>
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-sm border-b-4 border-primary">
+<div class="text-4xl font-headline font-black text-primary mb-2" style="">12</div>
+<div class="text-sm font-label text-on-surface-variant font-medium" style="">SPECIALTY CLINICS</div>
+</div>
+<div class="p-8 bg-surface-container-lowest rounded-xl shadow-sm border-b-4 border-secondary">
+<div class="text-4xl font-headline font-black text-secondary mb-2" style="">98%</div>
+<div class="text-sm font-label text-on-surface-variant font-medium" style="">BOARD SUCCESS RATE</div>
+</div>
 </div>
 </div>
 </section>
-
-<section style="background:#e0ecff;">
-<h2 class="section-title" data-th="ติดต่อ / แผนที่" data-en="Contact & Map"></h2>
-
-<p data-th="โรงพยาบาลชุมพรเขตรอุดมศักดิ์"
-   data-en="Chumphon Khet Udomsak Hospital"></p>
-
-
-<footer>
-<p data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์"
-   data-en="Clinical Medical Education Center, Chumphon Khet Udomsak Hospital"></p>
-
-<p>โทร: 077-503672 / 083-107-4497 </p>
-<p>Email: meccp.ckusk@cpird.in.th</p>
-<p>© 2026</p>
+<!-- Bento Activity Gallery -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div class="max-w-2xl">
+<h2 class="font-headline text-4xl font-extrabold text-primary mb-4" style="">Clinical Mastery in Action</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed" style="">A visual narrative of our daily commitment to medical education, research, and patient care excellence at CPK Medical Center.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:underline" style="">
+                        View Full Gallery <span class="material-symbols-outlined" data-icon="arrow_forward" style="">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+<!-- Large Feature -->
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl bg-slate-200">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of medical students in scrubs performing a delicate procedure on a high-fidelity simulator under bright surgical lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCeD96YN8EgAqMTl-p1kOoQ6sEgaaJBWVZ_xNF_C7TUN-1gfjT3U-Ixw1XfaQrSC_tBVEnGeMzRGqlm_bF9L-sCCVJOwnQ_6AU0dNgtD0KaaE1kY5VvfpRM_XSHaJqJ4DTTLd71dD4JmzI5LAqVp1Blz8D0put2ugl2LKxnwkWj7y19GalN1VsAGpLuK9KlE_eerYEAkMajTrxqt7OROisJN0mBrdTMKxOKV9bQPSW-twYXBxnHUzs0A8Llbt68gTMi3_u5PjNqYTe" style=""/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<span class="px-3 py-1 bg-secondary text-white text-xs font-bold rounded-full mb-3 inline-block" style="">SIMULATION LAB</span>
+<h3 class="text-white text-2xl font-bold" style="">Advanced Surgical Techniques</h3>
+</div>
+</div>
+<!-- Medium Feature -->
+<div class="md:col-span-2 group relative overflow-hidden rounded-xl bg-slate-200">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A group of diverse young medical students discussing a case around a digital display board in a modern student lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuzHV2vQIvXKbTIHXpUo4NgJlHkD-NRGvKNIQaQfiR7PL4EQ1e6NB07LeVId79A0Oby580wX3BToOd9__pmPZCRdZAKhSIjRysnnGvKSrhhGLaffgNirLQu0fB0HJ06zES0iQzTCrNMKV6BS2DW6-SDLEme9FAetIE5fJuObjrsjU_CxJIwv8-tr_CCr4I64eBBuvat5a3DIn_QfLoeQKtKnIrIS4gEjszGkkZqDk6lnMVgThry_URGC3XCYxDWPFkaeM9XNEq1ijl" style=""/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-xl font-bold" style="">Collaborative Learning</h3>
+</div>
+</div>
+<!-- Small 1 -->
+<div class="group relative overflow-hidden rounded-xl bg-slate-200">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Doctor explaining a complex X-ray to a student in a dimly lit radiology room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfP2nkE7nfJRH8KbDX-JMCb44yhvOBnvUePRV5DoN8Kf5tll0mMqvgZ8cE3fTaf7-vZnON9m2FBrye_khb-8NqoSIKvA1GpOGxQAuFf2s9-BLTOz0jKSp8nVeHAjKlZQDyLMFLgfiTtrKJYo2rDf0T1umxrQzZikp4xzzw1I0BNURwHs60ofuj9s80nNDgo_eNiom4pywU6tjLbh1hujvlcTdC1PihNDCA5oiy9UrVYPHeq3AcxebGzXVsJ3YCTtvL3rBl8G4R_-zH" style=""/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-lg font-bold" style="">Diagnostics</h3>
+</div>
+</div>
+<!-- Small 2 -->
+<div class="group relative overflow-hidden rounded-xl bg-slate-200">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Exterior of a modern glass-fronted hospital building during sunrise with blue sky reflection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMKyZjLdQwI6POX_Hcvc6UeAfQrAM6hFThnKUpafxKFzuoFflKrs69b6F_bj3PChMLyhUDGWydjuhBvXvh9zJ_fMiMFXnrc4pCZnQ8dmFv5oGoYp9DRBGMD6ynvWTr5s7AcFLgQWzpeM4fk0npLqXIwfRZCK3ApP1AtzZkIh9QUpslryYeNe9nhnIVMUXffmNQTdYpA1VAvr0kIDEDQ6bxjzjZw2cUutwgzxJdKHWRwtJFXsXs3p1yLp33qpJbbnsPPY0pTUOi9Z41" style=""/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-6">
+<h3 class="text-white text-lg font-bold" style="">Campus Life</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- News and Announcements -->
+<section class="py-24 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex flex-col md:flex-row gap-16">
+<div class="w-full md:w-1/3">
+<h2 class="font-headline text-4xl font-extrabold text-primary mb-6 tracking-tight" style="">Clinical Updates &amp; Announcements</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed" style="">Stay informed about upcoming seminars, curriculum changes, and medical breakthroughs within our education center.</p>
+<button class="w-full py-4 bg-primary text-white font-bold rounded-xl flex justify-center items-center gap-2 hover:bg-primary-container transition-colors" style="">
+                            All News Archive
+                        </button>
+</div>
+<div class="w-full md:w-2/3 space-y-6">
+<!-- News Card 1 -->
+<div class="flex flex-col sm:flex-row gap-6 p-6 bg-surface-container-lowest rounded-xl hover:shadow-lg transition-shadow border border-outline-variant/10">
+<div class="w-full sm:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Microscopic view of cellular structures with glowing fluorescent markers in shades of blue and green" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMygQMTZ5TOCX3MxbQMdaTH8bOIxnyBrL5lsc_5-B2z7zd0lI4r0VoNC4e7wE0GVR0LwnxnI8-8tM8BY-RXX33poFt2hpRqFACG-XYOfpUmen8Je3eL3pNIYa7aBW6q4fbHUQYKN2abv1mUL2z5wxSliIJCoybV3cGHcmZAZm3-547XDulnf91oFnevTRuR-7iRSqcxkO0c_wJkhVdjoDaAV2_yrw-ObQBANe9UW_3xPcKw3-5COX0LtLPa-MBoTtjZ8kp9byITfAI" style=""/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<span class="text-xs font-bold text-secondary-fixed-variant bg-secondary-fixed px-2 py-0.5 rounded uppercase" style="">Research</span>
+<span class="text-xs text-on-surface-variant font-medium" style="">Oct 24, 2024</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-2" style="">New Research Symposium on Tropical Medicine</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2" style="">Join us for a three-day intensive symposium featuring leading experts in tropical medicine and clinical epidemiology...</p>
+</div>
+</div>
+<!-- News Card 2 -->
+<div class="flex flex-col sm:flex-row gap-6 p-6 bg-surface-container-lowest rounded-xl hover:shadow-lg transition-shadow border border-outline-variant/10">
+<div class="w-full sm:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Medical equipment on a sterile steel table with soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm26kKM6NdCLdDzbky4O2nZrvVpBXm5PENU7F7EYYibXPNT7VgqGU2sykFDreE3MSmzlpFl8fXdbXGRMNOuQ7tiAJNk460Q65JIhwoQYolOfrMUxI7MEghMx5QeNYZfgjY46Jfr6woM6zPaXowZNqV4EPsM2RdUXeEQe6g1IVPc6-I2VlNjI_fWkHwD_xj5RdUx6MQ4-_2J_ysMJ_NfLsyRfl3KygYCh5X3zkqjryDNuFF9NP_ExgldEeZYiJoQbIcJAQ695177oLE" style=""/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<span class="text-xs font-bold text-primary-fixed-variant bg-primary-fixed px-2 py-0.5 rounded uppercase" style="">Academics</span>
+<span class="text-xs text-on-surface-variant font-medium" style="">Oct 20, 2024</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-2" style="">Registration Open: Resident Matching Program 2025</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2" style="">The application portal for the upcoming medical residency programs is now open for all eligible medical graduates...</p>
+</div>
+</div>
+<!-- News Card 3 -->
+<div class="flex flex-col sm:flex-row gap-6 p-6 bg-surface-container-lowest rounded-xl hover:shadow-lg transition-shadow border border-outline-variant/10">
+<div class="w-full sm:w-48 h-32 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up of hands typing on a laptop with a stethoscope nearby on a desk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoZWqDTlnMht2HzaiCFlNC063Ppgjd0bGxqk1c4e1uqIOUJBs5Z56JemCKPEAE3hMniKUhs0Pj0XBRC3YOOgV0YIRa87RLvPJ6u5dtYGOFSvrk8_5vT4yWYmCgYuRYtiFjylzIUZ4hOtY0ROIkCWuHfJ-_EaKG3AMvmn2clvieFR1ZDHesmgNKxFbIpGyCybIVvrnLt4TyonjiH1DOReq3IHQBrSu69qCFMt_-rh5ntxvApcKY2aFhO1AjCwrh4PnxVQJ2gi8zCLX2" style=""/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<span class="text-xs font-bold text-tertiary-fixed-variant bg-tertiary-fixed px-2 py-0.5 rounded uppercase" style="">IT Update</span>
+<span class="text-xs text-on-surface-variant font-medium" style="">Oct 15, 2024</span>
+</div>
+<h3 class="text-xl font-bold text-primary mb-2" style="">LMS Platform Upgrade Scheduled for Weekend</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2" style="">Our student portal and Learning Management System will undergo a major version upgrade to enhance mobile learning experiences...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Contact CTA -->
+<section class="my-20 max-w-screen-2xl mx-auto px-8">
+<div class="bg-primary-container rounded-[2rem] p-12 md:p-20 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[300px]" data-icon="medical_services" style="">medical_services</span>
+</div>
+<div class="relative z-10 max-w-2xl">
+<h2 class="text-white font-headline text-4xl font-extrabold mb-6" style="">Join Our Excellence Network</h2>
+<p class="text-primary-fixed text-xl mb-10" style="">Subscribe to receive the latest academic calendars, clinical journals, and center updates directly in your inbox.</p>
+<form class="flex flex-col sm:flex-row gap-4">
+<input class="flex-grow bg-white/10 border-b-2 border-primary-fixed focus:border-white text-white placeholder:text-primary-fixed/60 py-4 px-6 outline-none transition-all rounded-t-lg" placeholder="Your academic email address" type="email"/>
+<button class="bg-secondary-container text-on-secondary-container font-bold px-10 py-4 rounded-xl hover:scale-105 transition-transform" style="" type="submit">Subscribe Now</button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f2f4f6] dark:bg-slate-950 full-width mt-20 border-t border-outline-variant/20">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 max-w-screen-2xl mx-auto">
+<div class="md:col-span-1">
+<div class="text-lg font-bold text-[#003461] mb-6" style="">CPK Medical Excellence</div>
+<p class="font-['Inter'] text-sm leading-relaxed text-slate-500 dark:text-slate-400 mb-6" style="">
+                    Chumphon Khet Udomsakdi Hospital Medical Education Center is dedicated to cultivating world-class medical professionals.
+                </p>
+<div class="flex space-x-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary" data-icon="facebook" style="">social_leaderboard</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary" data-icon="public" style="">public</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-primary" data-icon="mail" style="">mail</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6" style="">Navigation</h4>
+<ul class="space-y-3 font-['Inter'] text-sm">
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Home</a></li>
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Curriculum</a></li>
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Student Portal</a></li>
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Faculty Resources</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6" style="">Quick Links</h4>
+<ul class="space-y-3 font-['Inter'] text-sm">
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Privacy Policy</a></li>
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Terms of Service</a></li>
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Hospital Website</a></li>
+<li class="" style=""><a class="text-slate-500 hover:text-[#004b87] transition-all" href="#" style="">Sitemap</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-primary mb-6" style="">Contact Us</h4>
+<div class="font-['Inter'] text-sm text-slate-500 space-y-4">
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="location_on" style="">location_on</span>
+<span class="" style="">Chumphon Khet Udomsakdi Hospital, Chumphon, Thailand</span>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="phone" style="">phone</span>
+<span class="" style="">+66 77 000 000</span>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-200 py-8 px-12 max-w-screen-2xl mx-auto">
+<p class="font-['Inter'] text-sm text-slate-500 text-center" style="">
+                © 2024 Chumphon Khet Udomsakdi Hospital Medical Education Center. All Rights Reserved.
+            </p>
+</div>
 </footer>
-
-<script>
-// 🌐 Language System (จำค่า)
-let lang = localStorage.getItem("lang") || "th";
-
-function setLanguage(){
-    document.querySelectorAll("[data-th]").forEach(el=>{
-        el.innerText = el.getAttribute("data-" + lang);
-    });
-
-    document.querySelector(".lang-btn").innerText =
-        lang === "th" ? "EN" : "TH";
-}
-
-function toggleLanguage(){
-    lang = lang === "th" ? "en" : "th";
-    localStorage.setItem("lang", lang);
-    setLanguage();
-}
-
-// โหลดหน้า
-setLanguage();
-</script>
-
-</body>
-</html>
+</body></html>
