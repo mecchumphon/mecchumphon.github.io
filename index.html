@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html lang="en"><head>
+<html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About Us | Academic Clinical Excellence</title>
+<title>Academic Clinical Excellence - Chumphon Khet Udomsakdi Hospital</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Sarabun:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -76,9 +76,8 @@
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .text-editorial-balance {
-            text-wrap: balance;
-        }
+        .tonal-shift { transition: background-color 0.3s ease; }
+        .glass-nav { backdrop-filter: blur(12px); }
     </style>
 <style>
     body {
@@ -86,271 +85,255 @@
     }
   </style>
   </head>
-<body class="bg-surface text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
 <!-- TopAppBar -->
-<header class="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md shadow-sm shadow-blue-900/5 fixed top-0 w-full z-50 sticky">
-<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm shadow-blue-900/5">
+<nav class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
 <div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-blue-900 dark:text-blue-200" data-icon="medical_services">medical_services</span>
-<span class="text-xl font-extrabold tracking-tighter text-blue-950 dark:text-white">Academic Clinical Excellence</span>
+<span class="material-symbols-outlined text-blue-900 text-3xl" data-icon="medical_services">medical_services</span>
+<span class="text-xl font-extrabold tracking-tighter text-blue-950 font-headline">Academic Clinical Excellence</span>
 </div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-700 transition-colors" href="#">Home</a>
-<a class="text-blue-900 dark:text-blue-400 font-bold border-b-2 border-blue-900 transition-colors" href="#">About</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-700 transition-colors" href="#">Curriculum</a>
-<a class="text-slate-600 dark:text-slate-400 font-medium hover:text-blue-700 transition-colors" href="#">Programs</a>
-<button onclick="toggleLanguage()" id="langToggle"
-class="flex items-center ml-4 px-4 py-1 rounded-full border border-outline/10 bg-surface-container-low text-xs font-bold text-blue-900 hover:bg-primary hover:text-white transition">
-    EN
-</button>
-</nav>
-<button class="md:hidden text-on-surface">
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-900 font-bold border-b-2 border-blue-900 transition-colors" href="#">Home</a>
+<a class="text-slate-600 font-medium hover:text-blue-700 transition-colors" href="#">About</a>
+<a class="text-slate-600 font-medium hover:text-blue-700 transition-colors" href="#">Curriculum</a>
+<a class="text-slate-600 font-medium hover:text-blue-700 transition-colors" href="#">Student Portal</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex bg-slate-100 rounded-full p-1 text-[10px] font-bold">
+<button class="px-3 py-1 bg-white shadow-sm rounded-full text-blue-900">EN</button>
+<button class="px-3 py-1 text-slate-500">TH</button>
+</div>
+<button class="md:hidden text-blue-900">
 <span class="material-symbols-outlined" data-icon="menu">menu</span>
 </button>
 </div>
-</header>
-<main class="pt-20 pb-24">
-<!-- Hero Section -->
-<section class="relative h-[530px] flex items-center overflow-hidden bg-primary overflow-hidden">
-<div class="absolute inset-0 opacity-40">
-<img class="w-full h-full object-cover" data-alt="Modern clinical research laboratory with high-tech equipment in a clean blue-toned professional medical environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATd10fYmQ9gWEuueTnq1sPXKGD0rdku5LMiD-luFufHoz_Nj8TdQDbyUnu4W0Eubcz31j9xVLpLINb3DBtzOm4_KiqaDS6MX3EnoGG4oYqRWqGky9mIF7BDC-fT7bLCU0gLI0qRBExszgWwXEtyfRhSAL2XS3OCIkaqtF9sa9xTiAzcTg5rN7kfKXsUF_EB8DrVfx7IjVq4hgAWI85ZXPv3LZqTx5lxfKY-6iZWOSNjTsZCm8abc73d_OTDWk6BSOPyurONT7JGP4"/>
-</div>
-<div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent"></div>
-<div class="relative container mx-auto px-6 z-10">
-<div class="max-w-3xl">
-<span class="inline-block px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-black tracking-[0.2em] uppercase rounded-sm mb-6">Established 1984</span>
-<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-tight mb-6 tracking-tighter">Cultivating the Future of Medical Leadership.</h1>
-<p class="text-lg md:text-xl text-primary-fixed/80 max-w-xl font-light leading-relaxed">Defining global standards in academic medicine through rigorous clinical research and compassionate care excellence.</p>
-</div>
-</div>
-</section>
-<!-- Navigation Anchors (Editorial Style) -->
-<nav class="sticky top-16 bg-surface-container-lowest/90 backdrop-blur-md z-40 py-6 mb-12 shadow-sm border-b border-outline-variant/10">
-<div class="max-w-7xl mx-auto px-6 flex overflow-x-auto no-scrollbar gap-12 whitespace-nowrap justify-center">
-<a class="group flex flex-col items-center" href="#history">
-<span class="text-[10px] font-bold tracking-widest text-outline uppercase mb-1 group-hover:text-primary transition-colors">01</span>
-<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary">History (ประวัติความเป็นมา)</span>
-</a>
-<a class="group flex flex-col items-center" href="#vision">
-<span class="text-[10px] font-bold tracking-widest text-outline uppercase mb-1 group-hover:text-primary transition-colors">02</span>
-<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary">Vision &amp; Mission (วิสัยทัศน์ พันธกิจ)</span>
-</a>
-<a class="group flex flex-col items-center" href="#structure">
-<span class="text-[10px] font-bold tracking-widest text-outline uppercase mb-1 group-hover:text-primary transition-colors">03</span>
-<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary">Structure (โครงสร้างหน่วยงาน)</span>
-</a>
-<a class="group flex flex-col items-center" href="#team">
-<span class="text-[10px] font-bold tracking-widest text-outline uppercase mb-1 group-hover:text-primary transition-colors">04</span>
-<span class="text-sm font-semibold text-on-surface-variant group-hover:text-primary">Team (คณะทำงาน)</span>
-</a>
-</div>
 </nav>
-<!-- Section: History -->
-<section class="py-24 px-6 max-w-7xl mx-auto" id="history">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<div class="space-y-8">
-<div class="w-16 h-1 bg-secondary rounded-full"></div>
-<h2 class="text-4xl font-headline font-bold text-primary">History<br/><span class="text-2xl font-normal opacity-60">ประวัติความเป็นมา</span></h2>
-<div class="prose prose-slate max-w-none text-on-surface-variant leading-relaxed font-body space-y-6">
-<p>Academic Clinical Excellence was founded with the vision of bridging the gap between theoretical medical research and real-world clinical application. Over four decades, we have evolved from a small research unit into an internationally recognized hub for medical education and clinical innovation.</p>
-<p>ศูนย์ความเป็นเลิศทางคลินิกวิชาการ ก่อตั้งขึ้นด้วยวิสัยทัศน์ที่ต้องการเชื่อมโยงระหว่างการวิจัยทางการแพทย์ในเชิงทฤษฎีและการประยุกต์ใช้ทางคลินิกในโลกแห่งความเป็นจริง ตลอดสี่ทศวรรษที่ผ่านมา เราได้พัฒนาจากหน่วยวิจัยขนาดเล็กสู่ศูนย์กลางการศึกษาระดับนานาชาติ</p>
+</header>
+<main class="pt-20">
+<!-- Hero Section: Editorial Layering -->
+<section class="relative h-[751px] overflow-hidden bg-primary-container">
+<div class="absolute inset-0 z-0 flex">
+<div class="w-full md:w-2/3 relative h-full">
+<img alt="Medical Education" class="w-full h-full object-cover" data-alt="Modern medical simulation lab with diverse group of students in white coats observing a surgical procedure on a high-fidelity mannequin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDarmuGqjsPUMX6m2iSaYREu79HxiaHOp5WIHWTC8w400-_TrFRtUrKrZv0IGHVZgzIsNjAhlXRihhFyXrsUo8o0_c8gekhjr24r_jEMauuh64S8c-fqEW7_2fSfyj9OYYJCfaR_CcoCADRkcnO7IV0iJkUwXm_jAPRDrvm54UEPsfEFNgH0QMFT2wMCeK-IKLLJ715TItxeuzpL-kTrp6XlK07PcEoNlhiOa1JG7xhUh7TJR_58nzY6zYiq9b76PXDkp7ta3r_mJM"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container via-primary-container/40 to-transparent"></div>
+</div>
+<div class="hidden md:block w-1/3 bg-primary-container"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto h-full flex flex-col justify-center px-6">
+<div class="max-w-2xl space-y-6">
+<span class="inline-block px-4 py-1.5 bg-secondary-container/20 text-secondary-fixed text-xs font-bold tracking-[0.2em] uppercase rounded-full backdrop-blur-sm">
+                        Chumphon Khet Udomsakdi Hospital
+                    </span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white leading-[1.1] tracking-tight">
+                        Pioneering <br/> <span class="text-primary-container bg-white px-2">Medical</span> Future.
+                    </h1>
+<div class="space-y-4">
+<p class="text-xl text-blue-100/90 font-medium max-w-lg leading-relaxed">
+                            ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์
+                        </p>
+<p class="text-sm text-blue-200/70 max-w-md italic">
+                            Empowering the next generation of physicians through clinical excellence, innovative research, and compassionate care.
+                        </p>
+</div>
+<div class="flex gap-4 pt-4">
+<button class="px-8 py-4 bg-white text-primary font-bold rounded-xl shadow-xl shadow-blue-950/20 hover:scale-[1.02] transition-transform">
+                            Explore Curriculum
+                        </button>
+<button class="px-8 py-4 border border-white/20 text-white font-bold rounded-xl backdrop-blur-md hover:bg-white/10 transition-colors">
+                            Virtual Tour
+                        </button>
 </div>
 </div>
-<div class="relative">
-<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl">
-<img class="w-full h-full object-cover" data-alt="Black and white archival photo of medical students examining an X-ray with an elder professor in an old lecture hall" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWWIQ8xd9rdjvgiBRIyFKbJMtseOofkJjbt5AVsxenHRsUSmtzbzbj5BGu8rGYA0GSOL4a_kL43HPqOtgPEuLWYBOaJQur-0ferJG5Sdpvo7f4voFh6vAVgS80S5HUkoj9sEbO3h3y2Iwvwl13puuQqJGN0ncAOIWc8MLIM4pFcsYInfp28I0X9_AKw56xKd3UWcrXpQ6VWd1b0K7q8f2XQDomvios7d4wo3iwBCoYSGTRrrwKk3SiSGM43mfiUZvvR_eGvwtEXwk"/>
 </div>
-<div class="absolute -bottom-10 -left-10 bg-white p-8 rounded-xl shadow-xl max-w-xs hidden md:block border border-outline-variant/10">
-<p class="text-primary font-headline font-bold text-3xl mb-2">40+</p>
-<p class="text-sm text-on-surface-variant">Years of Academic Innovation and Medical breakthroughs.</p>
+<!-- Slideshow Nav -->
+<div class="absolute bottom-12 right-12 z-20 hidden md:flex gap-4">
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white/10">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Bento Grid: News & Announcements -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="space-y-2">
+<span class="text-secondary font-bold tracking-widest text-xs uppercase">Journal &amp; Updates</span>
+<h2 class="text-4xl font-headline font-bold text-primary">Academic Pulse</h2>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 group" href="#">
+                    View all announcements 
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Large Featured Card -->
+<div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-xl bg-surface-container-low p-8 flex flex-col justify-end min-h-[500px]">
+<img alt="Conference" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A brightly lit medical conference hall with physicians engaging in a lively panel discussion about clinical ethics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ9XXbEChrvYjYhtowk7XObaWrdgRSJxpdeN25lL4xRONVVJAblag7jN4kMcK7puklRepCE7Z1o8LTdikacO88F8vB6sck3JIEU2YP_bRBxL9eD1aErDoHpJvOSKWHvW5KUU7aqlkR20_BrG2K2Ebm1Kf8BBBx5TNcvb4mlFiyexrBG01W6dafP9GKYKDkOI1wsOhUTzG9eLN8lmmIsGo1rKRKgvVGWLnC1wTh8NO-JV_ik42yhY2RmuiVVumGI3H3b-9TwsnWnsk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-80"></div>
+<div class="relative z-10 space-y-4">
+<span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded text-[10px] text-white font-bold uppercase tracking-widest">Upcoming Seminar</span>
+<h3 class="text-3xl font-bold text-white leading-tight">National Medical Education Conference 2024</h3>
+<p class="text-blue-100 text-sm line-clamp-2">Join us in exploring the boundaries of medical education and integrated clinical practices with experts from across the region.</p>
+<div class="flex items-center gap-4 pt-2 text-white/60 text-xs">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span> Oct 12, 2024</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Main Auditorium</span>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-2 group bg-surface-container-lowest rounded-xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-xl hover:shadow-blue-900/5 transition-all">
+<div class="w-full md:w-1/3 h-40 rounded-lg overflow-hidden shrink-0">
+<img alt="Student Success" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Close up of a medical student in white coat with a stethoscope around their neck, smiling confidently in a modern hospital hallway" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKVBkD3wjAU6J6RykubVFy0EInOs1vmbVoyqoHxA1ps6Se9s1iI3E22FnobKBs17gfxwxwX-ZZvrw4GUiwzwY_PGs2aG1Rws3QkfR0CivusHBe4jbOnWZPnKxhmRQ5yZSbmy8goe7d05IlGQ8T7T8dNztEB4sTveQl9Xhx7cl3VeW1tXvUAzzBVNJG-usOD_GDPCJhdjEH3YjRlanTAPQilLZg6XcsAONdEYZiuGybJ2zU3ydjwJO-ttXq_1W6ui1W667g2Q7pcCI"/>
+</div>
+<div class="space-y-3">
+<span class="text-secondary font-bold text-[10px] uppercase">Achievement</span>
+<h3 class="text-xl font-bold text-primary group-hover:text-blue-700 transition-colors leading-snug">NL1 Excellence Awards: Top 10% Performance Recognition</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Congratulations to our students for achieving exceptional scores in the National Licensing Examination Step 1.</p>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-2 group bg-surface-container-lowest rounded-xl p-6 flex flex-col md:flex-row gap-6 hover:shadow-xl hover:shadow-blue-900/5 transition-all">
+<div class="w-full md:w-1/3 h-40 rounded-lg overflow-hidden shrink-0">
+<img alt="Research" class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="Scientific researcher working with blue liquids in a laboratory setting with soft focus medical equipment in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfbjEQ8b-YzO1M7DLl6557hOecKZ5lfjeUoNogcXEJez-PnVbzTc3uwUW_l3ziAibONw7kjPLlOTfJ-_E_ehZ6cDjId1MP5BsOv1qs2Xx2_UhoSvWaANxt5nubjqYgbCMaOYAdId-dLskR0Cz_ZkrQc6I8FIgEW5KtuLSj1K0NrFiJdMfHSl2K3wJLO4eEihGRqaWfW8QXhxo4r0dFj4aqirRZK_Vi0V-XCyXagT6Wl3AOw-AGNpubi4AuUsUdJ8jgy7k35oH_vvA"/>
+</div>
+<div class="space-y-3">
+<span class="text-secondary font-bold text-[10px] uppercase">Research</span>
+<h3 class="text-xl font-bold text-primary group-hover:text-blue-700 transition-colors leading-snug">Call for Abstracts: Annual Clinical Case Competition</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">Submission portal is now open for students and residents to present their unique clinical findings.</p>
 </div>
 </div>
 </div>
 </section>
-<!-- Section: Vision & Mission (Asymmetric Layout) -->
-<section class="py-24 bg-surface-container-low relative overflow-hidden" id="vision">
-<div class="max-w-7xl mx-auto px-6 relative z-10">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-<div class="md:col-span-5 bg-primary p-12 rounded-2xl text-white shadow-2xl self-start">
-<span class="material-symbols-outlined text-secondary-fixed mb-6 scale-150" data-icon="visibility">visibility</span>
-<h3 class="text-3xl font-headline font-bold mb-4">Vision<br/>วิสัยทัศน์</h3>
-<p class="text-lg font-light leading-relaxed text-primary-fixed/80 italic">"To be the premier global authority in academic clinical development and sustainable medical leadership."</p>
-</div>
-<div class="md:col-start-7 md:col-span-6 space-y-12 py-12">
-<div>
-<h3 class="text-3xl font-headline font-bold text-primary mb-6 flex items-center gap-4">
-<span class="material-symbols-outlined text-secondary" data-icon="task_alt">task_alt</span>
-                                Mission (พันธกิจ)
-                            </h3>
-<ul class="space-y-8">
-<li class="flex gap-4">
-<span class="text-secondary font-bold font-headline text-xl">01.</span>
-<div>
-<h4 class="font-bold text-primary">Academic Excellence</h4>
-<p class="text-on-surface-variant">Developing world-class curriculum for advanced clinical training.</p>
-</div>
-</li>
-<li class="flex gap-4">
-<span class="text-secondary font-bold font-headline text-xl">02.</span>
-<div>
-<h4 class="font-bold text-primary">Clinical Innovation</h4>
-<p class="text-on-surface-variant">Pioneering new medical technologies and patient care protocols.</p>
-</div>
-</li>
-<li class="flex gap-4">
-<span class="text-secondary font-bold font-headline text-xl">03.</span>
-<div>
-<h4 class="font-bold text-primary">Global Collaboration</h4>
-<p class="text-on-surface-variant">Fostering partnerships with international medical institutions.</p>
-</div>
-</li>
+<!-- Quick Links: Minimalist Aesthetic -->
+<section class="bg-surface-container-low py-24 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="space-y-4">
+<h4 class="text-primary font-bold uppercase tracking-widest text-xs">Resources</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-600 hover:text-primary flex items-center gap-2 font-medium" href="#">Student Management System <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span></a></li>
+<li><a class="text-slate-600 hover:text-primary flex items-center gap-2 font-medium" href="#">Digital Medical Library <span class="material-symbols-outlined text-sm" data-icon="auto_stories">auto_stories</span></a></li>
+<li><a class="text-slate-600 hover:text-primary flex items-center gap-2 font-medium" href="#">E-Learning Portal <span class="material-symbols-outlined text-sm" data-icon="laptop_mac">laptop_mac</span></a></li>
 </ul>
 </div>
+<div class="space-y-4">
+<h4 class="text-primary font-bold uppercase tracking-widest text-xs">Clinical Depts</h4>
+<ul class="space-y-3">
+<li><a class="text-slate-600 hover:text-primary font-medium" href="#">Internal Medicine</a></li>
+<li><a class="text-slate-600 hover:text-primary font-medium" href="#">Surgery &amp; Trauma</a></li>
+<li><a class="text-slate-600 hover:text-primary font-medium" href="#">Pediatrics &amp; OBGYN</a></li>
+</ul>
 </div>
-</div>
-</div>
-</section>
-<!-- Section: Organizational Structure -->
-<section class="py-24 px-6 max-w-7xl mx-auto" id="structure">
-<div class="text-center mb-20">
-<span class="text-secondary font-bold tracking-widest text-[10px] uppercase">Hierarchy</span>
-<h2 class="text-4xl font-headline font-bold text-primary mt-2">Organizational Structure<br/><span class="text-2xl font-normal opacity-60">โครงสร้างหน่วยงาน</span></h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Dept Card 1 -->
-<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10 group">
-<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-<span class="material-symbols-outlined" data-icon="hub">hub</span>
-</div>
-<h4 class="font-bold text-xl text-primary mb-3">Academic Affairs</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Manages all educational programs, certifications, and faculty development initiatives.</p>
-</div>
-<!-- Dept Card 2 -->
-<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10 group">
-<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
-</div>
-<h4 class="font-bold text-xl text-primary mb-3">Research &amp; Innovation</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Oversees clinical trials, laboratory research, and medical patent development.</p>
-</div>
-<!-- Dept Card 3 -->
-<div class="bg-surface-container-lowest p-10 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border border-outline-variant/10 group">
-<div class="w-12 h-12 rounded-lg bg-primary/5 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
-<span class="material-symbols-outlined" data-icon="corporate_fare">corporate_fare</span>
-</div>
-<h4 class="font-bold text-xl text-primary mb-3">Clinical Operations</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Coordinates hospital integration and patient-facing clinical excellence standards.</p>
-</div>
-</div>
-</section>
-<!-- Section: Working Team -->
-<section class="py-24 bg-surface" id="team">
-<div class="max-w-7xl mx-auto px-6">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="md:col-span-2 p-8 bg-white rounded-2xl shadow-sm flex flex-col justify-between">
 <div>
-<h2 class="text-4xl font-headline font-bold text-primary">Working Team<br/><span class="text-2xl font-normal opacity-60">คณะทำงาน</span></h2>
+<h3 class="text-2xl font-bold text-primary mb-2">Student Support Hub</h3>
+<p class="text-on-surface-variant text-sm">Access personalized counseling, academic mentoring, and financial aid services directly from our student affairs division.</p>
 </div>
-<p class="max-w-md text-on-surface-variant text-sm font-light">Our leadership team consists of distinguished clinicians, researchers, and academic strategists committed to the highest standards of excellence.</p>
-</div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Team Member 1 -->
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
-<div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover" data-alt="Professional portrait of a female medical doctor in a white lab coat with a friendly, confident expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGvn8nEpyLUvr1WEpR5ZkcRfE0G1iWAE0KtKiSLPhXNclBKckT8RpALu1kYW1W6XdQvphm0MwImD-on3HT-LjE8lse7e3v0fjKi3joZ0yg6Wc1JfqO8FJL4-0IldDgMXIWL8Avp4bIIyLuvLMDWpxLEroyPKii8C4hXbmh7aKbLmjVkZidEvodmtwEM3qdJyJuFoGFIPElc3cJPj0vkNgirGoaSevAPQ111Pt_hDb4lMe_29aiua-IlSJtohA-EiqeSXkr4bFy-xE"/>
-</div>
-<div class="p-6">
-<h5 class="font-bold text-primary text-lg">Dr. Elena Sterling</h5>
-<p class="text-[10px] font-bold tracking-widest text-secondary uppercase mb-2">Director of Academic Medicine</p>
-<p class="text-xs text-on-surface-variant leading-relaxed">Expert in advanced immunology and academic development.</p>
+<div class="mt-6 flex items-center justify-between">
+<span class="text-xs font-bold text-secondary flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 
+                                Helpdesk Online
+                            </span>
+<button class="px-6 py-2 bg-primary text-white text-xs font-bold rounded-lg uppercase tracking-wider">Get Support</button>
 </div>
 </div>
-<!-- Team Member 2 -->
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
-<div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover" data-alt="Headshot of a male clinical researcher in professional attire with a clean modern laboratory background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1whhYuh8TZ5q7_4E5XwukLs4glFyI3tRQ7Zu53v_2zQdyIU10HQVvem8UCiiMVzIknEP_Hy4Zcw2O5-rvgOim8ix3EO08Co17MGS4EvSuUSd0bRY-_uK-Te_CpHaHd3FSwiTrwrqnwvn0qoET-U3hmoX9wg779jb353TtZkuybVk9w3yTPoWx01by5OnfyZraDPVih0SLdFcdYySRLF6P6ga4N75U5mGvv2R1CrWdtfRR-AT2D2aT7eYuq8ktC18QzQcT6GEmbhk"/>
-</div>
-<div class="p-6">
-<h5 class="font-bold text-primary text-lg">Dr. Marcus Vance</h5>
-<p class="text-[10px] font-bold tracking-widest text-secondary uppercase mb-2">Chief Innovation Officer</p>
-<p class="text-xs text-on-surface-variant leading-relaxed">Leading the clinical trials division with 20+ years of experience.</p>
 </div>
 </div>
-<!-- Team Member 3 -->
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
-<div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover" data-alt="Portrait of a female professor in professional medical academic setting with books in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjqAUIjqnMYYvKwxJkYzmKYQR2_uMCsx-iOefyctwaiN5E7Wi1wMgBEW17Rgg6zuCu73SJ23bJ8Q0S7w7zPFUD34M2CuYkihybU542wHoSnfMpuKanBzjcCWqs5nuqEzBY84jH8ViFQjZjtHG27uUO-OJVA6gqAnDh1pZQ7W8AWuVTcta5AhHCUC8SakJOgrC0txLciFR97OmaRwEtNsWJQTIxJpOyWb_9LTrPqtPfvESSsrYkLr6fvlBi5UcDr5sh59ULZZd3VeA"/>
-</div>
-<div class="p-6">
-<h5 class="font-bold text-primary text-lg">Prof. Sarah Chen</h5>
-<p class="text-[10px] font-bold tracking-widest text-secondary uppercase mb-2">Head of Curriculum Design</p>
-<p class="text-xs text-on-surface-variant leading-relaxed">Specialist in pediatric clinical education and pedagogy.</p>
+</section>
+<!-- Gallery Section -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+<div class="text-center md:text-left">
+<h2 class="text-4xl font-headline font-bold text-primary">Student Life</h2>
+<p class="text-on-surface-variant mt-2 font-medium">Capturing moments of growth, collaboration, and clinical mastery.</p>
 </div>
 </div>
-<!-- Team Member 4 -->
-<div class="bg-surface-container-low rounded-xl overflow-hidden group">
-<div class="aspect-[3/4] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover" data-alt="Professional portrait of a male doctor in surgical scrubs looking confident and professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcS3t0kPEaPjR4mFG5qZxGkAcBXOa-rA6DKgwACr2fJDNjKlfs8mSGjfgkoVgiRJhB5O2ugT9ovucl05f2g7Tevr2ZVjTH1vDg-DPrahnrNs_ad82o41XPjlHJNtswnyOV-dZEjhk4NKDZ8bVm-CzaIFWZyFN24dHxkgJ85GDv4ql7gUIzcHfD2t9WImmHfETGx3Zq0s8JIItySVmcbIWvIhnSc2-CF0xKMro8ZM7tUH56zjjASpTUUg2Ck3wLEktMzZUFDs8Fgeg"/>
+<div class="columns-1 md:columns-3 gap-6 space-y-6">
+<div class="relative overflow-hidden rounded-xl bg-slate-200 group">
+<img alt="Activity" class="w-full grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Black and white shot of medical residents intently discussing a chart over coffee in a bright modern cafeteria" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsMcrdvQ_iTfUdH_lNWAppVkeCHLoFNt3x44d52USj1yV-qv1MZ0u6axCtRRfsiqfQvwfHuklLIPnlrqxebtcYVLfr1yxz34TFFGZfWeJViQyIJwD1UBTKb_sQey33OFJmyBCCL63GTJWetnzUPVgufEk7tp3gE7MPNBktw_C30JeEJlLtVVlNExtZg7d5vi1Lupbq9pVRSBG1L2MjneeByrZHykxyf5XykX9DkcyQCaVMGm3V0IzpowCSzEXYx-FU4JfoZRqLFME"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
-<div class="p-6">
-<h5 class="font-bold text-primary text-lg">Dr. James Okoro</h5>
-<p class="text-[10px] font-bold tracking-widest text-secondary uppercase mb-2">Lead Clinical Coordinator</p>
-<p class="text-xs text-on-surface-variant leading-relaxed">Bridging laboratory research with hospital operations.</p>
+<div class="relative overflow-hidden rounded-xl bg-slate-200 group">
+<img alt="Activity" class="w-full grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Vibrant close up of medical instruments like a stethoscope and pen light on a crisp blue surgical cloth" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5FlzTAGAu446ocJwinzDCi5gr8JM7G1o39fGDiTewZvjVUr_fNRyZWQRnNvj9kL12SBWM3LQVQSVxhTYGYifjTXR1oHmVVub5QCe6MTsjDeCVZ9i_Hnr8LKWUlVkz-1-TUUYkPwBuATKJc5esJ42GA4--B_vw402kmJnJPwfhnPTJfM9Q7EhKwMJY1QAkh800n_meZkAvQmIOX3b1E-WD8Vkmtk1pMwtyfUNFmdqVpF8R9pTI2AHUHg1OjQOuGHc6x3vbTmffpFQ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
+<div class="relative overflow-hidden rounded-xl bg-slate-200 group">
+<img alt="Activity" class="w-full grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Low angle wide shot of students walking through a grand, sunlit modern hospital atrium with glass ceilings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0K2vqsNNvO4O3dYgo1flXITLwSo9EGnKMC-OH0sGtzLveVycEBlajVyBXs5hRfWjqRKnllbSRYYkb3Lhm4CxNhPl8jcHIjtL_vjj9pqQFHmH9gulzxfTVk3v4jJ8-pSfShncx4JlvtMsPjmLmLTbS2Iy5qPVWjRIaAyorhnoOis8epsaSuSAzzX8R78EHvgoY4aE6AB0QakaHUEja_F64cCOC5fFj0zzYKk2IVGsI9b1tW7v92y_UbI9050aK18RnR5-kBaPn3Pk"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
+<div class="relative overflow-hidden rounded-xl bg-slate-200 group">
+<img alt="Activity" class="w-full grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Close up view of clinical microscope with slides, symbolizing advanced medical research at the center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKqLQbwq7i4vufGR2to3b9P1K4RKj-e93x1gHux4siwZCKebL8P1rffOl1T-HIgplJOyimVMBVQgh_tltr9cmbcyX_VKB-TPSiTFX3_LwTBWlu36__AglAe_kunSS4SvbKVF8Xj5DO2I_U7x4FSOeWqIRMeDRbZc6njs2OXPgFmKAi49p-5_oELEQXlJCWwGARTCOEMdB6l-j-r0hUdqwCMuPkQj3kpqj7P5N3R6EqU_jbFqzN_S1jKcg0kSC_bx6zjOYJ7ab2tvA"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-slate-100 dark:bg-slate-900 w-full py-12 px-6">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto border-t border-slate-200 dark:border-slate-800 pt-12">
+<footer class="bg-slate-100 py-16 px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto border-t border-slate-200 pt-12">
 <div>
-<div class="font-bold text-blue-900 mb-4 text-xl">Academic Clinical Excellence</div>
-<p class="font-manrope text-xs text-slate-500 leading-relaxed max-w-xs">Elevating medical education and clinical standards through innovation, research, and collaborative leadership since 1984.</p>
+<h4 class="font-bold text-blue-900 mb-6 text-lg uppercase tracking-tighter">Academic Clinical Excellence</h4>
+<p class="text-xs text-slate-500 leading-relaxed max-w-xs mb-8">
+                    ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br/>
+                    Chumphon Khet Udomsakdi Hospital Medical Education Center.
+                </p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white" href="#"><span class="material-symbols-outlined text-sm" data-icon="public">public</span></a>
+<a class="w-8 h-8 rounded-full bg-blue-900 flex items-center justify-center text-white" href="#"><span class="material-symbols-outlined text-sm" data-icon="mail">mail</span></a>
 </div>
+</div>
+<div class="grid grid-cols-2 gap-8">
 <div>
-<h5 class="font-headline font-bold text-primary mb-4">Quick Links</h5>
-<ul class="space-y-2">
-<li><a class="font-manrope text-xs text-slate-500 hover:text-blue-700 transition-colors" href="#">Privacy Policy</a></li>
-<li><a class="font-manrope text-xs text-slate-500 hover:text-blue-700 transition-colors" href="#">Terms of Service</a></li>
-<li><a class="font-manrope text-xs text-slate-500 hover:text-blue-700 transition-colors" href="#">Institutional Access</a></li>
+<h5 class="font-bold text-blue-950 text-xs mb-4 uppercase tracking-widest">Institution</h5>
+<ul class="space-y-3 text-xs text-slate-500">
+<li><a class="hover:text-blue-900 transition-colors" href="#">About MEC</a></li>
+<li><a class="hover:text-blue-900 transition-colors" href="#">Our History</a></li>
+<li><a class="hover:text-blue-900 transition-colors" href="#">Hospital Affiliations</a></li>
 </ul>
 </div>
 <div>
-<h5 class="font-headline font-bold text-primary mb-4">Contact Information</h5>
-<div class="font-manrope text-xs text-slate-500 space-y-2">
-<p>123 Medical Plaza, Academic Way</p>
-<p>Bangkok, Thailand 10330</p>
-<p class="pt-2 font-bold text-blue-900">contact@clinical-excellence.edu</p>
+<h5 class="font-bold text-blue-950 text-xs mb-4 uppercase tracking-widest">Connect</h5>
+<ul class="space-y-3 text-xs text-slate-500">
+<li><a class="hover:text-blue-900 transition-colors" href="#">Staff Directory</a></li>
+<li><a class="hover:text-blue-900 transition-colors" href="#">Contact Support</a></li>
+<li><a class="hover:text-blue-900 transition-colors" href="#">Map &amp; Location</a></li>
+</ul>
 </div>
 </div>
+<div class="flex flex-col justify-between items-end">
+<div class="text-right">
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] mb-2">Legal &amp; Ethics</p>
+<div class="flex gap-4 text-xs font-manrope text-slate-500">
+<a class="underline text-blue-900" href="#">Privacy Policy</a>
+<a class="hover:text-blue-700" href="#">Terms of Service</a>
 </div>
-<div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-<p class="font-manrope text-xs text-slate-500">© 2024 Academic Clinical Excellence. All Rights Reserved.</p>
-<div class="flex gap-6">
-<span class="material-symbols-outlined text-slate-400" data-icon="facebook">social_leaderboard</span>
-<span class="material-symbols-outlined text-slate-400" data-icon="linkedin">link</span>
-<span class="material-symbols-outlined text-slate-400" data-icon="school">school</span>
+</div>
+<p class="text-[10px] font-manrope text-slate-400 mt-12">
+                    © 2024 Academic Clinical Excellence. All Rights Reserved.
+                </p>
 </div>
 </div>
 </footer>
 <!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center pt-2 pb-safe px-4 bg-white/90 dark:bg-slate-950/90 backdrop-blur-lg shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-50">
-<a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="#">
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-lg flex justify-around items-center pt-2 pb-safe px-4 shadow-[0_-4px_12px_rgba(0,0,0,0.05)] z-50">
+<a class="flex flex-col items-center text-blue-900" href="#">
 <span class="material-symbols-outlined" data-icon="home">home</span>
 <span class="text-[10px] font-manrope font-semibold tracking-widest uppercase">Home</span>
 </a>
-<a class="flex flex-col items-center text-blue-900 dark:text-blue-400" href="#">
-<span class="material-symbols-outlined" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
-<span class="text-[10px] font-manrope font-semibold tracking-widest uppercase">About</span>
-</a>
-<a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="#">
+<a class="flex flex-col items-center text-slate-400" href="#">
 <span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
-<span class="text-[10px] font-manrope font-semibold tracking-widest uppercase">Curriculum</span>
+<span class="text-[10px] font-manrope font-semibold tracking-widest uppercase">Curric</span>
 </a>
-<a class="flex flex-col items-center text-slate-400 dark:text-slate-500" href="#">
+<a class="flex flex-col items-center text-slate-400" href="#">
 <span class="material-symbols-outlined" data-icon="login">login</span>
 <span class="text-[10px] font-manrope font-semibold tracking-widest uppercase">Portal</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+<span class="text-[10px] font-manrope font-semibold tracking-widest uppercase">Contact</span>
 </a>
 </nav>
 </body></html>
