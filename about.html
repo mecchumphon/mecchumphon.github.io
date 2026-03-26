@@ -1,263 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEC CHUMPHON</title>
+<title>เกี่ยวกับหน่วยงาน | MEC Chumphon</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{font-family:'Inter',sans-serif}
-
-/* NAV SCROLL */
-.nav-scrolled{
-  background:rgba(255,255,255,0.95)!important;
-  backdrop-filter:blur(14px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:.3s;
+body {
+    font-family: 'Sarabun', sans-serif;
+    margin: 0;
+    background: #f4f8fb;
+    color: #1e293b;
 }
 
-/* HERO ZOOM */
-.hero-zoom img{
-  animation:zoom 25s ease-in-out infinite alternate;
-}
-@keyframes zoom{
-  from{transform:scale(1)}
-  to{transform:scale(1.12)}
+header {
+    background: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* HERO FADE */
-.fadeUp{
-  opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp 1.2s ease forwards;
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #1e3a8a;
+    font-weight: 600;
 }
-@keyframes fadeUp{
-  to{opacity:1; transform:translateY(0)}
+
+.container {
+    padding: 60px 5%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+h1 {
+    color: #1e3a8a;
+}
+
+.section-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #1e3a8a;
+    margin-top: 40px;
+}
+
+.lang-btn {
+    margin-left: 20px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid #1e3a8a;
+    background: white;
+    color: #1e3a8a;
+    font-weight: 600;
+    cursor: pointer;
 }
 </style>
 </head>
 
-<body class="bg-slate-50 text-slate-800">
+<body>
 
-<!-- ================= NAVBAR ================= -->
-<header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-md transition-all">
-<div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
-
-<div class="text-2xl font-black text-blue-900">
-MEC CHUMPHON
-</div>
-
-<nav class="hidden md:flex items-center space-x-8 font-semibold">
-<a href="#" data-i18n="nav_home">Home</a>
-<a href="#about" data-i18n="nav_about">About</a>
-<a href="#" data-i18n="nav_curriculum">Curriculum</a>
-<a href="#" data-i18n="nav_contact">Contact</a>
-
-<div class="flex gap-2 ml-6">
-<button onclick="setLanguage('th')" id="btn-th"
-class="px-3 py-1 text-sm rounded-lg font-semibold hover:bg-blue-100 transition">TH</button>
-<button onclick="setLanguage('en')" id="btn-en"
-class="px-3 py-1 text-sm rounded-lg font-semibold hover:bg-blue-100 transition">EN</button>
-</div>
+<header>
+<div><strong>MEC Chumphon</strong></div>
+<nav>
+    <a href="index.html" data-th="หน้าแรก" data-en="Home">หน้าแรก</a>
+    <a href="about.html" data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">เกี่ยวกับหน่วยงาน</a>
+    <button class="lang-btn" onclick="toggleLanguage()">EN</button>
 </nav>
-</div>
 </header>
 
-<!-- ================= HERO ================= -->
-<section class="relative min-h-screen flex items-center overflow-hidden bg-blue-900 pt-32">
+<div class="container">
 
-<div class="absolute inset-0 opacity-40 hero-zoom">
-<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=2070"
-class="w-full h-full object-cover">
-<div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-900/80 to-transparent"></div>
-</div>
-
-<div class="relative z-10 max-w-7xl mx-auto px-8">
-<h1 data-i18n="hero_title"
-class="fadeUp text-5xl md:text-7xl font-extrabold text-white mb-8">
-Medical Education Center
+<h1 data-th="เกี่ยวกับหน่วยงาน" data-en="About MEC">
+เกี่ยวกับหน่วยงาน
 </h1>
 
-<p data-i18n="hero_desc"
-class="fadeUp text-xl text-white/90 max-w-2xl mb-10">
-Excellence in clinical education and professional medical training.
-</p>
-</div>
-</section>
+<div class="section-card"
+data-th='
+<h3>ประวัติและความเป็นมา</h3>
+<p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+<p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
 
-<!-- ================= STATS ================= -->
-<section class="py-24 bg-white">
-<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<p><strong>ประวัติความเป็นมา</strong></p>
+<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท เพื่อแก้ไขปัญหาการขาดแคลนแพทย์ในพื้นที่ชนบท</p>
+<p>กระทรวงสาธารณสุขจึงจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิกภายในโรงพยาบาลศูนย์ เพื่อจัดการเรียนการสอนในชั้นคลินิก</p>
+<p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์ได้รับอนุมัติเมื่อวันที่ 15 มิถุนายน พ.ศ. 2547 ให้เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
+<p>ร่วมผลิตแพทย์กับคณะแพทยศาสตร์ มหาวิทยาลัยธรรมศาสตร์</p>
+<p>รับนักศึกษาจากจังหวัดสุราษฎร์ธานี ชุมพร และระนอง</p>
+'
 
-<div>
-<div class="text-5xl font-black text-blue-900 counter" data-target="150">0</div>
-<div data-i18n="stat1" class="text-sm mt-2 uppercase">Annual Graduates</div>
-</div>
+data-en='
+<h3>History and Background</h3>
+<p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
+<p><strong>Location:</strong> 222 Phisit Phayaban Road, Tha Taphao, Mueang, Chumphon 86000, Thailand</p>
 
-<div>
-<div class="text-5xl font-black text-green-600 counter" data-target="24">0</div>
-<div data-i18n="stat2" class="text-sm mt-2 uppercase">Simulation Center</div>
-</div>
-
-<div>
-<div class="text-5xl font-black text-blue-900 counter" data-target="12">0</div>
-<div data-i18n="stat3" class="text-sm mt-2 uppercase">Specialty Clinics</div>
-</div>
-
-<div>
-<div class="text-5xl font-black text-green-600 counter" data-target="98">0</div>
-<div data-i18n="stat4" class="text-sm mt-2 uppercase">Board Success Rate</div>
+<p><strong>Historical Background</strong></p>
+<p>In 2004, the Cabinet approved collaboration between the Ministry of Public Health and the Ministry of University Affairs to produce rural doctors.</p>
+<p>Clinical Medical Education Centers were established in regional hospitals to provide clinical training.</p>
+<p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
+<p>The center collaborates with the Faculty of Medicine, Thammasat University.</p>
+<p>Students are selected from Surat Thani, Chumphon, and Ranong provinces.</p>
+'>
 </div>
 
-</div>
-</section>
-
-<!-- ================= ABOUT US ================= -->
-<section id="about" class="py-24 bg-slate-50">
-
-<div class="max-w-7xl mx-auto px-8">
-
-<div class="text-center mb-16">
-<h2 data-i18n="about_title"
-class="text-4xl md:text-5xl font-extrabold text-blue-900 mb-6">
-About MEC Chumphon
-</h2>
-
-<p data-i18n="about_subtitle"
-class="max-w-3xl mx-auto text-lg text-slate-600">
-Medical Education Center at Chumphon Hospital develops professional physicians for Thailand.
-</p>
-</div>
-
-<div class="grid md:grid-cols-2 gap-16 items-center">
-
-<div>
-<img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=2070"
-class="rounded-3xl shadow-2xl w-full">
-</div>
-
-<div>
-<h3 data-i18n="about_mission_title"
-class="text-2xl font-bold text-blue-900 mb-4">Our Mission</h3>
-
-<p data-i18n="about_mission_desc"
-class="text-slate-600 mb-8">
-To provide high-quality clinical education and foster professionalism.
+<h2 data-th="วิสัยทัศน์" data-en="Vision">วิสัยทัศน์</h2>
+<p data-th="เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค"
+   data-en="To be a leading regional clinical medical education center.">
+เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิกชั้นนำระดับภูมิภาค
 </p>
 
-<h3 data-i18n="about_vision_title"
-class="text-2xl font-bold text-blue-900 mb-4">Our Vision</h3>
+<h2 data-th="พันธกิจ" data-en="Mission">พันธกิจ</h2>
+<ul>
+<li data-th="พัฒนาการเรียนการสอนที่มีคุณภาพ"
+    data-en="Provide high-quality clinical education">
+พัฒนาการเรียนการสอนที่มีคุณภาพ
+</li>
+<li data-th="ส่งเสริมงานวิจัยและวิชาการ"
+    data-en="Promote research and academic excellence">
+ส่งเสริมงานวิจัยและวิชาการ
+</li>
+<li data-th="บริการวิชาการแก่สังคม"
+    data-en="Provide academic services to society">
+บริการวิชาการแก่สังคม
+</li>
+</ul>
 
-<p data-i18n="about_vision_desc"
-class="text-slate-600">
-To be a leading regional medical education center.
-</p>
 </div>
 
-</div>
-</div>
-</section>
-
-<!-- ================= SCRIPT ================= -->
 <script>
+let currentLang = "th";
 
-/* NAV SCROLL */
-window.addEventListener("scroll",()=>{
-const nav=document.querySelector("header");
-window.scrollY>40?nav.classList.add("nav-scrolled"):nav.classList.remove("nav-scrolled");
-});
+function toggleLanguage() {
+    const elements = document.querySelectorAll("[data-th]");
+    const button = document.querySelector(".lang-btn");
 
-/* COUNTER */
-const counters=document.querySelectorAll(".counter");
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-const el=entry.target;
-const target=+el.dataset.target;
-let count=0;
-const speed=200;
-const update=()=>{
-const inc=target/speed;
-if(count<target){
-count+=inc;
-el.innerText=Math.ceil(count);
-requestAnimationFrame(update);
-}else{
-el.innerText=target;
-if(target===150) el.innerText+="+";
-if(target===98) el.innerText+="%";
+    if (currentLang === "th") {
+        elements.forEach(el => {
+            if (el.getAttribute("data-en")) {
+                el.innerHTML = el.getAttribute("data-en");
+            }
+        });
+        document.documentElement.lang = "en";
+        button.innerText = "TH";
+        currentLang = "en";
+    } else {
+        elements.forEach(el => {
+            if (el.getAttribute("data-th")) {
+                el.innerHTML = el.getAttribute("data-th");
+            }
+        });
+        document.documentElement.lang = "th";
+        button.innerText = "EN";
+        currentLang = "th";
+    }
 }
-};
-update();
-observer.unobserve(el);
-}
-});
-},{threshold:.6});
-counters.forEach(c=>observer.observe(c));
-
-/* LANGUAGE SYSTEM */
-const translations={
-en:{
-nav_home:"Home",
-nav_about:"About",
-nav_curriculum:"Curriculum",
-nav_contact:"Contact",
-hero_title:"Medical Education Center",
-hero_desc:"Excellence in clinical education and professional medical training.",
-stat1:"Annual Graduates",
-stat2:"Simulation Center",
-stat3:"Specialty Clinics",
-stat4:"Board Success Rate",
-about_title:"About MEC Chumphon",
-about_subtitle:"Medical Education Center at Chumphon Hospital develops professional physicians for Thailand.",
-about_mission_title:"Our Mission",
-about_mission_desc:"To provide high-quality clinical education and foster professionalism.",
-about_vision_title:"Our Vision",
-about_vision_desc:"To be a leading regional medical education center."
-},
-th:{
-nav_home:"หน้าแรก",
-nav_about:"เกี่ยวกับเรา",
-nav_curriculum:"หลักสูตร",
-nav_contact:"ติดต่อเรา",
-hero_title:"ศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
-hero_desc:"ความเป็นเลิศด้านการศึกษาและการฝึกอบรมทางการแพทย์",
-stat1:"บัณฑิตต่อปี",
-stat2:"ศูนย์ฝึกจำลอง",
-stat3:"คลินิกเฉพาะทาง",
-stat4:"อัตราสอบผ่าน",
-about_title:"เกี่ยวกับเรา",
-about_subtitle:"ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์",
-about_mission_title:"พันธกิจ",
-about_mission_desc:"จัดการศึกษาทางคลินิกที่มีคุณภาพและปลูกฝังความเป็นมืออาชีพ",
-about_vision_title:"วิสัยทัศน์",
-about_vision_desc:"เป็นศูนย์การศึกษาแพทยศาสตร์ระดับภูมิภาค"
-}
-};
-
-function setLanguage(lang){
-localStorage.setItem("language",lang);
-document.documentElement.lang=lang;
-document.body.style.fontFamily=(lang==="th")?"Sarabun, sans-serif":"Inter, sans-serif";
-
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-const key=el.getAttribute("data-i18n");
-if(translations[lang][key]){
-el.innerText=translations[lang][key];
-}
-});
-
-document.getElementById("btn-th").classList.remove("bg-blue-900","text-white");
-document.getElementById("btn-en").classList.remove("bg-blue-900","text-white");
-document.getElementById("btn-"+lang).classList.add("bg-blue-900","text-white");
-}
-
-document.addEventListener("DOMContentLoaded",()=>{
-setLanguage(localStorage.getItem("language")||"en");
-});
 </script>
 
 </body>
