@@ -1,42 +1,41 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MEC CHUMPHON</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 body{font-family:'Inter',sans-serif}
 
-/* ================= HERO PREMIUM ZOOM ================= */
+/* HERO ZOOM */
 .hero-zoom img{
-  animation: heroZoom 28s ease-in-out infinite alternate;
-  will-change: transform;
+  animation:heroZoom 25s ease-in-out infinite alternate;
 }
 @keyframes heroZoom{
   from{transform:scale(1)}
   to{transform:scale(1.12)}
 }
 
-/* ================= HERO FADE ================= */
+/* HERO FADE */
 .hero-fade{
   opacity:0;
   transform:translateY(40px);
-  animation: heroFade 1.2s ease forwards;
+  animation:fadeUp 1.2s ease forwards;
 }
-@keyframes heroFade{
+@keyframes fadeUp{
   to{opacity:1; transform:translateY(0)}
 }
 
-/* ================= NAV SCROLL ================= */
+/* NAV SCROLL */
 .nav-scrolled{
   background:rgba(255,255,255,0.95)!important;
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(14px);
   box-shadow:0 10px 30px rgba(0,0,0,0.08);
-  transition:all .3s ease;
+  transition:.3s;
 }
 </style>
 </head>
@@ -46,17 +45,26 @@ body{font-family:'Inter',sans-serif}
 <!-- ================= NAVBAR ================= -->
 <header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-md transition-all">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
+
 <div class="text-2xl font-black text-blue-900 tracking-tight">
 MEC CHUMPHON
 </div>
 
-<nav class="hidden md:flex space-x-8 font-semibold">
-<a href="#" class="text-blue-900 border-b-2 border-blue-900 pb-1">Home</a>
-<a href="#" class="hover:text-blue-900">About</a>
-<a href="#" class="hover:text-blue-900">Curriculum</a>
-<a href="#" class="hover:text-blue-900">Student Portal</a>
-<a href="#" class="hover:text-blue-900">Software Center</a>
-<a href="#" class="hover:text-blue-900">Contact</a>
+<nav class="hidden md:flex items-center space-x-8 font-semibold">
+<a href="#" data-i18n="nav_home" class="text-blue-900 border-b-2 border-blue-900 pb-1">Home</a>
+<a href="#" data-i18n="nav_about" class="hover:text-blue-900">About</a>
+<a href="#" data-i18n="nav_curriculum" class="hover:text-blue-900">Curriculum</a>
+<a href="#" data-i18n="nav_portal" class="hover:text-blue-900">Student Portal</a>
+<a href="#" data-i18n="nav_software" class="hover:text-blue-900">Software Center</a>
+<a href="#" data-i18n="nav_contact" class="hover:text-blue-900">Contact</a>
+
+<div class="flex gap-2 ml-6">
+<button onclick="setLanguage('th')" id="btn-th"
+class="px-3 py-1 text-sm rounded-lg font-semibold hover:bg-blue-100 transition">TH</button>
+<button onclick="setLanguage('en')" id="btn-en"
+class="px-3 py-1 text-sm rounded-lg font-semibold hover:bg-blue-100 transition">EN</button>
+</div>
+
 </nav>
 </div>
 </header>
@@ -65,25 +73,30 @@ MEC CHUMPHON
 <section class="relative min-h-screen flex items-center overflow-hidden bg-blue-900 pt-32">
 
 <div class="absolute inset-0 opacity-40 hero-zoom">
-<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=2070" class="w-full h-full object-cover">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=2070"
+class="w-full h-full object-cover">
 <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-900/80 to-transparent"></div>
 </div>
 
 <div class="relative z-10 max-w-7xl mx-auto px-8">
-<h1 class="hero-fade text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
+<h1 data-i18n="hero_title"
+class="hero-fade text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8">
 Medical Education Center
 </h1>
 
-<p class="hero-fade text-xl text-white/90 max-w-2xl mb-10">
-Chumphon Khet Udomsakdi Hospital is committed to excellence in
-clinical education, research, and professional medical training.
+<p data-i18n="hero_desc"
+class="hero-fade text-xl text-white/90 max-w-2xl mb-10">
+Chumphon Khet Udomsakdi Hospital is committed to excellence in clinical education, research, and professional medical training.
 </p>
 
 <div class="flex gap-4">
-<button class="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:scale-95 transition">
+<button data-i18n="btn_curriculum"
+class="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:scale-95 transition">
 Explore Curriculum
 </button>
-<button class="px-8 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition">
+
+<button data-i18n="btn_portal"
+class="px-8 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition">
 Student Portal
 </button>
 </div>
@@ -97,22 +110,22 @@ Student Portal
 
 <div>
 <div class="text-5xl font-black text-blue-900 counter" data-target="150">0</div>
-<div class="text-sm mt-2 uppercase tracking-wider">Annual Graduates</div>
+<div data-i18n="stat1" class="text-sm mt-2 uppercase tracking-wider">Annual Graduates</div>
 </div>
 
 <div>
 <div class="text-5xl font-black text-green-600 counter" data-target="24">0</div>
-<div class="text-sm mt-2 uppercase tracking-wider">24/7 Simulation</div>
+<div data-i18n="stat2" class="text-sm mt-2 uppercase tracking-wider">24/7 Simulation</div>
 </div>
 
 <div>
 <div class="text-5xl font-black text-blue-900 counter" data-target="12">0</div>
-<div class="text-sm mt-2 uppercase tracking-wider">Specialty Clinics</div>
+<div data-i18n="stat3" class="text-sm mt-2 uppercase tracking-wider">Specialty Clinics</div>
 </div>
 
 <div>
 <div class="text-5xl font-black text-green-600 counter" data-target="98">0</div>
-<div class="text-sm mt-2 uppercase tracking-wider">Board Success Rate</div>
+<div data-i18n="stat4" class="text-sm mt-2 uppercase tracking-wider">Board Success Rate</div>
 </div>
 
 </div>
@@ -121,7 +134,7 @@ Student Portal
 <!-- ================= SCRIPT ================= -->
 <script>
 
-/* ===== NAV SCROLL EFFECT ===== */
+/* NAV SCROLL */
 window.addEventListener("scroll",()=>{
   const nav=document.querySelector("header");
   if(window.scrollY>40){
@@ -131,38 +144,90 @@ window.addEventListener("scroll",()=>{
   }
 });
 
-/* ===== COUNTER ANIMATION ===== */
+/* COUNTER */
 const counters=document.querySelectorAll(".counter");
-const speed=200;
-
 const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      const counter=entry.target;
-      const target=+counter.getAttribute("data-target");
-      let count=0;
-
-      const update=()=>{
-        const inc=target/speed;
-        if(count<target){
-          count+=inc;
-          counter.innerText=Math.ceil(count);
-          requestAnimationFrame(update);
-        }else{
-          counter.innerText=target;
-          if(target===150) counter.innerText+="+";
-          if(target===98) counter.innerText+="%";
-        }
-      };
-
-      update();
-      observer.unobserve(counter);
-    }
-  });
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const counter=entry.target;
+const target=+counter.dataset.target;
+let count=0;
+const speed=200;
+const update=()=>{
+const inc=target/speed;
+if(count<target){
+count+=inc;
+counter.innerText=Math.ceil(count);
+requestAnimationFrame(update);
+}else{
+counter.innerText=target;
+if(target===150) counter.innerText+="+";
+if(target===98) counter.innerText+="%";
+}
+};
+update();
+observer.unobserve(counter);
+}
+});
 },{threshold:0.6});
+counters.forEach(c=>observer.observe(c));
 
-counters.forEach(counter=>{
-  observer.observe(counter);
+/* LANGUAGE SYSTEM */
+const translations={
+en:{
+nav_home:"Home",
+nav_about:"About",
+nav_curriculum:"Curriculum",
+nav_portal:"Student Portal",
+nav_software:"Software Center",
+nav_contact:"Contact",
+hero_title:"Medical Education Center",
+hero_desc:"Chumphon Khet Udomsakdi Hospital is committed to excellence in clinical education, research, and professional medical training.",
+btn_curriculum:"Explore Curriculum",
+btn_portal:"Student Portal",
+stat1:"Annual Graduates",
+stat2:"24/7 Simulation",
+stat3:"Specialty Clinics",
+stat4:"Board Success Rate"
+},
+th:{
+nav_home:"หน้าแรก",
+nav_about:"เกี่ยวกับเรา",
+nav_curriculum:"หลักสูตร",
+nav_portal:"ระบบนักศึกษา",
+nav_software:"ศูนย์ซอฟต์แวร์",
+nav_contact:"ติดต่อเรา",
+hero_title:"ศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
+hero_desc:"โรงพยาบาลชุมพรเขตรอุดมศักดิ์ มุ่งมั่นสู่ความเป็นเลิศด้านการศึกษา วิจัย และการพัฒนาบุคลากรทางการแพทย์",
+btn_curriculum:"ดูหลักสูตร",
+btn_portal:"เข้าสู่ระบบนักศึกษา",
+stat1:"บัณฑิตต่อปี",
+stat2:"ศูนย์ฝึกจำลอง 24 ชม.",
+stat3:"คลินิกเฉพาะทาง",
+stat4:"อัตราสอบผ่าน"
+}
+};
+
+function setLanguage(lang){
+localStorage.setItem("language",lang);
+document.documentElement.lang=lang;
+document.body.style.fontFamily=(lang==="th")?"Sarabun, sans-serif":"Inter, sans-serif";
+
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+const key=el.getAttribute("data-i18n");
+if(translations[lang][key]){
+el.innerText=translations[lang][key];
+}
+});
+
+document.getElementById("btn-th").classList.remove("bg-blue-900","text-white");
+document.getElementById("btn-en").classList.remove("bg-blue-900","text-white");
+document.getElementById("btn-"+lang).classList.add("bg-blue-900","text-white");
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+const saved=localStorage.getItem("language")||"en";
+setLanguage(saved);
 });
 
 </script>
