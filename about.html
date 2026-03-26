@@ -11,17 +11,22 @@
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
-    background: #f4f8fb;
+    background: linear-gradient(to bottom, #f4f8fb, #eaf2fb);
     color: #1e293b;
 }
 
+/* ================= HEADER ================= */
 header {
-    background: white;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
     padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 nav a {
@@ -29,12 +34,40 @@ nav a {
     text-decoration: none;
     color: #1e3a8a;
     font-weight: 600;
+    position: relative;
+    transition: .3s;
 }
 
+nav a:hover {
+    color: #2563eb;
+}
+
+nav a::after {
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-4px;
+    width:0;
+    height:2px;
+    background:#2563eb;
+    transition:.3s;
+}
+
+nav a:hover::after {
+    width:100%;
+}
+
+/* ================= CONTAINER ================= */
 .container {
     padding: 60px 5%;
     max-width: 1000px;
     margin: auto;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(10px);}
+    to {opacity:1; transform: translateY(0);}
 }
 
 h1 {
@@ -44,9 +77,15 @@ h1 {
 .section-card {
     background: white;
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     margin-bottom: 40px;
+    transition:.3s;
+}
+
+.section-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
 h2 {
@@ -54,15 +93,33 @@ h2 {
     margin-top: 40px;
 }
 
+/* ================= LANGUAGE BUTTON ================= */
 .lang-btn {
     margin-left: 20px;
-    padding: 6px 12px;
+    padding: 6px 14px;
     border-radius: 20px;
     border: 1px solid #1e3a8a;
     background: white;
     color: #1e3a8a;
     font-weight: 600;
     cursor: pointer;
+    transition: .3s;
+}
+
+.lang-btn.active {
+    background:#1e3a8a;
+    color:white;
+}
+
+.lang-btn:hover {
+    background:#2563eb;
+    color:white;
+}
+
+/* Smooth language fade */
+.fade-transition {
+    opacity:0;
+    transition: opacity .2s ease;
 }
 </style>
 </head>
@@ -89,26 +146,24 @@ data-th='
 <h3>ประวัติและความเป็นมา</h3>
 <p><strong>ชื่อหน่วยงาน :</strong> ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
 <p><strong>ที่ตั้ง :</strong> 222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา อำเภอเมือง จังหวัดชุมพร 86000</p>
-
 <p><strong>ประวัติความเป็นมา</strong></p>
 <p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท เพื่อแก้ไขปัญหาการขาดแคลนแพทย์ในพื้นที่ชนบท</p>
+<p>เมื่อ พ.ศ. 2547 คณะรัฐมนตรีมีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย จัดทำโครงการผลิตแพทย์เพื่อชาวชนบท</p>
 <p>กระทรวงสาธารณสุขจึงจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิกภายในโรงพยาบาลศูนย์ เพื่อจัดการเรียนการสอนในชั้นคลินิก</p>
+<p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์ได้รับอนุมัติเมื่อวันที่ 15 มิถุนายน พ.ศ. 2547</p>
 <p>โรงพยาบาลชุมพรเขตรอุดมศักดิ์ได้รับอนุมัติเมื่อวันที่ 15 มิถุนายน พ.ศ. 2547 ให้เป็นศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
 <p>ร่วมผลิตแพทย์กับคณะแพทยศาสตร์ มหาวิทยาลัยธรรมศาสตร์</p>
 <p>รับนักศึกษาจากจังหวัดสุราษฎร์ธานี ชุมพร และระนอง</p>
 '
-
 data-en='
 <h3>History and Background</h3>
 <p><strong>Institution Name:</strong> Clinical Medical Education Center, Chumphon Khet Udomsak Hospital</p>
-<p><strong>Location:</strong> 222 Phisit Phayaban Road, Tha Taphao, Mueang, Chumphon 86000, Thailand</p>
-
+<p><strong>Location:</strong> 222 Phisit Phayaban Road, Chumphon 86000, Thailand</p>
 <p><strong>Historical Background</strong></p>
 <p>In 2004, the Cabinet approved collaboration between the Ministry of Public Health and the Ministry of University Affairs to produce rural doctors.</p>
+<p>In 2004, the Cabinet approved collaboration to produce rural doctors.</p>
 <p>Clinical Medical Education Centers were established in regional hospitals to provide clinical training.</p>
-<p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
-<p>The center collaborates with the Faculty of Medicine, Thammasat University.</p>
-<p>Students are selected from Surat Thani, Chumphon, and Ranong provinces.</p>
+ <p>Chumphon Khet Udomsak Hospital was officially approved on June 15, 2004.</p>
 '>
 </div>
 
@@ -137,32 +192,35 @@ data-en='
 </div>
 
 <script>
-let currentLang = "th";
+let currentLang = localStorage.getItem("lang") || "th";
+const button = document.querySelector(".lang-btn");
 
-function toggleLanguage() {
+function applyLanguage(lang){
     const elements = document.querySelectorAll("[data-th]");
-    const button = document.querySelector(".lang-btn");
+    document.body.classList.add("fade-transition");
 
-    if (currentLang === "th") {
+    setTimeout(()=>{
         elements.forEach(el => {
-            if (el.getAttribute("data-en")) {
-                el.innerHTML = el.getAttribute("data-en");
-            }
+            el.innerHTML = el.getAttribute("data-"+lang);
         });
-        document.documentElement.lang = "en";
-        button.innerText = "TH";
-        currentLang = "en";
-    } else {
-        elements.forEach(el => {
-            if (el.getAttribute("data-th")) {
-                el.innerHTML = el.getAttribute("data-th");
-            }
-        });
-        document.documentElement.lang = "th";
-        button.innerText = "EN";
-        currentLang = "th";
-    }
+
+        document.documentElement.lang = lang;
+        button.innerText = lang === "th" ? "EN" : "TH";
+        button.classList.add("active");
+        localStorage.setItem("lang", lang);
+        currentLang = lang;
+
+        document.body.classList.remove("fade-transition");
+    },150);
 }
+
+function toggleLanguage(){
+    applyLanguage(currentLang === "th" ? "en" : "th");
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+    applyLanguage(currentLang);
+});
 </script>
 
 </body>
