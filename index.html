@@ -1,225 +1,169 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en" class="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEC Chumphon</title>
+<title>MEC CHUMPHON</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
+body{font-family:'Inter',sans-serif}
 
-/* ===== Reset ===== */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Sarabun',sans-serif;
+/* ================= HERO PREMIUM ZOOM ================= */
+.hero-zoom img{
+  animation: heroZoom 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes heroZoom{
+  from{transform:scale(1)}
+  to{transform:scale(1.12)}
 }
 
-body{
-    overflow-x:hidden;
+/* ================= HERO FADE ================= */
+.hero-fade{
+  opacity:0;
+  transform:translateY(40px);
+  animation: heroFade 1.2s ease forwards;
+}
+@keyframes heroFade{
+  to{opacity:1; transform:translateY(0)}
 }
 
-/* ===== NAVBAR ===== */
-.navbar{
-    position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 50px;
-    background:rgba(255,255,255,0.95);
-    backdrop-filter: blur(10px);
-    box-shadow:0 2px 10px rgba(0,0,0,0.05);
-    z-index:1000;
+/* ================= NAV SCROLL ================= */
+.nav-scrolled{
+  background:rgba(255,255,255,0.95)!important;
+  backdrop-filter:blur(16px);
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:all .3s ease;
 }
-
-.logo{
-    font-size:20px;
-    font-weight:700;
-    color:#1e3a8a;
-}
-
-.nav-links{
-    display:flex;
-    gap:25px;
-    list-style:none;
-}
-
-.nav-links a{
-    text-decoration:none;
-    color:#333;
-    font-weight:500;
-    transition:0.3s;
-}
-
-.nav-links a:hover{
-    color:#1e40af;
-}
-
-.lang-btn{
-    padding:6px 14px;
-    border:1px solid #1e3a8a;
-    border-radius:20px;
-    cursor:pointer;
-    background:white;
-    font-weight:600;
-}
-
-/* ===== HERO ===== */
-.hero{
-    position:relative;
-    height:100vh;
-    background:url('images/MEC-banner1.png') no-repeat center center/cover;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:white;
-    overflow:hidden;
-}
-
-/* Zoom Animation */
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:inherit;
-    background-size:cover;
-    background-position:center;
-    animation:zoomEffect 25s ease-in-out infinite alternate;
-    z-index:0;
-}
-
-.hero-overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to right, rgba(15,35,70,0.85), rgba(30,64,124,0.65));
-    z-index:1;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:800px;
-    animation:fadeUp 1.2s ease forwards;
-    opacity:0;
-}
-
-.hero-content h1{
-    font-size:3.5rem;
-    margin-bottom:20px;
-}
-
-.hero-content p{
-    font-size:1.2rem;
-    margin-bottom:30px;
-    line-height:1.6;
-}
-
-.hero-btn{
-    display:inline-block;
-    padding:12px 30px;
-    background:white;
-    color:#1e3a8a;
-    border-radius:40px;
-    font-weight:600;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.hero-btn:hover{
-    background:#1e40af;
-    color:white;
-    transform:translateY(-4px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.2);
-}
-
-/* ===== Animations ===== */
-@keyframes zoomEffect{
-    from{transform:scale(1);}
-    to{transform:scale(1.1);}
-}
-
-@keyframes fadeUp{
-    from{opacity:0; transform:translateY(40px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-/* ===== Responsive ===== */
-@media(max-width:768px){
-    .navbar{
-        padding:15px 20px;
-    }
-    .nav-links{
-        display:none;
-    }
-    .hero-content h1{
-        font-size:2.2rem;
-    }
-}
-
 </style>
 </head>
 
-<body>
+<body class="bg-slate-50 text-slate-800">
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-    <div class="logo">MEC CHUMPHON</div>
+<!-- ================= NAVBAR ================= -->
+<header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-md transition-all">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-8 py-4">
+<div class="text-2xl font-black text-blue-900 tracking-tight">
+MEC CHUMPHON
+</div>
 
-    <ul class="nav-links">
-        <li><a href="#" data-th="หน้าแรก" data-en="Home">หน้าแรก</a></li>
-        <li><a href="#" data-th="เกี่ยวกับหน่วยงาน" data-en="About">เกี่ยวกับหน่วยงาน</a></li>
-        <li><a href="#" data-th="นักศึกษา" data-en="Students">นักศึกษา</a></li>
-        <li><a href="#" data-th="ศูนย์รวมโปรแกรม" data-en="Programs">ศูนย์รวมโปรแกรม</a></li>
-        <li><a href="#" data-th="ติดต่อ" data-en="Contact">ติดต่อ</a></li>
-    </ul>
-
-    <button class="lang-btn" onclick="toggleLang()">EN</button>
+<nav class="hidden md:flex space-x-8 font-semibold">
+<a href="#" class="text-blue-900 border-b-2 border-blue-900 pb-1">Home</a>
+<a href="#" class="hover:text-blue-900">About</a>
+<a href="#" class="hover:text-blue-900">Curriculum</a>
+<a href="#" class="hover:text-blue-900">Student Portal</a>
+<a href="#" class="hover:text-blue-900">Software Center</a>
+<a href="#" class="hover:text-blue-900">Contact</a>
 </nav>
+</div>
+</header>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-    <div class="hero-overlay"></div>
+<!-- ================= HERO ================= -->
+<section class="relative min-h-screen flex items-center overflow-hidden bg-blue-900 pt-32">
 
-    <div class="hero-content">
-        <h1 data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก"
-            data-en="Medical Education Center">
-            ศูนย์แพทยศาสตรศึกษาชั้นคลินิก
-        </h1>
+<div class="absolute inset-0 opacity-40 hero-zoom">
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=2070" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-900/80 to-transparent"></div>
+</div>
 
-        <p data-th="มุ่งมั่นพัฒนาความเป็นเลิศด้านการศึกษาทางคลินิกและการฝึกอบรมแพทย์"
-           data-en="Committed to excellence in clinical education and medical training.">
-            มุ่งมั่นพัฒนาความเป็นเลิศด้านการศึกษาทางคลินิกและการฝึกอบรมแพทย์
-        </p>
+<div class="relative z-10 max-w-7xl mx-auto px-8">
+<h1 class="hero-fade text-5xl md:text-7xl font-extrabold text-white leading-tight tracking-tight mb-8">
+Medical Education Center
+</h1>
 
-        <a href="#" class="hero-btn"
-           data-th="ดูหลักสูตร"
-           data-en="Explore Curriculum">
-           ดูหลักสูตร
-        </a>
-    </div>
+<p class="hero-fade text-xl text-white/90 max-w-2xl mb-10">
+Chumphon Khet Udomsakdi Hospital is committed to excellence in
+clinical education, research, and professional medical training.
+</p>
+
+<div class="flex gap-4">
+<button class="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl shadow-lg hover:scale-95 transition">
+Explore Curriculum
+</button>
+<button class="px-8 py-4 bg-blue-700 text-white font-bold rounded-xl hover:bg-blue-800 transition">
+Student Portal
+</button>
+</div>
+</div>
+
 </section>
 
+<!-- ================= STATS ================= -->
+<section class="py-24 bg-white">
+<div class="max-w-7xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+<div>
+<div class="text-5xl font-black text-blue-900 counter" data-target="150">0</div>
+<div class="text-sm mt-2 uppercase tracking-wider">Annual Graduates</div>
+</div>
+
+<div>
+<div class="text-5xl font-black text-green-600 counter" data-target="24">0</div>
+<div class="text-sm mt-2 uppercase tracking-wider">24/7 Simulation</div>
+</div>
+
+<div>
+<div class="text-5xl font-black text-blue-900 counter" data-target="12">0</div>
+<div class="text-sm mt-2 uppercase tracking-wider">Specialty Clinics</div>
+</div>
+
+<div>
+<div class="text-5xl font-black text-green-600 counter" data-target="98">0</div>
+<div class="text-sm mt-2 uppercase tracking-wider">Board Success Rate</div>
+</div>
+
+</div>
+</section>
+
+<!-- ================= SCRIPT ================= -->
 <script>
 
-/* ===== Language Toggle ===== */
-let currentLang = "th";
+/* ===== NAV SCROLL EFFECT ===== */
+window.addEventListener("scroll",()=>{
+  const nav=document.querySelector("header");
+  if(window.scrollY>40){
+    nav.classList.add("nav-scrolled");
+  }else{
+    nav.classList.remove("nav-scrolled");
+  }
+});
 
-function toggleLang(){
-    currentLang = currentLang === "th" ? "en" : "th";
-    document.documentElement.lang = currentLang;
+/* ===== COUNTER ANIMATION ===== */
+const counters=document.querySelectorAll(".counter");
+const speed=200;
 
-    document.querySelectorAll("[data-th]").forEach(el=>{
-        el.textContent = el.getAttribute("data-"+currentLang);
-    });
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const counter=entry.target;
+      const target=+counter.getAttribute("data-target");
+      let count=0;
 
-    document.querySelector(".lang-btn").textContent =
-        currentLang === "th" ? "EN" : "TH";
-}
+      const update=()=>{
+        const inc=target/speed;
+        if(count<target){
+          count+=inc;
+          counter.innerText=Math.ceil(count);
+          requestAnimationFrame(update);
+        }else{
+          counter.innerText=target;
+          if(target===150) counter.innerText+="+";
+          if(target===98) counter.innerText+="%";
+        }
+      };
+
+      update();
+      observer.unobserve(counter);
+    }
+  });
+},{threshold:0.6});
+
+counters.forEach(counter=>{
+  observer.observe(counter);
+});
 
 </script>
 
