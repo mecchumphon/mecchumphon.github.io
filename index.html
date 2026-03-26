@@ -3,82 +3,225 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEC CHUMPHON</title>
+<title>MEC Chumphon</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-  font-family: 'Prompt', sans-serif;
+
+/* ===== Reset ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Sarabun',sans-serif;
 }
 
-/* HERO BACKGROUND FIX (ไม่ให้หัวขาด) */
-.hero-bg {
-  background-image: url('YOUR-HERO-IMAGE.jpg'); /* ใส่ path รูปจริง */
-  background-size: cover;
-  background-position: center top; /* สำคัญมาก */
-  background-repeat: no-repeat;
+body{
+    overflow-x:hidden;
 }
+
+/* ===== NAVBAR ===== */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    z-index:1000;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:700;
+    color:#1e3a8a;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#1e40af;
+}
+
+.lang-btn{
+    padding:6px 14px;
+    border:1px solid #1e3a8a;
+    border-radius:20px;
+    cursor:pointer;
+    background:white;
+    font-weight:600;
+}
+
+/* ===== HERO ===== */
+.hero{
+    position:relative;
+    height:100vh;
+    background:url('images/MEC-banner1.png') no-repeat center center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* Zoom Animation */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:inherit;
+    background-size:cover;
+    background-position:center;
+    animation:zoomEffect 25s ease-in-out infinite alternate;
+    z-index:0;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to right, rgba(15,35,70,0.85), rgba(30,64,124,0.65));
+    z-index:1;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:800px;
+    animation:fadeUp 1.2s ease forwards;
+    opacity:0;
+}
+
+.hero-content h1{
+    font-size:3.5rem;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+    line-height:1.6;
+}
+
+.hero-btn{
+    display:inline-block;
+    padding:12px 30px;
+    background:white;
+    color:#1e3a8a;
+    border-radius:40px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.hero-btn:hover{
+    background:#1e40af;
+    color:white;
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== Animations ===== */
+@keyframes zoomEffect{
+    from{transform:scale(1);}
+    to{transform:scale(1.1);}
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+    .navbar{
+        padding:15px 20px;
+    }
+    .nav-links{
+        display:none;
+    }
+    .hero-content h1{
+        font-size:2.2rem;
+    }
+}
+
 </style>
-
 </head>
-<body class="bg-gray-100">
 
-<!-- ================= NAVBAR ================= -->
-<header class="sticky top-0 z-50 bg-white shadow-md">
-  <div class="flex justify-between items-center px-6 py-4">
+<body>
 
-    <!-- Logo -->
-    <div class="flex items-center gap-3">
-      <img src="YOUR-LOGO.png" class="h-12 w-12 object-contain">
-      <span class="text-xl font-bold text-blue-900">
-        MEC CHUMPHON
-      </span>
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+    <div class="logo">MEC CHUMPHON</div>
+
+    <ul class="nav-links">
+        <li><a href="#" data-th="หน้าแรก" data-en="Home">หน้าแรก</a></li>
+        <li><a href="#" data-th="เกี่ยวกับหน่วยงาน" data-en="About">เกี่ยวกับหน่วยงาน</a></li>
+        <li><a href="#" data-th="นักศึกษา" data-en="Students">นักศึกษา</a></li>
+        <li><a href="#" data-th="ศูนย์รวมโปรแกรม" data-en="Programs">ศูนย์รวมโปรแกรม</a></li>
+        <li><a href="#" data-th="ติดต่อ" data-en="Contact">ติดต่อ</a></li>
+    </ul>
+
+    <button class="lang-btn" onclick="toggleLang()">EN</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1 data-th="ศูนย์แพทยศาสตรศึกษาชั้นคลินิก"
+            data-en="Medical Education Center">
+            ศูนย์แพทยศาสตรศึกษาชั้นคลินิก
+        </h1>
+
+        <p data-th="มุ่งมั่นพัฒนาความเป็นเลิศด้านการศึกษาทางคลินิกและการฝึกอบรมแพทย์"
+           data-en="Committed to excellence in clinical education and medical training.">
+            มุ่งมั่นพัฒนาความเป็นเลิศด้านการศึกษาทางคลินิกและการฝึกอบรมแพทย์
+        </p>
+
+        <a href="#" class="hero-btn"
+           data-th="ดูหลักสูตร"
+           data-en="Explore Curriculum">
+           ดูหลักสูตร
+        </a>
     </div>
-
-    <!-- Menu -->
-    <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
-      <a href="#" class="hover:text-blue-900 transition">หน้าแรก</a>
-      <a href="#" class="hover:text-blue-900 transition">เกี่ยวกับหน่วยงาน</a>
-      <a href="#" class="hover:text-blue-900 transition">นักศึกษา</a>
-      <a href="#" class="hover:text-blue-900 transition">ศูนย์รวมโปรแกรม</a>
-      <a href="#" class="hover:text-blue-900 transition">ติดต่อ</a>
-    </nav>
-
-    <!-- Language -->
-    <button class="border px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-900 hover:text-white transition">
-      TH
-    </button>
-
-  </div>
-</header>
-
-
-<!-- ================= HERO ================= -->
-<section class="hero-bg relative h-[65vh] min-h-[500px] flex items-center">
-
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-blue-900/60"></div>
-
-  <!-- Content -->
-  <div class="relative z-10 max-w-6xl mx-auto px-6 text-white">
-    <h1 class="text-5xl md:text-6xl font-bold mb-6">
-      Medical Education Center
-    </h1>
-    <p class="text-lg md:text-xl max-w-2xl mb-8">
-      โรงพยาบาลชุมพรเขตรอุดมศักดิ์ มุ่งมั่นพัฒนาการศึกษาทางคลินิก
-      และผลิตแพทย์คุณภาพสู่สังคม
-    </p>
-
-    <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:scale-95 transition">
-      ดูหลักสูตร
-    </button>
-  </div>
-
 </section>
 
+<script>
+
+/* ===== Language Toggle ===== */
+let currentLang = "th";
+
+function toggleLang(){
+    currentLang = currentLang === "th" ? "en" : "th";
+    document.documentElement.lang = currentLang;
+
+    document.querySelectorAll("[data-th]").forEach(el=>{
+        el.textContent = el.getAttribute("data-"+currentLang);
+    });
+
+    document.querySelector(".lang-btn").textContent =
+        currentLang === "th" ? "EN" : "TH";
+}
+
+</script>
 
 </body>
 </html>
