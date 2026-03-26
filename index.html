@@ -1,54 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MEC CHUMPHON</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        primary: "#003461",
-        secondary: "#006c50"
-      },
-      fontFamily: {
-        headline: ["Manrope"],
-        body: ["Inter"]
-      }
-    }
-  }
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body { font-family: 'Inter', sans-serif; }
+body {
+  font-family: 'Prompt', sans-serif;
+}
+
+/* HERO BACKGROUND FIX (ไม่ให้หัวขาด) */
+.hero-bg {
+  background-image: url('YOUR-HERO-IMAGE.jpg'); /* ใส่ path รูปจริง */
+  background-size: cover;
+  background-position: center top; /* สำคัญมาก */
+  background-repeat: no-repeat;
+}
 </style>
 
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-100">
 
 <!-- ================= NAVBAR ================= -->
-<header class="sticky top-0 bg-white shadow-sm z-50">
-  <div class="flex justify-between items-center py-4 pl-4 pr-8">
+<header class="sticky top-0 z-50 bg-white shadow-md">
+  <div class="flex justify-between items-center px-6 py-4">
 
     <!-- Logo -->
     <div class="flex items-center gap-3">
-      <img src="https://lh3.googleusercontent.com/aida/ADBb0ujWQAccwfciMD3oKdAFkJm7SgoKK9XI7Zdprl490AXg3AgCX_Geo-kARE7f9m6fJkLrtow_HMQzpuemvHsDeY6OPPY5Y6vcUTQk72OZ4m2CgC4eaN0r8x2uISoL6bJM4EZsDJjPV4ZbZ_dCZjpZ9m2kFRw3c8eocql9ivz30z5g5IdwVq25lqEQ1HxV69qSC5y9KFPIzr5zBotXLDYHno5o6GaNtezIjMUm_vNKzz9pTfL_KfWQJBWrXSeJiMrb3H9QH0NJUrYBxQQ"
-           class="h-12 w-12 object-contain">
-      <span class="text-2xl font-headline font-extrabold text-primary">
+      <img src="YOUR-LOGO.png" class="h-12 w-12 object-contain">
+      <span class="text-xl font-bold text-blue-900">
         MEC CHUMPHON
       </span>
     </div>
 
-    <!-- Language Switch -->
-    <button onclick="toggleLanguage()"
-      class="px-4 py-2 border rounded-lg font-semibold text-primary hover:bg-primary hover:text-white transition">
-      <span id="langToggle">TH</span>
+    <!-- Menu -->
+    <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
+      <a href="#" class="hover:text-blue-900 transition">หน้าแรก</a>
+      <a href="#" class="hover:text-blue-900 transition">เกี่ยวกับหน่วยงาน</a>
+      <a href="#" class="hover:text-blue-900 transition">นักศึกษา</a>
+      <a href="#" class="hover:text-blue-900 transition">ศูนย์รวมโปรแกรม</a>
+      <a href="#" class="hover:text-blue-900 transition">ติดต่อ</a>
+    </nav>
+
+    <!-- Language -->
+    <button class="border px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-900 hover:text-white transition">
+      TH
     </button>
 
   </div>
@@ -56,70 +57,28 @@ body { font-family: 'Inter', sans-serif; }
 
 
 <!-- ================= HERO ================= -->
-<section class="relative h-[60vh] min-h-[500px] max-h-[650px] flex items-center">
+<section class="hero-bg relative h-[65vh] min-h-[500px] flex items-center">
 
-  <div class="absolute inset-0">
-    <img src="https://lh3.googleusercontent.com/aida/ADBb0ujTUoubpAlMHfIptRGLM1B5tJg-6QRtnX2mrVOUdg-Om0JReAkl2b92uVR3JQ9kj8ugaiu8JS0rEj23KlSela9XigKxaC0XXjDfLaWm4PF1xToqBb5lgvIKOXGuWtXXwudIlwDmG2VnlOPgk4kELQgSVY-9yWGSfaJ1ZohxKYsInHWIbxFsMKnpLv2_4vwhM2xdSHib_uh-EUFbeWZzKKqMNvvJ2wBvqt6H1WiQOPi0aDZviB5u81YlmJ2yVdjf2hpSZ3QG_BgJQOk"
-         class="w-full h-full object-cover">
-    <div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/70 to-transparent"></div>
-  </div>
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-blue-900/60"></div>
 
-  <div class="relative z-10 max-w-5xl mx-auto px-6 text-white">
-
-    <h1 data-lang="heroTitle"
-        class="text-5xl md:text-6xl font-headline font-extrabold mb-6">
+  <!-- Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 text-white">
+    <h1 class="text-5xl md:text-6xl font-bold mb-6">
+      Medical Education Center
     </h1>
-
-    <p data-lang="heroDesc"
-       class="text-lg md:text-xl mb-8 max-w-2xl">
+    <p class="text-lg md:text-xl max-w-2xl mb-8">
+      โรงพยาบาลชุมพรเขตรอุดมศักดิ์ มุ่งมั่นพัฒนาการศึกษาทางคลินิก
+      และผลิตแพทย์คุณภาพสู่สังคม
     </p>
 
-    <button data-lang="btnExplore"
-      class="bg-white text-primary px-8 py-3 rounded-lg font-bold">
+    <button class="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:scale-95 transition">
+      ดูหลักสูตร
     </button>
-
   </div>
+
 </section>
 
-
-<script>
-// ================= LANGUAGE DATA =================
-const translations = {
-  en: {
-    heroTitle: "Medical Education Center",
-    heroDesc: "Chumphon Khet Udomsakdi Hospital is committed to cultivating excellence in clinical education and medical training.",
-    btnExplore: "Explore Curriculum"
-  },
-  th: {
-    heroTitle: "ศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
-    heroDesc: "โรงพยาบาลชุมพรเขตรอุดมศักดิ์ มุ่งมั่นพัฒนาการศึกษาทางคลินิกและผลิตแพทย์คุณภาพสู่สังคม",
-    btnExplore: "ดูหลักสูตร"
-  }
-};
-
-// ================= LOAD LANGUAGE =================
-let currentLang = localStorage.getItem("language") || "en";
-
-function applyLanguage(lang) {
-  document.querySelectorAll("[data-lang]").forEach(el => {
-    const key = el.getAttribute("data-lang");
-    el.textContent = translations[lang][key];
-  });
-
-  document.documentElement.lang = lang;
-  document.getElementById("langToggle").textContent = lang === "en" ? "TH" : "EN";
-  localStorage.setItem("language", lang);
-}
-
-function toggleLanguage() {
-  currentLang = currentLang === "en" ? "th" : "en";
-  applyLanguage(currentLang);
-}
-
-// Apply on load
-applyLanguage(currentLang);
-
-</script>
 
 </body>
 </html>
