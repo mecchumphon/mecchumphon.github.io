@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEC Chumphon - ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</title>
     
-    <!-- นำเข้า Tailwind CSS ผ่าน CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- นำเข้า Font Awesome สำหรับใช้ไอคอนต่างๆ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- สไตล์เพิ่มเติมสำหรับตัวหนังสือวิ่ง (Marquee) -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
         
@@ -46,15 +43,11 @@
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <!-- แถบนำทางด้านบน (Navbar) ปรับให้เต็มจอ (Full Width) -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <!-- ใช้ w-full เพื่อให้ชิดซ้าย-ขวาสุด -->
         <div class="w-full px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-20">
                 
-                <!-- โลโก้ และ ชื่อ (จะชิดซ้ายสุด) -->
                 <div class="flex items-center cursor-pointer" onclick="showPage('home')">
-                    <!-- แก้ไขชื่อไฟล์โลโก้ให้ตรงกับไฟล์ต้นฉบับ -->
                     <img src="logo.jpg" alt="MEC Logo" class="w-12 h-12 rounded-full mr-3 shadow-md object-cover border-2 border-white">
                     <div>
                         <h1 class="text-xl font-bold text-green-800 leading-tight hidden sm:block" data-i18n="title_main">
@@ -66,7 +59,6 @@
                     </div>
                 </div>
 
-                <!-- เมนูนำทาง (จะชิดขวาสุด) -->
                 <nav class="hidden md:flex space-x-2 items-center">
                     <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50" data-i18n="nav_home">หน้าแรก</button>
                     <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50" data-i18n="nav_about">เกี่ยวกับหน่วยงาน</button>
@@ -75,14 +67,12 @@
                     <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50" data-i18n="nav_activities">กิจกรรม</button>
                     <button onclick="showPage('contact')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50" data-i18n="nav_contact">ติดต่อเรา</button>
                     
-                    <!-- ปุ่มสลับภาษา -->
                     <div class="flex items-center ml-4 bg-gray-100 rounded-lg p-1 border border-gray-200">
                         <button onclick="setLanguage('th')" id="btn-th" class="px-2 py-1 text-xs font-bold rounded-md bg-white shadow-sm text-green-700 transition">TH</button>
                         <button onclick="setLanguage('en')" id="btn-en" class="px-2 py-1 text-xs font-bold rounded-md text-gray-500 hover:text-green-700 transition">EN</button>
                     </div>
                 </nav>
 
-                <!-- ปุ่มเมนูสำหรับมือถือ -->
                 <div class="md:hidden flex items-center">
                     <button onclick="toggleMobileMenu()" class="text-green-700 p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
@@ -91,9 +81,7 @@
             </div>
         </div>
 
-        <!-- เมนูมือถือ (ซ่อนไว้เป็นค่าเริ่มต้น) -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 px-2 pt-2 pb-3 space-y-1">
-            <!-- ปุ่มสลับภาษามือถือ -->
             <div class="flex items-center px-3 py-2 bg-gray-50 rounded-lg mx-2 mb-2 border border-gray-200">
                 <button onclick="setLanguage('th')" id="mobile-btn-th" class="px-3 py-1.5 text-sm font-bold rounded-md bg-white shadow-sm text-green-700 flex-1 transition">TH</button>
                 <button onclick="setLanguage('en')" id="mobile-btn-en" class="px-3 py-1.5 text-sm font-bold rounded-md text-gray-500 hover:text-green-700 flex-1 transition">EN</button>
@@ -108,32 +96,25 @@
         </div>
     </header>
 
-    <!-- พื้นที่แสดงเนื้อหาหลัก -->
     <main class="flex-grow">
         
-        <!-- ==================== หน้าแรก (Home) ==================== -->
         <section id="home" class="page-section block">
-            <!-- 1. ภาพปก (ปรับให้กว้างเต็มจอ 100% ไม่มีพื้นที่ว่างด้านข้าง) -->
             <div class="w-full overflow-hidden">
-                <!-- แก้ไขชื่อไฟล์ภาพปกให้ตรงกับไฟล์ต้นฉบับ -->
                 <img src="MEC-banner.png.jpg" alt="MEC Banner" class="w-full h-auto block object-cover border-b-4 border-green-600">
             </div>
 
-            <!-- 2. ตัวหนังสือวิ่ง -->
             <div class="bg-green-600 text-white py-3 border-y border-green-700 marquee-container">
                 <span class="marquee-content text-lg font-semibold" data-i18n="home_marquee">
                     ✨ ยินดีต้อนรับสู่ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ (Medical Education Center Chumphon Khet Udomsak Hospital) ✨
                 </span>
             </div>
 
-            <!-- 3. ข่าวประชาสัมพันธ์ -->
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2" data-i18n="home_news_title">ข่าวประชาสัมพันธ์</h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- พื้นที่ใส่ Facebook Plugin -->
                     <div class="lg:col-span-2 bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden h-[500px] flex flex-col">
                         <div class="bg-[#1877F2] p-4 flex items-center text-white">
                             <i class="fa-brands fa-facebook text-2xl mr-2"></i>
@@ -148,7 +129,6 @@
                         </div>
                     </div>
 
-                    <!-- ประกาศด่วน -->
                     <div class="space-y-6">
                         <div class="bg-green-50 rounded-xl p-6 border border-green-100 shadow-sm">
                             <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center">
@@ -170,13 +150,14 @@
             </div>
         </section>
 
-        <!-- ==================== หน้าเกี่ยวกับหน่วยงาน (รวมประวัติและพันธกิจ) ==================== -->
         <section id="about" class="page-section hidden-page">
             <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
                 
-                <!-- ส่วนประวัติความเป็นมา -->
+                <div class="mb-10 text-center">
+                    <img src="MEC-bulding.jpg" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto">
+                </div>
+
                 <h1 class="text-3xl font-bold text-green-800 mb-6 border-b pb-4" data-i18n="hist_title">ประวัติความเป็นมา</h1>
-                <img src="https://MEC-bulding.jpg" alt="History" class="rounded-lg shadow-md w-full h-64 object-cover mb-6">
                 <div class="text-gray-700 leading-relaxed text-lg space-y-4 mb-16">
                     <p data-i18n="hist_p1" class="indent-8">พ.ศ.2547 คณะรัฐมนตรี มีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย (กระทรวงศึกษาธิการ) "โครงการผลิตแพทย์เพื่อชาวชนบท" โดยเริ่มรับนักศึกษาตั้งแต่ปีการศึกษา 2548 เป็นต้นไป เพื่อแก้ไขปัญหาการขาดแคลนแพทย์และการกระจายแพทย์ที่ไม่เหมาะสมในชนบท กระทรวงสาธารณสุขได้มีคำสั่ง เรื่องจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก ขึ้นเป็นหน่วยงานภายในโรงพยาบาลศูนย์ ทำหน้าที่จัดการเรียนการสอนชั้นคลินิกให้กับนักศึกษาแพทย์ในการร่วมผลิตแพทย์เพิ่มเพื่อชาวชนบท ซึ่งเป็นโครงการความร่วมมือระหว่างกระทรวงสาธารณสุข กับทบวงมหาวิทยาลัย</p>
                     <p data-i18n="hist_p2" class="indent-8">เมื่อวันที่ 15 มิถุนายน 2547 โรงพยาบาลชุมพรเขตรอุดมศักดิ์ ได้รับการอนุมัติตามมติคณะรัฐมนตรีว่ามีศักยภาพและความพร้อมในการจัดการเรียนการสอนนักศึกษาแพทย์ในโครงการผลิตแพทย์เพื่อชาวชนบท โดยกระทรวงสาธารณสุขมีคำสั่งให้จัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก สาขาโรงพยาบาลชุมพรเขตรอุดมศักดิ์ขึ้น</p>
@@ -184,10 +165,8 @@
                     <p data-i18n="hist_p4" class="indent-8">อนึ่งการคัดเลือกผู้เข้าศึกษาหลักสูตรแพทยศาสตร์ เครือข่ายโรงพยาบาลชุมพรเขตรอุดมศักดิ์ จากนักเรียนในพื้นที่ 3 จังหวัด ได้แก่ จังหวัดสุราษฎร์ธานี จังหวัดชุมพร และจังหวัดระนอง</p>
                 </div>
 
-                <!-- ส่วนพันธกิจและวิสัยทัศน์ -->
                 <h1 class="text-3xl font-bold text-green-800 mb-8 border-b pb-4" data-i18n="mv_title">พันธกิจ และ วิสัยทัศน์</h1>
                 <div class="grid md:grid-cols-2 gap-8 items-start">
-                    <!-- วิสัยทัศน์ -->
                     <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500">
                         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                             <i class="fa-solid fa-eye text-green-500 mr-3"></i> 
@@ -196,7 +175,6 @@
                         <p class="text-gray-700 leading-relaxed text-lg italic" data-i18n="mv_vis_desc">"เป็นสถาบันร่วมผลิตแพทย์ชนบทที่มีเอกลักษณ์และได้มาตรฐานตามเกณฑ์แพทยสภา โดยเน้นการเป็นแพทย์ที่มีหัวใจความเป็นมนุษย์และคงอยู่ในชุมชน"</p>
                     </div>
                     
-                    <!-- พันธกิจ -->
                     <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500">
                         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                             <i class="fa-solid fa-bullseye text-blue-500 mr-3"></i> 
@@ -230,7 +208,6 @@
             </div>
         </section>
 
-        <!-- ==================== หน้าคณะทำงาน ==================== -->
         <section id="team" class="page-section hidden-page">
             <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6">
                 <h1 class="text-3xl font-bold text-green-800 mb-8 border-b pb-4 text-center" data-i18n="team_title">คณะทำงาน</h1>
@@ -259,10 +236,8 @@
             </div>
         </section>
 
-        <!-- ==================== หน้าศูนย์รวมระบบ ==================== -->
         <section id="systems" class="page-section hidden-page">
             
-            <!-- ส่วนกล่องระบบ Auth (Login / Register / Forgot Password) -->
             <div id="auth-container" class="min-h-[500px] flex items-center justify-center py-12 px-4 bg-gray-100">
                 <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
                     <div class="text-center mb-6">
@@ -273,10 +248,8 @@
                         <p id="auth-desc" class="text-gray-500 mt-2 text-sm" data-i18n="sys_login_desc">กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน</p>
                     </div>
 
-                    <!-- กล่องข้อความแจ้งเตือน (ซ่อนไว้เป็นค่าเริ่มต้น) -->
                     <div id="auth-message" class="hidden p-3 mb-4 rounded-lg text-sm font-medium text-center"></div>
                     
-                    <!-- ฟอร์ม เข้าสู่ระบบ (Login) -->
                     <form id="login-form-content" onsubmit="handleLogin(event)" class="space-y-5 block">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_login_user">อีเมล</label>
@@ -285,7 +258,6 @@
                         <div>
                             <div class="flex justify-between items-center mb-1">
                                 <label class="block text-sm font-medium text-gray-700" data-i18n="sys_login_pass">รหัสผ่าน</label>
-                                <!-- ปุ่มลืมรหัสผ่าน -->
                                 <button type="button" onclick="toggleForgotMode()" class="text-xs text-green-600 hover:text-green-700 hover:underline focus:outline-none" data-i18n="sys_forgot_pass_link">ลืมรหัสผ่าน?</button>
                             </div>
                             <input type="password" id="login-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
@@ -299,7 +271,6 @@
                         </div>
                     </form>
 
-                    <!-- ฟอร์ม ลงทะเบียน (Register) -->
                     <form id="register-form-content" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_name">ชื่อ-นามสกุล</label>
@@ -313,7 +284,6 @@
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_pass">รหัสผ่าน</label>
                             <input type="password" id="reg-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
                         </div>
-                        <!-- เพิ่มช่องรหัสองค์กร สำหรับป้องกันคนนอก -->
                         <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
                             <label class="block text-sm font-bold text-blue-800 mb-1" data-i18n="sys_reg_secret">รหัสองค์กร (สำหรับเจ้าหน้าที่)</label>
                             <p class="text-xs text-blue-600 mb-2" data-i18n="sys_reg_secret_desc">กรุณากรอกรหัสลับที่ได้รับจากส่วนกลาง เพื่อยืนยันตัวตน</p>
@@ -329,7 +299,6 @@
                         </div>
                     </form>
 
-                    <!-- ฟอร์ม ลืมรหัสผ่าน (Forgot Password) -->
                     <form id="forgot-form-content" onsubmit="handleForgotPassword(event)" class="space-y-4 hidden">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมลบัญชีที่ต้องการกู้คืน</label>
@@ -358,16 +327,13 @@
                 </div>
             </div>
 
-            <!-- ส่วน Dashboard และข้อมูลส่วนตัว (เมื่อเข้าสู่ระบบสำเร็จ) -->
             <div id="dashboard" class="max-w-7xl mx-auto py-10 px-4 sm:px-6 hidden">
                 
-                <!-- ส่วนหัว Dashboard -->
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 border-b pb-4 gap-4">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900" data-i18n="sys_dash_title">Dashboard ศูนย์รวมระบบ</h1>
                         <p class="text-gray-500 mt-1" id="sys_dash_desc">ยินดีต้อนรับ, <span class="font-bold text-green-700">เจ้าหน้าที่</span></p>
                     </div>
-                    <!-- ปุ่มข้อมูลส่วนตัว & ออกจากระบบ -->
                     <div class="flex gap-2">
                         <button onclick="toggleProfileView(true)" class="px-4 py-2 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition flex items-center shadow-sm">
                             <i class="fa-solid fa-user mr-2"></i> <span data-i18n="sys_dash_profile">ข้อมูลส่วนตัว</span>
@@ -378,7 +344,6 @@
                     </div>
                 </div>
 
-                <!-- เนื้อหาหลัก Dashboard (เมนูระบบต่างๆ) -->
                 <div id="dashboard-main" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <a href="#" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
                         <div class="p-4 bg-blue-500 text-white flex justify-between items-center"><i class="fa-solid fa-chart-line text-2xl"></i></div>
@@ -398,7 +363,6 @@
                     </a>
                 </div>
 
-                <!-- เนื้อหา ข้อมูลส่วนตัว (ซ่อนไว้เป็นค่าเริ่มต้น) -->
                 <div id="profile-view" class="hidden max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-200">
                     <div class="flex justify-between items-center mb-6">
                         <h2 class="text-2xl font-bold text-gray-800" data-i18n="sys_profile_title">ข้อมูลส่วนตัวของฉัน</h2>
@@ -407,10 +371,8 @@
                         </button>
                     </div>
                     
-                    <!-- กล่องข้อความแจ้งเตือน หน้าโปรไฟล์ -->
                     <div id="profile-message" class="hidden p-3 mb-4 rounded-lg text-sm font-medium text-center"></div>
 
-                    <!-- ข้อมูลที่ลงทะเบียนไว้ (แก้ไขไม่ได้) -->
                     <div class="space-y-4 mb-8">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_name">ชื่อ-นามสกุล</label>
@@ -422,7 +384,6 @@
                         </div>
                     </div>
 
-                    <!-- ฟอร์มเปลี่ยนรหัสผ่าน -->
                     <h3 class="text-lg font-bold text-gray-800 mb-4 border-t pt-6" data-i18n="sys_change_pass_title">เปลี่ยนรหัสผ่านใหม่</h3>
                     <form onsubmit="handleChangePassword(event)" class="space-y-4">
                         <div>
@@ -442,7 +403,6 @@
             </div>
         </section>
 
-        <!-- ==================== หน้ากิจกรรมนักศึกษา ==================== -->
         <section id="activities" class="page-section hidden-page">
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
                 <h1 class="text-3xl font-bold text-green-800 mb-8 border-b pb-4 text-center" data-i18n="act_title">ภาพกิจกรรมนักศึกษา</h1>
@@ -465,11 +425,9 @@
             </div>
         </section>
 
-        <!-- ==================== หน้าติดต่อเรา ==================== -->
         <section id="contact" class="page-section hidden-page">
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col lg:flex-row">
-                    <!-- ข้อมูลติดต่อ -->
                     <div class="bg-green-700 text-white p-10 lg:w-1/3">
                         <h2 class="text-3xl font-bold mb-6" data-i18n="cont_title">ติดต่อเรา</h2>
                         <div class="space-y-6">
@@ -489,7 +447,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- แผนที่ -->
                     <div class="p-10 lg:w-2/3 bg-gray-50 flex flex-col min-h-[400px]">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="cont_map_title">แผนที่การเดินทาง</h3>
                         <div class="flex-grow w-full h-full min-h-[300px] rounded-xl overflow-hidden shadow-sm border border-gray-200 relative">
@@ -509,17 +466,15 @@
 
     </main>
 
-    <!-- ส่วนท้าย (Footer) -->
     <footer class="bg-gray-900 text-white mt-auto">
         <div class="max-w-7xl mx-auto py-8 px-4 text-center">
             <p class="text-gray-400 text-sm" data-i18n="footer_text">
-                &copy; 2024 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>
+                © 2024 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>
                 Medical Education Center Chumphon Khet Udomsak Hospital
             </p>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
         // ---------------- ระบบเปลี่ยนภาษา (Translation System) ----------------
         const translations = {
@@ -578,7 +533,7 @@
                 "sys_item_1": "ระบบประเมินผลการศึกษา", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์",
                 "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
                 "cont_title": "ติดต่อเรา", "cont_addr_title": "ที่อยู่", "cont_addr_desc": "222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000", "cont_phone_title": "เบอร์โทรศัพท์", "cont_map_title": "แผนที่การเดินทาง", "cont_map_desc": "นำโค้ด Embed จาก Google Maps มาวางส่วนนี้",
-                "footer_text": "&copy; 2024 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>Medical Education Center Chumphon Khet Udomsak Hospital"
+                "footer_text": "© 2024 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>Medical Education Center Chumphon Khet Udomsak Hospital"
             },
             en: {
                 "title_main": "Medical Education Center", "title_sub": "MEC Chumphon",
@@ -635,7 +590,7 @@
                 "sys_item_1": "Educational Evaluation System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar",
                 "act_title": "Student Activities", "act_date_1": "May 10, 2024", "act_title_1": "Clinical Medical Students Orientation", "act_date_2": "Apr 25, 2024", "act_title_2": "Volunteer Doctor Community Health Checkup Project",
                 "cont_title": "Contact Us", "cont_addr_title": "Address", "cont_addr_desc": "222 Moo 1 Pisitpayaban Road<br>Tha Taphao, Mueang Chumphon<br>Chumphon 86000, Thailand", "cont_phone_title": "Phone Number", "cont_map_title": "Location Map", "cont_map_desc": "Place Google Maps Embed code here",
-                "footer_text": "&copy; 2024 Medical Education Center Chumphon Khet Udomsak Hospital"
+                "footer_text": "© 2024 Medical Education Center Chumphon Khet Udomsak Hospital"
             }
         };
 
