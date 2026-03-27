@@ -116,7 +116,7 @@
             <!-- 1. ภาพปก (ปรับให้กว้างเต็มจอ 100% ไม่มีพื้นที่ว่างด้านข้าง) -->
             <div class="w-full overflow-hidden">
                 <!-- แก้ไขชื่อไฟล์ภาพปกให้ตรงกับไฟล์ต้นฉบับ -->
-                <img src="banner.jpg" alt="MEC Banner" class="w-1920 h-1080 block object-cover border-b-4 border-green-600">
+                <img src="banner.jpg" alt="MEC Banner" class="w-full h-auto block object-cover border-b-4 border-green-600">
             </div>
 
             <!-- 2. ตัวหนังสือวิ่ง -->
@@ -262,7 +262,7 @@
         <!-- ==================== หน้าศูนย์รวมระบบ ==================== -->
         <section id="systems" class="page-section hidden-page">
             
-            <!-- ส่วนกล่องระบบ Auth (Login / Register) -->
+            <!-- ส่วนกล่องระบบ Auth (Login / Register / Forgot Password) -->
             <div id="auth-container" class="min-h-[500px] flex items-center justify-center py-12 px-4 bg-gray-100">
                 <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
                     <div class="text-center mb-6">
@@ -283,7 +283,11 @@
                             <input type="email" id="login-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_login_pass">รหัสผ่าน</label>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="block text-sm font-medium text-gray-700" data-i18n="sys_login_pass">รหัสผ่าน</label>
+                                <!-- ปุ่มลืมรหัสผ่าน -->
+                                <button type="button" onclick="toggleForgotMode()" class="text-xs text-green-600 hover:text-green-700 hover:underline focus:outline-none" data-i18n="sys_forgot_pass_link">ลืมรหัสผ่าน?</button>
+                            </div>
                             <input type="password" id="login-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
                         </div>
                         <button type="submit" class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_login_btn">
@@ -309,7 +313,14 @@
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_pass">รหัสผ่าน</label>
                             <input type="password" id="reg-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
                         </div>
-                        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_reg_btn">
+                        <!-- เพิ่มช่องรหัสองค์กร สำหรับป้องกันคนนอก -->
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <label class="block text-sm font-bold text-blue-800 mb-1" data-i18n="sys_reg_secret">รหัสองค์กร (สำหรับเจ้าหน้าที่)</label>
+                            <p class="text-xs text-blue-600 mb-2" data-i18n="sys_reg_secret_desc">กรุณากรอกรหัสลับที่ได้รับจากส่วนกลาง เพื่อยืนยันตัวตน</p>
+                            <input type="text" id="reg-secret" required class="w-full px-4 py-2 border border-blue-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" data-i18n-placeholder="sys_reg_secret_ph" placeholder="กรอกรหัส 6 หลัก">
+                        </div>
+
+                        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors mt-2" data-i18n="sys_reg_btn">
                             ลงทะเบียน
                         </button>
                         <div class="text-center mt-4 text-sm text-gray-600">
@@ -317,6 +328,33 @@
                             <button type="button" onclick="toggleAuthMode()" class="text-green-600 font-bold hover:underline ml-1" data-i18n="sys_toggle_login">เข้าสู่ระบบ</button>
                         </div>
                     </form>
+
+                    <!-- ฟอร์ม ลืมรหัสผ่าน (Forgot Password) -->
+                    <form id="forgot-form-content" onsubmit="handleForgotPassword(event)" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมลบัญชีที่ต้องการกู้คืน</label>
+                            <input type="email" id="forgot-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                            <label class="block text-sm font-bold text-yellow-800 mb-1" data-i18n="sys_reg_secret">รหัสองค์กร (เพื่อยืนยันสิทธิ์)</label>
+                            <p class="text-xs text-yellow-700 mb-2" data-i18n="sys_forgot_secret_desc">กรุณากรอกรหัสลับหน่วยงานเพื่อยืนยันว่าคุณเป็นเจ้าหน้าที่จริง</p>
+                            <input type="text" id="forgot-secret" required class="w-full px-4 py-2 border border-yellow-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" data-i18n-placeholder="sys_reg_secret_ph" placeholder="กรอกรหัส 6 หลัก">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_new_pass">ตั้งรหัสผ่านใหม่</label>
+                            <input type="password" id="forgot-new-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" placeholder="••••••••">
+                        </div>
+
+                        <button type="submit" class="w-full py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-medium transition-colors mt-2" data-i18n="sys_reset_btn">
+                            รีเซ็ตรหัสผ่าน
+                        </button>
+                        <div class="text-center mt-4">
+                            <button type="button" onclick="toggleAuthMode()" class="text-sm text-gray-500 hover:text-gray-700 font-medium hover:underline flex items-center justify-center w-full">
+                                <i class="fa-solid fa-arrow-left mr-2"></i> <span data-i18n="sys_back_login">กลับไปหน้าเข้าสู่ระบบ</span>
+                            </button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
 
@@ -453,11 +491,21 @@
                 "sys_no_account": "ยังไม่มีบัญชีผู้ใช้?", "sys_toggle_reg": "ลงทะเบียนที่นี่",
                 "sys_reg_name": "ชื่อ-นามสกุล", "sys_reg_name_ph": "เช่น นพ.สมชาย ใจดี",
                 "sys_reg_email": "อีเมล", "sys_reg_pass": "รหัสผ่าน", "sys_reg_btn": "ลงทะเบียน",
+                "sys_reg_secret": "รหัสองค์กร (สำหรับเจ้าหน้าที่)", "sys_reg_secret_desc": "กรุณากรอกรหัสลับที่ได้รับจากส่วนกลาง เพื่อยืนยันตัวตน", "sys_reg_secret_ph": "กรอกรหัส",
                 "sys_has_account": "มีบัญชีผู้ใช้อยู่แล้ว?", "sys_toggle_login": "เข้าสู่ระบบ",
+                
+                // แปลส่วนลืมรหัสผ่าน
+                "sys_forgot_pass_link": "ลืมรหัสผ่าน?", "sys_forgot_title": "ลืมรหัสผ่าน", "sys_forgot_desc": "ยืนยันตัวตนเพื่อตั้งรหัสผ่านใหม่",
+                "sys_new_pass": "ตั้งรหัสผ่านใหม่", "sys_reset_btn": "รีเซ็ตรหัสผ่าน", "sys_back_login": "กลับไปหน้าเข้าสู่ระบบ",
+                "sys_forgot_secret_desc": "กรุณากรอกรหัสลับหน่วยงานเพื่อยืนยันว่าคุณเป็นเจ้าหน้าที่จริง",
+
                 "sys_dash_desc_prefix": "ยินดีต้อนรับ,", "sys_dash_default_user": "เจ้าหน้าที่",
                 "err_email_exists": "อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น",
                 "err_invalid_login": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+                "err_invalid_secret": "รหัสองค์กรไม่ถูกต้อง! ไม่อนุญาตให้ดำเนินการ",
+                "err_email_not_found": "ไม่พบบัญชีที่ใช้อีเมลนี้ในระบบ",
                 "msg_reg_success": "ลงทะเบียนสำเร็จ! กรุณาเข้าสู่ระบบ",
+                "msg_reset_success": "เปลี่ยนรหัสผ่านสำเร็จ! กรุณาเข้าสู่ระบบด้วยรหัสใหม่",
 
                 "sys_dash_title": "Dashboard ศูนย์รวมระบบ", "sys_dash_logout": "ออกจากระบบ",
                 "sys_item_1": "ระบบประเมินผลการศึกษา", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning",
@@ -495,11 +543,21 @@
                 "sys_no_account": "Don't have an account?", "sys_toggle_reg": "Register here",
                 "sys_reg_name": "Full Name", "sys_reg_name_ph": "e.g. Dr. Somchai Jaidee",
                 "sys_reg_email": "Email Address", "sys_reg_pass": "Password", "sys_reg_btn": "Register",
+                "sys_reg_secret": "Organization Code (Staff Only)", "sys_reg_secret_desc": "Enter the secret code provided by the center to verify identity", "sys_reg_secret_ph": "Enter code",
                 "sys_has_account": "Already have an account?", "sys_toggle_login": "Login here",
+
+                // แปลส่วนลืมรหัสผ่าน
+                "sys_forgot_pass_link": "Forgot Password?", "sys_forgot_title": "Forgot Password", "sys_forgot_desc": "Verify your identity to reset password",
+                "sys_new_pass": "New Password", "sys_reset_btn": "Reset Password", "sys_back_login": "Back to Login",
+                "sys_forgot_secret_desc": "Please enter the organization secret code to verify you are a staff member.",
+
                 "sys_dash_desc_prefix": "Welcome,", "sys_dash_default_user": "Staff",
                 "err_email_exists": "This email is already registered.",
                 "err_invalid_login": "Invalid email or password.",
+                "err_invalid_secret": "Invalid organization code! Action denied.",
+                "err_email_not_found": "No account found with this email.",
                 "msg_reg_success": "Registration successful! Please login.",
+                "msg_reset_success": "Password changed successfully! Please login with your new password.",
 
                 "sys_dash_title": "Systems Dashboard", "sys_dash_logout": "Logout",
                 "sys_item_1": "Educational Evaluation System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System",
@@ -512,18 +570,19 @@
         let currentLang = 'th';
         
         // ตัวแปรสำหรับระบบ Login/Register
-        let authMode = 'login'; // เป็นได้ 2 ค่า: 'login' หรือ 'register'
+        let authMode = 'login'; // 'login', 'register', 'forgot'
         let loggedInUser = null; 
-        const usersDB = []; // ฐานข้อมูลผู้ใช้จำลอง (เก็บข้อมูลในหน่วยความจำชั่วคราว)
+        const usersDB = []; // ฐานข้อมูลผู้ใช้จำลอง
+
+        // รหัสองค์กรส่วนกลางที่ต้องตั้งค่าไว้ให้เจ้าหน้าที่รู้
+        const SECRET_ORG_CODE = "MEC123"; 
 
         function setLanguage(lang) {
             currentLang = lang;
             
-            // เปลี่ยนสไตล์ปุ่มให้ดูรู้ว่าเลือกภาษาไหนอยู่ (Desktop)
+            // เปลี่ยนสไตล์ปุ่มให้ดูรู้ว่าเลือกภาษาไหนอยู่
             document.getElementById('btn-th').className = lang === 'th' ? 'px-2 py-1 text-xs font-bold rounded-md bg-white shadow-sm text-green-700 transition' : 'px-2 py-1 text-xs font-bold rounded-md text-gray-500 hover:text-green-700 transition';
             document.getElementById('btn-en').className = lang === 'en' ? 'px-2 py-1 text-xs font-bold rounded-md bg-white shadow-sm text-green-700 transition' : 'px-2 py-1 text-xs font-bold rounded-md text-gray-500 hover:text-green-700 transition';
-
-            // เปลี่ยนสไตล์ปุ่มในมือถือ (Mobile)
             document.getElementById('mobile-btn-th').className = lang === 'th' ? 'px-3 py-1.5 text-sm font-bold rounded-md bg-white shadow-sm text-green-700 flex-1 transition' : 'px-3 py-1.5 text-sm font-bold rounded-md text-gray-500 hover:text-green-700 flex-1 transition';
             document.getElementById('mobile-btn-en').className = lang === 'en' ? 'px-3 py-1.5 text-sm font-bold rounded-md bg-white shadow-sm text-green-700 flex-1 transition' : 'px-3 py-1.5 text-sm font-bold rounded-md text-gray-500 hover:text-green-700 flex-1 transition';
             
@@ -543,106 +602,145 @@
                 }
             });
 
-            // เปลี่ยน <title> ด้านบนสุดของเว็บ
             document.title = lang === 'th' ? "MEC Chumphon - ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" : "MEC Chumphon - Medical Education Center";
             document.documentElement.lang = lang;
-
-            // อัปเดตข้อความทักทายใน Dashboard
             updateDashboardGreeting();
         }
 
         // ---------------- ระบบตรวจสอบและล็อคอิน ----------------
         
-        // ฟังก์ชันสลับหน้า Login กับ Register
-        function toggleAuthMode() {
-            authMode = authMode === 'login' ? 'register' : 'login';
-            
+        function updateAuthView() {
             const loginForm = document.getElementById('login-form-content');
             const regForm = document.getElementById('register-form-content');
+            const forgotForm = document.getElementById('forgot-form-content');
             const authTitle = document.getElementById('auth-title');
             const authDesc = document.getElementById('auth-desc');
             const authIcon = document.getElementById('auth-icon');
             const msgDiv = document.getElementById('auth-message');
 
-            msgDiv.classList.add('hidden'); // ซ่อนข้อความแจ้งเตือนเมื่อสลับหน้า
+            msgDiv.classList.add('hidden'); // ซ่อนข้อความแจ้งเตือน
+
+            // ปิดทุกฟอร์มก่อน
+            loginForm.classList.add('hidden'); loginForm.classList.remove('block');
+            regForm.classList.add('hidden'); regForm.classList.remove('block');
+            forgotForm.classList.add('hidden'); forgotForm.classList.remove('block');
 
             if (authMode === 'register') {
-                loginForm.classList.add('hidden');
-                loginForm.classList.remove('block');
-                regForm.classList.remove('hidden');
-                regForm.classList.add('block');
-                
+                regForm.classList.remove('hidden'); regForm.classList.add('block');
                 authTitle.setAttribute('data-i18n', 'sys_reg_title');
                 authDesc.setAttribute('data-i18n', 'sys_reg_desc');
-                authIcon.className = "fa-solid fa-user-plus";
+                authIcon.className = "fa-solid fa-user-plus text-blue-600";
+                authIcon.parentElement.className = "w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl";
+            } else if (authMode === 'forgot') {
+                forgotForm.classList.remove('hidden'); forgotForm.classList.add('block');
+                authTitle.setAttribute('data-i18n', 'sys_forgot_title');
+                authDesc.setAttribute('data-i18n', 'sys_forgot_desc');
+                authIcon.className = "fa-solid fa-key text-yellow-600";
+                authIcon.parentElement.className = "w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl";
             } else {
-                regForm.classList.add('hidden');
-                regForm.classList.remove('block');
-                loginForm.classList.remove('hidden');
-                loginForm.classList.add('block');
-                
+                loginForm.classList.remove('hidden'); loginForm.classList.add('block');
                 authTitle.setAttribute('data-i18n', 'sys_login_title');
                 authDesc.setAttribute('data-i18n', 'sys_login_desc');
-                authIcon.className = "fa-solid fa-lock";
+                authIcon.className = "fa-solid fa-lock text-green-600";
+                authIcon.parentElement.className = "w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl";
             }
             
-            // อัปเดตข้อความ Header ตามภาษาปัจจุบัน
+            // อัปเดตข้อความทันที
             authTitle.innerText = translations[currentLang][authTitle.getAttribute('data-i18n')];
             authDesc.innerText = translations[currentLang][authDesc.getAttribute('data-i18n')];
         }
 
-        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือนสีแดง/เขียว
+        // ฟังก์ชันสลับไปหน้า Login / Register
+        function toggleAuthMode() {
+            authMode = authMode === 'login' ? 'register' : 'login';
+            updateAuthView();
+        }
+
+        // ฟังก์ชันเปลี่ยนไปหน้าลืมรหัสผ่าน
+        function toggleForgotMode() {
+            authMode = 'forgot';
+            updateAuthView();
+        }
+
+        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือน
         function showAuthMessage(key, isError) {
             const msgDiv = document.getElementById('auth-message');
             msgDiv.innerText = translations[currentLang][key] || key;
             msgDiv.className = `p-3 mb-4 rounded-lg text-sm font-medium text-center ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
             msgDiv.classList.remove('hidden');
-            
-            // ซ่อนกล่องอัตโนมัติเมื่อผ่านไป 4 วินาที
-            setTimeout(() => {
-                msgDiv.classList.add('hidden');
-            }, 4000);
+            setTimeout(() => { msgDiv.classList.add('hidden'); }, 4000);
         }
 
-        // ฟังก์ชันจัดการตอนกดปุ่ม ลงทะเบียน
+        // ฟังก์ชันจัดการ ลงทะเบียน
         function handleRegister(e) {
-            e.preventDefault(); // ป้องกันการรีเฟรชหน้าเว็บตอนกดปุ่ม Submit
+            e.preventDefault();
             const name = document.getElementById('reg-name').value;
             const email = document.getElementById('reg-email').value;
             const pass = document.getElementById('reg-pass').value;
+            const secret = document.getElementById('reg-secret').value;
 
-            // ตรวจสอบว่ามีอีเมลนี้อยู่ในระบบแล้วหรือยัง
+            if (secret !== SECRET_ORG_CODE) {
+                showAuthMessage('err_invalid_secret', true);
+                return;
+            }
+
             const existingUser = usersDB.find(u => u.email === email);
             if (existingUser) {
                 showAuthMessage('err_email_exists', true);
                 return;
             }
 
-            // บันทึกข้อมูลลงฐานข้อมูล (หน่วยความจำ)
             usersDB.push({ name, email, pass });
-            document.getElementById('register-form-content').reset(); // ล้างข้อมูลในฟอร์ม
-            toggleAuthMode(); // สลับกลับไปหน้า Login
-            showAuthMessage('msg_reg_success', false); // แสดงข้อความสำเร็จ
+            document.getElementById('register-form-content').reset();
+            authMode = 'login';
+            updateAuthView();
+            showAuthMessage('msg_reg_success', false);
         }
 
-        // ฟังก์ชันจัดการตอนกดปุ่ม เข้าสู่ระบบ
+        // ฟังก์ชันจัดการ เข้าสู่ระบบ
         function handleLogin(e) {
             e.preventDefault();
             const email = document.getElementById('login-email').value;
             const pass = document.getElementById('login-pass').value;
 
-            // ค้นหาผู้ใช้จากฐานข้อมูล
             const user = usersDB.find(u => u.email === email && u.pass === pass);
             if (user) {
-                loggedInUser = user; // บันทึกว่าผู้ใช้นี้ล็อคอินสำเร็จแล้ว
-                document.getElementById('login-form-content').reset(); // ล้างฟอร์ม
+                loggedInUser = user;
+                document.getElementById('login-form-content').reset();
                 toggleLoginState(true);
             } else {
-                showAuthMessage('err_invalid_login', true); // รหัสไม่ถูก
+                showAuthMessage('err_invalid_login', true);
             }
         }
 
-        // ฟังก์ชันอัปเดตชื่อใน Dashboard
+        // ฟังก์ชันจัดการ ลืมรหัสผ่าน
+        function handleForgotPassword(e) {
+            e.preventDefault();
+            const email = document.getElementById('forgot-email').value;
+            const secret = document.getElementById('forgot-secret').value;
+            const newPass = document.getElementById('forgot-new-pass').value;
+
+            if (secret !== SECRET_ORG_CODE) {
+                showAuthMessage('err_invalid_secret', true);
+                return;
+            }
+
+            // หาบัญชีด้วยอีเมล
+            const userIndex = usersDB.findIndex(u => u.email === email);
+            if (userIndex === -1) {
+                showAuthMessage('err_email_not_found', true);
+                return;
+            }
+
+            // เปลี่ยนรหัสผ่านให้ผู้ใช้
+            usersDB[userIndex].pass = newPass;
+            
+            document.getElementById('forgot-form-content').reset();
+            authMode = 'login';
+            updateAuthView();
+            showAuthMessage('msg_reset_success', false);
+        }
+
         function updateDashboardGreeting() {
             const dashDesc = document.getElementById('sys_dash_desc');
             if (dashDesc) {
@@ -652,26 +750,23 @@
             }
         }
 
-        // ฟังก์ชันสลับหน้าจอระหว่ง ฟอร์ม Login กับ Dashboard
         function toggleLoginState(isLoggedIn) {
             const authContainer = document.getElementById('auth-container');
             const dashboard = document.getElementById('dashboard');
             const msgDiv = document.getElementById('auth-message');
-            msgDiv.classList.add('hidden'); // เคลียร์ข้อความแจ้งเตือน
+            msgDiv.classList.add('hidden');
             
             if(isLoggedIn && loggedInUser) {
                 authContainer.classList.add('hidden');
                 dashboard.classList.remove('hidden');
-                updateDashboardGreeting(); // เอาชื่อผู้ใช้ไปแสดงใน Dashboard
+                updateDashboardGreeting();
             } else {
                 loggedInUser = null;
                 authContainer.classList.remove('hidden');
                 dashboard.classList.add('hidden');
                 
-                // ถ้ายกเลิกล็อคอิน ให้กลับไปหน้าฟอร์ม Login เสมอ
-                if(authMode === 'register') {
-                    toggleAuthMode();
-                }
+                authMode = 'login';
+                updateAuthView();
             }
         }
 
