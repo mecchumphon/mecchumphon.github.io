@@ -358,19 +358,28 @@
                 </div>
             </div>
 
-            <!-- ส่วน Dashboard (เมื่อเข้าสู่ระบบสำเร็จ) -->
+            <!-- ส่วน Dashboard และข้อมูลส่วนตัว (เมื่อเข้าสู่ระบบสำเร็จ) -->
             <div id="dashboard" class="max-w-7xl mx-auto py-10 px-4 sm:px-6 hidden">
-                <div class="flex justify-between items-center mb-8 border-b pb-4">
+                
+                <!-- ส่วนหัว Dashboard -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 border-b pb-4 gap-4">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900" data-i18n="sys_dash_title">Dashboard ศูนย์รวมระบบ</h1>
                         <p class="text-gray-500 mt-1" id="sys_dash_desc">ยินดีต้อนรับ, <span class="font-bold text-green-700">เจ้าหน้าที่</span></p>
                     </div>
-                    <button onclick="toggleLoginState(false)" class="px-4 py-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition flex items-center">
-                        <i class="fa-solid fa-right-from-bracket mr-2"></i> <span data-i18n="sys_dash_logout">ออกจากระบบ</span>
-                    </button>
+                    <!-- ปุ่มข้อมูลส่วนตัว & ออกจากระบบ -->
+                    <div class="flex gap-2">
+                        <button onclick="toggleProfileView(true)" class="px-4 py-2 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition flex items-center shadow-sm">
+                            <i class="fa-solid fa-user mr-2"></i> <span data-i18n="sys_dash_profile">ข้อมูลส่วนตัว</span>
+                        </button>
+                        <button onclick="toggleLoginState(false)" class="px-4 py-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition flex items-center shadow-sm">
+                            <i class="fa-solid fa-right-from-bracket mr-2"></i> <span data-i18n="sys_dash_logout">ออกจากระบบ</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- เนื้อหาหลัก Dashboard (เมนูระบบต่างๆ) -->
+                <div id="dashboard-main" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <a href="#" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
                         <div class="p-4 bg-blue-500 text-white flex justify-between items-center"><i class="fa-solid fa-chart-line text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_1">ระบบประเมินผลการศึกษา</h3></div>
@@ -383,7 +392,53 @@
                         <div class="p-4 bg-purple-500 text-white flex justify-between items-center"><i class="fa-solid fa-book-open text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_3">ระบบ E-Learning</h3></div>
                     </a>
+                    <a href="https://script.google.com/a/macros/cpird.in.th/s/AKfycbz9rcaNP1TQ1oLBQim1l2j7dS8c-Ycie_y9bLrcasu0tMENemhBQrFVFtrLOeZS7jkAmg/exec" target="_blank" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                        <div class="p-4 bg-orange-500 text-white flex justify-between items-center"><i class="fa-solid fa-calendar-days text-2xl"></i></div>
+                        <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_4">ปฏิทินกิจกรรมศูนย์แพทย์</h3></div>
+                    </a>
                 </div>
+
+                <!-- เนื้อหา ข้อมูลส่วนตัว (ซ่อนไว้เป็นค่าเริ่มต้น) -->
+                <div id="profile-view" class="hidden max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800" data-i18n="sys_profile_title">ข้อมูลส่วนตัวของฉัน</h2>
+                        <button onclick="toggleProfileView(false)" class="text-gray-500 hover:text-gray-700 bg-gray-100 px-3 py-1 rounded-md text-sm font-bold flex items-center transition">
+                            <i class="fa-solid fa-arrow-left mr-2"></i> <span data-i18n="sys_back_dash">กลับหน้าหลัก</span>
+                        </button>
+                    </div>
+                    
+                    <!-- กล่องข้อความแจ้งเตือน หน้าโปรไฟล์ -->
+                    <div id="profile-message" class="hidden p-3 mb-4 rounded-lg text-sm font-medium text-center"></div>
+
+                    <!-- ข้อมูลที่ลงทะเบียนไว้ (แก้ไขไม่ได้) -->
+                    <div class="space-y-4 mb-8">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_name">ชื่อ-นามสกุล</label>
+                            <input type="text" id="profile-name" readonly class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-600 cursor-not-allowed">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมล</label>
+                            <input type="email" id="profile-email" readonly class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-600 cursor-not-allowed">
+                        </div>
+                    </div>
+
+                    <!-- ฟอร์มเปลี่ยนรหัสผ่าน -->
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 border-t pt-6" data-i18n="sys_change_pass_title">เปลี่ยนรหัสผ่านใหม่</h3>
+                    <form onsubmit="handleChangePassword(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_old_pass">รหัสผ่านเดิม</label>
+                            <input type="password" id="profile-old-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="••••••••">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_new_pass_profile">รหัสผ่านใหม่ที่ต้องการ</label>
+                            <input type="password" id="profile-new-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_update_pass_btn">
+                            บันทึกรหัสผ่านใหม่
+                        </button>
+                    </form>
+                </div>
+
             </div>
         </section>
 
@@ -508,7 +563,12 @@
                 "msg_reset_success": "เปลี่ยนรหัสผ่านสำเร็จ! กรุณาเข้าสู่ระบบด้วยรหัสใหม่",
 
                 "sys_dash_title": "Dashboard ศูนย์รวมระบบ", "sys_dash_logout": "ออกจากระบบ",
-                "sys_item_1": "ระบบประเมินผลการศึกษา", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning",
+                "sys_dash_profile": "ข้อมูลส่วนตัว", "sys_profile_title": "ข้อมูลส่วนตัวของฉัน", "sys_back_dash": "กลับหน้าหลัก",
+                "sys_change_pass_title": "เปลี่ยนรหัสผ่านใหม่", "sys_old_pass": "รหัสผ่านเดิม", "sys_new_pass_profile": "รหัสผ่านใหม่ที่ต้องการ",
+                "sys_update_pass_btn": "บันทึกรหัสผ่านใหม่", "err_incorrect_old_pass": "รหัสผ่านเดิมไม่ถูกต้อง",
+                "msg_pass_updated": "บันทึกรหัสผ่านใหม่เรียบร้อยแล้ว!",
+
+                "sys_item_1": "ระบบประเมินผลการศึกษา", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์",
                 "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
                 "cont_title": "ติดต่อเรา", "cont_addr_title": "ที่อยู่", "cont_addr_desc": "18 หมู่ 1 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000", "cont_phone_title": "เบอร์โทรศัพท์", "cont_map_title": "แผนที่การเดินทาง", "cont_map_desc": "นำโค้ด Embed จาก Google Maps มาวางส่วนนี้",
                 "footer_text": "&copy; 2024 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>Medical Education Center Chumphon Khet Udomsak Hospital"
@@ -560,7 +620,12 @@
                 "msg_reset_success": "Password changed successfully! Please login with your new password.",
 
                 "sys_dash_title": "Systems Dashboard", "sys_dash_logout": "Logout",
-                "sys_item_1": "Educational Evaluation System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System",
+                "sys_dash_profile": "My Profile", "sys_profile_title": "My Profile", "sys_back_dash": "Back to Dashboard",
+                "sys_change_pass_title": "Change Password", "sys_old_pass": "Old Password", "sys_new_pass_profile": "New Password",
+                "sys_update_pass_btn": "Update Password", "err_incorrect_old_pass": "Incorrect old password",
+                "msg_pass_updated": "Password updated successfully!",
+
+                "sys_item_1": "Educational Evaluation System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar",
                 "act_title": "Student Activities", "act_date_1": "May 10, 2024", "act_title_1": "Clinical Medical Students Orientation", "act_date_2": "Apr 25, 2024", "act_title_2": "Volunteer Doctor Community Health Checkup Project",
                 "cont_title": "Contact Us", "cont_addr_title": "Address", "cont_addr_desc": "18 Moo 1 Pisitpayaban Road<br>Tha Taphao, Mueang Chumphon<br>Chumphon 86000, Thailand", "cont_phone_title": "Phone Number", "cont_map_title": "Location Map", "cont_map_desc": "Place Google Maps Embed code here",
                 "footer_text": "&copy; 2024 Medical Education Center Chumphon Khet Udomsak Hospital"
@@ -662,9 +727,18 @@
             updateAuthView();
         }
 
-        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือน
+        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือน หน้า Auth
         function showAuthMessage(key, isError) {
             const msgDiv = document.getElementById('auth-message');
+            msgDiv.innerText = translations[currentLang][key] || key;
+            msgDiv.className = `p-3 mb-4 rounded-lg text-sm font-medium text-center ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
+            msgDiv.classList.remove('hidden');
+            setTimeout(() => { msgDiv.classList.add('hidden'); }, 4000);
+        }
+
+        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือน หน้าข้อมูลส่วนตัว
+        function showProfileMessage(key, isError) {
+            const msgDiv = document.getElementById('profile-message');
             msgDiv.innerText = translations[currentLang][key] || key;
             msgDiv.className = `p-3 mb-4 rounded-lg text-sm font-medium text-center ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
             msgDiv.classList.remove('hidden');
@@ -741,6 +815,7 @@
             showAuthMessage('msg_reset_success', false);
         }
 
+        // ฟังก์ชันอัปเดตชื่อผู้ใช้ในหน้า Dashboard
         function updateDashboardGreeting() {
             const dashDesc = document.getElementById('sys_dash_desc');
             if (dashDesc) {
@@ -750,6 +825,7 @@
             }
         }
 
+        // ฟังก์ชันสลับการแสดงผลตอนเข้า/ออกจากระบบ
         function toggleLoginState(isLoggedIn) {
             const authContainer = document.getElementById('auth-container');
             const dashboard = document.getElementById('dashboard');
@@ -760,6 +836,8 @@
                 authContainer.classList.add('hidden');
                 dashboard.classList.remove('hidden');
                 updateDashboardGreeting();
+                // รีเซ็ตการดูหน้า Profile คืนเป็นหน้า Dashboard ปกติ
+                toggleProfileView(false);
             } else {
                 loggedInUser = null;
                 authContainer.classList.remove('hidden');
@@ -768,6 +846,54 @@
                 authMode = 'login';
                 updateAuthView();
             }
+        }
+
+        // ฟังก์ชันสลับการแสดงผล หน้า Dashboard หลัก <-> หน้าข้อมูลส่วนตัว
+        function toggleProfileView(showProfile) {
+            const mainDash = document.getElementById('dashboard-main');
+            const profileView = document.getElementById('profile-view');
+            const profileMsg = document.getElementById('profile-message');
+            profileMsg.classList.add('hidden'); // เคลียร์ข้อความแจ้งเตือน
+
+            if (showProfile && loggedInUser) {
+                mainDash.classList.add('hidden');
+                profileView.classList.remove('hidden');
+                // เติมข้อมูลลงในฟอร์มข้อมูลส่วนตัว
+                document.getElementById('profile-name').value = loggedInUser.name;
+                document.getElementById('profile-email').value = loggedInUser.email;
+                document.getElementById('profile-old-pass').value = '';
+                document.getElementById('profile-new-pass').value = '';
+            } else {
+                profileView.classList.add('hidden');
+                mainDash.classList.remove('hidden');
+            }
+        }
+
+        // ฟังก์ชันเปลี่ยนรหัสผ่านใหม่ (จากหน้าข้อมูลส่วนตัว)
+        function handleChangePassword(e) {
+            e.preventDefault();
+            const oldPass = document.getElementById('profile-old-pass').value;
+            const newPass = document.getElementById('profile-new-pass').value;
+
+            // ตรวจสอบว่ารหัสเดิมถูกต้องหรือไม่
+            if (oldPass !== loggedInUser.pass) {
+                showProfileMessage('err_incorrect_old_pass', true);
+                return;
+            }
+
+            // ถ้ารหัสเดิมถูก ให้ทำการอัปเดตเป็นรหัสใหม่
+            loggedInUser.pass = newPass;
+            
+            // อัปเดตในฐานข้อมูลรวมด้วย
+            const userIndex = usersDB.findIndex(u => u.email === loggedInUser.email);
+            if (userIndex !== -1) {
+                usersDB[userIndex].pass = newPass;
+            }
+
+            showProfileMessage('msg_pass_updated', false);
+            // ล้างข้อมูลช่องรหัสผ่าน
+            document.getElementById('profile-old-pass').value = '';
+            document.getElementById('profile-new-pass').value = '';
         }
 
         // ---------------- ระบบควบคุมการทำงานทั่วไป ----------------
