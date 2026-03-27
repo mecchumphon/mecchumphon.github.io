@@ -46,14 +46,15 @@
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-    <!-- แถบนำทางด้านบน (Navbar) -->
+    <!-- แถบนำทางด้านบน (Navbar) ปรับให้เต็มจอ (Full Width) -->
     <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- ใช้ w-full เพื่อให้ชิดซ้าย-ขวาสุด -->
+        <div class="w-full px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-20">
                 
-                <!-- โลโก้ และ ชื่อ -->
+                <!-- โลโก้ และ ชื่อ (จะชิดซ้ายสุด) -->
                 <div class="flex items-center cursor-pointer" onclick="showPage('home')">
-                    <img src="MEC-logo.png" alt="MEC Logo" class="w-12 h-12 rounded-full mr-3 shadow-md object-cover border-2 border-white">
+                    <img src="logo.jpg" alt="MEC Logo" class="w-12 h-12 rounded-full mr-3 shadow-md object-cover border-2 border-white">
                     <div>
                         <h1 class="text-xl font-bold text-green-800 leading-tight hidden sm:block" data-i18n="title_main">
                             ศูนย์แพทยศาสตรศึกษาชั้นคลินิก
@@ -64,7 +65,7 @@
                     </div>
                 </div>
 
-                <!-- เมนูนำทาง (สำหรับคอมพิวเตอร์) -->
+                <!-- เมนูนำทาง (จะชิดขวาสุด) -->
                 <nav class="hidden md:flex space-x-2 items-center">
                     <button onclick="showPage('home')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50" data-i18n="nav_home">หน้าแรก</button>
                     <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-green-600 hover:bg-green-50" data-i18n="nav_about">เกี่ยวกับหน่วยงาน</button>
@@ -111,9 +112,9 @@
         
         <!-- ==================== หน้าแรก (Home) ==================== -->
         <section id="home" class="page-section block">
-            <!-- 1. ภาพปก -->
-            <div class="w-full bg-[#f8f5eb] overflow-hidden flex justify-center">
-                <img src="MEC-banner1.png" alt="MEC Banner" class="w-full h-auto max-h-[600px] object-contain object-top">
+            <!-- 1. ภาพปก (ปรับให้กว้างเต็มจอ 100% ไม่มีพื้นที่ว่างด้านข้าง) -->
+            <div class="w-full overflow-hidden">
+                <img src="banner.jpg" alt="MEC Banner" class="w-full h-auto block object-cover border-b-4 border-green-600">
             </div>
 
             <!-- 2. ตัวหนังสือวิ่ง -->
