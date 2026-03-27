@@ -477,14 +477,14 @@
                                 <i class="fa-solid fa-location-dot mt-1 mr-4 text-xl text-green-300"></i>
                                 <div>
                                     <h4 class="font-semibold text-lg" data-i18n="cont_addr_title">ที่อยู่</h4>
-                                    <p class="text-sm mt-1" data-i18n="cont_addr_desc">18 หมู่ 1 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000</p>
+                                    <p class="text-sm mt-1" data-i18n="cont_addr_desc">222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000</p>
                                 </div>
                             </div>
                             <div class="flex items-center">
                                 <i class="fa-solid fa-phone mr-4 text-xl text-green-300"></i>
                                 <div>
                                     <h4 class="font-semibold text-lg" data-i18n="cont_phone_title">เบอร์โทรศัพท์</h4>
-                                    <p class="text-sm mt-1">077-xxxxxx</p>
+                                    <p class="text-sm mt-1">077-503-672 ต่อ 8521-2 / 083-107-4497</p>
                                 </div>
                             </div>
                         </div>
@@ -492,8 +492,15 @@
                     <!-- แผนที่ -->
                     <div class="p-10 lg:w-2/3 bg-gray-50 flex flex-col min-h-[400px]">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="cont_map_title">แผนที่การเดินทาง</h3>
-                        <div class="flex-grow bg-gray-200 rounded-xl flex items-center justify-center border-2 border-dashed border-gray-400">
-                            <p class="text-gray-500 font-medium" data-i18n="cont_map_desc">นำโค้ด Embed จาก Google Maps มาวางส่วนนี้</p>
+                        <div class="flex-grow w-full h-full min-h-[300px] rounded-xl overflow-hidden shadow-sm border border-gray-200 relative">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                                class="absolute inset-0 w-full h-full"
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
                         </div>
                     </div>
                 </div>
