@@ -116,7 +116,7 @@
             <!-- 1. ภาพปก (ปรับให้กว้างเต็มจอ 100% ไม่มีพื้นที่ว่างด้านข้าง) -->
             <div class="w-full overflow-hidden">
                 <!-- แก้ไขชื่อไฟล์ภาพปกให้ตรงกับไฟล์ต้นฉบับ -->
-                <img src="banner.jpg" alt="MEC Banner" class="w-full h-auto block object-cover border-b-4 border-green-600">
+                <img src="banner.jpg" alt="MEC Banner" class="w-1920 h-1080 block object-cover border-b-4 border-green-600">
             </div>
 
             <!-- 2. ตัวหนังสือวิ่ง -->
@@ -262,41 +262,72 @@
         <!-- ==================== หน้าศูนย์รวมระบบ ==================== -->
         <section id="systems" class="page-section hidden-page">
             
-            <!-- ส่วนฟอร์ม Login -->
-            <div id="login-form" class="min-h-[500px] flex items-center justify-center py-12 px-4 bg-gray-100">
+            <!-- ส่วนกล่องระบบ Auth (Login / Register) -->
+            <div id="auth-container" class="min-h-[500px] flex items-center justify-center py-12 px-4 bg-gray-100">
                 <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                    <div class="text-center mb-8">
+                    <div class="text-center mb-6">
                         <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                            <i class="fa-solid fa-lock"></i>
+                            <i class="fa-solid fa-lock" id="auth-icon"></i>
                         </div>
-                        <h2 class="text-2xl font-bold text-gray-900" data-i18n="sys_login_title">ศูนย์รวมระบบ MEC</h2>
-                        <p class="text-gray-500 mt-2 text-sm" data-i18n="sys_login_desc">กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน</p>
+                        <h2 id="auth-title" class="text-2xl font-bold text-gray-900" data-i18n="sys_login_title">ศูนย์รวมระบบ MEC</h2>
+                        <p id="auth-desc" class="text-gray-500 mt-2 text-sm" data-i18n="sys_login_desc">กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน</p>
                     </div>
+
+                    <!-- กล่องข้อความแจ้งเตือน (ซ่อนไว้เป็นค่าเริ่มต้น) -->
+                    <div id="auth-message" class="hidden p-3 mb-4 rounded-lg text-sm font-medium text-center"></div>
                     
-                    <form onsubmit="event.preventDefault(); toggleLogin(true);" class="space-y-5">
+                    <!-- ฟอร์ม เข้าสู่ระบบ (Login) -->
+                    <form id="login-form-content" onsubmit="handleLogin(event)" class="space-y-5 block">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_login_user">รหัสผู้ใช้งาน</label>
-                            <input type="text" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_login_user_ph" placeholder="User ID">
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_login_user">อีเมล</label>
+                            <input type="email" id="login-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_login_pass">รหัสผ่าน</label>
-                            <input type="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
+                            <input type="password" id="login-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
                         </div>
                         <button type="submit" class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_login_btn">
                             เข้าสู่ระบบ
                         </button>
+                        <div class="text-center mt-4 text-sm text-gray-600">
+                            <span data-i18n="sys_no_account">ยังไม่มีบัญชีผู้ใช้?</span> 
+                            <button type="button" onclick="toggleAuthMode()" class="text-green-600 font-bold hover:underline ml-1" data-i18n="sys_toggle_reg">ลงทะเบียนที่นี่</button>
+                        </div>
+                    </form>
+
+                    <!-- ฟอร์ม ลงทะเบียน (Register) -->
+                    <form id="register-form-content" onsubmit="handleRegister(event)" class="space-y-4 hidden">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_name">ชื่อ-นามสกุล</label>
+                            <input type="text" id="reg-name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_reg_name_ph" placeholder="เช่น นพ.สมชาย ใจดี">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมล</label>
+                            <input type="email" id="reg-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_pass">รหัสผ่าน</label>
+                            <input type="password" id="reg-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_reg_btn">
+                            ลงทะเบียน
+                        </button>
+                        <div class="text-center mt-4 text-sm text-gray-600">
+                            <span data-i18n="sys_has_account">มีบัญชีผู้ใช้อยู่แล้ว?</span> 
+                            <button type="button" onclick="toggleAuthMode()" class="text-green-600 font-bold hover:underline ml-1" data-i18n="sys_toggle_login">เข้าสู่ระบบ</button>
+                        </div>
                     </form>
                 </div>
             </div>
 
-            <!-- ส่วน Dashboard -->
+            <!-- ส่วน Dashboard (เมื่อเข้าสู่ระบบสำเร็จ) -->
             <div id="dashboard" class="max-w-7xl mx-auto py-10 px-4 sm:px-6 hidden">
                 <div class="flex justify-between items-center mb-8 border-b pb-4">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900" data-i18n="sys_dash_title">Dashboard ศูนย์รวมระบบ</h1>
-                        <p class="text-gray-500 mt-1" data-i18n="sys_dash_desc">ยินดีต้อนรับ, เจ้าหน้าที่</p>
+                        <p class="text-gray-500 mt-1" id="sys_dash_desc">ยินดีต้อนรับ, <span class="font-bold text-green-700">เจ้าหน้าที่</span></p>
                     </div>
-                    <button onclick="toggleLogin(false)" class="px-4 py-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition flex items-center">
+                    <button onclick="toggleLoginState(false)" class="px-4 py-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition flex items-center">
                         <i class="fa-solid fa-right-from-bracket mr-2"></i> <span data-i18n="sys_dash_logout">ออกจากระบบ</span>
                     </button>
                 </div>
@@ -414,8 +445,21 @@
                 "mv_mis_4": "การทำนุบำรุงศิลปะวัฒนธรรมและขนบธรรมเนียมประเพณีอันดีงามของสังคม",
                 "mv_mis_5": "ส่งเสริมความเป็นเอกลักษณ์ความเป็นแพทย์ชนบท (CPIRD DNA) และการคงอยู่ในชุมชน",
                 "team_title": "คณะทำงาน", "team_name_1": "นพ. สมชาย ใจดี", "team_role_1": "ผู้อำนวยการศูนย์แพทย์ฯ", "team_name_2": "พญ. สมหญิง รักษา", "team_role_2": "รองผู้อำนวยการ", "team_name_3": "นพ. บุญเกื้อ เกื้อกูล", "team_role_3": "อาจารย์แพทย์", "team_name_4": "พญ. เมตตา ปราณี", "team_role_4": "อาจารย์แพทย์",
-                "sys_login_title": "ศูนย์รวมระบบ MEC", "sys_login_desc": "กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน", "sys_login_user": "รหัสผู้ใช้งาน", "sys_login_pass": "รหัสผ่าน", "sys_login_btn": "เข้าสู่ระบบ", "sys_login_user_ph": "User ID",
-                "sys_dash_title": "Dashboard ศูนย์รวมระบบ", "sys_dash_desc": "ยินดีต้อนรับ, เจ้าหน้าที่", "sys_dash_logout": "ออกจากระบบ",
+                
+                // คำแปลใหม่สำหรับระบบ Auth
+                "sys_login_title": "ศูนย์รวมระบบ MEC", "sys_login_desc": "กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน", 
+                "sys_login_user": "อีเมล", "sys_login_pass": "รหัสผ่าน", "sys_login_btn": "เข้าสู่ระบบ", "sys_login_user_ph": "user@example.com",
+                "sys_reg_title": "ลงทะเบียนเข้าใช้งาน", "sys_reg_desc": "กรุณากรอกข้อมูลเพื่อสร้างบัญชีผู้ใช้",
+                "sys_no_account": "ยังไม่มีบัญชีผู้ใช้?", "sys_toggle_reg": "ลงทะเบียนที่นี่",
+                "sys_reg_name": "ชื่อ-นามสกุล", "sys_reg_name_ph": "เช่น นพ.สมชาย ใจดี",
+                "sys_reg_email": "อีเมล", "sys_reg_pass": "รหัสผ่าน", "sys_reg_btn": "ลงทะเบียน",
+                "sys_has_account": "มีบัญชีผู้ใช้อยู่แล้ว?", "sys_toggle_login": "เข้าสู่ระบบ",
+                "sys_dash_desc_prefix": "ยินดีต้อนรับ,", "sys_dash_default_user": "เจ้าหน้าที่",
+                "err_email_exists": "อีเมลนี้มีในระบบแล้ว กรุณาใช้อีเมลอื่น",
+                "err_invalid_login": "อีเมลหรือรหัสผ่านไม่ถูกต้อง",
+                "msg_reg_success": "ลงทะเบียนสำเร็จ! กรุณาเข้าสู่ระบบ",
+
+                "sys_dash_title": "Dashboard ศูนย์รวมระบบ", "sys_dash_logout": "ออกจากระบบ",
                 "sys_item_1": "ระบบประเมินผลการศึกษา", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning",
                 "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
                 "cont_title": "ติดต่อเรา", "cont_addr_title": "ที่อยู่", "cont_addr_desc": "18 หมู่ 1 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000", "cont_phone_title": "เบอร์โทรศัพท์", "cont_map_title": "แผนที่การเดินทาง", "cont_map_desc": "นำโค้ด Embed จาก Google Maps มาวางส่วนนี้",
@@ -443,8 +487,21 @@
                 "mv_mis_4": "Preserve and nourish the good arts, culture, and traditions of society",
                 "mv_mis_5": "Promote the unique identity of rural doctors (CPIRD DNA) and retention in the community",
                 "team_title": "Our Team", "team_name_1": "Dr. Somchai Jaidee", "team_role_1": "Director of MEC", "team_name_2": "Dr. Somying Raksa", "team_role_2": "Deputy Director", "team_name_3": "Dr. Boonkeua Kuakool", "team_role_3": "Medical Instructor", "team_name_4": "Dr. Metta Pranee", "team_role_4": "Medical Instructor",
-                "sys_login_title": "MEC Systems Hub", "sys_login_desc": "Please login to access the systems", "sys_login_user": "User ID", "sys_login_pass": "Password", "sys_login_btn": "Login", "sys_login_user_ph": "Enter User ID",
-                "sys_dash_title": "Systems Dashboard", "sys_dash_desc": "Welcome, Staff", "sys_dash_logout": "Logout",
+                
+                // คำแปลใหม่สำหรับระบบ Auth
+                "sys_login_title": "MEC Systems Hub", "sys_login_desc": "Please login to access the systems", 
+                "sys_login_user": "Email Address", "sys_login_pass": "Password", "sys_login_btn": "Login", "sys_login_user_ph": "user@example.com",
+                "sys_reg_title": "Registration", "sys_reg_desc": "Please fill in your details to create an account",
+                "sys_no_account": "Don't have an account?", "sys_toggle_reg": "Register here",
+                "sys_reg_name": "Full Name", "sys_reg_name_ph": "e.g. Dr. Somchai Jaidee",
+                "sys_reg_email": "Email Address", "sys_reg_pass": "Password", "sys_reg_btn": "Register",
+                "sys_has_account": "Already have an account?", "sys_toggle_login": "Login here",
+                "sys_dash_desc_prefix": "Welcome,", "sys_dash_default_user": "Staff",
+                "err_email_exists": "This email is already registered.",
+                "err_invalid_login": "Invalid email or password.",
+                "msg_reg_success": "Registration successful! Please login.",
+
+                "sys_dash_title": "Systems Dashboard", "sys_dash_logout": "Logout",
                 "sys_item_1": "Educational Evaluation System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System",
                 "act_title": "Student Activities", "act_date_1": "May 10, 2024", "act_title_1": "Clinical Medical Students Orientation", "act_date_2": "Apr 25, 2024", "act_title_2": "Volunteer Doctor Community Health Checkup Project",
                 "cont_title": "Contact Us", "cont_addr_title": "Address", "cont_addr_desc": "18 Moo 1 Pisitpayaban Road<br>Tha Taphao, Mueang Chumphon<br>Chumphon 86000, Thailand", "cont_phone_title": "Phone Number", "cont_map_title": "Location Map", "cont_map_desc": "Place Google Maps Embed code here",
@@ -453,6 +510,11 @@
         };
 
         let currentLang = 'th';
+        
+        // ตัวแปรสำหรับระบบ Login/Register
+        let authMode = 'login'; // เป็นได้ 2 ค่า: 'login' หรือ 'register'
+        let loggedInUser = null; 
+        const usersDB = []; // ฐานข้อมูลผู้ใช้จำลอง (เก็บข้อมูลในหน่วยความจำชั่วคราว)
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -484,6 +546,133 @@
             // เปลี่ยน <title> ด้านบนสุดของเว็บ
             document.title = lang === 'th' ? "MEC Chumphon - ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" : "MEC Chumphon - Medical Education Center";
             document.documentElement.lang = lang;
+
+            // อัปเดตข้อความทักทายใน Dashboard
+            updateDashboardGreeting();
+        }
+
+        // ---------------- ระบบตรวจสอบและล็อคอิน ----------------
+        
+        // ฟังก์ชันสลับหน้า Login กับ Register
+        function toggleAuthMode() {
+            authMode = authMode === 'login' ? 'register' : 'login';
+            
+            const loginForm = document.getElementById('login-form-content');
+            const regForm = document.getElementById('register-form-content');
+            const authTitle = document.getElementById('auth-title');
+            const authDesc = document.getElementById('auth-desc');
+            const authIcon = document.getElementById('auth-icon');
+            const msgDiv = document.getElementById('auth-message');
+
+            msgDiv.classList.add('hidden'); // ซ่อนข้อความแจ้งเตือนเมื่อสลับหน้า
+
+            if (authMode === 'register') {
+                loginForm.classList.add('hidden');
+                loginForm.classList.remove('block');
+                regForm.classList.remove('hidden');
+                regForm.classList.add('block');
+                
+                authTitle.setAttribute('data-i18n', 'sys_reg_title');
+                authDesc.setAttribute('data-i18n', 'sys_reg_desc');
+                authIcon.className = "fa-solid fa-user-plus";
+            } else {
+                regForm.classList.add('hidden');
+                regForm.classList.remove('block');
+                loginForm.classList.remove('hidden');
+                loginForm.classList.add('block');
+                
+                authTitle.setAttribute('data-i18n', 'sys_login_title');
+                authDesc.setAttribute('data-i18n', 'sys_login_desc');
+                authIcon.className = "fa-solid fa-lock";
+            }
+            
+            // อัปเดตข้อความ Header ตามภาษาปัจจุบัน
+            authTitle.innerText = translations[currentLang][authTitle.getAttribute('data-i18n')];
+            authDesc.innerText = translations[currentLang][authDesc.getAttribute('data-i18n')];
+        }
+
+        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือนสีแดง/เขียว
+        function showAuthMessage(key, isError) {
+            const msgDiv = document.getElementById('auth-message');
+            msgDiv.innerText = translations[currentLang][key] || key;
+            msgDiv.className = `p-3 mb-4 rounded-lg text-sm font-medium text-center ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
+            msgDiv.classList.remove('hidden');
+            
+            // ซ่อนกล่องอัตโนมัติเมื่อผ่านไป 4 วินาที
+            setTimeout(() => {
+                msgDiv.classList.add('hidden');
+            }, 4000);
+        }
+
+        // ฟังก์ชันจัดการตอนกดปุ่ม ลงทะเบียน
+        function handleRegister(e) {
+            e.preventDefault(); // ป้องกันการรีเฟรชหน้าเว็บตอนกดปุ่ม Submit
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const pass = document.getElementById('reg-pass').value;
+
+            // ตรวจสอบว่ามีอีเมลนี้อยู่ในระบบแล้วหรือยัง
+            const existingUser = usersDB.find(u => u.email === email);
+            if (existingUser) {
+                showAuthMessage('err_email_exists', true);
+                return;
+            }
+
+            // บันทึกข้อมูลลงฐานข้อมูล (หน่วยความจำ)
+            usersDB.push({ name, email, pass });
+            document.getElementById('register-form-content').reset(); // ล้างข้อมูลในฟอร์ม
+            toggleAuthMode(); // สลับกลับไปหน้า Login
+            showAuthMessage('msg_reg_success', false); // แสดงข้อความสำเร็จ
+        }
+
+        // ฟังก์ชันจัดการตอนกดปุ่ม เข้าสู่ระบบ
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-pass').value;
+
+            // ค้นหาผู้ใช้จากฐานข้อมูล
+            const user = usersDB.find(u => u.email === email && u.pass === pass);
+            if (user) {
+                loggedInUser = user; // บันทึกว่าผู้ใช้นี้ล็อคอินสำเร็จแล้ว
+                document.getElementById('login-form-content').reset(); // ล้างฟอร์ม
+                toggleLoginState(true);
+            } else {
+                showAuthMessage('err_invalid_login', true); // รหัสไม่ถูก
+            }
+        }
+
+        // ฟังก์ชันอัปเดตชื่อใน Dashboard
+        function updateDashboardGreeting() {
+            const dashDesc = document.getElementById('sys_dash_desc');
+            if (dashDesc) {
+                const prefix = translations[currentLang]['sys_dash_desc_prefix'];
+                const name = loggedInUser ? loggedInUser.name : translations[currentLang]['sys_dash_default_user'];
+                dashDesc.innerHTML = `${prefix} <span class="font-bold text-green-700">${name}</span>`;
+            }
+        }
+
+        // ฟังก์ชันสลับหน้าจอระหว่ง ฟอร์ม Login กับ Dashboard
+        function toggleLoginState(isLoggedIn) {
+            const authContainer = document.getElementById('auth-container');
+            const dashboard = document.getElementById('dashboard');
+            const msgDiv = document.getElementById('auth-message');
+            msgDiv.classList.add('hidden'); // เคลียร์ข้อความแจ้งเตือน
+            
+            if(isLoggedIn && loggedInUser) {
+                authContainer.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                updateDashboardGreeting(); // เอาชื่อผู้ใช้ไปแสดงใน Dashboard
+            } else {
+                loggedInUser = null;
+                authContainer.classList.remove('hidden');
+                dashboard.classList.add('hidden');
+                
+                // ถ้ายกเลิกล็อคอิน ให้กลับไปหน้าฟอร์ม Login เสมอ
+                if(authMode === 'register') {
+                    toggleAuthMode();
+                }
+            }
         }
 
         // ---------------- ระบบควบคุมการทำงานทั่วไป ----------------
@@ -510,18 +699,6 @@
             menu.classList.toggle('hidden');
         }
 
-        function toggleLogin(isLoggedIn) {
-            const loginForm = document.getElementById('login-form');
-            const dashboard = document.getElementById('dashboard');
-            
-            if(isLoggedIn) {
-                loginForm.classList.add('hidden');
-                dashboard.classList.remove('hidden');
-            } else {
-                loginForm.classList.remove('hidden');
-                dashboard.classList.add('hidden');
-            }
-        }
     </script>
 </body>
 </html>
