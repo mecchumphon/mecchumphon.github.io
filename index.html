@@ -238,109 +238,12 @@
 
         <section id="systems" class="page-section hidden-page">
             
-            <div id="auth-container" class="min-h-[500px] flex items-center justify-center py-12 px-4 bg-gray-100">
-                <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-100">
-                    <div class="text-center mb-6">
-                        <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
-                            <i class="fa-solid fa-lock" id="auth-icon"></i>
-                        </div>
-                        <h2 id="auth-title" class="text-2xl font-bold text-gray-900" data-i18n="sys_login_title">ศูนย์รวมระบบ MEC</h2>
-                        <p id="auth-desc" class="text-gray-500 mt-2 text-sm" data-i18n="sys_login_desc">กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน</p>
-                    </div>
-
-                    <div id="auth-message" class="hidden p-3 mb-4 rounded-lg text-sm font-medium text-center"></div>
-                    
-                    <form id="login-form-content" onsubmit="handleLogin(event)" class="space-y-5 block">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_login_user">อีเมล</label>
-                            <input type="email" id="login-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-1">
-                                <label class="block text-sm font-medium text-gray-700" data-i18n="sys_login_pass">รหัสผ่าน</label>
-                                <button type="button" onclick="toggleForgotMode()" class="text-xs text-green-600 hover:text-green-700 hover:underline focus:outline-none" data-i18n="sys_forgot_pass_link">ลืมรหัสผ่าน?</button>
-                            </div>
-                            <input type="password" id="login-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
-                        </div>
-                        <button type="submit" class="w-full py-2.5 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_login_btn">
-                            เข้าสู่ระบบ
-                        </button>
-                        <div class="text-center mt-4 text-sm text-gray-600">
-                            <span data-i18n="sys_no_account">ยังไม่มีบัญชีผู้ใช้?</span> 
-                            <button type="button" onclick="toggleAuthMode()" class="text-green-600 font-bold hover:underline ml-1" data-i18n="sys_toggle_reg">ลงทะเบียนที่นี่</button>
-                        </div>
-                    </form>
-
-                    <form id="register-form-content" onsubmit="handleRegister(event)" class="space-y-4 hidden">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_name">ชื่อ-นามสกุล</label>
-                            <input type="text" id="reg-name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_reg_name_ph" placeholder="เช่น นพ.สมชาย ใจดี">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมล</label>
-                            <input type="email" id="reg-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_pass">รหัสผ่าน</label>
-                            <input type="password" id="reg-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-green-500 focus:border-green-500" placeholder="••••••••">
-                        </div>
-                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
-                            <label class="block text-sm font-bold text-blue-800 mb-1" data-i18n="sys_reg_secret">รหัสองค์กร (สำหรับเจ้าหน้าที่)</label>
-                            <p class="text-xs text-blue-600 mb-2" data-i18n="sys_reg_secret_desc">กรุณากรอกรหัสลับที่ได้รับจากส่วนกลาง เพื่อยืนยันตัวตน</p>
-                            <input type="text" id="reg-secret" required class="w-full px-4 py-2 border border-blue-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" data-i18n-placeholder="sys_reg_secret_ph" placeholder="กรอกรหัส 6 หลัก">
-                        </div>
-
-                        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors mt-2" data-i18n="sys_reg_btn">
-                            ลงทะเบียน
-                        </button>
-                        <div class="text-center mt-4 text-sm text-gray-600">
-                            <span data-i18n="sys_has_account">มีบัญชีผู้ใช้อยู่แล้ว?</span> 
-                            <button type="button" onclick="toggleAuthMode()" class="text-green-600 font-bold hover:underline ml-1" data-i18n="sys_toggle_login">เข้าสู่ระบบ</button>
-                        </div>
-                    </form>
-
-                    <form id="forgot-form-content" onsubmit="handleForgotPassword(event)" class="space-y-4 hidden">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมลบัญชีที่ต้องการกู้คืน</label>
-                            <input type="email" id="forgot-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" data-i18n-placeholder="sys_login_user_ph" placeholder="user@example.com">
-                        </div>
-                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-                            <label class="block text-sm font-bold text-yellow-800 mb-1" data-i18n="sys_reg_secret">รหัสองค์กร (เพื่อยืนยันสิทธิ์)</label>
-                            <p class="text-xs text-yellow-700 mb-2" data-i18n="sys_forgot_secret_desc">กรุณากรอกรหัสลับหน่วยงานเพื่อยืนยันว่าคุณเป็นเจ้าหน้าที่จริง</p>
-                            <input type="text" id="forgot-secret" required class="w-full px-4 py-2 border border-yellow-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" data-i18n-placeholder="sys_reg_secret_ph" placeholder="กรอกรหัส 6 หลัก">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_new_pass">ตั้งรหัสผ่านใหม่</label>
-                            <input type="password" id="forgot-new-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-yellow-500 focus:border-yellow-500" placeholder="••••••••">
-                        </div>
-
-                        <button type="submit" class="w-full py-2.5 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg font-medium transition-colors mt-2" data-i18n="sys_reset_btn">
-                            รีเซ็ตรหัสผ่าน
-                        </button>
-                        <div class="text-center mt-4">
-                            <button type="button" onclick="toggleAuthMode()" class="text-sm text-gray-500 hover:text-gray-700 font-medium hover:underline flex items-center justify-center w-full">
-                                <i class="fa-solid fa-arrow-left mr-2"></i> <span data-i18n="sys_back_login">กลับไปหน้าเข้าสู่ระบบ</span>
-                            </button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-
-            <div id="dashboard" class="max-w-7xl mx-auto py-10 px-4 sm:px-6 hidden">
+            <div id="dashboard" class="max-w-7xl mx-auto py-10 px-4 sm:px-6">
                 
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 border-b pb-4 gap-4">
                     <div>
                         <h1 class="text-3xl font-bold text-gray-900" data-i18n="sys_dash_title">Dashboard ศูนย์รวมระบบ</h1>
-                        <p class="text-gray-500 mt-1" id="sys_dash_desc">ยินดีต้อนรับ, <span class="font-bold text-green-700">เจ้าหน้าที่</span></p>
-                    </div>
-                    <div class="flex gap-2">
-                        <button onclick="toggleProfileView(true)" class="px-4 py-2 text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition flex items-center shadow-sm">
-                            <i class="fa-solid fa-user mr-2"></i> <span data-i18n="sys_dash_profile">ข้อมูลส่วนตัว</span>
-                        </button>
-                        <button onclick="toggleLoginState(false)" class="px-4 py-2 text-red-600 bg-red-50 rounded-lg hover:bg-red-100 transition flex items-center shadow-sm">
-                            <i class="fa-solid fa-right-from-bracket mr-2"></i> <span data-i18n="sys_dash_logout">ออกจากระบบ</span>
-                        </button>
+                        <p class="text-gray-500 mt-1" data-i18n="sys_dash_desc_static">กรุณาเลือกใช้งานระบบที่ต้องการ</p>
                     </div>
                 </div>
 
@@ -361,43 +264,6 @@
                         <div class="p-4 bg-orange-500 text-white flex justify-between items-center"><i class="fa-solid fa-calendar-days text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_4">ปฏิทินกิจกรรมศูนย์แพทย์</h3></div>
                     </a>
-                </div>
-
-                <div id="profile-view" class="hidden max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-sm border border-gray-200">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold text-gray-800" data-i18n="sys_profile_title">ข้อมูลส่วนตัวของฉัน</h2>
-                        <button onclick="toggleProfileView(false)" class="text-gray-500 hover:text-gray-700 bg-gray-100 px-3 py-1 rounded-md text-sm font-bold flex items-center transition">
-                            <i class="fa-solid fa-arrow-left mr-2"></i> <span data-i18n="sys_back_dash">กลับหน้าหลัก</span>
-                        </button>
-                    </div>
-                    
-                    <div id="profile-message" class="hidden p-3 mb-4 rounded-lg text-sm font-medium text-center"></div>
-
-                    <div class="space-y-4 mb-8">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_name">ชื่อ-นามสกุล</label>
-                            <input type="text" id="profile-name" readonly class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-600 cursor-not-allowed">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_reg_email">อีเมล</label>
-                            <input type="email" id="profile-email" readonly class="w-full px-4 py-2 bg-gray-100 border border-gray-300 rounded-lg text-gray-600 cursor-not-allowed">
-                        </div>
-                    </div>
-
-                    <h3 class="text-lg font-bold text-gray-800 mb-4 border-t pt-6" data-i18n="sys_change_pass_title">เปลี่ยนรหัสผ่านใหม่</h3>
-                    <form onsubmit="handleChangePassword(event)" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_old_pass">รหัสผ่านเดิม</label>
-                            <input type="password" id="profile-old-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="••••••••">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-1" data-i18n="sys_new_pass_profile">รหัสผ่านใหม่ที่ต้องการ</label>
-                            <input type="password" id="profile-new-pass" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="••••••••">
-                        </div>
-                        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors" data-i18n="sys_update_pass_btn">
-                            บันทึกรหัสผ่านใหม่
-                        </button>
-                    </form>
                 </div>
 
             </div>
@@ -530,6 +396,8 @@
                 "sys_update_pass_btn": "บันทึกรหัสผ่านใหม่", "err_incorrect_old_pass": "รหัสผ่านเดิมไม่ถูกต้อง",
                 "msg_pass_updated": "บันทึกรหัสผ่านใหม่เรียบร้อยแล้ว!",
 
+                "sys_dash_desc_static": "กรุณาเลือกใช้งานระบบที่ต้องการ",
+
                 "sys_item_1": "ระบบประเมินผลการศึกษา", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์",
                 "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
                 "cont_title": "ติดต่อเรา", "cont_addr_title": "ที่อยู่", "cont_addr_desc": "222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000", "cont_phone_title": "เบอร์โทรศัพท์", "cont_map_title": "แผนที่การเดินทาง", "cont_map_desc": "นำโค้ด Embed จาก Google Maps มาวางส่วนนี้",
@@ -587,6 +455,8 @@
                 "sys_update_pass_btn": "Update Password", "err_incorrect_old_pass": "Incorrect old password",
                 "msg_pass_updated": "Password updated successfully!",
 
+                "sys_dash_desc_static": "Please select the desired system",
+
                 "sys_item_1": "Educational Evaluation System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar",
                 "act_title": "Student Activities", "act_date_1": "May 10, 2024", "act_title_1": "Clinical Medical Students Orientation", "act_date_2": "Apr 25, 2024", "act_title_2": "Volunteer Doctor Community Health Checkup Project",
                 "cont_title": "Contact Us", "cont_addr_title": "Address", "cont_addr_desc": "222 Moo 1 Pisitpayaban Road<br>Tha Taphao, Mueang Chumphon<br>Chumphon 86000, Thailand", "cont_phone_title": "Phone Number", "cont_map_title": "Location Map", "cont_map_desc": "Place Google Maps Embed code here",
@@ -595,14 +465,6 @@
         };
 
         let currentLang = 'th';
-        
-        // ตัวแปรสำหรับระบบ Login/Register
-        let authMode = 'login'; // 'login', 'register', 'forgot'
-        let loggedInUser = null; 
-        const usersDB = []; // ฐานข้อมูลผู้ใช้จำลอง
-
-        // รหัสองค์กรส่วนกลางที่ต้องตั้งค่าไว้ให้เจ้าหน้าที่รู้
-        const SECRET_ORG_CODE = "MEC123"; 
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -631,231 +493,6 @@
 
             document.title = lang === 'th' ? "MEC Chumphon - ศูนย์แพทยศาสตรศึกษาชั้นคลินิก" : "MEC Chumphon - Medical Education Center";
             document.documentElement.lang = lang;
-            updateDashboardGreeting();
-        }
-
-        // ---------------- ระบบตรวจสอบและล็อคอิน ----------------
-        
-        function updateAuthView() {
-            const loginForm = document.getElementById('login-form-content');
-            const regForm = document.getElementById('register-form-content');
-            const forgotForm = document.getElementById('forgot-form-content');
-            const authTitle = document.getElementById('auth-title');
-            const authDesc = document.getElementById('auth-desc');
-            const authIcon = document.getElementById('auth-icon');
-            const msgDiv = document.getElementById('auth-message');
-
-            msgDiv.classList.add('hidden'); // ซ่อนข้อความแจ้งเตือน
-
-            // ปิดทุกฟอร์มก่อน
-            loginForm.classList.add('hidden'); loginForm.classList.remove('block');
-            regForm.classList.add('hidden'); regForm.classList.remove('block');
-            forgotForm.classList.add('hidden'); forgotForm.classList.remove('block');
-
-            if (authMode === 'register') {
-                regForm.classList.remove('hidden'); regForm.classList.add('block');
-                authTitle.setAttribute('data-i18n', 'sys_reg_title');
-                authDesc.setAttribute('data-i18n', 'sys_reg_desc');
-                authIcon.className = "fa-solid fa-user-plus text-blue-600";
-                authIcon.parentElement.className = "w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl";
-            } else if (authMode === 'forgot') {
-                forgotForm.classList.remove('hidden'); forgotForm.classList.add('block');
-                authTitle.setAttribute('data-i18n', 'sys_forgot_title');
-                authDesc.setAttribute('data-i18n', 'sys_forgot_desc');
-                authIcon.className = "fa-solid fa-key text-yellow-600";
-                authIcon.parentElement.className = "w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl";
-            } else {
-                loginForm.classList.remove('hidden'); loginForm.classList.add('block');
-                authTitle.setAttribute('data-i18n', 'sys_login_title');
-                authDesc.setAttribute('data-i18n', 'sys_login_desc');
-                authIcon.className = "fa-solid fa-lock text-green-600";
-                authIcon.parentElement.className = "w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl";
-            }
-            
-            // อัปเดตข้อความทันที
-            authTitle.innerText = translations[currentLang][authTitle.getAttribute('data-i18n')];
-            authDesc.innerText = translations[currentLang][authDesc.getAttribute('data-i18n')];
-        }
-
-        // ฟังก์ชันสลับไปหน้า Login / Register
-        function toggleAuthMode() {
-            authMode = authMode === 'login' ? 'register' : 'login';
-            updateAuthView();
-        }
-
-        // ฟังก์ชันเปลี่ยนไปหน้าลืมรหัสผ่าน
-        function toggleForgotMode() {
-            authMode = 'forgot';
-            updateAuthView();
-        }
-
-        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือน หน้า Auth
-        function showAuthMessage(key, isError) {
-            const msgDiv = document.getElementById('auth-message');
-            msgDiv.innerText = translations[currentLang][key] || key;
-            msgDiv.className = `p-3 mb-4 rounded-lg text-sm font-medium text-center ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
-            msgDiv.classList.remove('hidden');
-            setTimeout(() => { msgDiv.classList.add('hidden'); }, 4000);
-        }
-
-        // ฟังก์ชันแสดงกล่องข้อความแจ้งเตือน หน้าข้อมูลส่วนตัว
-        function showProfileMessage(key, isError) {
-            const msgDiv = document.getElementById('profile-message');
-            msgDiv.innerText = translations[currentLang][key] || key;
-            msgDiv.className = `p-3 mb-4 rounded-lg text-sm font-medium text-center ${isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
-            msgDiv.classList.remove('hidden');
-            setTimeout(() => { msgDiv.classList.add('hidden'); }, 4000);
-        }
-
-        // ฟังก์ชันจัดการ ลงทะเบียน
-        function handleRegister(e) {
-            e.preventDefault();
-            const name = document.getElementById('reg-name').value;
-            const email = document.getElementById('reg-email').value;
-            const pass = document.getElementById('reg-pass').value;
-            const secret = document.getElementById('reg-secret').value;
-
-            if (secret !== SECRET_ORG_CODE) {
-                showAuthMessage('err_invalid_secret', true);
-                return;
-            }
-
-            const existingUser = usersDB.find(u => u.email === email);
-            if (existingUser) {
-                showAuthMessage('err_email_exists', true);
-                return;
-            }
-
-            usersDB.push({ name, email, pass });
-            document.getElementById('register-form-content').reset();
-            authMode = 'login';
-            updateAuthView();
-            showAuthMessage('msg_reg_success', false);
-        }
-
-        // ฟังก์ชันจัดการ เข้าสู่ระบบ
-        function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const pass = document.getElementById('login-pass').value;
-
-            const user = usersDB.find(u => u.email === email && u.pass === pass);
-            if (user) {
-                loggedInUser = user;
-                document.getElementById('login-form-content').reset();
-                toggleLoginState(true);
-            } else {
-                showAuthMessage('err_invalid_login', true);
-            }
-        }
-
-        // ฟังก์ชันจัดการ ลืมรหัสผ่าน
-        function handleForgotPassword(e) {
-            e.preventDefault();
-            const email = document.getElementById('forgot-email').value;
-            const secret = document.getElementById('forgot-secret').value;
-            const newPass = document.getElementById('forgot-new-pass').value;
-
-            if (secret !== SECRET_ORG_CODE) {
-                showAuthMessage('err_invalid_secret', true);
-                return;
-            }
-
-            // หาบัญชีด้วยอีเมล
-            const userIndex = usersDB.findIndex(u => u.email === email);
-            if (userIndex === -1) {
-                showAuthMessage('err_email_not_found', true);
-                return;
-            }
-
-            // เปลี่ยนรหัสผ่านให้ผู้ใช้
-            usersDB[userIndex].pass = newPass;
-            
-            document.getElementById('forgot-form-content').reset();
-            authMode = 'login';
-            updateAuthView();
-            showAuthMessage('msg_reset_success', false);
-        }
-
-        // ฟังก์ชันอัปเดตชื่อผู้ใช้ในหน้า Dashboard
-        function updateDashboardGreeting() {
-            const dashDesc = document.getElementById('sys_dash_desc');
-            if (dashDesc) {
-                const prefix = translations[currentLang]['sys_dash_desc_prefix'];
-                const name = loggedInUser ? loggedInUser.name : translations[currentLang]['sys_dash_default_user'];
-                dashDesc.innerHTML = `${prefix} <span class="font-bold text-green-700">${name}</span>`;
-            }
-        }
-
-        // ฟังก์ชันสลับการแสดงผลตอนเข้า/ออกจากระบบ
-        function toggleLoginState(isLoggedIn) {
-            const authContainer = document.getElementById('auth-container');
-            const dashboard = document.getElementById('dashboard');
-            const msgDiv = document.getElementById('auth-message');
-            msgDiv.classList.add('hidden');
-            
-            if(isLoggedIn && loggedInUser) {
-                authContainer.classList.add('hidden');
-                dashboard.classList.remove('hidden');
-                updateDashboardGreeting();
-                // รีเซ็ตการดูหน้า Profile คืนเป็นหน้า Dashboard ปกติ
-                toggleProfileView(false);
-            } else {
-                loggedInUser = null;
-                authContainer.classList.remove('hidden');
-                dashboard.classList.add('hidden');
-                
-                authMode = 'login';
-                updateAuthView();
-            }
-        }
-
-        // ฟังก์ชันสลับการแสดงผล หน้า Dashboard หลัก <-> หน้าข้อมูลส่วนตัว
-        function toggleProfileView(showProfile) {
-            const mainDash = document.getElementById('dashboard-main');
-            const profileView = document.getElementById('profile-view');
-            const profileMsg = document.getElementById('profile-message');
-            profileMsg.classList.add('hidden'); // เคลียร์ข้อความแจ้งเตือน
-
-            if (showProfile && loggedInUser) {
-                mainDash.classList.add('hidden');
-                profileView.classList.remove('hidden');
-                // เติมข้อมูลลงในฟอร์มข้อมูลส่วนตัว
-                document.getElementById('profile-name').value = loggedInUser.name;
-                document.getElementById('profile-email').value = loggedInUser.email;
-                document.getElementById('profile-old-pass').value = '';
-                document.getElementById('profile-new-pass').value = '';
-            } else {
-                profileView.classList.add('hidden');
-                mainDash.classList.remove('hidden');
-            }
-        }
-
-        // ฟังก์ชันเปลี่ยนรหัสผ่านใหม่ (จากหน้าข้อมูลส่วนตัว)
-        function handleChangePassword(e) {
-            e.preventDefault();
-            const oldPass = document.getElementById('profile-old-pass').value;
-            const newPass = document.getElementById('profile-new-pass').value;
-
-            // ตรวจสอบว่ารหัสเดิมถูกต้องหรือไม่
-            if (oldPass !== loggedInUser.pass) {
-                showProfileMessage('err_incorrect_old_pass', true);
-                return;
-            }
-
-            // ถ้ารหัสเดิมถูก ให้ทำการอัปเดตเป็นรหัสใหม่
-            loggedInUser.pass = newPass;
-            
-            // อัปเดตในฐานข้อมูลรวมด้วย
-            const userIndex = usersDB.findIndex(u => u.email === loggedInUser.email);
-            if (userIndex !== -1) {
-                usersDB[userIndex].pass = newPass;
-            }
-
-            showProfileMessage('msg_pass_updated', false);
-            // ล้างข้อมูลช่องรหัสผ่าน
-            document.getElementById('profile-old-pass').value = '';
-            document.getElementById('profile-new-pass').value = '';
         }
 
         // ---------------- ระบบควบคุมการทำงานทั่วไป ----------------
