@@ -48,7 +48,7 @@
             <div class="flex justify-between items-center h-20">
                 
                 <div class="flex items-center cursor-pointer" onclick="showPage('home')">
-                    <img src="logo.jpg" alt="MEC Logo" class="w-12 h-12 rounded-full mr-3 shadow-md object-cover border-2 border-white">
+                    <img src="logo.jpg" onerror="this.src='https://via.placeholder.com/150'" alt="MEC Logo" class="w-12 h-12 rounded-full mr-3 shadow-md object-cover border-2 border-white">
                     <div>
                         <h1 class="text-xl font-bold text-green-800 leading-tight hidden sm:block" data-i18n="title_main">
                             ศูนย์แพทยศาสตรศึกษาชั้นคลินิก
@@ -99,52 +99,79 @@
     <main class="flex-grow">
         
         <section id="home" class="page-section block">
-            <div class="w-full overflow-hidden">
-                <img src="MEC-banner.png.jpg" alt="MEC Banner" class="w-full h-auto block object-cover border-b-4 border-green-600">
+            <div class="w-full overflow-hidden bg-green-50 flex justify-center items-center h-48 sm:h-64 md:h-80 lg:h-96">
+                <!-- Banner Image Fallback -->
+                <img src="MEC-banner.png.jpg" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'" alt="MEC Banner" class="w-full h-full object-cover border-b-4 border-green-600">
             </div>
 
-            <div class="bg-green-600 text-white py-3 border-y border-green-700 marquee-container">
+            <div class="bg-green-600 text-white py-3 border-y border-green-700 marquee-container shadow-md">
                 <span class="marquee-content text-lg font-semibold" data-i18n="home_marquee">
                     ✨ ยินดีต้อนรับสู่ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ (Medical Education Center Chumphon Khet Udomsak Hospital) ✨
                 </span>
             </div>
 
-            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
+            <!-- ส่วนแสดงผู้บริหาร (เพิ่มใหม่) -->
+            <div class="max-w-6xl mx-auto pt-12 pb-6 px-4 sm:px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                    
+                    <!-- ผู้อำนวยการโรงพยาบาล -->
+                    <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center hover:shadow-lg transition-shadow">
+                        <div class="w-48 h-56 rounded-xl overflow-hidden mb-5 border-4 border-gray-50 shadow-sm relative bg-blue-50">
+                            <!-- ใส่รูปภาพผู้อำนวยการโรงพยาบาลจริงที่ src -->
+                            <img src="Pattamapan.png" alt="ผู้อำนวยการโรงพยาบาล" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800" data-i18n="dir_hosp_name">พญ. ปัทมพันธ์ อนันตาพงศ์</h3>
+                        <div class="h-1 w-12 bg-green-500 rounded-full my-3"></div>
+                        <p class="text-green-700 font-semibold text-lg" data-i18n="dir_hosp_title">ผู้อำนวยการโรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+                    </div>
+
+                    <!-- ผู้อำนวยการศูนย์แพทย์ฯ -->
+                    <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center hover:shadow-lg transition-shadow">
+                        <div class="w-48 h-56 rounded-xl overflow-hidden mb-5 border-4 border-gray-50 shadow-sm relative bg-blue-50">
+                            <!-- ใส่รูปภาพผู้อำนวยการศูนย์แพทย์จริงที่ src -->
+                            <img src="Anan1.jpg" alt="ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800" data-i18n="dir_mec_name">นพ. อนันต์ พรมาตา</h3>
+                        <div class="h-1 w-12 bg-green-500 rounded-full my-3"></div>
+                        <p class="text-green-700 font-semibold text-lg" data-i18n="dir_mec_title">ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ส่วนข่าวประชาสัมพันธ์ -->
+            <div class="max-w-5xl mx-auto py-8 px-4 sm:px-6">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-green-500 inline-block pb-2" data-i18n="home_news_title">ข่าวประชาสัมพันธ์</h2>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <div class="lg:col-span-2 bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden h-[500px] flex flex-col">
-                        <div class="bg-[#1877F2] p-4 flex items-center text-white">
-                            <i class="fa-brands fa-facebook text-2xl mr-2"></i>
-                            <h3 class="font-bold text-lg" data-i18n="home_fb_header">Facebook Updates</h3>
-                        </div>
-                        <div class="flex-grow p-4 bg-gray-50 flex items-center justify-center">
-                            <div class="text-center p-6 border-2 border-dashed border-gray-300 rounded-lg">
-                                <i class="fa-brands fa-facebook text-4xl text-blue-500 mb-3"></i>
-                                <h4 class="font-bold mb-2" data-i18n="home_fb_title">พื้นที่สำหรับใส่ Facebook Plugin</h4>
-                                <p class="text-sm text-gray-500" data-i18n="home_fb_desc">นำโค้ด Iframe จาก Facebook มาวางตรงนี้</p>
-                            </div>
-                        </div>
+                <!-- ปรับให้แสดงประกาศอยู่ตรงกลาง (หลังจากนำ FB ออก) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-green-50 rounded-xl p-6 border border-green-100 shadow-sm h-full">
+                        <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center">
+                            <i class="fa-solid fa-bullhorn mr-2"></i> 
+                            <span data-i18n="home_announce_title">ประกาศด่วน</span>
+                        </h3>
+                        <ul class="space-y-4 text-gray-800">
+                            <li class="border-b border-green-200 pb-2 flex items-start">
+                                <span class="bg-green-200 text-green-800 text-xs px-2 py-1 rounded font-bold mr-2 mt-0.5 whitespace-nowrap">NEW</span> 
+                                <span data-i18n="home_announce_1">กำหนดการเปิดภาคเรียน ปี 2567</span>
+                            </li>
+                            <li class="border-b border-green-200 pb-2 flex items-start">
+                                <i class="fa-solid fa-circle-chevron-right text-green-500 mt-1 mr-2 text-xs"></i>
+                                <span data-i18n="home_announce_2">รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี</span>
+                            </li>
+                            <li class="border-b border-green-200 pb-2 flex items-start">
+                                <i class="fa-solid fa-circle-chevron-right text-green-500 mt-1 mr-2 text-xs"></i>
+                                <span data-i18n="home_announce_3">มาตรการป้องกันโรคสำหรับนักศึกษา</span>
+                            </li>
+                        </ul>
                     </div>
-
-                    <div class="space-y-6">
-                        <div class="bg-green-50 rounded-xl p-6 border border-green-100 shadow-sm">
-                            <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center">
-                                <i class="fa-solid fa-bullhorn mr-2"></i> 
-                                <span data-i18n="home_announce_title">ประกาศด่วน</span>
-                            </h3>
-                            <ul class="space-y-4 text-gray-800">
-                                <li class="border-b border-green-200 pb-2 flex items-start">
-                                    <span class="bg-green-200 text-green-800 text-xs px-2 py-1 rounded font-bold mr-2 mt-0.5">NEW</span> 
-                                    <span data-i18n="home_announce_1">กำหนดการเปิดภาคเรียน ปี 2567</span>
-                                </li>
-                                <li class="border-b border-green-200 pb-2" data-i18n="home_announce_2">รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี</li>
-                                <li class="border-b border-green-200 pb-2" data-i18n="home_announce_3">มาตรการป้องกันโรคสำหรับนักศึกษา</li>
-                            </ul>
-                        </div>
-                        <img src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Students" class="rounded-xl shadow-md w-full h-48 object-cover">
+                    
+                    <div class="h-full">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Students" class="rounded-xl shadow-md w-full h-full object-cover min-h-[250px]">
                     </div>
                 </div>
             </div>
@@ -153,8 +180,8 @@
         <section id="about" class="page-section hidden-page">
             <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
                 
-                <div class="mb-10 text-center">
-                    <img src="MEC-bulding.jpg" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto">
+                <div class="mb-10 text-center bg-gray-100 rounded-xl">
+                    <img src="MEC-bulding.jpg" onerror="this.src='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto max-h-[500px]">
                 </div>
 
                 <h1 class="text-3xl font-bold text-green-800 mb-6 border-b pb-4" data-i18n="hist_title">ประวัติความเป็นมา</h1>
@@ -167,7 +194,7 @@
 
                 <h1 class="text-3xl font-bold text-green-800 mb-8 border-b pb-4" data-i18n="mv_title">พันธกิจ และ วิสัยทัศน์</h1>
                 <div class="grid md:grid-cols-2 gap-8 items-start">
-                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500">
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-green-500 h-full">
                         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                             <i class="fa-solid fa-eye text-green-500 mr-3"></i> 
                             <span data-i18n="mv_vis_title">วิสัยทัศน์ (Vision)</span>
@@ -175,7 +202,7 @@
                         <p class="text-gray-700 leading-relaxed text-lg italic" data-i18n="mv_vis_desc">"เป็นสถาบันร่วมผลิตแพทย์ชนบทที่มีเอกลักษณ์และได้มาตรฐานตามเกณฑ์แพทยสภา โดยเน้นการเป็นแพทย์ที่มีหัวใจความเป็นมนุษย์และคงอยู่ในชุมชน"</p>
                     </div>
                     
-                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500">
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 h-full">
                         <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
                             <i class="fa-solid fa-bullseye text-blue-500 mr-3"></i> 
                             <span data-i18n="mv_mis_title">พันธกิจ (Mission)</span>
@@ -212,25 +239,25 @@
             <div class="max-w-6xl mx-auto py-12 px-4 sm:px-6">
                 <h1 class="text-3xl font-bold text-green-800 mb-8 border-b pb-4 text-center" data-i18n="team_title">คณะทำงาน</h1>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
-                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-                        <img src="https://i.pravatar.cc/150?img=11" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-2 border-green-100">
                         <h3 class="font-bold text-gray-800" data-i18n="team_name_1">นพ. สมชาย ใจดี</h3>
-                        <p class="text-sm text-green-600 mt-1" data-i18n="team_role_1">ผู้อำนวยการศูนย์แพทย์ฯ</p>
+                        <p class="text-sm text-green-600 mt-1 font-medium" data-i18n="team_role_1">ผู้อำนวยการศูนย์แพทย์ฯ</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-                        <img src="https://i.pravatar.cc/150?img=5" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-2 border-green-100">
                         <h3 class="font-bold text-gray-800" data-i18n="team_name_2">พญ. สมหญิง รักษา</h3>
-                        <p class="text-sm text-green-600 mt-1" data-i18n="team_role_2">รองผู้อำนวยการ</p>
+                        <p class="text-sm text-green-600 mt-1 font-medium" data-i18n="team_role_2">รองผู้อำนวยการ</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-                        <img src="https://i.pravatar.cc/150?img=33" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-2 border-green-100">
                         <h3 class="font-bold text-gray-800" data-i18n="team_name_3">นพ. บุญเกื้อ เกื้อกูล</h3>
-                        <p class="text-sm text-green-600 mt-1" data-i18n="team_role_3">อาจารย์แพทย์</p>
+                        <p class="text-sm text-green-600 mt-1 font-medium" data-i18n="team_role_3">อาจารย์แพทย์</p>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
-                        <img src="https://i.pravatar.cc/150?img=47" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover">
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition">
+                        <img src="https://i.pravatar.cc/150?img=47" alt="Team" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-2 border-green-100">
                         <h3 class="font-bold text-gray-800" data-i18n="team_name_4">พญ. เมตตา ปราณี</h3>
-                        <p class="text-sm text-green-600 mt-1" data-i18n="team_role_4">อาจารย์แพทย์</p>
+                        <p class="text-sm text-green-600 mt-1 font-medium" data-i18n="team_role_4">อาจารย์แพทย์</p>
                     </div>
                 </div>
             </div>
@@ -247,19 +274,19 @@
                 </div>
 
                 <div id="dashboard-main" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <a href="https://mecchumphon.github.io/face-attendance" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                    <a href="https://mecchumphon.github.io/face-attendance" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition transform hover:-translate-y-1">
                     <div class="p-4 bg-blue-500 text-white flex justify-between items-center"><i class="fa-solid fa-user-clock text-2xl"></i></div>
                     <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_1">ระบบบันทึกเวลาปฏิบัติงาน</h3></div>
                     </a>
-                    <a href="#" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                    <a href="#" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition transform hover:-translate-y-1">
                         <div class="p-4 bg-green-500 text-white flex justify-between items-center"><i class="fa-solid fa-calendar-check text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_2">ระบบจัดการวันลา (E-Leave)</h3></div>
                     </a>
-                    <a href="https://www.med.tu.ac.th/elearning/login.php" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                    <a href="https://www.med.tu.ac.th/elearning/login.php" target="_blank" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition transform hover:-translate-y-1">
                         <div class="p-4 bg-purple-500 text-white flex justify-between items-center"><i class="fa-solid fa-book-open text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_3">ระบบ E-Learning</h3></div>
                     </a>
-                    <a href="https://script.google.com/a/macros/cpird.in.th/s/AKfycbz9rcaNP1TQ1oLBQim1l2j7dS8c-Ycie_y9bLrcasu0tMENemhBQrFVFtrLOeZS7jkAmg/exec" target="_blank" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition">
+                    <a href="https://script.google.com/a/macros/cpird.in.th/s/AKfycbz9rcaNP1TQ1oLBQim1l2j7dS8c-Ycie_y9bLrcasu0tMENemhBQrFVFtrLOeZS7jkAmg/exec" target="_blank" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition transform hover:-translate-y-1">
                         <div class="p-4 bg-orange-500 text-white flex justify-between items-center"><i class="fa-solid fa-calendar-days text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_4">ปฏิทินกิจกรรมศูนย์แพทย์</h3></div>
                     </a>
@@ -272,18 +299,22 @@
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
                 <h1 class="text-3xl font-bold text-green-800 mb-8 border-b pb-4 text-center" data-i18n="act_title">ภาพกิจกรรมนักศึกษา</h1>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=600&q=80" alt="Activity" class="w-full h-64 object-cover">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md group">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
                         <div class="p-6">
                             <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded" data-i18n="act_date_1">10 พ.ค. 2567</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-2" data-i18n="act_title_1">กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mt-3 group-hover:text-green-700 transition" data-i18n="act_title_1">กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก</h3>
                         </div>
                     </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80" alt="Activity" class="w-full h-64 object-cover">
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md group">
+                        <div class="overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                        </div>
                         <div class="p-6">
                             <span class="text-xs font-bold bg-green-100 text-green-800 px-2 py-1 rounded" data-i18n="act_date_2">25 เม.ย. 2567</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-2" data-i18n="act_title_2">โครงการแพทย์อาสาตรวจสุขภาพชุมชน</h3>
+                            <h3 class="text-xl font-bold text-gray-800 mt-3 group-hover:text-green-700 transition" data-i18n="act_title_2">โครงการแพทย์อาสาตรวจสุขภาพชุมชน</h3>
                         </div>
                     </div>
                 </div>
@@ -300,14 +331,14 @@
                                 <i class="fa-solid fa-location-dot mt-1 mr-4 text-xl text-green-300"></i>
                                 <div>
                                     <h4 class="font-semibold text-lg" data-i18n="cont_addr_title">ที่อยู่</h4>
-                                    <p class="text-sm mt-1" data-i18n="cont_addr_desc">222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000</p>
+                                    <p class="text-sm mt-1 leading-relaxed" data-i18n="cont_addr_desc">222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000</p>
                                 </div>
                             </div>
-                            <div class="flex items-center">
-                                <i class="fa-solid fa-phone mr-4 text-xl text-green-300"></i>
+                            <div class="flex items-start">
+                                <i class="fa-solid fa-phone mt-1 mr-4 text-xl text-green-300"></i>
                                 <div>
                                     <h4 class="font-semibold text-lg" data-i18n="cont_phone_title">เบอร์โทรศัพท์</h4>
-                                    <p class="text-sm mt-1">077-503-672 ต่อ 8521-2 / 083-107-4497</p>
+                                    <p class="text-sm mt-1">077-503-672 ต่อ 8521-2<br>083-107-4497</p>
                                 </div>
                             </div>
                         </div>
@@ -333,7 +364,7 @@
 
     <footer class="bg-gray-900 text-white mt-auto">
         <div class="max-w-7xl mx-auto py-8 px-4 text-center">
-            <p class="text-gray-400 text-sm" data-i18n="footer_text">
+            <p class="text-gray-400 text-sm leading-relaxed" data-i18n="footer_text">
                 © 2024 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>
                 Medical Education Center Chumphon Khet Udomsak Hospital
             </p>
@@ -348,7 +379,14 @@
                 "nav_home": "หน้าแรก", "nav_about": "เกี่ยวกับหน่วยงาน", "nav_team": "คณะทำงาน", "nav_systems": "ศูนย์รวมระบบ", "nav_activities": "กิจกรรม", "nav_contact": "ติดต่อเรา",
                 "home_title": "ศูนย์แพทยศาสตรศึกษาชั้นคลินิก", "home_subtitle": "โรงพยาบาลชุมพรเขตรอุดมศักดิ์",
                 "home_marquee": "✨ ยินดีต้อนรับสู่ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ (Medical Education Center Chumphon Khet Udomsak Hospital) ✨",
-                "home_news_title": "ข่าวประชาสัมพันธ์", "home_fb_header": "Facebook Updates", "home_fb_title": "พื้นที่สำหรับใส่ Facebook Plugin", "home_fb_desc": "นำโค้ด Iframe จาก Facebook มาวางตรงนี้",
+                
+                // เพิ่มส่วนแปลภาษาสำหรับผู้บริหาร
+                "dir_hosp_name": "พญ. ปัทมพันธ์ อนันตาพงศ์",
+                "dir_hosp_title": "ผู้อำนวยการโรงพยาบาลชุมพรเขตรอุดมศักดิ์",
+                "dir_mec_name": "นพ. อนันต์ พรมาตา",
+                "dir_mec_title": "ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
+
+                "home_news_title": "ข่าวประชาสัมพันธ์", 
                 "home_announce_title": "ประกาศด่วน", "home_announce_1": "กำหนดการเปิดภาคเรียน ปี 2567", "home_announce_2": "รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี", "home_announce_3": "มาตรการป้องกันโรคสำหรับนักศึกษา",
                 "hist_title": "ประวัติความเป็นมา", 
                 "hist_p1": "พ.ศ.2547 คณะรัฐมนตรี มีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย (กระทรวงศึกษาธิการ) \"โครงการผลิตแพทย์เพื่อชาวชนบท\" โดยเริ่มรับนักศึกษาตั้งแต่ปีการศึกษา 2548 เป็นต้นไป เพื่อแก้ไขปัญหาการขาดแคลนแพทย์และการกระจายแพทย์ที่ไม่เหมาะสมในชนบท กระทรวงสาธารณสุขได้มีคำสั่ง เรื่องจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก ขึ้นเป็นหน่วยงานภายในโรงพยาบาลศูนย์ ทำหน้าที่จัดการเรียนการสอนชั้นคลินิกให้กับนักศึกษาแพทย์ในการร่วมผลิตแพทย์เพิ่มเพื่อชาวชนบท ซึ่งเป็นโครงการความร่วมมือระหว่างกระทรวงสาธารณสุข กับทบวงมหาวิทยาลัย",
@@ -366,7 +404,6 @@
                 "mv_mis_5": "ส่งเสริมความเป็นเอกลักษณ์ความเป็นแพทย์ชนบท (CPIRD DNA) และการคงอยู่ในชุมชน",
                 "team_title": "คณะทำงาน", "team_name_1": "นพ. สมชาย ใจดี", "team_role_1": "ผู้อำนวยการศูนย์แพทย์ฯ", "team_name_2": "พญ. สมหญิง รักษา", "team_role_2": "รองผู้อำนวยการ", "team_name_3": "นพ. บุญเกื้อ เกื้อกูล", "team_role_3": "อาจารย์แพทย์", "team_name_4": "พญ. เมตตา ปราณี", "team_role_4": "อาจารย์แพทย์",
                 
-                // คำแปลใหม่สำหรับระบบ Auth
                 "sys_login_title": "ศูนย์รวมระบบ MEC", "sys_login_desc": "กรุณาเข้าสู่ระบบเพื่อเข้าใช้งาน", 
                 "sys_login_user": "อีเมล", "sys_login_pass": "รหัสผ่าน", "sys_login_btn": "เข้าสู่ระบบ", "sys_login_user_ph": "user@example.com",
                 "sys_reg_title": "ลงทะเบียนเข้าใช้งาน", "sys_reg_desc": "กรุณากรอกข้อมูลเพื่อสร้างบัญชีผู้ใช้",
@@ -376,7 +413,6 @@
                 "sys_reg_secret": "รหัสองค์กร (สำหรับเจ้าหน้าที่)", "sys_reg_secret_desc": "กรุณากรอกรหัสลับที่ได้รับจากส่วนกลาง เพื่อยืนยันตัวตน", "sys_reg_secret_ph": "กรอกรหัส",
                 "sys_has_account": "มีบัญชีผู้ใช้อยู่แล้ว?", "sys_toggle_login": "เข้าสู่ระบบ",
                 
-                // แปลส่วนลืมรหัสผ่าน
                 "sys_forgot_pass_link": "ลืมรหัสผ่าน?", "sys_forgot_title": "ลืมรหัสผ่าน", "sys_forgot_desc": "ยืนยันตัวตนเพื่อตั้งรหัสผ่านใหม่",
                 "sys_new_pass": "ตั้งรหัสผ่านใหม่", "sys_reset_btn": "รีเซ็ตรหัสผ่าน", "sys_back_login": "กลับไปหน้าเข้าสู่ระบบ",
                 "sys_forgot_secret_desc": "กรุณากรอกรหัสลับหน่วยงานเพื่อยืนยันว่าคุณเป็นเจ้าหน้าที่จริง",
@@ -407,7 +443,14 @@
                 "nav_home": "Home", "nav_about": "About Us", "nav_team": "Our Team", "nav_systems": "Systems Hub", "nav_activities": "Activities", "nav_contact": "Contact Us",
                 "home_title": "Medical Education Center", "home_subtitle": "Chumphon Khet Udomsak Hospital",
                 "home_marquee": "✨ Welcome to Medical Education Center, Chumphon Khet Udomsak Hospital ✨",
-                "home_news_title": "Public Relations News", "home_fb_header": "Facebook Updates", "home_fb_title": "Facebook Plugin Area", "home_fb_desc": "Place your Facebook Iframe code here",
+                
+                // English translation for Directors
+                "dir_hosp_name": "Dr. Pattamapan Anantapong",
+                "dir_hosp_title": "Director of Chumphon Khet Udomsak Hospital",
+                "dir_mec_name": "Dr. Anan Pornmata",
+                "dir_mec_title": "Director of Medical Education Center",
+
+                "home_news_title": "Public Relations News", 
                 "home_announce_title": "Announcements", "home_announce_1": "Schedule for the 2024 Academic Year", "home_announce_2": "Internship Doctor Recruitment", "home_announce_3": "Disease Prevention Measures for Students",
                 "hist_title": "Our History", 
                 "hist_p1": "In 2004, the Cabinet approved the collaboration between the Ministry of Public Health and the Ministry of University Affairs (Ministry of Education) for the \"Collaborative Project to Increase Production of Rural Doctors\" (CPIRD), starting student admission from the 2005 academic year. To solve the shortage and maldistribution of doctors in rural areas, the Ministry of Public Health issued an order to establish Medical Education Centers as internal units within regional hospitals to provide clinical teaching for medical students.",
@@ -425,7 +468,6 @@
                 "mv_mis_5": "Promote the unique identity of rural doctors (CPIRD DNA) and retention in the community",
                 "team_title": "Our Team", "team_name_1": "Dr. Somchai Jaidee", "team_role_1": "Director of MEC", "team_name_2": "Dr. Somying Raksa", "team_role_2": "Deputy Director", "team_name_3": "Dr. Boonkeua Kuakool", "team_role_3": "Medical Instructor", "team_name_4": "Dr. Metta Pranee", "team_role_4": "Medical Instructor",
                 
-                // คำแปลใหม่สำหรับระบบ Auth
                 "sys_login_title": "MEC Systems Hub", "sys_login_desc": "Please login to access the systems", 
                 "sys_login_user": "Email Address", "sys_login_pass": "Password", "sys_login_btn": "Login", "sys_login_user_ph": "user@example.com",
                 "sys_reg_title": "Registration", "sys_reg_desc": "Please fill in your details to create an account",
@@ -435,7 +477,6 @@
                 "sys_reg_secret": "Organization Code (Staff Only)", "sys_reg_secret_desc": "Enter the secret code provided by the center to verify identity", "sys_reg_secret_ph": "Enter code",
                 "sys_has_account": "Already have an account?", "sys_toggle_login": "Login here",
 
-                // แปลส่วนลืมรหัสผ่าน
                 "sys_forgot_pass_link": "Forgot Password?", "sys_forgot_title": "Forgot Password", "sys_forgot_desc": "Verify your identity to reset password",
                 "sys_new_pass": "New Password", "sys_reset_btn": "Reset Password", "sys_back_login": "Back to Login",
                 "sys_forgot_secret_desc": "Please enter the organization secret code to verify you are a staff member.",
