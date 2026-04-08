@@ -73,13 +73,14 @@
            Org Chart Tree Styles 
            -------------------------------------- */
         .org-tree-container {
+            width: 100%;
             overflow-x: auto;
             padding-bottom: 2rem;
         }
         
-        /* Custom Scrollbar for Tree */
+        /* Custom Scrollbar */
         .org-tree-container::-webkit-scrollbar {
-            height: 8px;
+            height: 10px;
         }
         .org-tree-container::-webkit-scrollbar-track {
             background: #f1f5f9;
@@ -94,76 +95,79 @@
         }
 
         .org-tree {
-            display: flex;
+            display: inline-flex;
             justify-content: center;
+            padding: 20px;
+            min-width: max-content;
         }
-        
+
         .org-tree ul {
-            padding-top: 20px;
+            padding-top: 30px;
             position: relative;
             display: flex;
             justify-content: center;
+            transition: all 0.5s;
         }
-        
+
         .org-tree li {
             text-align: center;
             list-style-type: none;
             position: relative;
-            padding: 20px 10px 0 10px;
+            padding: 30px 10px 0 10px;
+            transition: all 0.5s;
         }
-        
-        /* วาดเส้นเชื่อม */
+
         .org-tree li::before, .org-tree li::after {
             content: '';
             position: absolute;
             top: 0;
             right: 50%;
-            border-top: 2px solid #93c5fd; /* Tailwind blue-300 */
+            border-top: 2px solid #60a5fa;
             width: 50%;
-            height: 20px;
+            height: 30px;
         }
-        
+
         .org-tree li::after {
             right: auto;
             left: 50%;
-            border-left: 2px solid #93c5fd;
+            border-left: 2px solid #60a5fa;
         }
-        
-        /* เอาเส้นเชื่อมของโหนดที่ไม่มีพี่น้องออก */
+
         .org-tree li:only-child::after, .org-tree li:only-child::before {
             display: none;
         }
+
         .org-tree li:only-child {
             padding-top: 0;
         }
-        
-        /* เอาเส้นซ้ายสุดขวาสุดออก */
+
         .org-tree li:first-child::before, .org-tree li:last-child::after {
             border: 0 none;
         }
-        
-        /* ใส่ความโค้งของเส้นเชื่อมสุดขอบ */
+
         .org-tree li:last-child::before {
-            border-right: 2px solid #93c5fd;
+            border-right: 2px solid #60a5fa;
             border-radius: 0 5px 0 0;
         }
+
         .org-tree li:first-child::after {
             border-radius: 5px 0 0 0;
         }
-        
-        /* เส้นชี้ลงไปที่ลูก */
+
         .org-tree ul ul::before {
             content: '';
             position: absolute;
             top: 0;
             left: 50%;
-            border-left: 2px solid #93c5fd;
+            border-left: 2px solid #60a5fa;
             width: 0;
-            height: 20px;
+            height: 30px;
         }
-        
+
         .org-node {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            white-space: normal;
         }
         .org-node:hover {
             transform: translateY(-5px);
@@ -316,145 +320,87 @@
             </div>
         </section>
 
-        <section id="about" class="page-section hidden-page page-transition">
-            <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
-                
-                <div class="mb-10 text-center bg-gray-100 rounded-xl">
-                    <img src="aboutpic.png" onerror="this.src='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto max-h-[500px]">
-                </div>
-
-                <h1 class="text-3xl font-bold text-blue-800 mb-6 border-b pb-4" data-i18n="hist_title">ประวัติความเป็นมา</h1>
-                <div class="text-gray-700 leading-relaxed text-lg space-y-4 mb-16">
-                    <p data-i18n="hist_p1" class="indent-8">พ.ศ.2547 คณะรัฐมนตรี มีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย (กระทรวงศึกษาธิการ) "โครงการผลิตแพทย์เพื่อชาวชนบท" โดยเริ่มรับนักศึกษาตั้งแต่ปีการศึกษา 2548 เป็นต้นไป เพื่อแก้ไขปัญหาการขาดแคลนแพทย์และการกระจายแพทย์ที่ไม่เหมาะสมในชนบท กระทรวงสาธารณสุขได้มีคำสั่ง เรื่องจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก ขึ้นเป็นหน่วยงานภายในโรงพยาบาลศูนย์ ทำหน้าที่จัดการเรียนการสอนชั้นคลินิกให้กับนักศึกษาแพทย์ในการร่วมผลิตแพทย์เพิ่มเพื่อชาวชนบท ซึ่งเป็นโครงการความร่วมมือระหว่างกระทรวงสาธารณสุข กับทบวงมหาวิทยาลัย</p>
-                    <p data-i18n="hist_p2" class="indent-8">เมื่อวันที่ 15 มิถุนายน 2547 โรงพยาบาลชุมพรเขตรอุดมศักดิ์ ได้รับการอนุมัติตามมติคณะรัฐมนตรีว่ามีศักยภาพและความพร้อมในการจัดการเรียนการสอนนักศึกษาแพทย์ในโครงการผลิตแพทย์เพื่อชาวชนบท โดยกระทรวงสาธารณสุขมีคำสั่งให้จัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก สาขาโรงพยาบาลชุมพรเขตรอุดมศักดิ์ขึ้น</p>
-                    <p data-i18n="hist_p3" class="indent-8">โรงพยาบาลชุมพรเขตรอุดมศักดิ์ ได้ให้ความร่วมมือในการผลิตแพทย์เพื่อชาวชนบทร่วมกับคณะแพทยศาสตร์มหาวิทยาลัยธรรมศาสตร์ โดยเปิดสอนนักศึกษาแพทย์รุ่นแรก (ชั้นปี 6) จำนวน 13 คน ประจำปีการศึกษา 2551 ได้เปิดสอนนักศึกษารุ่นแรก และในปีการศึกษา 2559 เปิดสอนรับนักศึกษาแพทย์ชั้นปีที่ 4 นักศึกษาแพทย์ชั้นปีที่ 5 และนักศึกษาแพทย์ชั้นปีที่ 6 จำนวน 42 คน</p>
-                    <p data-i18n="hist_p4" class="indent-8">อนึ่งการคัดเลือกผู้เข้าศึกษาหลักสูตรแพทยศาสตร์ เครือข่ายโรงพยาบาลชุมพรเขตรอุดมศักดิ์ จากนักเรียนในพื้นที่ 3 จังหวัด ได้แก่ จังหวัดสุราษฎร์ธานี จังหวัดชุมพร และจังหวัดระนอง</p>
-                </div>
-
-                <h1 class="text-3xl font-bold text-blue-800 mb-8 border-b pb-4" data-i18n="mv_title">พันธกิจ และ วิสัยทัศน์</h1>
-                <div class="grid md:grid-cols-2 gap-8 items-start">
-                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 h-full">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                            <i class="fa-solid fa-eye text-blue-500 mr-3"></i> 
-                            <span data-i18n="mv_vis_title">วิสัยทัศน์ (Vision)</span>
-                        </h2>
-                        <p class="text-gray-700 leading-relaxed text-lg italic" data-i18n="mv_vis_desc">"เป็นสถาบันร่วมผลิตแพทย์ชนบทที่มีเอกลักษณ์และได้มาตรฐานตามเกณฑ์แพทยสภา โดยเน้นการเป็นแพทย์ที่มีหัวใจความเป็นมนุษย์และคงอยู่ในชุมชน"</p>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-600 h-full">
-                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
-                            <i class="fa-solid fa-bullseye text-blue-600 mr-3"></i> 
-                            <span data-i18n="mv_mis_title">พันธกิจ (Mission)</span>
-                        </h2>
-                        <ul class="text-gray-700 leading-relaxed text-lg space-y-3">
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
-                                <span data-i18n="mv_mis_1">จัดการเรียนการสอนอย่างมีประสิทธิภาพ</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
-                                <span data-i18n="mv_mis_2">ส่งเสริมให้เกิดการวิจัยทั้งทางคลินิกและด้านแพทยศาสตร์ศึกษา</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
-                                <span data-i18n="mv_mis_3">ส่งเสริมบริการทางวิชาการแก่สังคม</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
-                                <span data-i18n="mv_mis_4">การทำนุบำรุงศิลปะวัฒนธรรมและขนบธรรมเนียมประเพณีอันดีงามของสังคม</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
-                                <span data-i18n="mv_mis_5">ส่งเสริมความเป็นเอกลักษณ์ความเป็นแพทย์ชนบท (CPIRD DNA) และการคงอยู่ในชุมชน</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <!-- ส่วนโครงสร้างองค์กร (แทนที่คณะทำงานเดิม) -->
+        <!-- ส่วนโครงสร้างองค์กร (แสดงเป็นต้นไม้เสมอ หากล้นจอจะเลื่อนซ้ายขวาได้) -->
         <section id="team" class="page-section hidden-page page-transition">
-            <div class="max-w-[1400px] mx-auto py-12 px-4 sm:px-6">
+            <div class="w-full mx-auto py-12 px-2">
                 <h1 class="text-3xl font-bold text-blue-800 mb-10 border-b pb-4 text-center" data-i18n="org_title">โครงสร้างองค์กร</h1>
                 
                 <div class="org-tree-container">
-                    <div class="org-tree min-w-max mx-auto px-4">
+                    <div class="org-tree mx-auto">
                         <ul>
                             <!-- Level 1 -->
                             <li>
-                                <div class="org-node bg-white rounded-xl shadow-md p-5 border-t-4 border-blue-700 w-72 mx-auto relative z-10">
-                                    <img src="D.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Director" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
-                                    <h3 class="font-bold text-gray-800 text-[15px]" data-i18n="org_name_1">ผศ.(พิเศษ) นพ.อนันต์ พรมาตา</h3>
-                                    <p class="text-[13px] text-blue-600 mt-1 font-medium" data-i18n="org_role_1">ผู้อำนวยการศูนย์แพทย์ฯ</p>
+                                <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-700 w-72 mx-auto relative z-10">
+                                    <img src="D.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Director" class="w-28 h-28 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
+                                    <h3 class="font-bold text-gray-800 text-[16px]" data-i18n="org_name_1">ผศ.(พิเศษ) นพ.อนันต์ พรมาตา</h3>
+                                    <p class="text-[13px] text-blue-600 mt-2 font-medium" data-i18n="org_role_1">ผู้อำนวยการศูนย์แพทย์ฯ</p>
                                 </div>
                                 <ul>
                                     <!-- Level 2 - Advisor -->
                                     <li>
-                                        <div class="org-node bg-white rounded-xl shadow-md p-4 border-t-4 border-blue-500 w-72 mx-auto mt-6 relative z-10">
-                                            <img src="C.jpg" onerror="this.src='https://i.pravatar.cc/150?img=5'" alt="Advisor" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                            <h3 class="font-bold text-gray-800 text-[14px]" data-i18n="org_name_2">รศ.(พิเศษ) นพ.บุญเลิศ มิตรเมือง</h3>
-                                            <p class="text-[12px] text-blue-600 mt-1 font-medium" data-i18n="org_role_2">ที่ปรึกษาผู้อำนวยการศูนย์แพทย์ฯ</p>
+                                        <div class="org-node bg-white rounded-xl shadow-md p-5 border-t-4 border-blue-500 w-72 mx-auto relative z-10">
+                                            <img src="C.jpg" onerror="this.src='https://i.pravatar.cc/150?img=5'" alt="Advisor" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50">
+                                            <h3 class="font-bold text-gray-800 text-[15px]" data-i18n="org_name_2">รศ.(พิเศษ) นพ.บุญเลิศ มิตรเมือง</h3>
+                                            <p class="text-[12px] text-blue-600 mt-2 font-medium" data-i18n="org_role_2">ที่ปรึกษาผู้อำนวยการศูนย์แพทย์ฯ</p>
                                         </div>
                                         <ul>
-                                            <!-- Level 3 - Deputies -->
+                                            <!-- Level 3 - Deputies (Group of 6) -->
                                             <li>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-52 mx-auto mt-6 relative z-10">
-                                                    <img src="B.jpg" onerror="this.src='https://i.pravatar.cc/150?img=12'" alt="Deputy" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_9">แพทย์หญิงธีรวัน อุไพศิลป์สถาพร</h3>
-                                                    <p class="text-[11px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_9">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาก่อนปริญญา</p>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
+                                                    <img src="B.jpg" onerror="this.src='https://i.pravatar.cc/150?img=12'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_9">แพทย์หญิงธีรวัน อุไพศิลป์สถาพร</h3>
+                                                    <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_9">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาก่อนปริญญา</p>
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <div class="org-node bg-white rounded-xl shadow-sm p-3 border border-gray-200 w-44 mx-auto mt-6">
-                                                            <img src="I.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Assistant" class="w-14 h-14 mx-auto rounded-full mb-2 object-cover">
-                                                            <h3 class="font-bold text-gray-800 text-xs leading-tight" data-i18n="org_name_10">นายแพทย์สอาด สมกระบวน</h3>
-                                                            <p class="text-[10px] text-gray-500 mt-1 leading-tight" data-i18n="org_role_10">ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาก่อนปริญญา</p>
+                                                        <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-52 mx-auto">
+                                                            <img src="I.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Assistant" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                            <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_10">นายแพทย์สอาด สมกระบวน</h3>
+                                                            <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="org_role_10">ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาก่อนปริญญา</p>
                                                         </div>
                                                     </li>
                                                 </ul>
                                             </li>
                                             <li>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-52 mx-auto mt-6 relative z-10">
-                                                    <img src="F.jpg" onerror="this.src='https://i.pravatar.cc/150?img=33'" alt="Deputy" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_6">รศ.(พิเศษ) นพ.พรพงศ์ จิตต์ประทุม</h3>
-                                                    <p class="text-[11px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_6">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานภารกิจอำนวยการ</p>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
+                                                    <img src="F.jpg" onerror="this.src='https://i.pravatar.cc/150?img=33'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_6">รศ.(พิเศษ) นพ.พรพงศ์ จิตต์ประทุม</h3>
+                                                    <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_6">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานภารกิจอำนวยการ</p>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-52 mx-auto mt-6 relative z-10">
-                                                    <img src="G.jpg" onerror="this.src='https://i.pravatar.cc/150?img=8'" alt="Deputy" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_5">แพทย์หญิงลลิตสุดา บัวแก้ว</h3>
-                                                    <p class="text-[11px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_5">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาหลังปริญญา</p>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
+                                                    <img src="E.jpg" onerror="this.src='https://i.pravatar.cc/150?img=8'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_5">แพทย์หญิงลลิตสุดา บัวแก้ว</h3>
+                                                    <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_5">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาหลังปริญญา</p>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-52 mx-auto mt-6 relative z-10">
-                                                    <img src="A.jpg" onerror="this.src='https://i.pravatar.cc/150?img=16'" alt="Deputy" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_7">แพทย์หญิงพรวนัช แสงสุริย์</h3>
-                                                    <p class="text-[11px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_7">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานฝึกอบรมและประกันคุณภาพ</p>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
+                                                    <img src="A.jpg" onerror="this.src='https://i.pravatar.cc/150?img=16'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_7">แพทย์หญิงพรวนัช แสงสุริย์</h3>
+                                                    <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_7">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานฝึกอบรมและประกันคุณภาพ</p>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-52 mx-auto mt-6 relative z-10">
-                                                    <img src="J.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Deputy" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_8">นายแพทย์พีรธัช สมภพโภคาเศรษฐ์</h3>
-                                                    <p class="text-[11px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_8">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานยุทธศาสตร์ แผนงานและวิจัย</p>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
+                                                    <img src="J.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_8">นายแพทย์พีรธัช สมภพโภคาเศรษฐ์</h3>
+                                                    <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_8">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานยุทธศาสตร์ แผนงานและวิจัย</p>
                                                 </div>
                                             </li>
                                             <li>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-52 mx-auto mt-6 relative z-10">
-                                                    <img src="H.jpg" onerror="this.src='https://i.pravatar.cc/150?img=52'" alt="Deputy" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
-                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_3">นายแพทย์ฐากูร บุญนรากร</h3>
-                                                    <p class="text-[11px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_3">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานเทคโนโลยีสารสนเทศ</p>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
+                                                    <img src="H.jpg" onerror="this.src='https://i.pravatar.cc/150?img=52'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_3">นายแพทย์ฐากูร บุญนรากร</h3>
+                                                    <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_3">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานเทคโนโลยีสารสนเทศ</p>
                                                 </div>
                                                 <ul>
                                                     <li>
-                                                        <div class="org-node bg-white rounded-xl shadow-sm p-3 border border-gray-200 w-44 mx-auto mt-6">
-                                                            <img src="E.jpg" onerror="this.src='https://i.pravatar.cc/150?img=47'" alt="Assistant" class="w-14 h-14 mx-auto rounded-full mb-2 object-cover">
-                                                            <h3 class="font-bold text-gray-800 text-xs leading-tight" data-i18n="org_name_4">นายแพทย์กษิดิศ วังอนุสรณ์</h3>
-                                                            <p class="text-[10px] text-gray-500 mt-1 leading-tight" data-i18n="org_role_4">ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานเทคโนโลยีสารสนเทศ</p>
+                                                        <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-52 mx-auto">
+                                                            <img src="E.jpg" onerror="this.src='https://i.pravatar.cc/150?img=47'" alt="Assistant" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                            <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_4">นายแพทย์กษิดิศ วังอนุสรณ์</h3>
+                                                            <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="org_role_4">ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานเทคโนโลยีสารสนเทศ</p>
                                                         </div>
                                                     </li>
                                                 </ul>
