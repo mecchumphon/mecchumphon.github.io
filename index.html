@@ -76,6 +76,7 @@
             width: 100%;
             overflow-x: auto;
             padding-bottom: 2rem;
+            text-align: center;
         }
         
         /* Custom Scrollbar */
@@ -99,6 +100,8 @@
             justify-content: center;
             padding: 20px;
             min-width: max-content;
+            margin: 0 auto;
+            text-align: left;
         }
 
         .org-tree ul {
@@ -320,10 +323,68 @@
             </div>
         </section>
 
+        <section id="about" class="page-section hidden-page page-transition">
+            <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
+                
+                <div class="mb-10 text-center bg-gray-100 rounded-xl">
+                    <img src="aboutpic.png" onerror="this.src='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto max-h-[500px]">
+                </div>
+
+                <h1 class="text-3xl font-bold text-blue-800 mb-6 border-b pb-4" data-i18n="hist_title">ประวัติความเป็นมา</h1>
+                <div class="text-gray-700 leading-relaxed text-lg space-y-4 mb-16">
+                    <p data-i18n="hist_p1" class="indent-8">พ.ศ.2547 คณะรัฐมนตรี มีมติเห็นชอบให้กระทรวงสาธารณสุขร่วมมือกับทบวงมหาวิทยาลัย (กระทรวงศึกษาธิการ) "โครงการผลิตแพทย์เพื่อชาวชนบท" โดยเริ่มรับนักศึกษาตั้งแต่ปีการศึกษา 2548 เป็นต้นไป เพื่อแก้ไขปัญหาการขาดแคลนแพทย์และการกระจายแพทย์ที่ไม่เหมาะสมในชนบท กระทรวงสาธารณสุขได้มีคำสั่ง เรื่องจัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก ขึ้นเป็นหน่วยงานภายในโรงพยาบาลศูนย์ ทำหน้าที่จัดการเรียนการสอนชั้นคลินิกให้กับนักศึกษาแพทย์ในการร่วมผลิตแพทย์เพิ่มเพื่อชาวชนบท ซึ่งเป็นโครงการความร่วมมือระหว่างกระทรวงสาธารณสุข กับทบวงมหาวิทยาลัย</p>
+                    <p data-i18n="hist_p2" class="indent-8">เมื่อวันที่ 15 มิถุนายน 2547 โรงพยาบาลชุมพรเขตรอุดมศักดิ์ ได้รับการอนุมัติตามมติคณะรัฐมนตรีว่ามีศักยภาพและความพร้อมในการจัดการเรียนการสอนนักศึกษาแพทย์ในโครงการผลิตแพทย์เพื่อชาวชนบท โดยกระทรวงสาธารณสุขมีคำสั่งให้จัดตั้งศูนย์แพทยศาสตรศึกษาชั้นคลินิก สาขาโรงพยาบาลชุมพรเขตรอุดมศักดิ์ขึ้น</p>
+                    <p data-i18n="hist_p3" class="indent-8">โรงพยาบาลชุมพรเขตรอุดมศักดิ์ ได้ให้ความร่วมมือในการผลิตแพทย์เพื่อชาวชนบทร่วมกับคณะแพทยศาสตร์มหาวิทยาลัยธรรมศาสตร์ โดยเปิดสอนนักศึกษาแพทย์รุ่นแรก (ชั้นปี 6) จำนวน 13 คน ประจำปีการศึกษา 2551 ได้เปิดสอนนักศึกษารุ่นแรก และในปีการศึกษา 2559 เปิดสอนรับนักศึกษาแพทย์ชั้นปีที่ 4 นักศึกษาแพทย์ชั้นปีที่ 5 และนักศึกษาแพทย์ชั้นปีที่ 6 จำนวน 42 คน</p>
+                    <p data-i18n="hist_p4" class="indent-8">อนึ่งการคัดเลือกผู้เข้าศึกษาหลักสูตรแพทยศาสตร์ เครือข่ายโรงพยาบาลชุมพรเขตรอุดมศักดิ์ จากนักเรียนในพื้นที่ 3 จังหวัด ได้แก่ จังหวัดสุราษฎร์ธานี จังหวัดชุมพร และจังหวัดระนอง</p>
+                </div>
+
+                <h1 class="text-3xl font-bold text-blue-800 mb-8 border-b pb-4" data-i18n="mv_title">พันธกิจ และ วิสัยทัศน์</h1>
+                <div class="grid md:grid-cols-2 gap-8 items-start">
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-500 h-full">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fa-solid fa-eye text-blue-500 mr-3"></i> 
+                            <span data-i18n="mv_vis_title">วิสัยทัศน์ (Vision)</span>
+                        </h2>
+                        <p class="text-gray-700 leading-relaxed text-lg italic" data-i18n="mv_vis_desc">"เป็นสถาบันร่วมผลิตแพทย์ชนบทที่มีเอกลักษณ์และได้มาตรฐานตามเกณฑ์แพทยสภา โดยเน้นการเป็นแพทย์ที่มีหัวใจความเป็นมนุษย์และคงอยู่ในชุมชน"</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-blue-600 h-full">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <i class="fa-solid fa-bullseye text-blue-600 mr-3"></i> 
+                            <span data-i18n="mv_mis_title">พันธกิจ (Mission)</span>
+                        </h2>
+                        <ul class="text-gray-700 leading-relaxed text-lg space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
+                                <span data-i18n="mv_mis_1">จัดการเรียนการสอนอย่างมีประสิทธิภาพ</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
+                                <span data-i18n="mv_mis_2">ส่งเสริมให้เกิดการวิจัยทั้งทางคลินิกและด้านแพทยศาสตร์ศึกษา</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
+                                <span data-i18n="mv_mis_3">ส่งเสริมบริการทางวิชาการแก่สังคม</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
+                                <span data-i18n="mv_mis_4">การทำนุบำรุงศิลปะวัฒนธรรมและขนบธรรมเนียมประเพณีอันดีงามของสังคม</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-check text-blue-600 mt-1.5 mr-3"></i>
+                                <span data-i18n="mv_mis_5">ส่งเสริมความเป็นเอกลักษณ์ความเป็นแพทย์ชนบท (CPIRD DNA) และการคงอยู่ในชุมชน</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
         <!-- ส่วนโครงสร้างองค์กร (แสดงเป็นต้นไม้เสมอ หากล้นจอจะเลื่อนซ้ายขวาได้) -->
         <section id="team" class="page-section hidden-page page-transition">
             <div class="w-full mx-auto py-12 px-2">
-                <h1 class="text-3xl font-bold text-blue-800 mb-10 border-b pb-4 text-center" data-i18n="org_title">โครงสร้างองค์กร</h1>
+                <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mb-10 border-b pb-4 text-center leading-relaxed" data-i18n="org_title">โครงสร้างศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</h1>
                 
                 <div class="org-tree-container">
                     <div class="org-tree mx-auto">
@@ -370,7 +431,7 @@
                                             </li>
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10">
-                                                    <img src="G.jpg" onerror="this.src='https://i.pravatar.cc/150?img=8'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="E.jpg" onerror="this.src='https://i.pravatar.cc/150?img=8'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_5">แพทย์หญิงลลิตสุดา บัวแก้ว</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_5">รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาหลังปริญญา</p>
                                                 </div>
@@ -561,7 +622,7 @@
                 "mv_mis_4": "การทำนุบำรุงศิลปะวัฒนธรรมและขนบธรรมเนียมประเพณีอันดีงามของสังคม",
                 "mv_mis_5": "ส่งเสริมความเป็นเอกลักษณ์ความเป็นแพทย์ชนบท (CPIRD DNA) และการคงอยู่ในชุมชน",
                 
-                "org_title": "โครงสร้างองค์กร",
+                "org_title": "โครงสร้างศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์",
                 "org_name_1": "ผศ.(พิเศษ) นพ.อนันต์ พรมาตา", "org_role_1": "ผู้อำนวยการศูนย์แพทย์ฯ",
                 "org_name_2": "รศ.(พิเศษ) นพ.บุญเลิศ มิตรเมือง", "org_role_2": "ที่ปรึกษาผู้อำนวยการศูนย์แพทย์ฯ",
                 "org_name_3": "นายแพทย์ฐากูร บุญนรากร", "org_role_3": "รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานเทคโนโลยีสารสนเทศ",
@@ -607,7 +668,7 @@
                 "mv_mis_4": "Preserve traditions and culture",
                 "mv_mis_5": "Promote CPIRD DNA",
                 
-                "org_title": "Organizational Chart",
+                "org_title": "Organizational Chart of Medical Education Center, Chumphon Khet Udomsak Hospital",
                 "org_name_1": "Asst. Prof. Dr. Anan Pornmata", "org_role_1": "MEC Director",
                 "org_name_2": "Assoc. Prof. Dr. Boonlert Mitmuang", "org_role_2": "Advisor to the MEC Director",
                 "org_name_3": "Dr. Thakoon Boonnarakorn", "org_role_3": "Deputy Director of IT",
