@@ -176,6 +176,11 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
+        /* จัดระเบียบรูปภาพในแผนผังให้อยู่ตำแหน่งด้านบนเสมอ เพื่อป้องกันปัญหาหัวขาดเวลาถูกตัดเป็นวงกลม */
+        .org-node img {
+            object-position: center 10%;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
@@ -497,8 +502,8 @@
                         <ul>
                             <!-- Level 1 - Head of Office -->
                             <li>
-                                <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-700 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('Opond.jpg', 'staff_name_1', 'staff_role_1', 'https://i.pravatar.cc/150?img=43')">
-                                    <img src="Opond.jpg" onerror="this.src='https://i.pravatar.cc/150?img=43'" alt="Head of Office" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
+                                <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-700 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('staff1.jpg', 'staff_name_1', 'staff_role_1', 'https://i.pravatar.cc/150?img=43')">
+                                    <img src="staff1.jpg" onerror="this.src='https://i.pravatar.cc/150?img=43'" alt="Head of Office" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
                                     <h3 class="font-bold text-gray-800 text-[15px]" data-i18n="staff_name_1">น.ส.อัจฉรา ชนมนัส</h3>
                                     <p class="text-[12px] text-blue-600 mt-2 font-medium leading-tight" data-i18n="staff_role_1">หัวหน้าสำนักงาน<br>นักวิชาการศึกษา</p>
                                 </div>
@@ -509,28 +514,28 @@
                                             
                                             <!-- Row 1: นักวิชาการศึกษา 5 คน -->
                                             <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Nick.jpg', 'staff_name_2', 'staff_role_2', 'https://i.pravatar.cc/150?img=44')">
-                                                    <img src="Nick.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff2.jpg', 'staff_name_2', 'staff_role_2', 'https://i.pravatar.cc/150?img=44')">
+                                                    <img src="staff2.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_2">น.ส.ณัฐพร ธนูศิลป์</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_2">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Kung.jpg', 'staff_name_3', 'staff_role_3', 'https://i.pravatar.cc/150?img=45')">
-                                                    <img src="Kung.jpg" onerror="this.src='https://i.pravatar.cc/150?img=45'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff3.jpg', 'staff_name_3', 'staff_role_3', 'https://i.pravatar.cc/150?img=45')">
+                                                    <img src="staff3.jpg" onerror="this.src='https://i.pravatar.cc/150?img=45'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_3">น.ส.อุทุมพร แก้ววิจิตร</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_3">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Am.jpg', 'staff_name_4', 'staff_role_4', 'https://i.pravatar.cc/150?img=40')">
-                                                    <img src="Am.jpg" onerror="this.src='https://i.pravatar.cc/150?img=40'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff4.jpg', 'staff_name_4', 'staff_role_4', 'https://i.pravatar.cc/150?img=40')">
+                                                    <img src="staff4.jpg" onerror="this.src='https://i.pravatar.cc/150?img=40'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_4">น.ส.ชญานิษฐ์ ฮุ่นตระกูล</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_4">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Wan.jpg', 'staff_name_5', 'staff_role_5', 'https://i.pravatar.cc/150?img=41')">
-                                                    <img src="Wan.jpg" onerror="this.src='https://i.pravatar.cc/150?img=41'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff5.jpg', 'staff_name_5', 'staff_role_5', 'https://i.pravatar.cc/150?img=41')">
+                                                    <img src="staff5.jpg" onerror="this.src='https://i.pravatar.cc/150?img=41'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_5">น.ส.วีรวรรณ เนตรสุวรรณ</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_5">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Ann.jpg', 'staff_name_6', 'staff_role_6', 'https://i.pravatar.cc/150?img=42')">
-                                                    <img src="Ann.jpg" onerror="this.src='https://i.pravatar.cc/150?img=42'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff6.jpg', 'staff_name_6', 'staff_role_6', 'https://i.pravatar.cc/150?img=42')">
+                                                    <img src="staff6.jpg" onerror="this.src='https://i.pravatar.cc/150?img=42'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_6">น.ส.โสรญา ถาวรวัฒน์</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_6">นักวิชาการศึกษา</p>
                                                 </div>
@@ -538,23 +543,23 @@
 
                                             <!-- Row 2: นักวิชาการศึกษา 4 คน -->
                                             <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Bow.jpg', 'staff_name_7', 'staff_role_7', 'https://i.pravatar.cc/150?img=35')">
-                                                    <img src="Bow.jpg" onerror="this.src='https://i.pravatar.cc/150?img=35'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff7.jpg', 'staff_name_7', 'staff_role_7', 'https://i.pravatar.cc/150?img=35')">
+                                                    <img src="staff7.jpg" onerror="this.src='https://i.pravatar.cc/150?img=35'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_7">น.ส.ธัญญาภรณ์ เมืองแดง</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_7">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Pond.jpg', 'staff_name_8', 'staff_role_8', 'https://i.pravatar.cc/150?img=11')">
-                                                    <img src="Pond.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff8.jpg', 'staff_name_8', 'staff_role_8', 'https://i.pravatar.cc/150?img=11')">
+                                                    <img src="staff8.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_8">นายอลงกรณ์ นุ้ยสุข</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_8">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Poo.jpg', 'staff_name_9', 'staff_role_9', 'https://i.pravatar.cc/150?img=32')">
-                                                    <img src="Poo.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff9.jpg', 'staff_name_9', 'staff_role_9', 'https://i.pravatar.cc/150?img=32')">
+                                                    <img src="staff9.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_9">น.ส.สุธาทิพย์ นาควิเชียร</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_9">นักวิชาการศึกษา</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Bank.jpg', 'staff_name_10', 'staff_role_10', 'https://i.pravatar.cc/150?img=14')">
-                                                    <img src="Bank.jpg" onerror="this.src='https://i.pravatar.cc/150?img=14'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff10.jpg', 'staff_name_10', 'staff_role_10', 'https://i.pravatar.cc/150?img=14')">
+                                                    <img src="staff10.jpg" onerror="this.src='https://i.pravatar.cc/150?img=14'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_10">นายธราวิชญ์ เพ็ชรแก้ว</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_10">นักวิชาการศึกษา</p>
                                                 </div>
@@ -562,13 +567,13 @@
 
                                             <!-- Row 3: นักจัดการงานทั่วไป และ บรรณารักษ์ 2 คน -->
                                             <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full mt-2">
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Tig.jpg', 'staff_name_11', 'staff_role_11', 'https://i.pravatar.cc/150?img=38')">
-                                                    <img src="Tig.jpg" onerror="this.src='https://i.pravatar.cc/150?img=38'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff11.jpg', 'staff_name_11', 'staff_role_11', 'https://i.pravatar.cc/150?img=38')">
+                                                    <img src="staff11.jpg" onerror="this.src='https://i.pravatar.cc/150?img=38'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_11">น.ส.จิตตมาส พนัสนาชี</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_11">นักจัดการงานทั่วไป</p>
                                                 </div>
-                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Tang.jpg', 'staff_name_12', 'staff_role_12', 'https://i.pravatar.cc/150?img=30')">
-                                                    <img src="Tang.jpg" onerror="this.src='https://i.pravatar.cc/150?img=30'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('staff12.jpg', 'staff_name_12', 'staff_role_12', 'https://i.pravatar.cc/150?img=30')">
+                                                    <img src="staff12.jpg" onerror="this.src='https://i.pravatar.cc/150?img=30'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_12">น.ส.วนารัตน์ เมืองพร้อม</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_12">บรรณารักษ์</p>
                                                 </div>
@@ -795,10 +800,10 @@
                 "home_news_title": "Public Relations News", 
                 "home_announce_title": "Announcements", "home_announce_1": "Schedule for the 2024 Academic Year", "home_announce_2": "Internship Doctor Recruitment", "home_announce_3": "Disease Prevention Measures for Students",
                 "hist_title": "Our History", 
-                "hist_p1": "In 2004, the Cabinet approved the collaboration between the Ministry of Public Health and the Ministry of University Affairs for CPIRD project...",
-                "hist_p2": "On June 15, 2004, Chumphon Khet Udomsak Hospital was approved...",
-                "hist_p3": "Chumphon Khet Udomsak Hospital has cooperated with Thammasat University...",
-                "hist_p4": "Student selection covers Surat Thani, Chumphon, and Ranong provinces.",
+                "hist_p1": "In 2004, the Cabinet approved the collaboration between the Ministry of Public Health and the Ministry of University Affairs (Ministry of Education) for the \"Collaborative Project to Increase Production of Rural Doctor\" (CPIRD), starting to enroll students from the 2005 academic year onwards. To solve the problem of doctor shortages and inappropriate distribution of doctors in rural areas, the Ministry of Public Health issued an order to establish the Medical Education Center as an internal unit within the regional hospital. Its duty is to provide clinical teaching and learning for medical students in co-producing more doctors for rural areas, which is a collaborative project between the Ministry of Public Health and the Ministry of University Affairs.",
+                "hist_p2": "On June 15, 2004, Chumphon Khet Udomsak Hospital was approved by the Cabinet resolution as having the potential and readiness to provide teaching and learning for medical students in the Collaborative Project to Increase Production of Rural Doctor. The Ministry of Public Health then ordered the establishment of the Medical Education Center, Chumphon Khet Udomsak Hospital branch.",
+                "hist_p3": "Chumphon Khet Udomsak Hospital has cooperated in producing rural doctors with the Faculty of Medicine, Thammasat University. It opened its first class of 13 medical students (6th-year students) in the 2008 academic year. Later, in the 2016 academic year, it expanded to teach 4th-year, 5th-year, and 6th-year medical students, totaling 42 students.",
+                "hist_p4": "Additionally, the selection of students for the Doctor of Medicine program under the Chumphon Khet Udomsak Hospital network is recruited from high school students in 3 provinces: Surat Thani, Chumphon, and Ranong.",
                 "mv_title": "Mission and Vision", 
                 "mv_vis_title": "Vision", 
                 "mv_vis_desc": "\"To be a unique rural doctor co-production institution...\"", 
