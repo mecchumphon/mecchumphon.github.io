@@ -57,18 +57,6 @@
             font-weight: 600;
         }
 
-        /* Carousel Styles */
-        .slider-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            min-width: 100%;
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.3s ease-out;
-        }
-
         /* --------------------------------------
             Org Chart Tree Styles 
             -------------------------------------- */
@@ -185,6 +173,10 @@
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v19.0" nonce="mec_fb"></script>
+
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="w-full px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-20">
@@ -253,55 +245,61 @@
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-blue-500 inline-block pb-2" data-i18n="home_news_title">ข่าวประชาสัมพันธ์</h2>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     
                     <!-- Sticky Announcements -->
-                    <div class="lg:col-span-1 space-y-4">
-                        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full">
-                            <h3 class="text-xl font-bold text-blue-800 mb-4 flex items-center">
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full flex flex-col min-h-[500px]">
+                            <h3 class="text-xl font-bold text-blue-800 mb-6 flex items-center border-b border-blue-200 pb-4">
                                 <i class="fa-solid fa-bullhorn mr-2"></i> 
                                 <span data-i18n="home_announce_title">ประกาศด่วน</span>
                             </h3>
-                            <ul class="space-y-3 text-gray-800">
+                            <ul class="space-y-4 text-gray-800 flex-grow">
                                 <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
                                     <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded font-bold mr-2 mt-0.5 whitespace-nowrap">NEW</span> 
-                                    <span data-i18n="home_announce_1" class="text-gray-800 font-medium hover:text-blue-700">กำหนดการเปิดภาคเรียน ปี 2567</span>
+                                    <span data-i18n="home_announce_1" class="text-gray-800 font-medium hover:text-blue-700 leading-tight">กำหนดการเปิดภาคเรียน ปี 2567</span>
                                 </li>
                                 <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
                                     <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_2" class="text-gray-700 hover:text-blue-700">รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี</span>
+                                    <span data-i18n="home_announce_2" class="text-gray-700 hover:text-blue-700 leading-tight">รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี</span>
                                 </li>
                                 <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
                                     <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_3" class="text-gray-700 hover:text-blue-700">มาตรการป้องกันโรคสำหรับนักศึกษา</span>
+                                    <span data-i18n="home_announce_3" class="text-gray-700 hover:text-blue-700 leading-tight">มาตรการป้องกันโรคสำหรับนักศึกษา</span>
                                 </li>
                                 <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
                                     <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_4" class="text-gray-700 hover:text-blue-700">ประกาศผลการสอบคัดเลือกนักศึกษาแพทย์</span>
+                                    <span data-i18n="home_announce_4" class="text-gray-700 hover:text-blue-700 leading-tight">ประกาศผลการสอบคัดเลือกนักศึกษาแพทย์</span>
                                 </li>
                                 <li class="pb-1 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
                                     <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_5" class="text-gray-700 hover:text-blue-700">ปฏิทินวิชาการ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</span>
+                                    <span data-i18n="home_announce_5" class="text-gray-700 hover:text-blue-700 leading-tight">ปฏิทินวิชาการ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</span>
                                 </li>
                             </ul>
+                            <div class="mt-4 pt-4 border-t border-blue-200 text-center">
+                                <a href="https://www.facebook.com/MECChumphon" target="_blank" class="inline-flex items-center text-sm font-bold text-blue-700 hover:text-blue-800 transition">
+                                    ดูประกาศทั้งหมด <i class="fa-solid fa-arrow-right ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     
-                    <!-- News Carousel -->
-                    <div class="lg:col-span-2 relative">
-                        <div class="relative rounded-xl overflow-hidden shadow-md h-[300px] md:h-[400px] bg-gray-100">
-                            <div id="news-track" class="slider-track h-full"></div>
-                            
-                            <!-- Controls -->
-                            <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition flex items-center justify-center z-10">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </button>
-                            <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition flex items-center justify-center z-10">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </button>
-
-                            <!-- Indicators -->
-                            <div id="news-indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10"></div>
+                    <!-- Facebook Page Plugin -->
+                    <div class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 h-full flex justify-center min-h-[500px]">
+                        <div class="w-full flex justify-center overflow-hidden">
+                            <div class="fb-page" 
+                                data-href="https://www.facebook.com/MECChumphon" 
+                                data-tabs="timeline" 
+                                data-width="500" 
+                                data-height="500" 
+                                data-small-header="false" 
+                                data-adapt-container-width="true" 
+                                data-hide-cover="false" 
+                                data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/MECChumphon" class="fb-xfbml-parse-ignore">
+                                    <a href="https://www.facebook.com/MECChumphon">ศูนย์แพทยศาสตรศึกษาชั้นคลินิก รพ.ชุมพรเขตรอุดมศักดิ์</a>
+                                </blockquote>
+                            </div>
                         </div>
                     </div>
 
@@ -993,124 +991,6 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
-        // --- Mock Facebook Feed Data ---
-        const newsItems = [
-            { 
-                id: 1, 
-                title: "บรรยากาศการสอบ OSCE นักศึกษาแพทย์ชั้นปีที่ 6", 
-                date: "โพสต์เมื่อ 2 ชั่วโมงที่แล้ว", 
-                image: "https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=1200&q=80", 
-                detail: "ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ จัดการสอบวัดความรู้และทักษะทางคลินิก (OSCE) สำหรับนักศึกษาแพทย์ชั้นปีที่ 6 ขอเป็นกำลังใจให้น้องๆ ทุกคนผ่านฉลุยครับ ✌️🩺<br><br>#MECChumphon #นักศึกษาแพทย์ #OSCE", 
-                link: "https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" 
-            },
-            { 
-                id: 2, 
-                title: "ประกาศ! รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี 2567", 
-                date: "โพสต์เมื่อ 1 วันที่แล้ว", 
-                image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80", 
-                detail: "รพ.ชุมพรเขตรอุดมศักดิ์ เปิดรับสมัครแพทย์เพิ่มพูนทักษะ (Intern) ประจำปี 2567 มาร่วมเป็นส่วนหนึ่งของครอบครัวเรา พร้อมเรียนรู้และพัฒนาทักษะทางคลินิกกับทีมอาจารย์แพทย์ผู้เชี่ยวชาญ<br><br>📍 อ่านรายละเอียดเพิ่มเติมและดาวน์โหลดใบสมัครได้ที่เว็บไซต์หรือสแกน QR Code ในภาพ", 
-                link: "https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" 
-            },
-            { 
-                id: 3, 
-                title: "กิจกรรมสอนเสริม: การอ่านคลื่นไฟฟ้าหัวใจ (EKG Basic)", 
-                date: "โพสต์เมื่อ 3 วันที่แล้ว", 
-                image: "https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=1200&q=80", 
-                detail: "เก็บภาพบรรยากาศการเรียนการสอนเสริมเรื่อง Basic EKG Interpretation โดย นพ.สอาด สมกระบวน ให้น้องๆ นศพ. ชั้นปีที่ 4 ได้ทบทวนความรู้พื้นฐาน เตรียมความพร้อมขึ้นวอร์ดอายุรกรรมสัปดาห์หน้าครับ 📈❤️", 
-                link: "https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" 
-            }
-        ];
-
-        let currentSlide = 0;
-        let slideInterval;
-
-        function initCarousel() {
-            const track = document.getElementById('news-track');
-            const indicators = document.getElementById('news-indicators');
-            if(!track || !indicators) return;
-            track.innerHTML = '';
-            indicators.innerHTML = '';
-
-            newsItems.forEach((item, index) => {
-                const slide = document.createElement('div');
-                slide.className = 'slide h-full cursor-pointer relative';
-                slide.onclick = () => openNewsModal(item.id);
-                slide.innerHTML = `
-                    <img src="${item.image}" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 flex flex-col justify-end">
-                        <div class="flex items-center mb-2">
-                            <i class="fa-brands fa-facebook text-blue-500 text-xl mr-2 bg-white rounded-full"></i>
-                            <span class="text-blue-300 text-sm font-medium">${item.date}</span>
-                        </div>
-                        <h3 class="text-white text-xl md:text-3xl font-bold line-clamp-2 leading-tight">${item.title}</h3>
-                    </div>
-                `;
-                track.appendChild(slide);
-
-                const dot = document.createElement('button');
-                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${index === 0 ? 'bg-blue-500 w-6' : 'bg-white/50'}`;
-                dot.onclick = (e) => { e.stopPropagation(); goToSlide(index); };
-                indicators.appendChild(dot);
-            });
-            startAutoPlay();
-        }
-
-        function moveSlide(dir) {
-            currentSlide = (currentSlide + dir + newsItems.length) % newsItems.length;
-            updateSlidePosition();
-            resetAutoPlay();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlidePosition();
-            resetAutoPlay();
-        }
-
-        function updateSlidePosition() {
-            const track = document.getElementById('news-track');
-            if(track) track.style.transform = `translateX(-${currentSlide * 100}%)`;
-            const dots = document.getElementById('news-indicators').children;
-            Array.from(dots).forEach((dot, idx) => {
-                dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${idx === currentSlide ? 'bg-blue-500 w-6' : 'bg-white/50'}`;
-            });
-        }
-
-        function startAutoPlay() {
-            slideInterval = setInterval(() => moveSlide(1), 5000);
-        }
-
-        function resetAutoPlay() {
-            clearInterval(slideInterval);
-            startAutoPlay();
-        }
-
-        function openNewsModal(id) {
-            const item = newsItems.find(n => n.id === id);
-            if (!item) return;
-
-            const modal = document.getElementById('news-modal');
-            const content = document.getElementById('modal-content');
-            
-            content.innerHTML = `
-                <img src="${item.image}" class="w-full h-64 object-cover">
-                <div class="p-8">
-                    <span class="text-blue-600 font-bold text-sm block mb-2">${item.date}</span>
-                    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6">${item.title}</h2>
-                    <p class="text-gray-700 leading-loose text-lg mb-8">${item.detail}</p>
-                    ${item.link ? `
-                        <a href="${item.link}" target="_blank" class="inline-flex items-center justify-center space-x-3 w-full py-4 bg-[#1877F2] text-white font-bold rounded-2xl hover:bg-[#166fe5] transition shadow-lg">
-                            <i class="fa-brands fa-facebook text-2xl"></i>
-                            <span>ดูเพิ่มเติมบน Facebook</span>
-                        </a>
-                    ` : ''}
-                </div>
-            `;
-            
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
         function closeNewsModal() {
             document.getElementById('news-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
@@ -1176,7 +1056,6 @@
         window.onload = () => {
             setLanguage('th');
             showPage('home');
-            initCarousel();
         };
 
     </script>
