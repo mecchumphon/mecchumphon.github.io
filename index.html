@@ -70,8 +70,8 @@
         }
 
         /* --------------------------------------
-           Org Chart Tree Styles 
-           -------------------------------------- */
+            Org Chart Tree Styles 
+            -------------------------------------- */
         .org-tree-container {
             width: 100%;
             overflow-x: auto;
@@ -381,9 +381,10 @@
             </div>
         </section>
 
-        <!-- ส่วนโครงสร้างองค์กร (แสดงเป็นต้นไม้เสมอ หากล้นจอจะเลื่อนซ้ายขวาได้) -->
+        <!-- ส่วนโครงสร้างองค์กร -->
         <section id="team" class="page-section hidden-page page-transition">
             <div class="w-full mx-auto py-12 px-2">
+                <!-- แผนผังอาจารย์แพทย์ -->
                 <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mb-10 border-b pb-4 text-center leading-relaxed" data-i18n="org_title">โครงสร้างศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</h1>
                 
                 <div class="org-tree-container">
@@ -405,7 +406,7 @@
                                             <p class="text-[12px] text-blue-600 mt-2 font-medium" data-i18n="org_role_2">ที่ปรึกษาผู้อำนวยการศูนย์แพทย์ฯ</p>
                                         </div>
                                         <ul>
-                                            <!-- Level 3 - Deputies (Group of 6) -->
+                                            <!-- Level 3 - Deputies -->
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('B.jpg', 'org_name_9', 'org_role_9', 'https://i.pravatar.cc/150?img=12')">
                                                     <img src="B.jpg" onerror="this.src='https://i.pravatar.cc/150?img=12'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
@@ -473,6 +474,100 @@
                         </ul>
                     </div>
                 </div>
+
+                <!-- แผนผังคณะทำงาน -->
+                <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mt-16 mb-10 border-b pb-4 text-center leading-relaxed" data-i18n="staff_title">คณะทำงานศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</h1>
+                
+                <div class="org-tree-container">
+                    <div class="org-tree mx-auto">
+                        <ul>
+                            <!-- Level 1 - Head of Office -->
+                            <li>
+                                <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-700 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('Opond.jpg', 'staff_name_1', 'staff_role_1', 'https://i.pravatar.cc/150?img=43')">
+                                    <img src="Opond.jpg" onerror="this.src='https://i.pravatar.cc/150?img=43'" alt="Head of Office" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
+                                    <h3 class="font-bold text-gray-800 text-[15px]" data-i18n="staff_name_1">น.ส.อัจฉรา ชนมนัส</h3>
+                                    <p class="text-[12px] text-blue-600 mt-2 font-medium leading-tight" data-i18n="staff_role_1">หัวหน้าสำนักงาน<br>นักวิชาการศึกษา</p>
+                                </div>
+                                <ul>
+                                    <!-- Level 2 - Operational Staffs (Grouped by Rows) -->
+                                    <li class="w-full">
+                                        <div class="flex flex-col items-center gap-6 pt-2">
+                                            
+                                            <!-- Row 1: นักวิชาการศึกษา 5 คน -->
+                                            <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Nick.jpg', 'staff_name_2', 'staff_role_2', 'https://i.pravatar.cc/150?img=44')">
+                                                    <img src="Nick.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_2">น.ส.ณัฐพร ธนูศิลป์</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_2">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Kung.jpg', 'staff_name_3', 'staff_role_3', 'https://i.pravatar.cc/150?img=45')">
+                                                    <img src="Kung.jpg" onerror="this.src='https://i.pravatar.cc/150?img=45'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_3">น.ส.อุทุมพร แก้ววิจิตร</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_3">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Am.jpg', 'staff_name_4', 'staff_role_4', 'https://i.pravatar.cc/150?img=40')">
+                                                    <img src="Am.jpg" onerror="this.src='https://i.pravatar.cc/150?img=40'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_4">น.ส.ชญานิษฐ์ ฮุ่นตระกูล</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_4">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Wan.jpg', 'staff_name_5', 'staff_role_5', 'https://i.pravatar.cc/150?img=41')">
+                                                    <img src="Wan.jpg" onerror="this.src='https://i.pravatar.cc/150?img=41'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_5">น.ส.วีรวรรณ เนตรสุวรรณ</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_5">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Ann.jpg', 'staff_name_6', 'staff_role_6', 'https://i.pravatar.cc/150?img=42')">
+                                                    <img src="Ann.jpg" onerror="this.src='https://i.pravatar.cc/150?img=42'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_6">น.ส.โสรญา ถาวรวัฒน์</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_6">นักวิชาการศึกษา</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Row 2: นักวิชาการศึกษา 4 คน -->
+                                            <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Bow.jpg', 'staff_name_7', 'staff_role_7', 'https://i.pravatar.cc/150?img=35')">
+                                                    <img src="Bow.jpg" onerror="this.src='https://i.pravatar.cc/150?img=35'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_7">น.ส.ธัญญาภรณ์ เมืองแดง</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_7">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Pond.jpg', 'staff_name_8', 'staff_role_8', 'https://i.pravatar.cc/150?img=11')">
+                                                    <img src="Pond.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_8">นายอลงกรณ์ นุ้ยสุข</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_8">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Poo.jpg', 'staff_name_9', 'staff_role_9', 'https://i.pravatar.cc/150?img=32')">
+                                                    <img src="Poo.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_9">น.ส.สุธาทิพย์ นาควิเชียร</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_9">นักวิชาการศึกษา</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Bank.jpg', 'staff_name_10', 'staff_role_10', 'https://i.pravatar.cc/150?img=14')">
+                                                    <img src="Bank.jpg" onerror="this.src='https://i.pravatar.cc/150?img=14'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_10">นายธราวิชญ์ เพ็ชรแก้ว</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_10">นักวิชาการศึกษา</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Row 3: นักจัดการงานทั่วไป และ บรรณารักษ์ 2 คน -->
+                                            <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full mt-2">
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Tig.jpg', 'staff_name_11', 'staff_role_11', 'https://i.pravatar.cc/150?img=38')">
+                                                    <img src="Tig.jpg" onerror="this.src='https://i.pravatar.cc/150?img=38'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_11">น.ส.จิตตมาส พนัสนาชี</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_11">นักจัดการงานทั่วไป</p>
+                                                </div>
+                                                <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Tang.jpg', 'staff_name_12', 'staff_role_12', 'https://i.pravatar.cc/150?img=30')">
+                                                    <img src="Tang.jpg" onerror="this.src='https://i.pravatar.cc/150?img=30'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_12">น.ส.วนารัตน์ เมืองพร้อม</h3>
+                                                    <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_12">บรรณารักษ์</p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -651,6 +746,20 @@
                 "org_name_9": "แพทย์หญิงธีรวัน อุไพศิลป์สถาพร", "org_role_9": "รองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาก่อนปริญญา",
                 "org_name_10": "นายแพทย์สอาด สมกระบวน", "org_role_10": "ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ กลุ่มงานการศึกษาก่อนปริญญา",
                 
+                "staff_title": "คณะทำงานศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์",
+                "staff_name_1": "น.ส.อัจฉรา ชนมนัส", "staff_role_1": "หัวหน้าสำนักงาน<br>นักวิชาการศึกษา",
+                "staff_name_2": "น.ส.ณัฐพร ธนูศิลป์", "staff_role_2": "นักวิชาการศึกษา",
+                "staff_name_3": "น.ส.อุทุมพร แก้ววิจิตร", "staff_role_3": "นักวิชาการศึกษา",
+                "staff_name_4": "น.ส.ชญานิษฐ์ ฮุ่นตระกูล", "staff_role_4": "นักวิชาการศึกษา",
+                "staff_name_5": "น.ส.วีรวรรณ เนตรสุวรรณ", "staff_role_5": "นักวิชาการศึกษา",
+                "staff_name_6": "น.ส.โสรญา ถาวรวัฒน์", "staff_role_6": "นักวิชาการศึกษา",
+                "staff_name_7": "น.ส.ธัญญาภรณ์ เมืองแดง", "staff_role_7": "นักวิชาการศึกษา",
+                "staff_name_8": "นายอลงกรณ์ นุ้ยสุข", "staff_role_8": "นักวิชาการศึกษา",
+                "staff_name_9": "น.ส.สุธาทิพย์ นาควิเชียร", "staff_role_9": "นักวิชาการศึกษา",
+                "staff_name_10": "นายธราวิชญ์ เพ็ชรแก้ว", "staff_role_10": "นักวิชาการศึกษา",
+                "staff_name_11": "น.ส.จิตตมาส พนัสนาชี", "staff_role_11": "นักจัดการงานทั่วไป",
+                "staff_name_12": "น.ส.วนารัตน์ เมืองพร้อม", "staff_role_12": "บรรณารักษ์",
+
                 "sys_dash_title": "ศูนย์รวมระบบ", "sys_dash_logout": "ออกจากระบบ",
                 "sys_item_1": "ระบบบันทึกเวลาปฏิบัติงาน", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์",
                 "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
@@ -685,7 +794,7 @@
                 "mv_mis_4": "Preserve traditions and culture",
                 "mv_mis_5": "Promote CPIRD DNA",
                 
-                "org_title": "Organizational Chart of Medical Education Center, Chumphon Khet Udomsak Hospital",
+                "org_title": "Organizational Chart of Medical Education Center",
                 "org_name_1": "Asst. Prof. Dr. Anan Pornmata", "org_role_1": "MEC Director",
                 "org_name_2": "Assoc. Prof. Dr. Boonlert Mitmuang", "org_role_2": "Advisor to the MEC Director",
                 "org_name_3": "Dr. Thakoon Boonnarakorn", "org_role_3": "Deputy Director of IT",
@@ -696,6 +805,20 @@
                 "org_name_8": "Dr. Peeratut Sompop-pokhaset", "org_role_8": "Deputy Director of Strategy & Research",
                 "org_name_9": "Dr. Teerawan Upaisilpsathaporn", "org_role_9": "Deputy Director of Undergraduate Education",
                 "org_name_10": "Dr. Sa-ard Somkrabuan", "org_role_10": "Assistant Deputy Director of Undergraduate Education",
+
+                "staff_title": "Operational Staff, Medical Education Center",
+                "staff_name_1": "Ms. Atchara Chonmanat", "staff_role_1": "Head of Office<br>Educational Scholar",
+                "staff_name_2": "Ms. Natthaporn Thanusin", "staff_role_2": "Educational Scholar",
+                "staff_name_3": "Ms. Uthumphon Kaewvichit", "staff_role_3": "Educational Scholar",
+                "staff_name_4": "Ms. Chayanit Huntrakul", "staff_role_4": "Educational Scholar",
+                "staff_name_5": "Ms. Weerawan Natsuwan", "staff_role_5": "Educational Scholar",
+                "staff_name_6": "Ms. Soraya Thawonwat", "staff_role_6": "Educational Scholar",
+                "staff_name_7": "Ms. Thanyaporn Muangdaeng", "staff_role_7": "Educational Scholar",
+                "staff_name_8": "Mr. Alongkorn Nuisook", "staff_role_8": "Educational Scholar",
+                "staff_name_9": "Ms. Suthatip Nakwichian", "staff_role_9": "Educational Scholar",
+                "staff_name_10": "Mr. Tharawit Phetkaew", "staff_role_10": "Educational Scholar",
+                "staff_name_11": "Ms. Jittamas Panasnachee", "staff_role_11": "General Administration Officer",
+                "staff_name_12": "Ms. Wanarat Muangprom", "staff_role_12": "Librarian",
                 
                 "sys_dash_title": "Systems Dashboard", "sys_dash_logout": "Logout",
                 "sys_item_1": "Time Attendance System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar",
