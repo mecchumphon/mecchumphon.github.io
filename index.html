@@ -169,13 +169,20 @@
         .org-node img {
             object-position: center 10%;
         }
+
+        /* Slider Styles */
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
-
-    <!-- Facebook SDK -->
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/th_TH/sdk.js#xfbml=1&version=v19.0" nonce="mec_fb"></script>
 
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="w-full px-4 sm:px-8 lg:px-12">
@@ -245,11 +252,11 @@
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-blue-500 inline-block pb-2" data-i18n="home_news_title">ข่าวประชาสัมพันธ์</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     
                     <!-- Sticky Announcements -->
-                    <div class="space-y-4">
-                        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full flex flex-col min-h-[500px]">
+                    <div class="lg:col-span-1 space-y-4">
+                        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full flex flex-col min-h-[400px]">
                             <h3 class="text-xl font-bold text-blue-800 mb-6 flex items-center border-b border-blue-200 pb-4">
                                 <i class="fa-solid fa-bullhorn mr-2"></i> 
                                 <span data-i18n="home_announce_title">ประกาศด่วน</span>
@@ -284,22 +291,21 @@
                         </div>
                     </div>
                     
-                    <!-- Facebook Page Plugin -->
-                    <div class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-gray-200 h-full flex justify-center min-h-[500px]">
-                        <div class="w-full flex justify-center overflow-hidden">
-                            <div class="fb-page" 
-                                data-href="https://www.facebook.com/MECChumphon" 
-                                data-tabs="timeline" 
-                                data-width="500" 
-                                data-height="500" 
-                                data-small-header="false" 
-                                data-adapt-container-width="true" 
-                                data-hide-cover="false" 
-                                data-show-facepile="true">
-                                <blockquote cite="https://www.facebook.com/MECChumphon" class="fb-xfbml-parse-ignore">
-                                    <a href="https://www.facebook.com/MECChumphon">ศูนย์แพทยศาสตรศึกษาชั้นคลินิก รพ.ชุมพรเขตรอุดมศักดิ์</a>
-                                </blockquote>
-                            </div>
+                    <!-- News Carousel -->
+                    <div class="lg:col-span-2 relative">
+                        <div class="relative rounded-xl overflow-hidden shadow-md h-[300px] md:h-[400px] bg-gray-100 group">
+                            <div id="news-track" class="slider-track h-full"></div>
+                            
+                            <!-- Controls -->
+                            <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition flex items-center justify-center z-10 opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition flex items-center justify-center z-10 opacity-0 group-hover:opacity-100">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+
+                            <!-- Indicators -->
+                            <div id="news-indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10"></div>
                         </div>
                     </div>
 
@@ -308,6 +314,10 @@
 
             <!-- ส่วนแสดงผู้บริหาร (ขยับลงมา) -->
             <div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 mb-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-blue-500 inline-block pb-2" data-i18n="home_exec_title">ผู้อำนวยการโรงพยาบาล/ผู้อำนวยการศูนย์แพทย์</h2>
+                </div>
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
                     
                     <!-- ผู้อำนวยการโรงพยาบาล -->
@@ -806,6 +816,7 @@
                 "dir_mec_name": "นพ. อนันต์ พรมาตา",
                 "dir_mec_title": "ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
 
+                "home_exec_title": "ผู้อำนวยการโรงพยาบาล / ผู้อำนวยการศูนย์แพทย์",
                 "home_news_title": "ข่าวประชาสัมพันธ์", 
                 "home_announce_title": "ประกาศด่วน", "home_announce_1": "กำหนดการเปิดภาคเรียน ปี 2567", "home_announce_2": "รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี", "home_announce_3": "มาตรการป้องกันโรคสำหรับนักศึกษา", "home_announce_4": "ประกาศผลการสอบคัดเลือกนักศึกษาแพทย์", "home_announce_5": "ปฏิทินวิชาการ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก",
                 "hist_title": "ประวัติความเป็นมา", 
@@ -879,6 +890,7 @@
                 "dir_mec_name": "Dr. Anan Pornmata",
                 "dir_mec_title": "Director of Medical Education Center",
 
+                "home_exec_title": "Hospital Director / MEC Director",
                 "home_news_title": "Public Relations News", 
                 "home_announce_title": "Announcements", "home_announce_1": "Schedule for the 2024 Academic Year", "home_announce_2": "Internship Doctor Recruitment", "home_announce_3": "Disease Prevention Measures for Students", "home_announce_4": "Announcement of Medical Student Selection Results", "home_announce_5": "MEC Academic Calendar",
                 "hist_title": "Our History", 
@@ -994,6 +1006,138 @@
         function closeNewsModal() {
             document.getElementById('news-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
+            if (typeof resetSlideTimer === "function") resetSlideTimer();
+        }
+
+        // --- Mock Facebook Feed Data (Carousel) ---
+        const newsItems = [
+            { 
+                id: 11, 
+                title: "บรรยากาศการสอบ OSCE นักศึกษาแพทย์ชั้นปีที่ 6", 
+                date: "โพสต์เมื่อ 2 ชั่วโมงที่แล้ว", 
+                image: "https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=1200&q=80", 
+                detail: "ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ จัดการสอบวัดความรู้และทักษะทางคลินิก (OSCE) สำหรับนักศึกษาแพทย์ชั้นปีที่ 6 ขอเป็นกำลังใจให้น้องๆ ทุกคนผ่านฉลุยครับ ✌️🩺<br><br>#MECChumphon #นักศึกษาแพทย์ #OSCE", 
+                link: "https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" 
+            },
+            { 
+                id: 22, 
+                title: "ประกาศ! รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี 2567", 
+                date: "โพสต์เมื่อ 1 วันที่แล้ว", 
+                image: "https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1200&q=80", 
+                detail: "รพ.ชุมพรเขตรอุดมศักดิ์ เปิดรับสมัครแพทย์เพิ่มพูนทักษะ (Intern) ประจำปี 2567 มาร่วมเป็นส่วนหนึ่งของครอบครัวเรา พร้อมเรียนรู้และพัฒนาทักษะทางคลินิกกับทีมอาจารย์แพทย์ผู้เชี่ยวชาญ<br><br>📍 อ่านรายละเอียดเพิ่มเติมและดาวน์โหลดใบสมัครได้ที่เว็บไซต์หรือสแกน QR Code ในภาพ", 
+                link: "https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" 
+            },
+            { 
+                id: 33, 
+                title: "กิจกรรมสอนเสริม: การอ่านคลื่นไฟฟ้าหัวใจ (EKG Basic)", 
+                date: "โพสต์เมื่อ 3 วันที่แล้ว", 
+                image: "https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=1200&q=80", 
+                detail: "เก็บภาพบรรยากาศการเรียนการสอนเสริมเรื่อง Basic EKG Interpretation โดย นพ.สอาด สมกระบวน ให้น้องๆ นศพ. ชั้นปีที่ 4 ได้ทบทวนความรู้พื้นฐาน เตรียมความพร้อมขึ้นวอร์ดอายุรกรรมสัปดาห์หน้าครับ 📈❤️", 
+                link: "https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" 
+            }
+        ];
+
+        let currentSlide = 0;
+        let slideInterval;
+
+        function initSlider() {
+            const track = document.getElementById('news-track');
+            const indicators = document.getElementById('news-indicators');
+            
+            if(!track || !indicators) return;
+            
+            track.innerHTML = '';
+            indicators.innerHTML = '';
+
+            newsItems.forEach((item, index) => {
+                // Slide
+                const slide = document.createElement('div');
+                slide.className = 'slide h-full cursor-pointer relative';
+                slide.onclick = () => openNewsModal(item.id);
+                slide.innerHTML = `
+                    <img src="${item.image}" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 flex flex-col justify-end">
+                        <div class="flex items-center mb-2">
+                            <i class="fa-brands fa-facebook text-blue-500 text-xl mr-2 bg-white rounded-full"></i>
+                            <span class="text-blue-300 text-sm font-medium">${item.date}</span>
+                        </div>
+                        <h3 class="text-white text-xl md:text-3xl font-bold line-clamp-2 leading-tight">${item.title}</h3>
+                    </div>
+                `;
+                track.appendChild(slide);
+
+                // Indicator
+                const dot = document.createElement('button');
+                dot.className = `w-2.5 h-2.5 rounded-full transition-all duration-300 ${index === 0 ? 'bg-blue-500 w-6' : 'bg-white/50 hover:bg-white'}`;
+                dot.onclick = () => goToSlide(index);
+                indicators.appendChild(dot);
+            });
+
+            startSlideTimer();
+        }
+
+        function updateSlider() {
+            const track = document.getElementById('news-track');
+            const dots = document.getElementById('news-indicators')?.children;
+            
+            if(track) track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            if(dots) {
+                Array.from(dots).forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.className = 'w-6 h-2.5 rounded-full bg-blue-500 transition-all duration-300';
+                    } else {
+                        dot.className = 'w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all duration-300';
+                    }
+                });
+            }
+        }
+
+        function moveSlide(direction) {
+            currentSlide = (currentSlide + direction + newsItems.length) % newsItems.length;
+            updateSlider();
+            resetSlideTimer();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetSlideTimer();
+        }
+
+        function startSlideTimer() {
+            slideInterval = setInterval(() => moveSlide(1), 5000);
+        }
+
+        function resetSlideTimer() {
+            clearInterval(slideInterval);
+            startSlideTimer();
+        }
+
+        function openNewsModal(id) {
+            const item = newsItems.find(news => news.id === id);
+            if (!item) return;
+
+            const modal = document.getElementById('news-modal');
+            const content = document.getElementById('modal-content');
+            
+            content.innerHTML = `
+                <img src="${item.image}" class="w-full h-64 md:h-80 object-cover">
+                <div class="p-8">
+                    <div class="flex items-center text-gray-500 mb-4 text-sm font-medium">
+                        <i class="fa-brands fa-facebook text-blue-600 text-lg mr-2"></i> ${item.date}
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-6 leading-tight">${item.title}</h2>
+                    <p class="text-gray-700 leading-loose text-lg mb-8 whitespace-pre-line">${item.detail}</p>
+                    <a href="${item.link}" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-md">
+                        <i class="fa-brands fa-facebook mr-2"></i> ดูโพสต์นี้บน Facebook
+                    </a>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            clearInterval(slideInterval); // หยุดเลื่อนสไลด์ขณะเปิด Modal
         }
 
         // ฟังก์ชันเปิด Modal สำหรับกิจกรรมศูนย์แพทย์
@@ -1055,6 +1199,7 @@
 
         window.onload = () => {
             setLanguage('th');
+            initSlider();
             showPage('home');
         };
 
