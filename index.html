@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEC CHUMPHON</title>
     
+    <!-- มาตรการความปลอดภัยพื้นฐาน (Security Headers) -->
+    <!-- บังคับให้เบราว์เซอร์อัปเกรดการโหลดไฟล์ (รูปภาพ, สคริปต์, CSS) จาก HTTP เป็น HTTPS อัตโนมัติ -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval';">
+    <!-- ป้องกันไม่ให้เบราว์เซอร์เดาประเภทไฟล์ผิดพลาด (ลดความเสี่ยง XSS) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <!-- ควบคุมการส่งข้อมูล Referrer เมื่อผู้ใช้กดลิงก์ออกไปเว็บอื่น -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
