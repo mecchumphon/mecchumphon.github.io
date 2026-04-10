@@ -180,7 +180,8 @@
                     <button onclick="showPage('about')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50" data-i18n="nav_about">เกี่ยวกับหน่วยงาน</button>
                     <button onclick="showPage('team')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50" data-i18n="nav_team">โครงสร้าง</button>
                     <button onclick="showPage('systems')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50" data-i18n="nav_systems">ศูนย์รวมระบบ</button>
-                    <button onclick="showPage('activities')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50" data-i18n="nav_activities">กิจกรรม</button>
+                    <!-- เปลี่ยนจาก กิจกรรม เป็น คลังเอกสาร -->
+                    <button onclick="showPage('documents')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50" data-i18n="nav_documents">คลังเอกสาร</button>
                     <button onclick="showPage('contact')" class="nav-btn px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50" data-i18n="nav_contact">ติดต่อเรา</button>
                     
                     <div class="flex items-center ml-4 bg-gray-100 rounded-lg p-1 border border-gray-200">
@@ -207,7 +208,8 @@
             <button onclick="showPage('about')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_about">เกี่ยวกับหน่วยงาน</button>
             <button onclick="showPage('team')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_team">โครงสร้าง</button>
             <button onclick="showPage('systems')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_systems">ศูนย์รวมระบบ</button>
-            <button onclick="showPage('activities')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_activities">กิจกรรม</button>
+            <!-- เปลี่ยนจาก กิจกรรม เป็น คลังเอกสาร -->
+            <button onclick="showPage('documents')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_documents">คลังเอกสาร</button>
             <button onclick="showPage('contact')" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-blue-50" data-i18n="nav_contact">ติดต่อเรา</button>
         </div>
     </header>
@@ -653,32 +655,119 @@
                         <div class="p-4 bg-orange-500 text-white flex justify-between items-center"><i class="fa-solid fa-calendar-days text-2xl"></i></div>
                         <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_4">ปฏิทินกิจกรรมศูนย์แพทย์</h3></div>
                     </a>
+                    <a href="https://sites.google.com/view/ecchumphon/Home" target="_blank" class="block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition transform hover:-translate-y-1">
+                        <div class="p-4 bg-indigo-500 text-white flex justify-between items-center"><i class="fa-solid fa-microscope text-2xl"></i></div>
+                        <div class="p-5"><h3 class="font-bold text-lg" data-i18n="sys_item_5">ศูนย์จริยธรรมการวิจัย</h3></div>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section id="activities" class="page-section hidden-page page-transition">
-            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
-                <h1 class="text-3xl font-bold text-blue-800 mb-8 border-b pb-4 text-center" data-i18n="act_title">ภาพกิจกรรมนักศึกษา</h1>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md group">
-                        <div class="overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+        <!-- เปลี่ยนหน้า กิจกรรม เป็น คลังเอกสาร -->
+        <section id="documents" class="page-section hidden-page page-transition bg-gray-50 min-h-screen pb-12">
+            <div class="w-full bg-blue-800 text-white py-12 px-4 sm:px-6">
+                <div class="max-w-5xl mx-auto text-center">
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4" data-i18n="doc_title">คลังเอกสารดาวน์โหลด</h1>
+                    <p class="text-blue-200 text-lg" data-i18n="doc_subtitle">รวมแบบฟอร์ม คู่มือ และแนวทางปฏิบัติ สำหรับนักศึกษาแพทย์และบุคลากร</p>
+                    
+                    <!-- Search Bar -->
+                    <div class="mt-8 max-w-2xl mx-auto relative text-gray-800">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <i class="fa-solid fa-magnifying-glass text-gray-400"></i>
                         </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded" data-i18n="act_date_1">10 พ.ค. 2567</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-3 group-hover:text-blue-700 transition" data-i18n="act_title_1">กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก</h3>
-                        </div>
+                        <input type="text" id="doc-search" oninput="filterDocuments()" class="w-full pl-11 pr-4 py-4 rounded-xl shadow-lg border-0 focus:ring-4 focus:ring-blue-400 focus:outline-none text-lg transition" placeholder="ค้นหาเอกสาร..." data-i18n-placeholder="doc_search_ph">
                     </div>
-                    <div class="bg-white rounded-xl overflow-hidden shadow-md group">
-                        <div class="overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 mt-8">
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 mb-8 justify-center">
+                    <button onclick="setDocCategory(this, 'all')" class="doc-cat-btn active px-5 py-2.5 rounded-full text-sm font-bold bg-blue-600 text-white shadow-sm transition hover:shadow-md" data-i18n="doc_cat_all">ทั้งหมด</button>
+                    <button onclick="setDocCategory(this, 'forms')" class="doc-cat-btn px-5 py-2.5 rounded-full text-sm font-bold bg-white text-gray-600 border border-gray-200 shadow-sm transition hover:bg-gray-50" data-i18n="doc_cat_forms">แบบฟอร์ม</button>
+                    <button onclick="setDocCategory(this, 'manuals')" class="doc-cat-btn px-5 py-2.5 rounded-full text-sm font-bold bg-white text-gray-600 border border-gray-200 shadow-sm transition hover:bg-gray-50" data-i18n="doc_cat_manuals">คู่มือ</button>
+                    <button onclick="setDocCategory(this, 'cpg')" class="doc-cat-btn px-5 py-2.5 rounded-full text-sm font-bold bg-white text-gray-600 border border-gray-200 shadow-sm transition hover:bg-gray-50" data-i18n="doc_cat_cpg">แนวทางปฏิบัติ (CPG)</button>
+                </div>
+
+                <!-- Documents List -->
+                <div class="space-y-4" id="doc-list">
+                    
+                    <!-- Item 1: Form -->
+                    <div class="doc-item flex flex-col sm:flex-row items-start sm:items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition gap-4" data-category="forms">
+                        <div class="w-14 h-14 shrink-0 bg-red-50 text-red-500 flex items-center justify-center rounded-xl text-3xl shadow-sm border border-red-100">
+                            <i class="fa-solid fa-file-pdf"></i>
                         </div>
-                        <div class="p-6">
-                            <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded" data-i18n="act_date_2">25 เม.ย. 2567</span>
-                            <h3 class="text-xl font-bold text-gray-800 mt-3 group-hover:text-blue-700 transition" data-i18n="act_title_2">โครงการแพทย์อาสาตรวจสุขภาพชุมชน</h3>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-lg text-gray-800" data-i18n="doc_1_title">แบบฟอร์มใบลาพักผ่อน / ลากิจ</h3>
+                            <p class="text-sm text-gray-500 mt-1" data-i18n="doc_1_desc">สำหรับนักศึกษาแพทย์และแพทย์เพิ่มพูนทักษะ ใช้สำหรับยื่นล่วงหน้าอย่างน้อย 3 วันทำการ</p>
                         </div>
+                        <a href="#" target="_blank" class="shrink-0 w-full sm:w-auto px-5 py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg text-sm font-bold transition text-center flex items-center justify-center group">
+                            <i class="fa-solid fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i> <span data-i18n="doc_download">ดาวน์โหลด</span>
+                        </a>
                     </div>
+
+                    <!-- Item 2: Form -->
+                    <div class="doc-item flex flex-col sm:flex-row items-start sm:items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition gap-4" data-category="forms">
+                        <div class="w-14 h-14 shrink-0 bg-blue-50 text-blue-500 flex items-center justify-center rounded-xl text-3xl shadow-sm border border-blue-100">
+                            <i class="fa-solid fa-file-word"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-lg text-gray-800" data-i18n="doc_2_title">แบบฟอร์มบันทึกหัตถการ (Logbook)</h3>
+                            <p class="text-sm text-gray-500 mt-1" data-i18n="doc_2_desc">ไฟล์ Word สามารถพิมพ์เพื่อนำไปให้แพทย์พี่เลี้ยงเซ็นรับรองการทำหัตถการในแต่ละวอร์ด</p>
+                        </div>
+                        <a href="#" target="_blank" class="shrink-0 w-full sm:w-auto px-5 py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg text-sm font-bold transition text-center flex items-center justify-center group">
+                            <i class="fa-solid fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i> <span data-i18n="doc_download">ดาวน์โหลด</span>
+                        </a>
+                    </div>
+
+                    <!-- Item 3: Manual -->
+                    <div class="doc-item flex flex-col sm:flex-row items-start sm:items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition gap-4" data-category="manuals">
+                        <div class="w-14 h-14 shrink-0 bg-red-50 text-red-500 flex items-center justify-center rounded-xl text-3xl shadow-sm border border-red-100">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-lg text-gray-800" data-i18n="doc_3_title">คู่มือปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก</h3>
+                            <p class="text-sm text-gray-500 mt-1" data-i18n="doc_3_desc">รวมระเบียบปฏิบัติ ข้อบังคับ และข้อมูลสถานที่ต่างๆ ในศูนย์แพทย์ฯ ประจำปีการศึกษา 2567</p>
+                        </div>
+                        <a href="#" target="_blank" class="shrink-0 w-full sm:w-auto px-5 py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg text-sm font-bold transition text-center flex items-center justify-center group">
+                            <i class="fa-solid fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i> <span data-i18n="doc_download">ดาวน์โหลด</span>
+                        </a>
+                    </div>
+
+                    <!-- Item 4: CPG -->
+                    <div class="doc-item flex flex-col sm:flex-row items-start sm:items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition gap-4" data-category="cpg">
+                        <div class="w-14 h-14 shrink-0 bg-red-50 text-red-500 flex items-center justify-center rounded-xl text-3xl shadow-sm border border-red-100">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-lg text-gray-800" data-i18n="doc_4_title">แนวทางเวชปฏิบัติโรคไข้เลือดออก (Dengue CPG)</h3>
+                            <p class="text-sm text-gray-500 mt-1" data-i18n="doc_4_desc">ฉบับปรับปรุงล่าสุด สำหรับอ้างอิงการรักษาและดูแลผู้ป่วยในโรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
+                        </div>
+                        <a href="#" target="_blank" class="shrink-0 w-full sm:w-auto px-5 py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-600 hover:text-white rounded-lg text-sm font-bold transition text-center flex items-center justify-center group">
+                            <i class="fa-solid fa-download mr-2 group-hover:-translate-y-1 transition-transform"></i> <span data-i18n="doc_download">ดาวน์โหลด</span>
+                        </a>
+                    </div>
+
+                    <!-- Item 5: Form/External Link -->
+                    <div class="doc-item flex flex-col sm:flex-row items-start sm:items-center p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition gap-4" data-category="forms">
+                        <div class="w-14 h-14 shrink-0 bg-emerald-50 text-emerald-500 flex items-center justify-center rounded-xl text-3xl shadow-sm border border-emerald-100">
+                            <i class="fa-solid fa-link"></i>
+                        </div>
+                        <div class="flex-grow">
+                            <h3 class="font-bold text-lg text-gray-800" data-i18n="doc_5_title">แบบประเมินอาจารย์แพทย์และรายวิชา</h3>
+                            <p class="text-sm text-gray-500 mt-1" data-i18n="doc_5_desc">ลิงก์ Google Form สำหรับนักศึกษาแพทย์ประเมินความพึงพอใจเมื่อจบรายวิชา (ทำผ่านมือถือได้)</p>
+                        </div>
+                        <a href="#" target="_blank" class="shrink-0 w-full sm:w-auto px-5 py-2.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded-lg text-sm font-bold transition text-center flex items-center justify-center group">
+                            <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> <span data-i18n="doc_open_link">เปิดลิงก์</span>
+                        </a>
+                    </div>
+
+                    <!-- ข้อความแจ้งเตือนเมื่อค้นหาไม่พบ -->
+                    <div id="no-doc-found" class="hidden text-center py-12 text-gray-500">
+                        <i class="fa-regular fa-folder-open text-4xl mb-3 text-gray-300"></i>
+                        <p class="text-lg" data-i18n="doc_not_found">ไม่พบเอกสารที่คุณค้นหา</p>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -862,7 +951,7 @@
             th: {
                 "title_main": "MEC CHUMPHON", 
                 "title_sub": "MEC CHUMPHON",
-                "nav_home": "หน้าแรก", "nav_about": "เกี่ยวกับหน่วยงาน", "nav_team": "โครงสร้าง", "nav_systems": "ศูนย์รวมระบบ", "nav_activities": "กิจกรรม", "nav_contact": "ติดต่อเรา",
+                "nav_home": "หน้าแรก", "nav_about": "เกี่ยวกับหน่วยงาน", "nav_team": "โครงสร้าง", "nav_systems": "ศูนย์รวมระบบ", "nav_documents": "คลังเอกสาร", "nav_contact": "ติดต่อเรา",
                 "home_marquee": "✨ ยินดีต้อนรับสู่ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์ (Medical Education Center Chumphon Khet Udomsak Hospital) ✨",
                 
                 "dir_hosp_name": "พญ. ปัทมพันธ์ อนันตาพงศ์",
@@ -934,8 +1023,30 @@
                 "staff_name_12": "น.ส.วนารัตน์ เมืองพร้อม", "staff_role_12": "บรรณารักษ์",
 
                 "sys_dash_title": "ศูนย์รวมระบบ", "sys_dash_logout": "ออกจากระบบ",
-                "sys_item_1": "ระบบบันทึกเวลาปฏิบัติงาน", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์",
-                "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
+                "sys_item_1": "ระบบบันทึกเวลาปฏิบัติงาน", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์", "sys_item_5": "ศูนย์จริยธรรมการวิจัย",
+                
+                // คำแปลส่วนคลังเอกสาร
+                "doc_title": "คลังเอกสารดาวน์โหลด",
+                "doc_subtitle": "รวมแบบฟอร์ม คู่มือ และแนวทางปฏิบัติ สำหรับนักศึกษาแพทย์และบุคลากร",
+                "doc_search_ph": "ค้นหาเอกสาร...",
+                "doc_cat_all": "ทั้งหมด",
+                "doc_cat_forms": "แบบฟอร์ม",
+                "doc_cat_manuals": "คู่มือ",
+                "doc_cat_cpg": "แนวทางปฏิบัติ (CPG)",
+                "doc_download": "ดาวน์โหลด",
+                "doc_open_link": "เปิดลิงก์",
+                "doc_not_found": "ไม่พบเอกสารที่คุณค้นหา",
+
+                "doc_1_title": "แบบฟอร์มใบลาพักผ่อน / ลากิจ",
+                "doc_1_desc": "สำหรับนักศึกษาแพทย์และแพทย์เพิ่มพูนทักษะ ใช้สำหรับยื่นล่วงหน้าอย่างน้อย 3 วันทำการ",
+                "doc_2_title": "แบบฟอร์มบันทึกหัตถการ (Logbook)",
+                "doc_2_desc": "ไฟล์ Word สามารถพิมพ์เพื่อนำไปให้แพทย์พี่เลี้ยงเซ็นรับรองการทำหัตถการในแต่ละวอร์ด",
+                "doc_3_title": "คู่มือปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก",
+                "doc_3_desc": "รวมระเบียบปฏิบัติ ข้อบังคับ และข้อมูลสถานที่ต่างๆ ในศูนย์แพทย์ฯ ประจำปีการศึกษา 2567",
+                "doc_4_title": "แนวทางเวชปฏิบัติโรคไข้เลือดออก (Dengue CPG)",
+                "doc_4_desc": "ฉบับปรับปรุงล่าสุด สำหรับอ้างอิงการรักษาและดูแลผู้ป่วยในโรงพยาบาลชุมพรเขตรอุดมศักดิ์",
+                "doc_5_title": "แบบประเมินอาจารย์แพทย์และรายวิชา",
+                "doc_5_desc": "ลิงก์ Google Form สำหรับนักศึกษาแพทย์ประเมินความพึงพอใจเมื่อจบรายวิชา (ทำผ่านมือถือได้)",
                 
                 "cont_title": "ติดต่อเรา", 
                 "cont_addr_title": "ที่ตั้ง / ที่อยู่", 
@@ -955,7 +1066,7 @@
             en: {
                 "title_main": "MEC CHUMPHON", 
                 "title_sub": "MEC CHUMPHON",
-                "nav_home": "Home", "nav_about": "About Us", "nav_team": "Org Chart", "nav_systems": "Systems Hub", "nav_activities": "Activities", "nav_contact": "Contact Us",
+                "nav_home": "Home", "nav_about": "About Us", "nav_team": "Org Chart", "nav_systems": "Systems Hub", "nav_documents": "Documents", "nav_contact": "Contact Us",
                 "home_marquee": "✨ Welcome to Medical Education Center, Chumphon Khet Udomsak Hospital ✨",
                 
                 "dir_hosp_name": "Dr. Pattamapan Anantapong",
@@ -1027,8 +1138,30 @@
                 "staff_name_12": "Ms. Wanarat Muangprom", "staff_role_12": "Librarian",
                 
                 "sys_dash_title": "Systems Dashboard", "sys_dash_logout": "Logout",
-                "sys_item_1": "Time Attendance System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar",
-                "act_title": "Student Activities", "act_date_1": "May 10, 2024", "act_title_1": "Clinical Medical Students Orientation", "act_date_2": "Apr 25, 2024", "act_title_2": "Volunteer Doctor Community Health Checkup Project",
+                "sys_item_1": "Time Attendance System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar", "sys_item_5": "Research Ethics Center",
+                
+                // Documents section translation
+                "doc_title": "Document & Download Hub",
+                "doc_subtitle": "Forms, manuals, and guidelines for medical students and staff.",
+                "doc_search_ph": "Search documents...",
+                "doc_cat_all": "All",
+                "doc_cat_forms": "Forms",
+                "doc_cat_manuals": "Manuals",
+                "doc_cat_cpg": "Guidelines (CPG)",
+                "doc_download": "Download",
+                "doc_open_link": "Open Link",
+                "doc_not_found": "No documents found matching your search.",
+
+                "doc_1_title": "Leave Request Form",
+                "doc_1_desc": "For medical students and intern doctors. Please submit at least 3 days in advance.",
+                "doc_2_title": "Procedure Logbook Form",
+                "doc_2_desc": "Printable Word file for attending physicians to sign off on ward procedures.",
+                "doc_3_title": "Medical Student Orientation Manual",
+                "doc_3_desc": "Rules, regulations, and facility information for MEC academic year 2024.",
+                "doc_4_title": "Dengue Fever CPG",
+                "doc_4_desc": "Latest updated clinical practice guideline for hospital use.",
+                "doc_5_title": "Instructor & Course Evaluation",
+                "doc_5_desc": "Google Form link for student feedback at the end of the course.",
                 
                 "cont_title": "Contact Us", 
                 "cont_addr_title": "Location / Address", 
@@ -1064,8 +1197,19 @@
                 }
             });
 
+            // Handle input placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if(translations[lang][key]) {
+                    el.setAttribute('placeholder', translations[lang][key]);
+                }
+            });
+
             document.title = "MEC CHUMPHON";
             document.documentElement.lang = lang;
+            
+            // Re-filter documents to update search placeholder language if searching
+            filterDocuments();
         }
 
         function showPage(pageId) {
@@ -1099,6 +1243,52 @@
             document.getElementById('news-modal').classList.add('hidden');
             document.body.style.overflow = 'auto';
             if (typeof resetSlideTimer === "function") resetSlideTimer();
+        }
+
+        // --- ระบบค้นหาและคัดกรองเอกสาร (Document Filtering) ---
+        function filterDocuments() {
+            const searchInput = document.getElementById('doc-search').value.toLowerCase();
+            const activeCategory = document.querySelector('.doc-cat-btn.active').dataset.category || 'all';
+            const items = document.querySelectorAll('.doc-item');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const title = item.querySelector('h3').innerText.toLowerCase();
+                const desc = item.querySelector('p').innerText.toLowerCase();
+                const category = item.dataset.category;
+
+                const matchesSearch = title.includes(searchInput) || desc.includes(searchInput);
+                const matchesCategory = activeCategory === 'all' || category === activeCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    item.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const noFoundMessage = document.getElementById('no-doc-found');
+            if (visibleCount === 0) {
+                noFoundMessage.classList.remove('hidden');
+            } else {
+                noFoundMessage.classList.add('hidden');
+            }
+        }
+
+        function setDocCategory(btn, category) {
+            // Update Active Buttons
+            document.querySelectorAll('.doc-cat-btn').forEach(b => {
+                b.classList.remove('active', 'bg-blue-600', 'text-white');
+                b.classList.add('bg-white', 'text-gray-600');
+                // Remove data-category from active element trick, explicitly set on the active button
+                delete b.dataset.category;
+            });
+            btn.classList.remove('bg-white', 'text-gray-600');
+            btn.classList.add('active', 'bg-blue-600', 'text-white');
+            btn.dataset.category = category; // Set state to current button
+            
+            filterDocuments();
         }
 
         // --- Mock Facebook Feed Data (Carousel) ---
@@ -1290,6 +1480,9 @@
         }
 
         window.onload = () => {
+            // ซ่อน Category Data ในปุ่มทั้งหมดตอนเริ่มต้น
+            document.querySelector('.doc-cat-btn.active').dataset.category = 'all';
+            
             setLanguage('th');
             initSlider();
             showPage('home');
