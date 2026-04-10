@@ -735,38 +735,91 @@
 
         <section id="contact" class="page-section hidden-page page-transition">
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col lg:flex-row">
-                    <div class="bg-blue-700 text-white p-10 lg:w-1/3">
-                        <h2 class="text-3xl font-bold mb-6" data-i18n="cont_title">ติดต่อเรา</h2>
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+                    <!-- Info Section (Left) -->
+                    <div class="bg-blue-100 text-gray-800 p-8 lg:w-5/12 lg:p-10 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold mb-8 border-b border-blue-300 pb-4 text-blue-900" data-i18n="cont_title">ติดต่อเรา</h2>
+                        
                         <div class="space-y-6">
+                            <!-- Location -->
                             <div class="flex items-start">
-                                <i class="fa-solid fa-location-dot mt-1 mr-4 text-xl text-blue-300"></i>
+                                <div class="bg-white p-3 rounded-xl mr-4 shrink-0 shadow-sm border border-blue-200">
+                                    <i class="fa-solid fa-location-dot text-xl text-blue-600"></i>
+                                </div>
                                 <div>
-                                    <h4 class="font-semibold text-lg" data-i18n="cont_addr_title">ที่อยู่</h4>
-                                    <p class="text-sm mt-1 leading-relaxed" data-i18n="cont_addr_desc">222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000</p>
+                                    <h4 class="font-semibold text-lg text-blue-900" data-i18n="cont_addr_title">ที่ตั้ง / ที่อยู่</h4>
+                                    <p class="text-[15px] mt-1.5 leading-relaxed text-gray-700" data-i18n="cont_addr_desc">
+                                        <strong>สำนักงานศูนย์แพทยศาสตรศึกษาชั้นคลินิก<br>โรงพยาบาลชุมพรเขตรอุดมศักดิ์</strong><br>
+                                        222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา<br>อำเภอเมือง จังหวัดชุมพร 86000
+                                    </p>
                                 </div>
                             </div>
+                            
+                            <!-- Phone -->
                             <div class="flex items-start">
-                                <i class="fa-solid fa-phone mt-1 mr-4 text-xl text-blue-300"></i>
+                                <div class="bg-white p-3 rounded-xl mr-4 shrink-0 shadow-sm border border-blue-200">
+                                    <i class="fa-solid fa-phone text-xl text-blue-600"></i>
+                                </div>
                                 <div>
-                                    <h4 class="font-semibold text-lg" data-i18n="cont_phone_title">เบอร์โทรศัพท์</h4>
-                                    <p class="text-sm mt-1">077-503-672 ต่อ 8521-2<br>083-107-4497</p>
+                                    <h4 class="font-semibold text-lg text-blue-900" data-i18n="cont_phone_title">โทรศัพท์</h4>
+                                    <p class="text-[15px] mt-1.5 text-gray-700 leading-relaxed" data-i18n="cont_phone_desc">
+                                        077-503-672 ต่อ 8521-2<br>มือถือ : 083-107-4497
+                                    </p>
                                 </div>
                             </div>
+
+                            <!-- Email -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded-xl mr-4 shrink-0 shadow-sm border border-blue-200">
+                                    <i class="fa-solid fa-envelope text-xl text-blue-600"></i>
+                                </div>
+                                <div class="flex-1 w-full overflow-hidden">
+                                    <h4 class="font-semibold text-lg text-blue-900" data-i18n="cont_email_title">E-mail</h4>
+                                    <a href="mailto:Meccp.ckusk@cpird.in.th" class="text-[15px] mt-1.5 text-gray-700 hover:text-blue-600 transition block truncate font-medium" data-i18n="cont_email_desc">
+                                        Meccp.ckusk@cpird.in.th
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Social Buttons -->
+                            <div class="grid grid-cols-2 gap-4 pt-4">
+                                <a href="https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr" target="_blank" class="flex items-center justify-center bg-[#1877F2] hover:bg-[#166FE5] text-white p-3 rounded-xl transition group shadow-md border border-[#1877F2]/50">
+                                    <i class="fa-brands fa-facebook text-2xl mr-3 group-hover:scale-110 transition"></i>
+                                    <span class="text-[15px] font-bold">Facebook</span>
+                                </a>
+                                <a href="https://line.me/ti/p/peeKeelk6K" target="_blank" class="flex items-center justify-center bg-[#00B900] hover:bg-[#009900] text-white p-3 rounded-xl transition group shadow-md border border-[#00B900]/50">
+                                    <i class="fa-brands fa-line text-2xl mr-3 group-hover:scale-110 transition"></i>
+                                    <span class="text-[15px] font-bold">LINE</span>
+                                </a>
+                            </div>
+
+                            <!-- Operating Hours -->
+                            <div class="flex items-start pt-6 border-t border-blue-300">
+                                <div class="bg-white p-3 rounded-xl mr-4 shrink-0 shadow-sm border border-blue-200">
+                                    <i class="fa-solid fa-clock text-xl text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-blue-900" data-i18n="cont_hours_title">เวลาทำการ</h4>
+                                    <div class="text-[14px] mt-1.5 text-gray-700 space-y-2">
+                                        <p data-i18n="cont_hours_1"><span class="font-semibold inline-block w-24">จันทร์-ศุกร์</span> 08.30 - 20.30 น.</p>
+                                        <p data-i18n="cont_hours_2"><span class="font-semibold block mb-0.5">เสาร์-อาทิตย์ และวันหยุดนักขัตฤกษ์</span> 08.30 - 16.30 น.</p>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="p-10 lg:w-2/3 bg-gray-50 flex flex-col min-h-[400px]">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-6" data-i18n="cont_map_title">แผนที่การเดินทาง</h3>
-                        <div class="flex-grow w-full h-full min-h-[300px] rounded-xl overflow-hidden shadow-sm border border-gray-200 relative">
-                            <iframe 
-                                src="https://maps.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&t=&z=16&ie=UTF8&iwloc=&output=embed" 
-                                class="absolute inset-0 w-full h-full"
-                                style="border:0;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
+
+                    <!-- Map Section (Right) -->
+                    <div class="p-0 lg:w-7/12 bg-gray-100 relative min-h-[400px]">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=โรงพยาบาลชุมพรเขตรอุดมศักดิ์&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                            class="absolute inset-0 w-full h-full"
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -884,7 +937,19 @@
                 "sys_dash_title": "ศูนย์รวมระบบ", "sys_dash_logout": "ออกจากระบบ",
                 "sys_item_1": "ระบบบันทึกเวลาปฏิบัติงาน", "sys_item_2": "ระบบจัดการวันลา (E-Leave)", "sys_item_3": "ระบบ E-Learning", "sys_item_4": "ปฏิทินกิจกรรมศูนย์แพทย์",
                 "act_title": "ภาพกิจกรรมนักศึกษา", "act_date_1": "10 พ.ค. 2567", "act_title_1": "กิจกรรมปฐมนิเทศนักศึกษาแพทย์ชั้นคลินิก", "act_date_2": "25 เม.ย. 2567", "act_title_2": "โครงการแพทย์อาสาตรวจสุขภาพชุมชน",
-                "cont_title": "ติดต่อเรา", "cont_addr_title": "ที่อยู่", "cont_addr_desc": "222 ถนนพิศิษฐพยาบาล<br>ตำบลท่าตะเภา อำเภอเมือง<br>จังหวัดชุมพร 86000", "cont_phone_title": "เบอร์โทรศัพท์", "cont_map_title": "แผนที่การเดินทาง",
+                
+                "cont_title": "ติดต่อเรา", 
+                "cont_addr_title": "ที่ตั้ง / ที่อยู่", 
+                "cont_addr_desc": "<strong>สำนักงานศูนย์แพทยศาสตรศึกษาชั้นคลินิก<br>โรงพยาบาลชุมพรเขตรอุดมศักดิ์</strong><br>222 ถนนพิศิษฐพยาบาล ตำบลท่าตะเภา<br>อำเภอเมือง จังหวัดชุมพร 86000", 
+                "cont_phone_title": "โทรศัพท์", 
+                "cont_phone_desc": "077-503-672 ต่อ 8521-2<br>มือถือ : 083-107-4497",
+                "cont_email_title": "E-mail",
+                "cont_email_desc": "Meccp.ckusk@cpird.in.th",
+                "cont_hours_title": "เวลาทำการ",
+                "cont_hours_1": "<span class='font-semibold inline-block w-24'>วันจันทร์-ศุกร์</span> 08.30 - 20.30 น.",
+                "cont_hours_2": "<span class='font-semibold block mb-0.5'>วันเสาร์-อาทิตย์ และวันหยุดนักขัตฤกษ์</span> 08.30 - 16.30 น.",
+                "cont_map_title": "แผนที่การเดินทาง",
+                
                 "footer_text": "© 2025 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>Medical Education Center Chumphon Khet Udomsak Hospital"
             },
             en: {
@@ -958,7 +1023,19 @@
                 "sys_dash_title": "Systems Dashboard", "sys_dash_logout": "Logout",
                 "sys_item_1": "Time Attendance System", "sys_item_2": "E-Leave Management System", "sys_item_3": "E-Learning System", "sys_item_4": "MEC Activity Calendar",
                 "act_title": "Student Activities", "act_date_1": "May 10, 2024", "act_title_1": "Clinical Medical Students Orientation", "act_date_2": "Apr 25, 2024", "act_title_2": "Volunteer Doctor Community Health Checkup Project",
-                "cont_title": "Contact Us", "cont_addr_title": "Address", "cont_addr_desc": "222 Moo 1 Pisitpayaban Road<br>Tha Taphao, Mueang Chumphon<br>Chumphon 86000, Thailand", "cont_phone_title": "Phone Number", "cont_map_title": "Location Map",
+                
+                "cont_title": "Contact Us", 
+                "cont_addr_title": "Location / Address", 
+                "cont_addr_desc": "<strong>Medical Education Center Office,<br>Chumphon Khet Udomsak Hospital</strong><br>222 Pisitpayaban Road, Tha Taphao,<br>Mueang Chumphon, Chumphon 86000", 
+                "cont_phone_title": "Phone / Mobile", 
+                "cont_phone_desc": "077-503-672 ext. 8521-2<br>Mobile: 083-107-4497",
+                "cont_email_title": "E-mail",
+                "cont_email_desc": "Meccp.ckusk@cpird.in.th",
+                "cont_hours_title": "Operating Hours",
+                "cont_hours_1": "<span class='font-semibold inline-block w-20'>Mon-Fri</span> 08.30 - 20.30",
+                "cont_hours_2": "<span class='font-semibold block mb-0.5'>Sat-Sun & Public Holidays</span> 08.30 - 16.30",
+                "cont_map_title": "Location Map",
+                
                 "footer_text": "© 2025 ศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์<br>Medical Education Center Chumphon Khet Udomsak Hospital"
             }
         };
