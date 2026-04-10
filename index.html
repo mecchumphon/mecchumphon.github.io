@@ -5,21 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEC CHUMPHON</title>
     
-    <!-- มาตรการความปลอดภัยพื้นฐาน (Security Headers) -->
-    <!-- บังคับให้เบราว์เซอร์อัปเกรดการโหลดไฟล์ (รูปภาพ, สคริปต์, CSS) จาก HTTP เป็น HTTPS อัตโนมัติ -->
+    <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval';">
-    <!-- ป้องกันไม่ให้เบราว์เซอร์เดาประเภทไฟล์ผิดพลาด (ลดความเสี่ยง XSS) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <!-- ควบคุมการส่งข้อมูล Referrer เมื่อผู้ใช้กดลิงก์ออกไปเว็บอื่น -->
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 1. ดึง Font แบบ Preconnect (ทำให้เว็บไม่ค้างตอนโหลดฟอนต์) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
+    <!-- 2. ดึง FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- 3. Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
-        
         body {
             font-family: 'Sarabun', sans-serif;
             scroll-behavior: smooth;
@@ -45,7 +47,6 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* ซ่อนหน้าเว็บที่ไม่ได้เลือก */
         .hidden-page {
             display: none;
         }
@@ -60,14 +61,12 @@
         }
 
         .nav-active {
-            color: #1e40af; /* blue-800 */
-            background-color: #eff6ff; /* blue-50 */
+            color: #1e40af;
+            background-color: #eff6ff;
             font-weight: 600;
         }
 
-        /* --------------------------------------
-            Org Chart Tree Styles 
-            -------------------------------------- */
+        /* Org Chart Styles */
         .org-tree-container {
             width: 100%;
             overflow-x: auto;
@@ -75,21 +74,10 @@
             text-align: center;
         }
         
-        /* Custom Scrollbar */
-        .org-tree-container::-webkit-scrollbar {
-            height: 10px;
-        }
-        .org-tree-container::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 10px;
-        }
-        .org-tree-container::-webkit-scrollbar-thumb {
-            background: #93c5fd;
-            border-radius: 10px;
-        }
-        .org-tree-container::-webkit-scrollbar-thumb:hover {
-            background: #3b82f6;
-        }
+        .org-tree-container::-webkit-scrollbar { height: 10px; }
+        .org-tree-container::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .org-tree-container::-webkit-scrollbar-thumb { background: #93c5fd; border-radius: 10px; }
+        .org-tree-container::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
 
         .org-tree {
             display: inline-flex;
@@ -132,27 +120,14 @@
             border-left: 2px solid #60a5fa;
         }
 
-        .org-tree li:only-child::after, .org-tree li:only-child::before {
-            display: none;
-        }
-
-        .org-tree li:only-child {
-            padding-top: 0;
-        }
-
-        .org-tree li:first-child::before, .org-tree li:last-child::after {
-            border: 0 none;
-        }
-
+        .org-tree li:only-child::after, .org-tree li:only-child::before { display: none; }
+        .org-tree li:only-child { padding-top: 0; }
+        .org-tree li:first-child::before, .org-tree li:last-child::after { border: 0 none; }
         .org-tree li:last-child::before {
             border-right: 2px solid #60a5fa;
             border-radius: 0 5px 0 0;
         }
-
-        .org-tree li:first-child::after {
-            border-radius: 5px 0 0 0;
-        }
-
+        .org-tree li:first-child::after { border-radius: 5px 0 0 0; }
         .org-tree ul ul::before {
             content: '';
             position: absolute;
@@ -173,12 +148,8 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        /* จัดระเบียบรูปภาพในแผนผังให้อยู่ตำแหน่งด้านบนเสมอ เพื่อป้องกันปัญหาหัวขาดเวลาถูกตัดเป็นวงกลม */
-        .org-node img {
-            object-position: center 10%;
-        }
+        .org-node img { object-position: center 10%; }
 
-        /* Slider Styles */
         .slider-track {
             display: flex;
             transition: transform 0.5s ease-in-out;
@@ -195,7 +166,6 @@
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="w-full px-4 sm:px-8 lg:px-12">
             <div class="flex justify-between items-center h-20">
-                
                 <div class="flex items-center cursor-pointer" onclick="showPage('home')">
                     <img src="logo.jpg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2966/2966327.png'" alt="MEC Logo" class="w-12 h-12 rounded-full mr-3 shadow-md object-cover border-2 border-white">
                     <div>
@@ -246,6 +216,7 @@
         
         <section id="home" class="page-section block page-transition">
             <div class="w-full bg-white border-b-4 border-blue-600">
+                <!-- แบนเนอร์บนสุดให้โหลดทันที (ไม่ต้องมี lazy) -->
                 <img src="MECbannew.png" onerror="this.src='https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'" alt="MEC Banner" class="w-full h-[400px] object-cover object-top block mx-auto">
             </div>
             <div class="bg-blue-600 text-white py-3 border-y border-blue-700 marquee-container shadow-md">
@@ -254,15 +225,13 @@
                 </span>
             </div>
 
-            <!-- ส่วนข่าวประชาสัมพันธ์ (ขยับขึ้นมา) -->
             <div class="max-w-6xl mx-auto pt-10 pb-6 px-4 sm:px-6">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-blue-500 inline-block pb-2" data-i18n="home_news_title">ข่าวประชาสัมพันธ์</h2>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-                    
-                    <!-- Sticky Announcements -->
+                    <!-- Announcements -->
                     <div class="lg:col-span-1 space-y-4">
                         <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full flex flex-col min-h-[400px]">
                             <h3 class="text-xl font-bold text-blue-800 mb-6 flex items-center border-b border-blue-200 pb-4">
@@ -304,64 +273,55 @@
                         <div class="relative rounded-xl overflow-hidden shadow-md h-[300px] md:h-[400px] bg-gray-100 group">
                             <div id="news-track" class="slider-track h-full"></div>
                             
-                            <!-- Controls -->
                             <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition flex items-center justify-center z-10 opacity-0 group-hover:opacity-100">
                                 <i class="fa-solid fa-chevron-left"></i>
                             </button>
                             <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-black/30 backdrop-blur-sm rounded-full text-white hover:bg-black/50 transition flex items-center justify-center z-10 opacity-0 group-hover:opacity-100">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </button>
-
-                            <!-- Indicators -->
                             <div id="news-indicators" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 z-10"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- ส่วนแสดงผู้บริหาร -->
+            <!-- ส่วนผู้บริหาร -->
             <div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 mb-10">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-blue-500 inline-block pb-2" data-i18n="home_exec_title">ผู้อำนวยการโรงพยาบาล/ผู้อำนวยการศูนย์แพทย์</h2>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
-                    
-                    <!-- ผู้อำนวยการโรงพยาบาล -->
                     <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center hover:shadow-lg transition-shadow">
                         <div class="w-48 h-56 rounded-xl overflow-hidden mb-5 border-4 border-white shadow-sm relative bg-white flex justify-center items-end">
-                            <img src="Pattamapan.png" onerror="this.src='https://via.placeholder.com/200x250?text=Director'" alt="ผู้อำนวยการโรงพยาบาล" class="w-full h-full object-contain object-bottom pt-2">
+                            <img src="Pattamapan.png" loading="lazy" onerror="this.src='https://via.placeholder.com/200x250?text=Director'" alt="ผู้อำนวยการโรงพยาบาล" class="w-full h-full object-contain object-bottom pt-2">
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800" data-i18n="dir_hosp_name">พญ. ปัทมพันธ์ อนันตาพงศ์</h3>
                         <div class="h-1 w-12 bg-blue-500 rounded-full my-3"></div>
                         <p class="text-blue-700 font-semibold text-lg" data-i18n="dir_hosp_title">ผู้อำนวยการโรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
                     </div>
 
-                    <!-- ผู้อำนวยการศูนย์แพทย์ฯ -->
                     <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100 flex flex-col items-center hover:shadow-lg transition-shadow">
                         <div class="w-48 h-56 rounded-xl overflow-hidden mb-5 border-4 border-white shadow-sm relative bg-white flex justify-center items-end">
-                            <img src="Anan1.jpg" onerror="this.src='https://via.placeholder.com/200x250?text=MEC+Director'" alt="ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-full object-contain object-bottom pt-2">
+                            <img src="Anan1.jpg" loading="lazy" onerror="this.src='https://via.placeholder.com/200x250?text=MEC+Director'" alt="ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-full object-contain object-bottom pt-2">
                         </div>
                         <h3 class="text-2xl font-bold text-gray-800" data-i18n="dir_mec_name">นพ. อนันต์ พรมาตา</h3>
                         <div class="h-1 w-12 bg-blue-500 rounded-full my-3"></div>
                         <p class="text-blue-700 font-semibold text-lg" data-i18n="dir_mec_title">ผู้อำนวยการศูนย์แพทยศาสตรศึกษาชั้นคลินิก</p>
                     </div>
-
                 </div>
             </div>
 
-            <!-- ส่วนกิจกรรมศูนย์แพทย์ -->
+            <!-- กิจกรรมศูนย์แพทย์ -->
             <div class="max-w-6xl mx-auto py-8 px-4 sm:px-6 mb-16 border-t border-gray-200 pt-12">
                 <div class="text-center mb-10">
                     <h2 class="text-3xl font-bold text-gray-900 border-b-4 border-blue-500 inline-block pb-2" data-i18n="home_act_title">กิจกรรมศูนย์แพทย์</h2>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Activity Block 1 -->
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group transform hover:-translate-y-1 flex flex-col" onclick="openHomeActivityModal(1)">
                         <div class="h-52 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                                 <i class="fa-regular fa-calendar-days mr-1"></i> <span data-i18n="home_act_1_date">10 พ.ค. 2567</span>
@@ -376,10 +336,9 @@
                         </div>
                     </div>
 
-                    <!-- Activity Block 2 -->
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group transform hover:-translate-y-1 flex flex-col" onclick="openHomeActivityModal(2)">
                         <div class="h-52 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                                 <i class="fa-regular fa-calendar-days mr-1"></i> <span data-i18n="home_act_2_date">25 เม.ย. 2567</span>
@@ -394,10 +353,9 @@
                         </div>
                     </div>
 
-                    <!-- Activity Block 3 -->
                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group transform hover:-translate-y-1 flex flex-col" onclick="openHomeActivityModal(3)">
                         <div class="h-52 overflow-hidden relative">
-                            <img src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1576091160550-2173ff9e5ee5?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-3 left-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
                                 <i class="fa-regular fa-calendar-days mr-1"></i> <span data-i18n="home_act_3_date">18 มี.ค. 2567</span>
@@ -415,11 +373,12 @@
             </div>
         </section>
 
+        <!-- หน้าเกี่ยวกับเรา -->
         <section id="about" class="page-section hidden-page page-transition">
             <div class="max-w-5xl mx-auto py-12 px-4 sm:px-6">
                 
                 <div class="mb-10 text-center bg-gray-100 rounded-xl">
-                    <img src="aboutpic.png" onerror="this.src='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto max-h-[500px]">
+                    <img src="aboutpic.png" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'" alt="อาคารศูนย์แพทยศาสตรศึกษาชั้นคลินิก" class="w-full h-auto rounded-xl shadow-lg border-2 border-gray-100 object-cover mx-auto max-h-[500px]">
                 </div>
 
                 <h1 class="text-3xl font-bold text-blue-800 mb-6 border-b pb-4" data-i18n="hist_title">ประวัติความเป็นมา</h1>
@@ -469,55 +428,49 @@
                         </ul>
                     </div>
                 </div>
-                
             </div>
         </section>
 
         <!-- ส่วนโครงสร้างองค์กร -->
         <section id="team" class="page-section hidden-page page-transition">
             <div class="w-full mx-auto py-12 px-2">
-                <!-- แผนผังอาจารย์แพทย์ -->
                 <h1 class="text-2xl md:text-3xl font-bold text-blue-800 mb-10 border-b pb-4 text-center leading-relaxed" data-i18n="org_title">โครงสร้างศูนย์แพทยศาสตรศึกษาชั้นคลินิก โรงพยาบาลชุมพรเขตรอุดมศักดิ์</h1>
                 
                 <div class="org-tree-container">
                     <div class="org-tree mx-auto">
                         <ul>
-                            <!-- Level 0 (Hospital Director) -->
                             <li>
                                 <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-800 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('Pattamapan.png', 'org_name_0', 'org_role_0', 'https://via.placeholder.com/250x250?text=Director')">
-                                    <img src="Pattamapan.png" onerror="this.src='https://via.placeholder.com/250x250?text=Director'" alt="Director" class="w-28 h-28 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
+                                    <img src="Pattamapan.png" loading="lazy" onerror="this.src='https://via.placeholder.com/250x250?text=Director'" alt="Director" class="w-28 h-28 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
                                     <h3 class="font-bold text-gray-800 text-[16px]" data-i18n="org_name_0">แพทย์หญิงปัทมพันธ์ อนันตาพงศ์</h3>
                                     <p class="text-[13px] text-blue-600 mt-2 font-medium" data-i18n="org_role_0">ผู้อำนวยการโรงพยาบาลชุมพรเขตรอุดมศักดิ์</p>
                                 </div>
                                 <ul>
-                                    <!-- Level 1 (MEC Director) -->
                                     <li>
                                         <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-700 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('D.jpg', 'org_name_1', 'org_role_1', 'https://i.pravatar.cc/150?img=11')">
-                                            <img src="D.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Director" class="w-28 h-28 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
+                                            <img src="D.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Director" class="w-28 h-28 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
                                             <h3 class="font-bold text-gray-800 text-[16px]" data-i18n="org_name_1">ผศ.(พิเศษ) นพ.อนันต์ พรมาตา</h3>
                                             <p class="text-[13px] text-blue-600 mt-2 font-medium" data-i18n="org_role_1">ผู้อำนวยการศูนย์แพทย์ฯ</p>
                                         </div>
                                         <ul>
-                                            <!-- Level 2 - Advisor -->
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-md p-5 border-t-4 border-blue-500 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('C.jpg', 'org_name_2', 'org_role_2', 'https://i.pravatar.cc/150?img=5')">
-                                                    <img src="C.jpg" onerror="this.src='https://i.pravatar.cc/150?img=5'" alt="Advisor" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50">
+                                                    <img src="C.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=5'" alt="Advisor" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[15px]" data-i18n="org_name_2">รศ.(พิเศษ) นพ.บุญเลิศ มิตรเมือง</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 font-medium" data-i18n="org_role_2">ที่ปรึกษาผู้อำนวยการศูนย์แพทย์ฯ</p>
                                                 </div>
                                             </li>
                                             
-                                            <!-- Level 2 - Deputies -->
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('B.jpg', 'org_name_9', 'org_role_9', 'https://i.pravatar.cc/150?img=12')">
-                                                    <img src="B.jpg" onerror="this.src='https://i.pravatar.cc/150?img=12'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="B.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=12'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_9">แพทย์หญิงธีรวัน อุไพศิลป์สถาพร</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_9">รองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานการศึกษาก่อนปริญญา</p>
                                                 </div>
                                                 <ul>
                                                     <li>
                                                         <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-52 mx-auto cursor-pointer" onclick="openProfileModal('I.jpg', 'org_name_10', 'org_role_10', 'https://i.pravatar.cc/150?img=44')">
-                                                            <img src="I.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Assistant" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                            <img src="I.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Assistant" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                             <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_10">นายแพทย์สอาด สมกระบวน</h3>
                                                             <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="org_role_10">ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานการศึกษาก่อนปริญญา</p>
                                                         </div>
@@ -527,7 +480,7 @@
                                             
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('F.jpg', 'org_name_6', 'org_role_6', 'https://i.pravatar.cc/150?img=33')">
-                                                    <img src="F.jpg" onerror="this.src='https://i.pravatar.cc/150?img=33'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="F.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=33'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_6">รศ.(พิเศษ) นพ.พรพงศ์ จิตต์ประทุม</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_6">รองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานภารกิจอำนวยการ</p>
                                                 </div>
@@ -535,7 +488,7 @@
                                             
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('G.jpg', 'org_name_5', 'org_role_5', 'https://i.pravatar.cc/150?img=8')">
-                                                    <img src="G.jpg" onerror="this.src='https://i.pravatar.cc/150?img=8'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="G.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=8'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_5">แพทย์หญิงลลิตสุดา บัวแก้ว</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_5">รองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานการศึกษาหลังปริญญา</p>
                                                 </div>
@@ -543,7 +496,7 @@
                                             
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('A.jpg', 'org_name_7', 'org_role_7', 'https://i.pravatar.cc/150?img=16')">
-                                                    <img src="A.jpg" onerror="this.src='https://i.pravatar.cc/150?img=16'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="A.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=16'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_7">แพทย์หญิงพรวนัช แสงสุริย์</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_7">รองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานฝึกอบรมและประกันคุณภาพ</p>
                                                 </div>
@@ -551,7 +504,7 @@
                                             
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('J.jpg', 'org_name_8', 'org_role_8', 'https://i.pravatar.cc/150?img=32')">
-                                                    <img src="J.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="J.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_8">นายแพทย์พีรธัช สมภพโภคาเศรษฐ์</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_8">รองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานยุทธศาสตร์ แผนงานและวิจัย</p>
                                                 </div>
@@ -559,14 +512,14 @@
                                             
                                             <li>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border-t-4 border-blue-400 w-60 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('H.jpg', 'org_name_3', 'org_role_3', 'https://i.pravatar.cc/150?img=52')">
-                                                    <img src="H.jpg" onerror="this.src='https://i.pravatar.cc/150?img=52'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
+                                                    <img src="H.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=52'" alt="Deputy" class="w-20 h-20 mx-auto rounded-full mb-3 object-cover border-2 border-blue-50">
                                                     <h3 class="font-bold text-gray-800 text-[14px] leading-tight" data-i18n="org_name_3">นายแพทย์ฐากูร บุญนรากร</h3>
                                                     <p class="text-[12px] text-blue-600 mt-2 leading-tight" data-i18n="org_role_3">รองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานเทคโนโลยีสารสนเทศ</p>
                                                 </div>
                                                 <ul>
                                                     <li>
                                                         <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-52 mx-auto cursor-pointer" onclick="openProfileModal('E.jpg', 'org_name_4', 'org_role_4', 'https://i.pravatar.cc/150?img=47')">
-                                                            <img src="E.jpg" onerror="this.src='https://i.pravatar.cc/150?img=47'" alt="Assistant" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                            <img src="E.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=47'" alt="Assistant" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                             <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="org_name_4">นายแพทย์กษิดิศ วังอนุสรณ์</h3>
                                                             <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="org_role_4">ผู้ช่วยรองผู้อำนวยการศูนย์แพทย์ฯ<br>กลุ่มงานเทคโนโลยีสารสนเทศ</p>
                                                         </div>
@@ -587,80 +540,78 @@
                 <div class="org-tree-container">
                     <div class="org-tree mx-auto">
                         <ul>
-                            <!-- Level 1 - Head of Office -->
                             <li>
                                 <div class="org-node bg-white rounded-xl shadow-md p-6 border-t-4 border-blue-700 w-72 mx-auto relative z-10 cursor-pointer" onclick="openProfileModal('Opond.jpg', 'staff_name_1', 'staff_role_1', 'https://i.pravatar.cc/150?img=43')">
-                                    <img src="Opond.jpg" onerror="this.src='https://i.pravatar.cc/150?img=43'" alt="Head of Office" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
+                                    <img src="Opond.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=43'" alt="Head of Office" class="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-blue-50 shadow-sm">
                                     <h3 class="font-bold text-gray-800 text-[15px]" data-i18n="staff_name_1">น.ส.อัจฉรา ชนมนัส</h3>
                                     <p class="text-[12px] text-blue-600 mt-2 font-medium leading-tight" data-i18n="staff_role_1">หัวหน้าสำนักงาน<br>นักวิชาการศึกษา</p>
                                 </div>
                                 <ul>
-                                    <!-- Level 2 - Operational Staffs (Grouped by Rows) -->
                                     <li class="w-full">
                                         <div class="flex flex-col items-center gap-6 pt-2">
                                             
-                                            <!-- Row 1: นักวิชาการศึกษา 5 คน -->
+                                            <!-- Row 1 -->
                                             <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Nick.jpg', 'staff_name_2', 'staff_role_2', 'https://i.pravatar.cc/150?img=44')">
-                                                    <img src="Nick.jpg" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Nick.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=44'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_2">น.ส.ณัฐพร ธนูศิลป์</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_2">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Kung.jpg', 'staff_name_3', 'staff_role_3', 'https://i.pravatar.cc/150?img=45')">
-                                                    <img src="Kung.jpg" onerror="this.src='https://i.pravatar.cc/150?img=45'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Kung.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=45'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_3">น.ส.อุทุมพร แก้ววิจิตร</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_3">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Am.jpg', 'staff_name_4', 'staff_role_4', 'https://i.pravatar.cc/150?img=40')">
-                                                    <img src="Am.jpg" onerror="this.src='https://i.pravatar.cc/150?img=40'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Am.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=40'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_4">น.ส.ชญานิษฐ์ ฮุ่นตระกูล</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_4">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Wan.jpg', 'staff_name_5', 'staff_role_5', 'https://i.pravatar.cc/150?img=41')">
-                                                    <img src="Wan.jpg" onerror="this.src='https://i.pravatar.cc/150?img=41'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Wan.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=41'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_5">น.ส.วีรวรรณ เนตรสุวรรณ</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_5">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Ann.jpg', 'staff_name_6', 'staff_role_6', 'https://i.pravatar.cc/150?img=42')">
-                                                    <img src="Ann.jpg" onerror="this.src='https://i.pravatar.cc/150?img=42'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Ann.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=42'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_6">น.ส.โสรญา ถาวรวัฒน์</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_6">นักวิชาการศึกษา</p>
                                                 </div>
                                             </div>
 
-                                            <!-- Row 2: นักวิชาการศึกษา 4 คน -->
+                                            <!-- Row 2 -->
                                             <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Bow.jpg', 'staff_name_7', 'staff_role_7', 'https://i.pravatar.cc/150?img=35')">
-                                                    <img src="Bow.jpg" onerror="this.src='https://i.pravatar.cc/150?img=35'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Bow.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=35'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_7">น.ส.ธัญญาภรณ์ เมืองแดง</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_7">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Pond.jpg', 'staff_name_8', 'staff_role_8', 'https://i.pravatar.cc/150?img=11')">
-                                                    <img src="Pond.jpg" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Pond.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=11'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_8">นายอลงกรณ์ นุ้ยสุข</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_8">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Poo.jpg', 'staff_name_9', 'staff_role_9', 'https://i.pravatar.cc/150?img=32')">
-                                                    <img src="Poo.jpg" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Poo.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=32'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_9">น.ส.สุธาทิพย์ นาควิเชียร</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_9">นักวิชาการศึกษา</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Bank.jpg', 'staff_name_10', 'staff_role_10', 'https://i.pravatar.cc/150?img=14')">
-                                                    <img src="Bank.jpg" onerror="this.src='https://i.pravatar.cc/150?img=14'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Bank.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=14'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_10">นายธราวิชญ์ เพ็ชรแก้ว</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_10">นักวิชาการศึกษา</p>
                                                 </div>
                                             </div>
 
-                                            <!-- Row 3: นักจัดการงานทั่วไป และ บรรณารักษ์ 2 คน -->
+                                            <!-- Row 3 -->
                                             <div class="flex flex-wrap justify-center gap-4 md:gap-6 w-full mt-2">
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Tig.jpg', 'staff_name_11', 'staff_role_11', 'https://i.pravatar.cc/150?img=38')">
-                                                    <img src="Tig.jpg" onerror="this.src='https://i.pravatar.cc/150?img=38'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Tig.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=38'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_11">น.ส.จิตตมาส พนัสนาชี</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_11">นักจัดการงานทั่วไป</p>
                                                 </div>
                                                 <div class="org-node bg-white rounded-xl shadow-sm p-4 border border-gray-200 w-44 md:w-48 cursor-pointer" onclick="openProfileModal('Tang.jpg', 'staff_name_12', 'staff_role_12', 'https://i.pravatar.cc/150?img=30')">
-                                                    <img src="Tang.jpg" onerror="this.src='https://i.pravatar.cc/150?img=30'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
+                                                    <img src="Tang.jpg" loading="lazy" onerror="this.src='https://i.pravatar.cc/150?img=30'" alt="Staff" class="w-16 h-16 mx-auto rounded-full mb-3 object-cover">
                                                     <h3 class="font-bold text-gray-800 text-[13px] leading-tight" data-i18n="staff_name_12">น.ส.วนารัตน์ เมืองพร้อม</h3>
                                                     <p class="text-[11px] text-gray-500 mt-2 leading-tight" data-i18n="staff_role_12">บรรณารักษ์</p>
                                                 </div>
@@ -712,7 +663,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="bg-white rounded-xl overflow-hidden shadow-md group">
                         <div class="overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1523580494112-071ef0463428?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
                         </div>
                         <div class="p-6">
                             <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded" data-i18n="act_date_1">10 พ.ค. 2567</span>
@@ -721,7 +672,7 @@
                     </div>
                     <div class="bg-white rounded-xl overflow-hidden shadow-md group">
                         <div class="overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+                            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=800&q=80" loading="lazy" alt="Activity" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
                         </div>
                         <div class="p-6">
                             <span class="text-xs font-bold bg-blue-100 text-blue-800 px-2 py-1 rounded" data-i18n="act_date_2">25 เม.ย. 2567</span>
@@ -822,39 +773,34 @@
                     </div>
                 </div>
                 
-                <!-- NEW: ส่วนเครือข่ายความร่วมมือ (ย้ายมาไว้ที่หน้าติดต่อเรา) -->
                 <div class="w-full bg-white rounded-2xl shadow-sm border border-gray-200 py-12 px-6 mt-12">
                     <h2 class="text-2xl md:text-3xl font-bold text-teal-800 mb-10 text-center" data-i18n="home_network_title">เครือข่ายความร่วมมือ</h2>
                     
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-start justify-items-center max-w-5xl mx-auto">
-                        <!-- กระทรวงสาธารณสุข -->
                         <a href="https://ops.moph.go.th/public/" target="_blank" class="flex flex-col items-center group w-full">
                             <div class="w-24 h-24 sm:w-32 sm:h-32 mb-4 bg-gray-50 rounded-full p-4 shadow-sm border border-gray-100 group-hover:shadow-md group-hover:-translate-y-2 transition-all duration-300 flex items-center justify-center overflow-hidden">
-                                <img src="moph_logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seal_of_the_Ministry_of_Public_Health_of_Thailand.svg/200px-Seal_of_the_Ministry_of_Public_Health_of_Thailand.svg.png'" alt="กระทรวงสาธารณสุข" class="w-full h-full object-contain">
+                                <img src="moph_logo.png" loading="lazy" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Seal_of_the_Ministry_of_Public_Health_of_Thailand.svg/200px-Seal_of_the_Ministry_of_Public_Health_of_Thailand.svg.png'" alt="กระทรวงสาธารณสุข" class="w-full h-full object-contain">
                             </div>
                             <span class="text-sm sm:text-base font-semibold text-gray-600 group-hover:text-teal-700 transition-colors text-center" data-i18n="net_moph">กระทรวงสาธารณสุข</span>
                         </a>
                         
-                        <!-- สพพ. -->
                         <a href="https://cpird.in.th/" target="_blank" class="flex flex-col items-center group w-full">
                             <div class="w-24 h-24 sm:w-32 sm:h-32 mb-4 bg-gray-50 rounded-full p-4 shadow-sm border border-gray-100 group-hover:shadow-md group-hover:-translate-y-2 transition-all duration-300 flex items-center justify-center overflow-hidden">
-                                <img src="cpird_logo.png" onerror="this.src='https://cpird.in.th/wp-content/uploads/2021/04/Logo-CPIRD-01-2.png'" alt="สพพ." class="w-full h-full object-contain">
+                                <img src="cpird_logo.png" loading="lazy" onerror="this.src='https://cpird.in.th/wp-content/uploads/2021/04/Logo-CPIRD-01-2.png'" alt="สพพ." class="w-full h-full object-contain">
                             </div>
                             <span class="text-sm sm:text-base font-semibold text-gray-600 group-hover:text-teal-700 transition-colors text-center" data-i18n="net_cpird">สพพ.</span>
                         </a>
 
-                        <!-- คณะแพทย์ มธ. -->
                         <a href="https://med.tu.ac.th/" target="_blank" class="flex flex-col items-center group w-full">
                             <div class="w-24 h-24 sm:w-32 sm:h-32 mb-4 bg-gray-50 rounded-full p-4 shadow-sm border border-gray-100 group-hover:shadow-md group-hover:-translate-y-2 transition-all duration-300 flex items-center justify-center overflow-hidden">
-                                <img src="tu_med_logo.png" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Emblem_of_Thammasat_University.svg/200px-Emblem_of_Thammasat_University.svg.png'" alt="คณะแพทย์ มธ." class="w-full h-full object-contain">
+                                <img src="tu_med_logo.png" loading="lazy" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Emblem_of_Thammasat_University.svg/200px-Emblem_of_Thammasat_University.svg.png'" alt="คณะแพทย์ มธ." class="w-full h-full object-contain">
                             </div>
                             <span class="text-sm sm:text-base font-semibold text-gray-600 group-hover:text-teal-700 transition-colors text-center" data-i18n="net_tu">คณะแพทย์ มธ.</span>
                         </a>
 
-                        <!-- รพ.ชุมพรเขตรอุดมศักดิ์ -->
                         <a href="https://chumphonhospital.com/" target="_blank" class="flex flex-col items-center group w-full">
                             <div class="w-24 h-24 sm:w-32 sm:h-32 mb-4 bg-gray-50 rounded-full p-4 shadow-sm border border-gray-100 group-hover:shadow-md group-hover:-translate-y-2 transition-all duration-300 flex items-center justify-center overflow-hidden">
-                                <img src="โลโก้ รพ.jpg" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2966/2966327.png'" alt="รพ.ชุมพรเขตรอุดมศักดิ์" class="w-full h-full object-contain scale-[1.3] mix-blend-multiply">
+                                <img src="โลโก้ รพ.jpg" loading="lazy" onerror="this.src='https://cdn-icons-png.flaticon.com/512/2966/2966327.png'" alt="รพ.ชุมพรเขตรอุดมศักดิ์" class="w-full h-full object-contain scale-[1.3] mix-blend-multiply">
                             </div>
                             <span class="text-sm sm:text-base font-semibold text-gray-600 group-hover:text-teal-700 transition-colors text-center" data-i18n="net_hosp">รพ.ชุมพรเขตรอุดมศักดิ์</span>
                         </a>
@@ -905,14 +851,13 @@
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <span class="text-gray-300 text-sm font-medium mr-4 tracking-wide" data-i18n="visitor_count">จำนวนผู้เข้าชมเว็บไซต์:</span>
-                    <img src="https://hits.sh/mecchumphon.github.io.svg?style=for-the-badge&label=Views&color=2563eb" alt="Visitor Count" class="h-6 rounded shadow-sm">
+                    <img src="https://hits.sh/mecchumphon.github.io.svg?style=for-the-badge&label=Views&color=2563eb" loading="lazy" alt="Visitor Count" class="h-6 rounded shadow-sm">
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // ---------------- ระบบเปลี่ยนภาษา (Translation System) ----------------
         const translations = {
             th: {
                 "title_main": "MEC CHUMPHON", 
