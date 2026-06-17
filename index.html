@@ -234,42 +234,26 @@
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     <!-- Announcements -->
-                    <div class="lg:col-span-1 space-y-4">
-                        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full flex flex-col min-h-[400px]">
-                            <h3 class="text-xl font-bold text-blue-800 mb-6 flex items-center border-b border-blue-200 pb-4">
-                                <i class="fa-solid fa-bullhorn mr-2"></i> 
-                                <span data-i18n="home_announce_title">ประกาศด่วน</span>
-                            </h3>
-                            <ul class="space-y-4 text-gray-800 flex-grow">
-                                <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
-                                    <span class="bg-blue-500 text-white text-xs px-2 py-1 rounded font-bold mr-2 mt-0.5 whitespace-nowrap">NEW</span> 
-                                    <span data-i18n="home_announce_1" class="text-gray-800 font-medium hover:text-blue-700 leading-tight">กำหนดการเปิดภาคเรียน ปี 2569</span>
-                                </li>
-                                <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
-                                    <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_2" class="text-gray-700 hover:text-blue-700 leading-tight">รับสมัครแพทย์เพิ่มพูนทักษะ ประจำปี</span>
-                                </li>
-                                <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
-                                    <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_3" class="text-gray-700 hover:text-blue-700 leading-tight">มาตรการป้องกันโรคสำหรับนักศึกษา</span>
-                                </li>
-                                <li class="border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
-                                    <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_4" class="text-gray-700 hover:text-blue-700 leading-tight">ประกาศผลการสอบคัดเลือกนักศึกษาแพทย์</span>
-                                </li>
-                                <li class="pb-1 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition" onclick="window.open('https://www.facebook.com/share/1CfikLuWrV/?mibextid=wwXIfr', '_blank')">
-                                    <i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>
-                                    <span data-i18n="home_announce_5" class="text-gray-700 hover:text-blue-700 leading-tight">ปฏิทินวิชาการ ศูนย์แพทยศาสตรศึกษาชั้นคลินิก</span>
-                                </li>
-                            </ul>
-                            <div class="mt-4 pt-4 border-t border-blue-200 text-center">
-                                <a href="https://www.facebook.com/MECChumphon" target="_blank" class="inline-flex items-center text-sm font-bold text-blue-700 hover:text-blue-800 transition">
-                                    ดูประกาศทั้งหมด <i class="fa-solid fa-arrow-right ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    
+                   <div class="lg:col-span-1 space-y-4">
+    <div class="bg-blue-50 rounded-xl p-6 border border-blue-100 shadow-sm h-full flex flex-col min-h-[400px]">
+        <h3 class="text-xl font-bold text-blue-800 mb-6 flex items-center border-b border-blue-200 pb-4">
+            <i class="fa-solid fa-bullhorn mr-2"></i> 
+            <span data-i18n="home_announce_title">ประกาศด่วน</span>
+        </h3>
+        
+        <ul id="announcement-list" class="space-y-4 text-gray-800 flex-grow">
+            <div class="flex justify-center items-center h-full text-gray-400">
+                <i class="fa-solid fa-spinner fa-spin mr-2"></i> กำลังโหลดข้อมูล...
+            </div>
+        </ul>
+        
+        <div class="mt-4 pt-4 border-t border-blue-200 text-center">
+            <a href="https://www.facebook.com/MECChumphon" target="_blank" class="inline-flex items-center text-sm font-bold text-blue-700 hover:text-blue-800 transition">
+                ดูประกาศทั้งหมด <i class="fa-solid fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+    </div>
+</div>
                     <!-- News Carousel -->
                     <div class="lg:col-span-2 relative">
                         <div class="relative rounded-xl overflow-hidden shadow-md h-[300px] md:h-[400px] bg-gray-100 group">
@@ -1497,5 +1481,76 @@
         };
 
     </script>
+    <script type="module">
+  // 1. นำเข้าไลบรารีของ Firebase (อย่าลืมใส่ firebaseConfig ของคุณ)
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, getDocs, query, where, orderBy, limit } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  // ใส่ค่า config ที่ได้จาก Firebase Console ของคุณ
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // 2. ฟังก์ชันดึงข่าวประกาศด่วน
+  async function loadAnnouncements() {
+    const listContainer = document.getElementById('announcement-list');
+    
+    try {
+      const q = query(
+        collection(db, "pr_news"), 
+        where("type", "==", "announcement"),
+        orderBy("timestamp", "desc"),
+        limit(5)
+      );
+
+      const querySnapshot = await getDocs(q);
+      
+      // ล้างข้อความ "กำลังโหลดข้อมูล..." ออก
+      listContainer.innerHTML = ''; 
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        
+        // เช็คว่ามีป้าย NEW หรือไม่
+        const iconHtml = data.is_new 
+            ? `<span class="bg-blue-500 text-white text-xs px-2 py-1 rounded font-bold mr-2 mt-0.5 whitespace-nowrap">NEW</span>`
+            : `<i class="fa-solid fa-circle-chevron-right text-blue-500 mt-1 mr-2 text-xs"></i>`;
+
+        // สร้าง <li> และใส่คลาส Tailwind ให้ตรงกับดีไซน์เดิมของคุณ
+        const liItem = document.createElement('li');
+        liItem.className = "border-b border-blue-200 pb-3 flex items-start cursor-pointer hover:bg-blue-100 p-2 rounded transition";
+        liItem.onclick = () => window.open(data.url, '_blank');
+        
+        // ใส่โครงสร้าง HTML เข้าไปใน <li>
+        liItem.innerHTML = `
+            ${iconHtml}
+            <span class="text-gray-800 font-medium hover:text-blue-700 leading-tight">${data.title}</span>
+        `;
+        
+        listContainer.appendChild(liItem);
+      });
+
+      // กรณีที่ไม่มีข้อมูลในฐานข้อมูลเลย
+      if(querySnapshot.empty) {
+          listContainer.innerHTML = '<li class="text-center text-gray-500 py-4">ยังไม่มีประกาศในขณะนี้</li>';
+      }
+
+    } catch (error) {
+      console.error("โหลดข้อมูลล้มเหลว:", error);
+      listContainer.innerHTML = '<li class="text-center text-red-500 py-4">ไม่สามารถโหลดประกาศได้</li>';
+    }
+  }
+
+  // เรียกใช้งานฟังก์ชัน
+  loadAnnouncements();
+</script>
 </body>
 </html>
